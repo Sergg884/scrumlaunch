@@ -25,18 +25,19 @@ export default {
       scriptLucky.setAttribute("src", "https://tools.luckyorange.com/core/lo.js?site-id=0a6cf2b2")
 
       // googletagmanager
-      const ScriptSrc = document.createElement('script')
-      ScriptSrc.setAttribute(
+      const scriptSrc = document.createElement('script')
+      scriptSrc.setAttribute(
         'src',
         'https://www.googletagmanager.com/gtag/js?id=UA-146499571-1'
       )
-      ScriptSrc.setAttribute('async', '')
+      scriptSrc.setAttribute('async', '')
 
-      const ScriptInit = document.createElement('script')
-      ScriptInit.innerHTML = `window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-146499571-1');`
+      const scriptInit = document.createElement('script')
+      scriptInit.innerHTML = `window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-146499571-1');`
 
-      document.head.appendChild(ScriptSrc)
-      document.head.appendChild(ScriptInit)
+      document.head.appendChild(scriptSrc)
+      document.head.appendChild(scriptInit)
+      document.head.appendChild(scriptLucky)
       // googletagmanager
 
       // intercom
