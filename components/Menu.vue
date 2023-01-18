@@ -15,7 +15,7 @@
         <!-- <NuxtLink to="/services">Services</NuxtLink> -->
         <!-- <NuxtLink to="/process">Process</NuxtLink> -->
         <!-- <NuxtLink to="/leadership">Leadership</NuxtLink> -->
-        <!-- <div class="dropdown__wrap" :class="{ hidden: isHiddenNav }">
+        <div class="dropdown__wrap" :class="{ hidden: isHiddenNav }">
           <span @mouseenter="isHiddenNav = false">Blog</span>
           <ul class="dropdown">
             <li @click="hiddenNav">
@@ -56,7 +56,7 @@
               <NuxtLink to="/blog">View All</NuxtLink>
             </li>
           </ul>
-        </div> -->
+        </div>
         <div class="dropdown__wrap" :class="{ hidden: isHiddenNav }">
           <div @mouseenter="isHiddenNav = false" @click="hiddenNav">
             <NuxtLink to="/hire-developers">Hire Developers</NuxtLink>
@@ -206,11 +206,11 @@
           @click="handleNavigation('/leadership')"
           >Leadership</span
         > -->
-        <!-- <span
+        <span
           class="menu--burger--links--item"
           @click="handleNavigation('/blog')"
           >Blog</span
-        > -->
+        >
         <span
           class="menu--burger--links--item"
           @click="handleNavigation('/hire-developers')"
