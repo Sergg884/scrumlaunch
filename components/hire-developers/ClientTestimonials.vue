@@ -355,14 +355,18 @@ export default {
 .btn_wrap {
   margin-top: 80px;
 
-  .btn-inner {
-    display: flex;
-    gap: 16px;
-    
-    p {
-      margin-top: 3px;
+  button {
+    margin: auto;
+    .btn-inner {
+      display: flex;
+      gap: 16px;
+      
+      p {
+        margin-top: 3px;
+      }
     }
   }
+  
 }
 
 </style>

@@ -47,6 +47,22 @@ h2 {
   color: $main-black;
 }
 
+.section-title {
+  font-weight: 900;
+  font-size: 56px;
+  line-height: 140%;
+  text-transform: uppercase;
+
+  @media screen and (max-width: 1440px) {
+    font-size: 48px;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 24px;
+    text-align: left;
+  }
+}
+
 .text {
   font-weight: 400;
   font-size: 26px;

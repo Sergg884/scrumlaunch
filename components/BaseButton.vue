@@ -1,8 +1,9 @@
 <template>
   <component
-    class="base-button"
+    :class="small ? 'base-button--small' : 'base-button'"
     :is="to ? 'nuxt-link' : href ? 'a' : 'button'"
     :to="to"
+    :small="small"
     :href="href"
     @click="$emit('click')"
   >
@@ -20,6 +21,10 @@
       href: {
         type: String,
         default: null
+      },
+      small: {
+        type: Boolean,
+        default: false
       }
     }
   };
@@ -37,7 +42,6 @@
   box-sizing: border-box;
   font-family: 'Proxima Nova';
   font-style: normal;
-  font-weight: normal;
   font-weight: 600;
   font-size: 18px;
   line-height: 150%;
@@ -64,6 +68,11 @@
       background: #ffffff;
       color: #1e1f21;
     }
+  }
+
+  &--small {
+    @extend .base-button;
+    padding: 10px 28px;
   }
 }
 
