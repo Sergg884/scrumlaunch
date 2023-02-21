@@ -12,7 +12,61 @@ body {
 }
 
 #nav {
-  position: absolute;
+  position: initial;
   width: 100%;
   z-index: 100;
 }
+
+// color setup
+
+$main-green: #12E2B0;
+$main-black: #1e1f21;
+
+
+// global style elements for future use
+
+.mark {
+  background: $main-green;
+  color: $main-black;
+}
+
+.title-global {
+  font-weight: 900;
+  font-size: 56px;
+  line-height: 140%;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: $main-black;
+  margin-bottom: 0;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 140%;
+  color: $main-black;
+}
+
+.section-title {
+  font-weight: 900;
+  font-size: 56px;
+  line-height: 140%;
+  text-transform: uppercase;
+
+  @media screen and (max-width: 1440px) {
+    font-size: 48px;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 24px;
+    text-align: left;
+  }
+}
+
+.text {
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 150%;
+}
+
+

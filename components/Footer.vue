@@ -1,6 +1,6 @@
 <template>
   <div v-if="$route.name !== 'quiz'">
-    <div class="social_proof">
+    <div class="social_proof" v-if="$route.name !== 'hire-developers-specialization'">
       <div class="social_proof__badge">
         <img
           :src="require('@/assets/icons/clutch_badge.svg')"
