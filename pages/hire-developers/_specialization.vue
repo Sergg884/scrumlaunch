@@ -1,7 +1,7 @@
 <template>
   <div class="hire_developers">
 
-    <Hero 
+    <Hero
       :lang="dev_lang"
     />
 
@@ -9,10 +9,10 @@
 
     <section class="container talent-section">
       <p class="title-global">
-        <span class="mark">The Best Talent</span> at Every <span class="mark">Experience Level</span> 
+        <span class="mark">The Best Talent</span> at Every <span class="mark">Experience Level</span>
       </p>
       <div class="circle_container">
-        <img src="/images/hire-developers/statistic_pc.svg" alt="statistic_1" />
+        <img src="/images/hire-developers/statistic_pc2.svg" alt="statistic_1" />
       </div>
     </section>
 
@@ -83,7 +83,7 @@
 
     <section class="container">
       <h3 class="section-title">
-        Ready to <span class="mark">get started?</span> 
+        Ready to <span class="mark">get started?</span>
       </h3>
     </section>
 
@@ -226,7 +226,7 @@ export default {
 }
 
 .work-with-us {
-  
+
   .row {
     gap: 40px;
     margin-top: 80px;
@@ -253,7 +253,7 @@ export default {
             border-bottom: 1px solid $main-black;
           }
 
-          img { 
+          img {
             margin-right: 20px;
           }
 
