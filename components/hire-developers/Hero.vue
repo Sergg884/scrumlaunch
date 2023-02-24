@@ -7,7 +7,8 @@
             Hire <span class="mark">{{ lang }} <br /> developers</span>
           </h1>
           <p class="text">
-            Quickly add experienced {{ lang }} developers to your project. We handle all the sourcing, vetting and back office management so you can get an experienced Java developer up and running within days or weeks. We’ll take care of the rest.
+            Quickly add experienced {{ lang }} developers to your project. We handle all the sourcing, vetting and back office management so you
+            can get an experienced Java developer up and running within days or weeks. We’ll take care of the rest.
           </p>
         </div>
         <div class="row contact-row">
@@ -29,10 +30,13 @@
             </BaseButton>
           </div>
         </div>
-        
+
       </div>
       <div class="col img-col">
         <img src="/images/hire-developers/java-hero.jpg" alt="" />
+      </div>
+      <div class="col img-col-half">
+        <img src="/images/hire-developers/hero_team2.png" alt="" />
       </div>
     </div>
   </section>
@@ -97,11 +101,40 @@ export default {
     display: flex;
     flex-wrap: nowrap;
     flex: 1 1 auto;
-
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+    }
     .col {
       flex-basis: 0;
       flex-grow: 1;
       max-width: 100%
+    }
+    .img-col {
+      margin-right: 15px;
+      @media screen and (max-width: 1140px) {
+        margin-right: 0;
+    }
+    }
+    .img-col-half {
+      top: 150px;
+      right: 0;
+      position: absolute;
+      display: block;
+      overflow: hidden;
+      max-width: 291px;
+      max-height: 510px;
+
+    @media screen and (max-width: 1900px) {
+      max-width: 291px;
+    }
+
+    @media screen and (max-width: 1140px) {
+      display: none;
+    }
+
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
     }
   }
 }
@@ -109,7 +142,15 @@ export default {
 .row {
   gap: 60px;
   .text-col {
-    min-width: 760px;
+    min-width: 690px;
+
+    @media screen and (max-width: 1900px) {
+      min-width: 690px;
+    }
+
+    @media screen and (max-width: 1140px) {
+      min-width: 400px;
+    }
 
     h1 {
       margin-bottom: 40px;
@@ -121,6 +162,9 @@ export default {
 
     .contact-row {
       align-items: center;
+      @media screen and (max-width: 1140px) {
+      flex-direction: column;
+    }
 
       .input-wrap {
         label {
