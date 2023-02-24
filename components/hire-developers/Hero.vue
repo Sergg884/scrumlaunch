@@ -25,11 +25,11 @@
           </div>
           <div class="btn_wrap">
             <BaseButton @click="validateForm()">
-              Schedule call
+              Schedule a call
             </BaseButton>
           </div>
         </div>
-        
+
       </div>
       <div class="col img-col">
         <img src="/images/hire-developers/java-hero.jpg" alt="" />
