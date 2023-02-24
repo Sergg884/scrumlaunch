@@ -10,7 +10,7 @@
       <div class="col form-tab">
         <form action="">
           <h3>
-            Company Details 
+            Company Details
           </h3>
           <div class="row">
             <div class="col input-col">
@@ -33,7 +33,7 @@
                   type="text"
                   id="email"
                   name="email"
-                  placeholder="email@example.com"
+                  placeholder="Enter your email"
                 />
               </div>
               <div class='input-container'>
@@ -44,7 +44,7 @@
                   type="text"
                   id="companyName"
                   name="companyName"
-                  placeholder="Enter company name, if applicable"
+                  placeholder="Enter company name"
                 />
               </div>
             </div>
@@ -56,7 +56,7 @@
                 <textarea
                   id="details"
                   name="details"
-                  placeholder="Enter your name"
+                  placeholder="Enter your message"
                   value={name}
                   onChange={onChangeInput}
                 />
@@ -65,38 +65,48 @@
           </div>
           <div class="separator" />
           <h3>
-            Additional Information 
+            Additional Information
           </h3>
           <div class="row">
             <div class="col input-container">
               <label for="companySize">
                 Company Size
               </label>
-              <select
-                name="totalProjectBudget"
+              <!-- <select
+                name="companySize"
               >
-                <option value="">Select your project budget</option>
-                {budgetSize.map((budget) => (
-                  <option key={Math.random()} value={budget}>
-                    {budget}
+                <option value="">Select company size</option>
+                {companySize.map((company) => (
+                  <option key={Math.random()} value={company}>
+                    {company}
                   </option>
                 ))}
-              </select>
+              </select> -->
+              <CustomSelect
+                id="companySize"
+                :modelValue="companySize"
+                name="companySize"
+                label="Select company size"
+                emptyValueText="Select company size"
+                :items="companySelect"
+                :errorMessage="companySizeError"
+                @update:modelValue="handleFieldChange('companySize', $event)"
+              />
             </div>
             <div class="col input-container">
-              <label for="totalProjectBudget">
+              <label for="projectBudget">
                 Total Project Budget
               </label>
-              <select
-                name="totalProjectBudget"
-              >
-                <option value="">Select your project budget</option>
-                {budgetSize.map((budget) => (
-                  <option key={Math.random()} value={budget}>
-                    {budget}
-                  </option>
-                ))}
-              </select>
+              <CustomSelect
+                  id="projectBudget"
+                  :modelValue="projectBudget"
+                  name="projectBudget"
+                  label="Select project budget"
+                  emptyValueText="Select project budget"
+                  :items="budgetSelect"
+                  :errorMessage="projectBudgetError"
+                  @update:modelValue="handleFieldChange('projectBudget', $event)"
+                />
             </div>
           </div>
         </form>
@@ -110,11 +120,36 @@
 </template>
 
 <script>
+import CustomSelect from './SelectInput.vue'
 import BaseButton from '~/components/BaseButton.vue'
 
 export default {
   components: {
+    CustomSelect,
     BaseButton,
+  },
+  data() {
+    return {
+      budgetSelect: ['$ < 50k', '$ 50k - 100k', '$ 100k - 300k', '$ 300k - 500k', '$ 500k - 1m', '$ > 1m'],
+      companySelect: ['Idea', 'Startup', 'SMB', 'Enterprise'],
+      name: '',
+      nameError: null,
+      email: '',
+      emailError: null,
+      projectBudget: '',
+      projectBudgetError: null,
+      companySize: '',
+      companySizeError: null,
+
+      is_blocked: false,
+      is_sent: false,
+      is_done: false,
+    }
+  },
+  methods: {
+    handleFieldChange(name, value) {
+      this[name] = value
+    },
   }
 }
 
@@ -198,6 +233,9 @@ export default {
         }
 
         input[type='text'] {
+          font-weight: 500;
+          font-size: 18px;
+          color: $main-black;
           height: 42px;
           border: 1px solid var($main-black);
           padding-left: 10px;
@@ -213,6 +251,9 @@ export default {
           margin-top: 8px;
           padding: 10px;
           font-family: 'Sofia Pro', sans-serif;
+          font-weight: 500;
+          font-size: 18px;
+          color: $main-black;
           @media screen and (max-width: 768px) {
             width: auto;
           }
@@ -221,6 +262,8 @@ export default {
         select {
           height: 42px;
           border: 1px solid var($main-black);
+          font-weight: 500;
+          font-size: 18px;
           padding: 0 5px;
           margin-top: 8px;
           -webkit-appearance: none;
