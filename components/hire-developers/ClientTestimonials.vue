@@ -53,7 +53,7 @@ export default {
   data: () => ({
     sliderInfo: {
       1: {
-        image: '/images/industry-leading-results/rob_carrol.png',
+        image: '/images/industry-leading-results/rob_carrol2.png',
         withIcon: true,
         feedback:
           '“ScrumLaunch software developers have enabled CampusReel to go from an idea to a product with millions of monthly unique users over the past 5 years. We could not have gotten to where we are today without them.”',
@@ -360,13 +360,13 @@ export default {
     .btn-inner {
       display: flex;
       gap: 16px;
-      
+
       p {
         margin-top: 3px;
       }
     }
   }
-  
+
 }
 
 </style>
