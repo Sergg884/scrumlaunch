@@ -144,6 +144,11 @@ export default {
     width: auto;
   }
 
+  @media screen and (max-width: 768px) {
+    padding-top: 60px;
+    text-align: start;
+  }
+
   .header-big {
     margin-bottom: 60px;
     text-align: left;
@@ -162,6 +167,8 @@ export default {
     @media screen and (max-width: 768px) {
       margin-bottom: 60px;
       text-align: center;
+      font-size: 30px;
+      text-align: start;
     }
   }
 
@@ -243,6 +250,7 @@ export default {
     img {
       display: block;
       max-width: 100%;
+      height: auto;
     }
 
     blockquote {
