@@ -9,7 +9,7 @@
         </div>
       </div>
       <div class="clients">
-        <div 
+        <div
           class="client"
           v-for="client in clients"
           :key="client.alt"
@@ -34,6 +34,14 @@ export default {
       {
         img: '/images/hire-developers/clients/vesta.jpg',
         alt: 'vesta'
+      },
+      {
+        img: '/images/hire-developers/clients/campus-reel.jpg',
+        alt: 'campus reel'
+      },
+      {
+        img: '/images/hire-developers/clients/community-funded.jpg',
+        alt: 'comunity funded'
       },
       {
         img: '/images/hire-developers/clients/campus-reel.jpg',
