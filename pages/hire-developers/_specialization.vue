@@ -14,7 +14,7 @@
         <span class="mark">The Best Talent</span> at Every <span class="mark">Experience Level</span>
       </p>
       <div class="circle_container">
-        <img src="/images/hire-developers/statistic_pc.svg" alt="statistic_1" />
+        <img src="/images/hire-developers/statistic_pc2.svg" alt="statistic_1" />
       </div>
     </section>
 
