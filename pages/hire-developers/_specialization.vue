@@ -1,15 +1,17 @@
 <template>
   <div class="hire_developers">
 
-    <Hero 
+    <Hero
       :lang="dev_lang"
     />
+
+    <TalentMap />
 
     <OurClients />
 
     <section class="container talent-section">
       <p class="title-global">
-        <span class="mark">The Best Talent</span> at Every <span class="mark">Experience Level</span> 
+        <span class="mark">The Best Talent</span> at Every <span class="mark">Experience Level</span>
       </p>
       <div class="circle_container">
         <img src="/images/hire-developers/statistic_pc.svg" alt="statistic_1" />
@@ -83,7 +85,7 @@
 
     <section class="container">
       <h3 class="section-title">
-        Ready to <span class="mark">get started?</span> 
+        Ready to <span class="mark">get started?</span>
       </h3>
     </section>
 
@@ -94,6 +96,7 @@
 
 <script>
 import Hero from '~/components/hire-developers/Hero.vue'
+import TalentMap from '~/components/hire-developers/TalentMap.vue'
 import OurClients from '~/components/hire-developers/OurClients.vue'
 import ClientTestimonials from '~/components/hire-developers/ClientTestimonials.vue'
 import BaseButton from '~/components/BaseButton.vue'
@@ -105,11 +108,12 @@ import dev_langs from '~/seo/development_languages.json'
 export default {
   components: {
     Hero,
+    TalentMap,
     OurClients,
     ClientTestimonials,
     BaseButton,
     FAQ,
-    ContactForm
+    ContactForm,
   },
 
   data() {
@@ -226,7 +230,7 @@ export default {
 }
 
 .work-with-us {
-  
+
   .row {
     gap: 40px;
     margin-top: 80px;
@@ -253,7 +257,7 @@ export default {
             border-bottom: 1px solid $main-black;
           }
 
-          img { 
+          img {
             margin-right: 20px;
           }
 
