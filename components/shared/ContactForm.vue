@@ -10,7 +10,7 @@
       <div class="col form-tab">
         <form action="">
           <h3>
-            Company Details 
+            Company Details
           </h3>
           <div class="row">
             <div class="col input-col">
@@ -19,8 +19,8 @@
                   Name*
                 </label>
                 <input
-                  type="text"
                   id="name"
+                  type="text"
                   name="name"
                   placeholder="Enter your name"
                 />
@@ -30,8 +30,8 @@
                   Email*
                 </label>
                 <input
-                  type="text"
                   id="email"
+                  type="text"
                   name="email"
                   placeholder="email@example.com"
                 />
@@ -41,8 +41,8 @@
                   Company Name
                 </label>
                 <input
-                  type="text"
                   id="companyName"
+                  type="text"
                   name="companyName"
                   placeholder="Enter company name, if applicable"
                 />
@@ -65,7 +65,7 @@
           </div>
           <div class="separator" />
           <h3>
-            Additional Information 
+            Additional Information
           </h3>
           <div class="row">
             <div class="col input-container">

@@ -5,17 +5,41 @@
     </div>
     <Nuxt :key="$route.fullPath" />
     <Footer />
+    <ContactModal v-show="isModalVisible" @close="closeModal" />
   </div>
 </template>
 
 <script>
 import Menu from '@/components/Menu.vue'
 import Footer from '@/components/Footer.vue'
+import ContactModal from '@/components/contact/ContactModal.vue'
 
 export default {
   components: {
     Menu,
     Footer,
+    ContactModal,
+  },
+  data() {
+    return {
+      isModalVisible: false,
+    }
+  },
+  beforeMount() {
+    window.addEventListener("beforeunload", this.showModal)
+  },
+  beforeDestroy() {
+    window.removeEventListener("beforeunload", this.showModal)
+  },
+
+  methods: {
+    showModal($event) {
+      $event.preventDefault();
+      $event.returnValue = this.isModalVisible = true;
+    },
+    closeModal() {
+      this.isModalVisible = false;
+    }
   },
 
   mounted() {
