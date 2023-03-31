@@ -1,6 +1,9 @@
-@import 'reset';
+@import 'theme';
+@import '~bootstrap/scss/bootstrap.scss';
+@import '~bootstrap-vue/src/index.scss';
+
+
 @import 'fonts';
-@import 'common';
 
 body {
   font-family: 'Proxima Nova';
@@ -11,18 +14,6 @@ body {
   position: relative;
 }
 
-#nav {
-  position: initial;
-  width: 100%;
-  z-index: 100;
-}
-
-// color setup
-
-$main-green: #12E2B0;
-$main-black: #1e1f21;
-
-
 // global style elements for future use
 
 .mark {
@@ -30,14 +21,34 @@ $main-black: #1e1f21;
   color: $main-black;
 }
 
-.title-global {
-  font-weight: 900;
-  font-size: 56px;
-  line-height: 140%;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  color: $main-black;
-  margin-bottom: 0;
+.home {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.section {
+  margin-top: 240px;
+  margin-bottom: 240px;
+  display: inline-block;
+}
+
+section {
+  max-width: 375px;
+  padding: 0 20px;
+  margin: 80px auto;
+
+  @include tablet-and-up {
+    max-width: 768px;
+    padding: 0 30px;
+    margin: 120px auto;
+  }
+
+  @include desktop-and-up {
+    max-width: 1440px;
+    padding: 0 120px;
+    margin: 240px auto;
+  }
 }
 
 .green-title {
@@ -51,7 +62,7 @@ h2 {
   color: $main-black;
 }
 
-.section-title {
+.title-global {
   font-weight: 900;
   font-size: 56px;
   line-height: 140%;
@@ -66,6 +77,40 @@ h2 {
     text-align: left;
   }
 }
+
+.title-big {
+  color: $main-black;
+  font-weight: 900;
+  font-size: 32px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+
+  @include tablet-and-up {
+    font-size: 56px;
+    margin-bottom: 24px;
+  }
+
+  @include desktop-and-up {
+    margin-bottom: 40px;
+    font-size: 70px;
+  }
+}
+
+.text-main {
+  color: $main-black;
+  font-size: 14px;
+  line-height: 150%;
+  font-weight: 600;
+
+  @include tablet-and-up {
+    font-size: 20px;
+  }
+
+  @include desktop-and-up {
+    font-size: 26px;
+  }
+}
+
 
 .text {
   font-weight: 400;

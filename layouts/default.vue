@@ -1,49 +1,19 @@
 <template>
-  <div>
-    <div id="nav">
-      <Menu />
-    </div>
+  <div class="LayoutDefault">
+    <Header />
     <Nuxt :key="$route.fullPath" />
     <Footer />
-    <ContactModal v-show="isModalVisible" @close="closeModal" />
   </div>
 </template>
 
 <script>
-import Menu from '@/components/Menu.vue'
-import Footer from '@/components/Footer.vue'
-import ContactModal from '@/components/contact/ContactModal.vue'
-
 export default {
-  components: {
-    Menu,
-    Footer,
-    ContactModal,
-  },
-  data() {
-    return {
-      isModalVisible: false,
-    }
-  },
-  beforeMount() {
-    window.addEventListener("beforeunload", this.showModal)
-  },
-  beforeDestroy() {
-    window.removeEventListener("beforeunload", this.showModal)
-  },
-
-  methods: {
-    showModal($event) {
-      $event.preventDefault();
-      $event.returnValue = this.isModalVisible = true;
-    },
-    closeModal() {
-      this.isModalVisible = false;
-    }
+  async fetch() {
+    await this.fetchArticlesFromStore()
   },
 
   mounted() {
-    if (window.location.hostname.includes('scrumlaunch.com')) {
+        if (window.location.hostname.includes('scrumlaunch.com')) {
       // luckyorange
       const scriptLucky = document.createElement('script')
       scriptLucky.setAttribute("src", "https://tools.luckyorange.com/core/lo.js?site-id=0a6cf2b2")
@@ -164,5 +134,10 @@ export default {
       // intercom
     }
   },
+  methods: {
+    async fetchArticlesFromStore() {
+      await this.$store.dispatch('articles/fetchArticles');
+    },
+  }
 }
 </script>

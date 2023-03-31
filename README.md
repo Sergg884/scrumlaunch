@@ -1,4 +1,4 @@
-# frontend_scrumlaunch
+# scrumlaunch_website_v2
 
 ## Build Setup
 
@@ -18,15 +18,6 @@ $ npm run generate
 ```
 
 For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
-
-## Deploy
-
-For deploy you can use bitbucket pipelines
-
-- Open Pipelines tab
-- Click Run pipeline
-- Select branch to deploy
-- Select enviroment to push
 
 ## Special Directories
 

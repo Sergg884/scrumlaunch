@@ -1,39 +1,57 @@
 <template>
-  <div class="seo">
-    <div class="seo__meta">
-      <div class="seo__category">{{ article.category }}</div>
-      <div class="seo__date">Published on {{ article.date }}</div>
+  <section class="seo">
+    <!-- <div class="meta">
+      <div class="category">{{ article.category }}</div>
+      <div class="date">Published on {{ article.date }}</div>
+    </div> -->
+    <h1 class="title-global">{{ article.title }}</h1>
+    <div v-show="article" class="body" v-html="article.text"></div>
+    <div class="description">
+      <div class="left">
+        <nuxt-img :src="article.authorImg ? article.authorImg : '/pages/blog/default-author.jpg'" :alt="'article-author-img'" />
+        <div class="meta">
+          <p class="author">
+            {{  article.authorName ? article.authorName : 'Thomas Jefferson' }}
+          </p>
+          <p class="date">
+            {{ article.date }}
+          </p>
+        </div>
+      </div>
+      <div class="categories" v-if="article.category">
+        <div class="category">
+          {{ article.category }}
+        </div>
+      </div>
     </div>
-
-    <h1 class="header-big">{{ article.title }}</h1>
-    <div v-show="article" class="seo__body" v-html="article.text"></div>
-    <ProgLangList
-      v-show="article.slug === '/hire-developers'"
-      class="prog_lang_list"
-    />
-  </div>
+    <h2>
+      Recommended articles
+    </h2>
+    <div class="article" v-for="i in 3">
+      <nuxt-img class="hero" :src="article.previewImage.url" :alt="'article-recomended-hero-' + i" />
+      <div class="details">
+        <h3 class="title">
+          How ScrumLaunch became the best company of 2022?
+        </h3>
+        <p class="text">
+          Humans tend to subconsciously distort information and sculpt it to fit their existing beliefs. Confronting one’s own cognitive...
+        </p>
+        <nuxt-link class="link" to="/">Read more</nuxt-link>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import * as Contentful from 'contentful'
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
-import ProgLangList from '@/components/hire-developers/ProgLangList.vue'
 import { renderOptions } from '@/utils.js'
 
 export default {
-  components: {
-    ProgLangList,
-  },
+
   data() {
     return {
-      article: {
-        category: '',
-        title: '',
-        text: null,
-        slug: '',
-        metaTitle: '',
-        metaDescription: '',
-      },
     }
   },
 
@@ -49,258 +67,247 @@ export default {
     }
   },
 
-  watch: {
-    $route() {
-      if (this.$route.name === 'blog-slug') {
-        this.getArticle()
-      }
-    },
-  },
-
-  mounted() {
-    this.getArticle()
-  },
-
-  methods: {
-    getArticle() {
-      if (this.$store.getters['articles/getAllArticles'].length) {
-        const currentPost = this.$store.getters[
-          'articles/getAllArticles'
-        ].filter((item) => {
-          return item.slug === this.$route.path
-        })[0]
-
-        if (currentPost) {
-          this.article = currentPost
-        } else {
-          this.$router.push('/')
-        }
-      } else {
-        const client = Contentful.createClient({
-          space: 'psyys3eoga8f',
-          accessToken: 'bOobZ65YNxX9q52-lWtWpmOmQZgdsjAR5sWkhJopKfg',
-        })
-
-        client.getEntries({ content_type: 'blog' }).then((res) => {
-          const posts = res.items.map((el) => ({
-            category: el.fields.category,
-            date: el.fields.date,
-            metaDescription: el.fields.metaDescription,
-            metaTitle: el.fields.metaTitle,
-            shortText: el.fields.shortText,
-            title: el.fields.title,
-            previewImage: {
-              url: `https:${el.fields.previewImage.fields.file.url}`,
-            },
-            slug: el.fields.slug,
-            text: documentToHtmlString(el.fields.ttt, renderOptions()),
-          }))
-
-          const currentPost = posts.filter((item) => {
-            return item.slug === this.$route.path
-          })[0]
-
-          if (currentPost) {
-            this.article = currentPost
-          } else {
-            this.$router.push('/')
-          }
-        })
-      }
-    },
-  },
+  computed: {
+  ...mapGetters('articles/', ['getAllArticles']),
+  article() {
+    let articlesRaw = this.getAllArticles.slice()
+    return articlesRaw.find(article => article.slug === this.$route.path)
+    }
+  }
 }
 </script>
 
 <style lang="scss">
+
 .seo {
-  margin: 0 auto;
-  padding-top: 240px;
-  padding-bottom: 240px;
-  padding-left: 8.34%;
-  padding-right: 8.34%;
-  width: 100%;
-  max-width: 1586px;
 
-  @media screen and (max-width: 1900px) {
-    padding-top: 186px;
-    padding-bottom: 220px;
+  h1 {
+    margin-bottom: 40px;
   }
 
-  * {
-    box-sizing: border-box;
+  img {
+    width: 100%;
+    height: auto;
+    margin: 4px 0;
   }
 
-  @media screen and (max-width: 1440px) {
-    max-width: 1200px;
+  a {
+    color: $main-green;
   }
 
-  @media screen and (max-width: 1140px) {
-    padding-left: 44px;
-    padding-right: 44px;
-    padding-top: 197px;
-    padding-bottom: 197px;
-    max-width: 100%;
-    width: auto;
-  }
-
-  @media screen and (max-width: 768px) {
-    padding-top: 60px;
-    text-align: start;
-  }
-
-  .header-big {
-    margin-bottom: 60px;
+  p {
     text-align: left;
-    font-size: 90px;
-    line-height: 140%;
+    color: $main-black;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 150%;
 
-    @media screen and (max-width: 1900px) {
-      margin-bottom: 40px;
-      font-size: 70px;
+    @include desktop-and-up {
+      font-size: 20px;
+    }
+  }
+
+  .body {
+    @include tablet-and-up {
+      padding: 0 24px;
     }
 
-    @media screen and (max-width: 1140px) {
+    @include desktop-and-up {
+      padding: 0 200px;
+    }
+  }
+
+  ul {
+    li {
+      p {
+        b {
+          display: block;
+        }
+      }
+    }
+  }
+
+  .description {
+    border-top: 1px solid $main-black;
+    display: flex;
+    padding-top: 16px;
+    align-items: center;
+
+    @include tablet-and-up {
+      margin: 0 24px;
+    }
+
+    @include desktop-and-up {
+      margin: 0 200px;
+    }
+
+    .left {
+      display: flex;
+      img {
+        height: 44px;
+        width: 44px;
+        margin-right: 12px;
+        border-radius: 100%;
+      }
+      .meta {
+        text-align: left;
+        .author {
+          font-weight: 700;
+          font-size: 16px;
+          color: $main-black;
+          margin-bottom: 0;
+
+          @include tablet-and-up {
+            font-size: 20px;
+          }
+        }
+
+        .date {
+          font-weight: 400;
+          font-size: 14px;
+          color: $dark-grey;
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    .categories {
+      display: flex;
+      margin-bottom: 12px;
+      margin-left: auto;
+      .category {
+        background: $main-black;
+        border: 1px solid transparent;
+        color: #fff;
+        padding: 4px 16px;
+        font-size: 14px;
+        font-weight: 500;
+        text-transform: capitalize;
+        transition: all 0.3s;
+
+        @include tablet-and-up {
+          font-size: 16px;
+        }
+
+        &:hover {
+          background-color: #fff;
+          border: 1px solid $main-black;
+          color: $main-black;
+          
+        }
+      }
+    }
+  }
+
+  h2 {
+    font-weight: 900;
+    font-size: 24px;
+    margin-top: 80px;
+    margin-bottom: 40px;
+    @include tablet-and-up {
+      margin-top: 140px;
+      margin-bottom: 60px;
+      font-size: 48px;
+    }
+    @include desktop-and-up {
+      margin-top: 240px;
+      margin-bottom: 80px;
       font-size: 56px;
     }
-
-    @media screen and (max-width: 768px) {
-      margin-bottom: 60px;
-      text-align: center;
-      font-size: 30px;
-      text-align: start;
-    }
   }
 
-  &__meta {
+  .article {
     display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 60px;
+    flex-direction: column;
+    padding: 30px 0;
+    border-top: 1px solid $main-black;
 
-    @media screen and (max-width: 1900px) {
-      margin-bottom: 40px;
-    }
-  }
-
-  &__category {
-    margin-right: 20px;
-    font-weight: bold;
-    font-size: 20px;
-    line-height: 140%;
-
-    @media screen and (max-width: 1900px) {
-      font-size: 16px;
-    }
-  }
-
-  &__date {
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 140%;
-
-    @media screen and (max-width: 1900px) {
-      font-size: 16px;
-    }
-  }
-
-  &__body {
-    margin: 0 auto;
-    max-width: 1200px;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 150%;
-    text-align: left;
-
-    @media screen and (max-width: 1900px) {
-      font-size: 16px;
+    @include tablet-and-up {
+      flex-direction: row;
     }
 
-    @media screen and (max-width: 1440px) {
-      max-width: 900px;
+    &:last-child {
+      border-bottom: 1px solid $main-black;
     }
 
-    h2 {
-      margin-bottom: 40px;
-      font-style: normal;
-      font-weight: 900;
-      font-size: 48px;
-      line-height: 140%;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
+    .hero {
+      width: 100%;
+      object-fit: contain;
+      height: 196px;
+      margin-bottom: 16px;
+
+      @include tablet-and-up {
+        width: 177px;
+        height: auto;
+        margin-right: 20px;
+      }
+
     }
 
-    h3 {
-      margin-bottom: 21px;
-      font-style: normal;
-      font-weight: bold;
-      font-size: 30px;
-      line-height: 140%;
-      color: #1e1f21;
-    }
+    .details {
+      display: flex;
+      flex-direction: column;
 
-    p {
-      margin-bottom: 23px;
+      .title {
+        text-align: left;
+        font-weight: 800;
+        font-size: 18px;
+        color: $main-black;
+        margin-bottom: 10px;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
 
-      @media screen and (max-width: 1900px) {
-        margin-bottom: 20px;
+        @include tablet-and-up {
+          font-size: 24px;
+        }
+
+        @include desktop-and-up {
+          font-size: 30px;
+        }
+      }
+
+      .text {
+        text-align: left;
+        font-weight: 400;
+        font-size: 14px;
+        color: $main-black;
+        margin-bottom: 12px;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: auto;
+
+        @include tablet-and-up {
+          font-size: 16px;
+        }
+
+        @include desktop-and-up {
+          font-size: 18px;
+        }
+      }
+      .link {
+        color: $main-black;
+        text-decoration: underline;
+        font-weight: 700;
+        font-size: 16px;
+        margin-left: auto;
+        background-color: $main-green;
+        padding: 3px 2px;
+        margin-bottom: 12px;
+        margin-top: 12px;
+
+        @include desktop-and-up {
+          margin-left: unset;
+          margin-right: auto;
+        }
       }
     }
 
-    img {
-      display: block;
-      max-width: 100%;
-      height: auto;
-    }
-
-    blockquote {
-      margin-top: 40px;
-      margin-bottom: 40px;
-      padding-left: 212px;
-      min-height: 127px;
-      font-style: italic;
-      font-weight: normal;
-      font-size: 26px;
-      line-height: 150%;
-      background: url('@/assets/icons/quotes.svg') 0 0 no-repeat;
-    }
-
-    b {
-      font-weight: bold;
-    }
-
-    i {
-      font-style: italic;
-    }
-
-    ul {
-      padding-left: 30px;
-      list-style: initial;
-    }
-
-    ul p {
-      margin-bottom: 0;
-    }
-
-    ul a {
-      text-decoration: none;
-    }
-
-    a {
-      color: currentColor;
-
-      &:hover {
-        text-decoration: none;
-      }
-    }
-  }
-}
-
-.prog_lang_list {
-  margin-top: 100px;
-
-  .langs__item {
-    text-align: left;
   }
 }
 </style>

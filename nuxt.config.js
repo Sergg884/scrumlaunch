@@ -1,4 +1,5 @@
 export default {
+  // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'ScrumLaunch',
     htmlAttrs: {
@@ -13,27 +14,31 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }],
   },
 
+  // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     '@/assets/css/main.scss',
-    'vue-slick-carousel/dist/vue-slick-carousel.css',
   ],
 
+  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/directives.js',
-    '~/plugins/global-components.js',
     { src: '~/plugins/hotjar.js', mode: 'client' },
-    { src: '~/plugins/vue-slick-carousel.js' },
   ],
 
-  components: true,
+  // Auto import components: https://go.nuxtjs.dev/config-components
+  components: [
+    // Equivalent to { path: '~/components' }
+    '~/components',
+    { path: '~/components/ui', extensions: ['vue'] }
+  ],
 
   serverMiddleware: [{ path: '/api', handler: '~/api' }],
 
+  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    '@nuxtjs/eslint-module',
+    // https://go.nuxtjs.dev/typescript
+    '@nuxt/typescript-build',
     '@nuxtjs/style-resources',
-    '@nuxtjs/svg',
-    '@nuxtjs/dotenv',
+    '@nuxt/postcss8',
   ],
 
   sitemap: {
@@ -41,28 +46,44 @@ export default {
   },
 
   styleResources: {
-    scss: ['~/assets/css/common.scss', '~/assets/css/main.scss'],
+    scss: ['~/assets/css/variables.scss'],
   },
 
-  modules: ['@nuxtjs/axios', '@nuxt/http', '@nuxtjs/sitemap', '@nuxtjs/robots'],
+  // Modules: https://go.nuxtjs.dev/config-modules
+  modules: [
+    // https://go.nuxtjs.dev/bootstrap
+    'bootstrap-vue/nuxt',
+    // https://go.nuxtjs.dev/axios
+    '@nuxtjs/axios',
+    // https://go.nuxtjs.dev/pwa
+    '@nuxtjs/pwa',
+    '@nuxt/image',
+    '@nuxtjs/sitemap',
+    '@nuxtjs/robots'
+  ],
+
+  bootstrapVue: {
+    bootstrapCSS: false,
+    bootstrapVueCSS: false
+  },
 
   robots: {
     UserAgent: '*',
     Allow: '/',
   },
 
+  // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     baseURL: process.env.API_URL || 'http://localhost:3000',
   },
 
-  build: {
-    loaders: {
-      sass: {
-        implementation: require('sass'),
-      },
-      scss: {
-        implementation: require('sass'),
-      },
+  // PWA module configuration: https://go.nuxtjs.dev/pwa
+  pwa: {
+    manifest: {
+      lang: 'en',
     },
   },
+
+  // Build Configuration: https://go.nuxtjs.dev/config-build
+  build: {},
 }

@@ -1,72 +1,58 @@
 <template>
   <div class="home">
-    <HeroBlock />
-    <SecondBlock />
-    <ExtensiveVetting />
-    <GlobalTalent />
-    <SoftwareDesign />
-    <ClientTestimonials />
-    <HowScrumLaunchWorks />
-    <WhyChooseScrumLaunch />
-    <IndustryLeadingResults />
-    <!-- <TickerBlock /> -->
-    <HistoryBlock />
-    <!-- <News /> -->
-    <OurServices />
-    <OurTechnologies />
-    <ContactUs />
+    <Hero
+      heroImg="/shared/hero/java-hero.jpg"  
+    >
+      <template v-slot:title>
+        Tech talent that’s right for your <span class="mark">project</span> 
+      </template>
+      <template v-slot:text>
+        Quickly add experienced java developers to your project. We handle all the sourcing, vetting and back office management so you can get an experienced Java developer up and running within days or weeks. We’ll take care of the rest.
+      </template>
+    </Hero>
+
+    <OurSuperpowers />
+
+    <TalentMap />
+
+    <Testimonials />
+
+    <CaseStudies />
+
+    <OurClients />
+
+    <WeThrive />
+
+    <Services />
+
+    <Hiring />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HeroBlock from '@/components/home/HeroBlock.vue'
-import SecondBlock from '@/components/home/SecondBlock.vue'
-import HistoryBlock from '@/components/home/HistoryBlock.vue'
-// import News from '@/components/home/News.vue'
-// import TickerBlock from '@/components/home/TickerBlock.vue'
-import OurServices from '@/components/home/OurServices.vue'
-import ContactUs from '@/components/home/ContactUs.vue'
-import ExtensiveVetting from '@/components/home/ExtensiveVetting.vue'
-import GlobalTalent from '@/components/home/GlobalTalent.vue'
-import OurTechnologies from '@/components/home/OurTechnologies.vue'
-import HowScrumLaunchWorks from '@/components/home/HowScrumLaunchWorks.vue'
-import SoftwareDesign from '@/components/home/SoftwareDesign.vue'
-import ClientTestimonials from '@/components/home/ClientTestimonials.vue'
-import WhyChooseScrumLaunch from '@/components/home/WhyChooseScrumLaunch.vue'
-import IndustryLeadingResults from '@/components/home/IndustryLeadingResults.vue'
+import Hero from '~/components/shared/Hero'
+import OurSuperpowers from '~/components/pages/home/OurSuperpowers'
+import TalentMap from '~/components/pages/home/TalentMap'
+import Testimonials from '~/components/shared/ClientTestimonials'
+import CaseStudies from '~/components/pages/home/CaseStudies'
+import OurClients from '~/components/pages/home/OurClients'
+import WeThrive from '~/components/pages/home/WeThrive'
+import Services from '~/components/pages/home/Services'
+import Hiring from '~/components/pages/home/Hiring'
+
 
 export default {
-  name: 'Home',
-
   components: {
-    HeroBlock,
-    SecondBlock,
-    HistoryBlock,
-    // News,
-    // TickerBlock,
-    OurServices,
-    ContactUs,
-    ExtensiveVetting,
-    GlobalTalent,
-    OurTechnologies,
-    HowScrumLaunchWorks,
-    SoftwareDesign,
-    ClientTestimonials,
-    WhyChooseScrumLaunch,
-    IndustryLeadingResults,
-  },
-
-  scrollToTop: true,
-
-  head: {
-    title: 'Home',
-    meta: [
-      {
-        name: 'description',
-        content: 'Home',
-      },
-    ],
-  },
+    Hero,
+    OurSuperpowers,
+    TalentMap,
+    Testimonials,
+    CaseStudies,
+    OurClients,
+    WeThrive,
+    Services,
+    Hiring
+  }
 }
+
 </script>

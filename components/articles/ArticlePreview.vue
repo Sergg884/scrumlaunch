@@ -57,6 +57,10 @@ export default {
   border: 1px solid #000;
   box-sizing: border-box;
 
+  @media screen and (max-width: 968px) {
+    max-width: unset;
+  }
+
   * {
     box-sizing: border-box;
   }
@@ -81,8 +85,9 @@ export default {
   }
 
   &__info {
-    padding: 20px;
+    padding: 8px;
     text-align: left;
+
   }
 
   &__category {
@@ -135,14 +140,22 @@ export default {
 
   &.first {
     display: flex;
+    flex-direction: column;
     margin-right: 0;
     max-width: 100%;
 
+    @media screen and (min-width: 768px) {
+      flex-direction: initial;
+    }
+
     #{$root}__image {
       flex: 0 0 100%;
-      max-width: calc(50% - 20px);
       border-bottom: none;
       border-right: 1px solid #000;
+
+      @media screen and (min-width: 768px) {
+        max-width: calc(50% - 20px);
+      }
 
       @media screen and (max-width: 1440px) {
         min-height: 672px;
@@ -150,7 +163,11 @@ export default {
     }
 
     #{$root}__info {
-      padding: 80px 40px;
+      padding: 20px;
+
+      @media screen and (min-width: 768px) {
+        padding: 80px 40px;
+      }
     }
 
     #{$root}__category {
@@ -160,10 +177,14 @@ export default {
     #{$root}__title {
       margin-bottom: 40px;
       font-weight: 900;
-      font-size: 48px;
+      font-size: 24px;
       line-height: 140%;
       letter-spacing: 0.02em;
       text-transform: uppercase;
+
+      @media screen and (min-width: 768px) {
+        font-size: 48px;
+      }
     }
 
     #{$root}__short_text {
