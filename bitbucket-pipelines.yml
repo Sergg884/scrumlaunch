@@ -61,7 +61,7 @@ pipelines:
                  HEROKU_APP_NAME: $HEROKU_PRODUCTION_APP_NAME
                  ZIP_FILE: "application.tar.gz"
                  WAIT: 'true'
-    deployment-to-stage_v2:
+    deployment-to-staging_v2:
        - step:
           name: 'Build app'
           caches:
@@ -85,7 +85,7 @@ pipelines:
            script:
              - pipe: atlassian/heroku-deploy:1.1.4
                variables:
-                 HEROKU_API_KEY: $HEROKU_PRODUCTION_API_KEY
-                 HEROKU_APP_NAME: $HEROKU_PRODUCTION_APP_NAME
+                 HEROKU_API_KEY: $HEROKU_STAGING_API_KEY
+                 HEROKU_APP_NAME: $HEROKU_STAGING_APP_NAME
                  ZIP_FILE: "application.tar.gz"
                  WAIT: 'true'
