@@ -18,7 +18,7 @@ pipelines:
        - step:
            name: Create artifact
            script: 
-             - git archive --format=tar.gz master -o application.tar.gz 
+             - git archive --format=tar.gz ver2 -o application.tar.gz 
            artifacts: 
            - application.tar.gz
        - step:
@@ -57,38 +57,6 @@ pipelines:
            script:
              - pipe: atlassian/heroku-deploy:1.1.4
                variables:
-                 HEROKU_API_KEY: $HEROKU_PRODUCTION_API_KEY
-                 HEROKU_APP_NAME: $HEROKU_PRODUCTION_APP_NAME
-                 ZIP_FILE: "application.tar.gz"
-                 WAIT: 'true'
-    deployment-to-staging_v2:
-    deployment-to-prod-old:
-       - step:
-          name: 'Build app'
-          caches:
-            - node
-          script:
-            - npm install --quiet
-            - npm run build --progress=false
-          artifacts:
-            - dist/**
-       - step:
-           name: Create artifact
-           script: 
-             - git archive --format=tar.gz ver2 -o application.tar.gz 
-             - git archive --format=tar.gz master_previous_design -o application.tar.gz 
-           artifacts: 
-           - application.tar.gz
-       - step:
-           name: Deploy to heroku
-           deployment: staging
-           caches:
-             - node
-           script:
-             - pipe: atlassian/heroku-deploy:1.1.4
-               variables:
-                 HEROKU_API_KEY: $HEROKU_STAGING_API_KEY
-                 HEROKU_APP_NAME: $HEROKU_STAGING_APP_NAME
                  HEROKU_API_KEY: $HEROKU_PRODUCTION_API_KEY
                  HEROKU_APP_NAME: $HEROKU_PRODUCTION_APP_NAME
                  ZIP_FILE: "application.tar.gz"
