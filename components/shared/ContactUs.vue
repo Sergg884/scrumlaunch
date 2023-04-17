@@ -3,19 +3,6 @@
     <div class="animation">
       <img src="~/assets/animation/lower-block-desktop.gif" alt="contact-us-animation"/>
     </div>
-    <!-- <div class="contact-block--icon">
-      <div class="contact-block--icon--desktop">
-        <img src="../../assets/animation/lower-block-desktop.gif" />
-      </div>
-
-      <div class="contact-block--icon--tablet">
-        <img src="../../assets/animation/lower-block-tablet.gif" />
-      </div>
-
-      <div class="contact-block--icon--mobile">
-        <img src="../../assets/animation/lower-block-mobile.gif" />
-      </div>
-    </div> -->
 
     <p class="title">Looking to build something amazing? We’d love to help.</p>
 

@@ -1,9 +1,5 @@
 <template>
   <section class="seo">
-    <!-- <div class="meta">
-      <div class="category">{{ article.category }}</div>
-      <div class="date">Published on {{ article.date }}</div>
-    </div> -->
     <h1 class="title-global">{{ article.title }}</h1>
     <div v-show="article" class="body" v-html="article.text"></div>
     <div class="description">

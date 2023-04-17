@@ -1,12 +1,16 @@
 <template>
   <div>
     <section class="services">
-      <h1 class="title-big text-left">
-        Our services
-      </h1>
-      <p class="text-main">
-        Our service offerings remain core to our mission - designed to make your content sing through well-informed content strategy, research-backed design, and forward-thinking development that excludes no one.
-      </p>
+      <AppearFromMask>
+        <h1 class="title-big text-left">
+          Our services
+        </h1>
+      </AppearFromMask>
+      <AppearFromMask>
+        <p class="text-main">
+          Our service offerings remain core to our mission - designed to make your content sing through well-informed content strategy, research-backed design, and forward-thinking development that excludes no one.
+        </p>
+      </AppearFromMask>
       <div class="services--wrapper">
         <ServiceItem
           v-for="(service, i) in services"
@@ -27,9 +31,7 @@ export default {
   components: {
     ServiceItem,
     ContactUs
-},
-
-  scrollToTop: true,
+  },
 
   head: {
     title: 'Software Development and Consulting Services - ScrumLaunch',
@@ -103,7 +105,6 @@ export default {
       margin-bottom: 80px;
     }
   }
-
 }
 
 </style>

@@ -1,22 +1,21 @@
 <template>
   <header>
-    <NuxtLink class="" to="/" exact>
+    <NuxtLink class="logo" to="/" exact>
       <Logo
-        class="logo"
-        :fill="'#1E1F21'"
+        :fill="isHeaderWhite ? '#fff' : '#1E1F21'"
       />
     </NuxtLink>
-    <div class="menu">
+    <div class="menu" :class="{'white': isHeaderWhite}">
       <NuxtLink to="/work">
         Case Studies
       </NuxtLink>
       <NuxtLink to="/services">
         Services
       </NuxtLink>
-      <NuxtLink to="/work">
+      <NuxtLink to="/process">
         Process
       </NuxtLink>
-      <NuxtLink to="/work">
+      <NuxtLink to="/leadership">
         Leadership
       </NuxtLink>
       <HeaderDropdown 
@@ -24,45 +23,28 @@
         to="/blog"
         wide
         :menuItems="getHeaderItems"
+        :isWhite='isHeaderWhite'
       />
       <HeaderDropdown 
         title="Hire Developers"
         to="/hire-developers"
         :menuItems="developers"
+        :isWhite='isHeaderWhite'
       />
-      <NuxtLink to="/work">
+      <NuxtLink to="/remote-developer-job">
         Job Openings
       </NuxtLink>
-      <NuxtLink to="/work">
+      <NuxtLink to="/contact">
         Contact
       </NuxtLink>
     </div>
 
     <div class="menu--mobile">
       <img
-        :src="require('@/assets/icons/menu-mobile.svg')"
+        :src="isHeaderWhite ? require('@/assets/icons/menu-mobile--white.svg') : require('@/assets/icons/menu-mobile.svg')"
         alt="menu-mobile"
       />
     </div>
-
-    <!-- <div class="menu--burger">
-      <div class="menu--burger--header">
-        <Logo
-          class="menu--burger--header--icon"
-          @click="handleNavigation('/')"
-        />
-        <img
-          :src="require('@/assets/icons/close.svg')"
-          class="menu--burger--header--icon-close"
-          @click="toggleMenu"
-        />
-      </div>
-      <div class="menu--burger--links">
-        <span v-for="i in burgerMenu" :key="i.title" class="menu--burger--links--item" @click="handleNavigation(i.path)"
-          >{{ i.title }}</span
-        >
-      </div>
-    </div> -->
   </header>
 </template>
 
@@ -74,10 +56,27 @@ export default {
 
   computed: {
     ...mapGetters('articles/', ['getHeaderItems']),
+    isHeaderWhite() {
+      if (this.whiteHeaderPaths.includes(this.$route.path)) {
+        return true
+      }
+      return false
+    }
   },
 
   data() {
     return {
+
+      whiteHeaderPaths: [
+        '/work/campus-reel',
+        '/work/full-court-ai',
+        '/work/helmm',
+        '/work/fgn',
+        '/work/comunity-founded',
+        '/contact',
+        '/remote-developer-job'
+      ],
+      
       developers: [
         { 
           title: 'PHP Developers',
@@ -150,11 +149,22 @@ header {
     padding: 35px 120px;
   }
 
+  .logo {
+    z-index: 100;
+  }
+
 }
 
 .menu {
   gap: 40px;
   display: none;
+  z-index: 99;
+
+  &.white {
+    a {
+      color: #fff;
+    }
+  }
 
   a {
     font-size: 18px;
@@ -174,6 +184,7 @@ header {
   }
 
   &--mobile {
+    z-index: 100;
     
     @include desktop-and-up {
       display: none;

@@ -1,6 +1,6 @@
 <template>
-  <div :class="dropdownVisible ? 'header-dropdown' : 'header-dropdown--hiden'"  @mouseenter="showDropdown" @mouseleave="hideDropdown">
-    <nuxt-link :to="to" class="header-dropdown-toggle">
+  <div :class="[dropdownVisible ? 'header-dropdown' : 'header-dropdown--hiden']"  @mouseenter="showDropdown" @mouseleave="hideDropdown">
+    <nuxt-link :to="to" class="header-dropdown-toggle" :class="{'white': isWhite}">
       {{ title }}
     </nuxt-link>
     <transition name="dropdown">
@@ -34,6 +34,10 @@ export default {
       required: true
     },
     wide: {
+      type: Boolean,
+      default: false
+    },
+    isWhite: {
       type: Boolean,
       default: false
     }
@@ -88,6 +92,9 @@ export default {
   text-decoration: none;
   color: #1e1f21;
   cursor: pointer;
+  &.white {
+    color: #fff;
+  }
   &:hover {
     color: $main-green;
   }

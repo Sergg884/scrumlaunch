@@ -228,7 +228,7 @@ export default {
       border: 1px solid $main-black;
 
       @include tablet-and-up {
-        flex-basis: calc(50% - 10px); /* subtracting 5px for the gap between items */
+        flex-basis: calc(50% - 10px);
       }
 
       .hero {

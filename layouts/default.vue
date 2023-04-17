@@ -3,6 +3,7 @@
     <Header />
     <Nuxt :key="$route.fullPath" />
     <Footer />
+    <ScrollToTop />
   </div>
 </template>
 

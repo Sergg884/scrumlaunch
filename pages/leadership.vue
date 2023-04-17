@@ -1,18 +1,40 @@
 <template>
   <div>
-    <section class="services">
-      <h1 class="title-big text-left">
-        Our services
-      </h1>
-      <p class="text-main">
-        Our service offerings remain core to our mission - designed to make your content sing through well-informed content strategy, research-backed design, and forward-thinking development that excludes no one.
-      </p>
-      <div class="services--wrapper">
-        <ServiceItem
-          v-for="(service, i) in services"
-          :key="i"
-          :service="service"
-        />
+    <section class="leadership">
+      <AppearFromMask>
+        <h1 class="title-big text-left">
+          OUR Leadership <br>team
+        </h1>
+      </AppearFromMask>
+      <AppearFromMask>
+        <p class="text-main">
+          Our leadership team is lorem ipsum dolor sit amet, consectetur adipiscing elit. Interdum non, odio nunc quisque lobortis ac proin vitae, eu. Lorem ac ipsum, senectus elementum venenatis aliquam et mollis quis.
+        </p>
+      </AppearFromMask>
+      <div class="members">
+        <div class="member" v-for="member in team" :key="member.name">
+          <img class="photo" :src="require(`@/assets/images/team/${member.photo}` )" :alt="member.name"/>
+          <div class="info">
+            <p class="name">
+              {{ member.name }}
+            </p>
+            <div class="position">
+              <p>{{ member.position }}</p>
+              <p
+                v-if="member.position_2"
+              >
+                {{ member.position_2 }}
+              </p>
+            </div>
+            <div class="links">
+              <img
+                :src="require('@/assets/icons/linkedin.svg')"
+                class="icon"
+                @click="handleOpenInLink(member.inLink)"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </section>
     <ContactUs />
@@ -20,73 +42,38 @@
 </template>
 
 <script>
-import ServiceItem from '@/components/shared/ServiceItem.vue'
+import { mapGetters } from 'vuex'
 import ContactUs from '~/components/shared/ContactUs.vue';
 
 export default {
   components: {
-    ServiceItem,
     ContactUs
 },
 
-  scrollToTop: true,
-
   head: {
-    title: 'Software Development and Consulting Services - ScrumLaunch',
+    title: 'Leadership - ScrumLaunch',
     meta: [
-      { hid: 'description', name: 'description', content: 'Our Services. Software Development. DevOps. UI/UX Design. User Research & Product Analytics. Brand Design. Pitch Deck Creation. Strategy.' }
+      { hid: 'description', name: 'description', content: 'Our Leadership.' }
     ],
   },
 
-  data() {
-    return {
-      services: [
-        {
-          title: 'Software Development',
-          icon: 'software',
-          description:
-            'We pride ourselves on having talent rich and very high performance software development teams.  We architect & build scalable software applications that support millions of users.  If you have a question about a technology stack or specific type of application, please ask us.',
-        },
-        {
-          title: 'UI/UX Design',
-          icon: 'design',
-          description:
-            'Our design team works closely with clients across the spectrum of user journey mapping, UI/UX design, illustration, animation and brand development.',
-        },
-        {
-          title: 'User Research & Product Analitycs',
-          icon: 'research',
-          description:
-            'Our product development philosophy is built on “lean principles”.  We believe in talking directly with users, data drive analysis and rapid iteration.  This helps us get to the core of the problem our client is trying to solve and develop the ideal solution.  “The faster you realize why you are wrong, the sooner you will be right.”',
-        },
-        {
-          title: 'Brand Design',
-          icon: 'brand',
-          description:
-            'Building a brand is hard & creative work.  Our process involves working closely with our clients to understand their mission, vision and values so we can empower them to share their message with the world in a way that best reflects who they are as a company and what they stand for.',
-        },
-        {
-          title: 'Pitch Deck Creation',
-          icon: 'pitch',
-          description:
-            'As founders ourselves, we are all too familiar with the painstaking process of creating a perfect investor or sales presentation.  Our leadership and design team can work with you to build the right deck for each audience.',
-        },
-        {
-          title: 'Strategy',
-          icon: 'strategy',
-          description:
-            'Do you have a clear GTM and growth strategy?  Are you struggling to prioritize your product roadmap? Trying to figure out user acquisition?  We have developed successful playbooks in every facet of digital strategy over 5 years of working with our clients to build high growth businesses.',
-        },
-      ],
-    }
+  computed: {
+    ...mapGetters({
+      team: 'team/getAllTeam'
+    }),
   },
 
+  methods: {
+    handleOpenInLink(link) {
+      window.open(link, '_blank')
+    },
+  },
 }
 </script>
 
 <style lang="scss" scoped>
 
-.services {
+.leadership {
 
   .text-main {
     text-align: left;
@@ -102,6 +89,76 @@ export default {
       margin-left: 488px;
       margin-bottom: 80px;
     }
+  }
+
+  .members {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+
+    @include tablet-and-up {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+
+    @include desktop-and-up {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 23px;
+    }
+
+    .member {
+      border: 1px solid $main-black;
+
+      .photo {
+        width: 100%;
+        height: 342px;
+
+        @include desktop-and-up {
+          height: 394px;
+        }
+      }
+
+      .info {
+        text-align: left;
+        padding: 20px 12px;
+        .name {
+          font-weight: 700;
+          font-size: 18px;
+        }
+        .position {
+          display: flex;
+
+          p {
+            font-weight: 600;
+            font-size: 12px;
+
+            &:nth-child(2) {
+              margin-left: 10px;
+              padding-left: 12px;
+              position: relative;
+
+              &:before {
+                content: '';
+                width: 8px;
+                height: 8px;
+                top: 8px;
+                position: absolute;
+                background-color: $main-black;
+                border-radius: 100%;
+                left: -2px;
+                top: 4px;
+              }
+            }
+          }
+        }
+        .links {
+
+        }
+
+      }
+    }
+
+
   }
 
 }

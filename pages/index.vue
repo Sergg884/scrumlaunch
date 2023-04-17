@@ -1,19 +1,22 @@
 <template>
   <div class="home">
     <Hero
-      heroImg="/shared/hero/java-hero.jpg"  
+      heroImg="/hero/java-hero.jpg"  
     >
       <template v-slot:title>
         Tech talent that’s right for your <span class="mark">project</span> 
       </template>
       <template v-slot:text>
-        Quickly add experienced java developers to your project. We handle all the sourcing, vetting and back office management so you can get an experienced Java developer up and running within days or weeks. We’ll take care of the rest.
+        Every technology project is different and it’s just as important to find the right person as it is to find a talented person.
+        ScrumLaunch’s talent hubs in Eastern Europe and Latin America combine global scale
       </template>
     </Hero>
 
     <OurSuperpowers />
 
     <TalentMap />
+
+    <TechPartner />
 
     <Testimonials />
 
@@ -39,6 +42,7 @@ import OurClients from '~/components/pages/home/OurClients'
 import WeThrive from '~/components/pages/home/WeThrive'
 import Services from '~/components/pages/home/Services'
 import Hiring from '~/components/pages/home/Hiring'
+import TechPartner from '~/components/pages/home/TechPartner.vue'
 
 
 export default {
@@ -51,8 +55,9 @@ export default {
     OurClients,
     WeThrive,
     Services,
-    Hiring
-  }
+    Hiring,
+    TechPartner
+}
 }
 
 </script>

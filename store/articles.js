@@ -45,25 +45,6 @@ export const actions = {
           reject(error)
         })
     })
-    // client.getEntries({ content_type: 'blog' }).then((res) => {
-    //   const articles = res.items.map((el) => ({
-    //     category: el.fields.category,
-    //     date: el.fields.date,
-    //     metaDescription: el.fields.metaDescription,
-    //     metaTitle: el.fields.metaTitle,
-    //     shortText: el.fields.shortText,
-    //     title: el.fields.title,
-    //     previewImage: {
-    //       url: `https:${el.fields.previewImage.fields.file.url}`,
-    //     },
-    //     slug: el.fields.slug,
-    //     text: documentToHtmlString(el.fields.ttt, renderOptions()),
-    //   }))
-
-    //   console.log (articles)
-
-    //   commit('SET_ARTICLES', articles)
-    // })
   }
 }
 
