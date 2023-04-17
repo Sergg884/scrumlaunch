@@ -1,5 +1,5 @@
 <template>
-  <b-container class="section">
+  <section>
     <h2 class="title-global">Client Testimonials</h2>
     <div class="carousel">
       <div class="navigation-btn prev" @click="slide(-1)"></div>
@@ -31,7 +31,7 @@
         <p>See {{ slides[current].short }} full review</p>
       </div>
     </BaseButton>
-  </b-container>
+  </section>
 </template>
 
 <script>

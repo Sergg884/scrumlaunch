@@ -28,10 +28,19 @@ export default {
   components: [
     // Equivalent to { path: '~/components' }
     '~/components',
-    { path: '~/components/ui', extensions: ['vue'] }
+    { path: '~/components/ui', extensions: ['vue'] },
+    { path: '~/components/animations', extensions: ['vue'] }
   ],
 
-  serverMiddleware: [{ path: '/api', handler: '~/api' }],
+  image: {
+    provider: 'ipx',
+    ipx: {}
+  }, 
+  serverMiddleware: {
+    '/_ipx': '~/server/middleware/ipx.js'
+  },
+
+  // serverMiddleware: [{ path: '/api', handler: '~/api' }],
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [

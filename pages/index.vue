@@ -20,15 +20,15 @@
 
     <Testimonials />
 
-    <CaseStudies />
+    <!-- <CaseStudies /> -->
 
-    <OurClients />
+    <!-- <OurClients /> -->
 
-    <WeThrive />
+    <!-- <WeThrive /> -->
 
-    <Services />
+    <!-- <Services /> -->
 
-    <Hiring />
+    <!-- <Hiring /> -->
   </div>
 </template>
 
