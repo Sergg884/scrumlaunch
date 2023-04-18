@@ -20,13 +20,13 @@
 
     <Testimonials />
 
-    <!-- <CaseStudies /> -->
+    <CaseStudies />
 
     <!-- <OurClients /> -->
 
-    <!-- <WeThrive /> -->
+    <WeThrive />
 
-    <!-- <Services /> -->
+    <Services />
 
     <!-- <Hiring /> -->
   </div>

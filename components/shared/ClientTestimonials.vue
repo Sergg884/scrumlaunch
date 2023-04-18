@@ -111,13 +111,18 @@ export default {
   margin-top: 80px;
   .navigation-btn {
     position: absolute;
-    width: 75px;
-    height: 37px;
-    top: 80px;
+    width: 61px;
+    height: 30px;
+    background-size: contain;
+    top: 50px;
     background-image: url(/shared/arrow_not_filled.svg);
     cursor: pointer;
     z-index: 100;
-    // transition: background-image 0.5s;
+    @include tablet-and-up {
+      width: 75px;
+      height: 37px;
+      top: 80px;
+    }
 
     &:hover {
       background-image: url(/shared/arrow_filled.svg);
@@ -135,19 +140,30 @@ export default {
     }
   }
   .slider-group {
+
+    @include desktop-and-up {}
     position: relative;
-    width: 720px;
-    height: 660px;
+    max-width: 720px;
+    height: 520px;
     overflow: hidden;
     margin: auto;
+
+    @include tablet-and-up {
+      height: 650px;
+    }
     .slide {
       position: absolute;
       top: 0;
       bottom: 0;
       .avatar {
-        width: 200px;
-        height: 200px;
         border-radius: 100%;
+        width: 130px;
+        height: 130px;
+
+        @include tablet-and-up {
+          width: 200px;
+          height: 200px;
+        }
       }
       .description {
         display: flex;
@@ -156,23 +172,23 @@ export default {
         flex-direction: column;
         .name {
           font-weight: 700;
-          font-size: 30px;
+          font-size: 18px;
           line-height: 140%;
-          margin-top: 40px;
-          margin-bottom: 12px;
+          margin-top: 26px;
+          margin-bottom: 10px;
 
-          @media screen and (max-width: 1440px) {
-            margin-bottom: 8px;
+          @include tablet-and-up {
+            margin-bottom: 12px;
+            font-size: 24px;
           }
 
-          @media screen and (max-width: 768px) {
-            font-size: 18px;
+          @include desktop-and-up {
+            margin-top: 40px;
+            font-size: 30px;
+
           }
         }
-        .name {
-          font-weight: 700;
-          font-size: 30px;
-        }
+
         .information {
           display: flex;
           align-items: center;
@@ -180,7 +196,16 @@ export default {
           gap: 28px;
           font-weight: 400;
           font-size: 16px;
-          margin-bottom: 60px;
+          margin-bottom: 30px;
+
+          @include tablet-and-up {
+            margin-bottom: 40px;
+          }
+
+          @include desktop-and-up {
+            margin-bottom: 60px;
+          }
+
           .dot {
             position: relative;
             &::before {
@@ -203,10 +228,15 @@ export default {
       }
       .feedback {
         font-weight: 400;
-        font-size: 26px;
+        font-size: 16px;
         color: $main-black;
         margin: auto;
         margin-bottom: 80px;
+
+        @include  tablet-and-up {
+          font-size: 26px;
+          
+        }
       }
     }
   }
@@ -214,14 +244,21 @@ export default {
 
 ::v-deep .review-btn {
   margin: auto;
-  padding: 29px 32px;
+  padding: 18px 24px;
+
+  @include tablet-and-up {
+    padding: 29px 32px;
+  }
+  
 
   .btn-inner {
     display: flex;
     gap: 16px;
+    font-size: 12px;
 
     p {
       margin-top: 3px;
+      margin-bottom: 0;
     }
   }
 }

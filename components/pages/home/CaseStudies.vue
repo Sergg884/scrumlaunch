@@ -12,16 +12,16 @@
           <p class="description">
             {{ companies[current].description }}
           </p>
-          <b-row class="indicators" no-gutters>
-            <b-col v-for="i in companies[current].indicators" class="indicator" :key="i.title">
+          <div class="indicators">
+            <div v-for="i in companies[current].indicators" class="indicator" :key="i.title">
               <p class="indicator__title">
                 {{ i.title }}
               </p>
               <p class="indicator__description">
                 {{ i.description }}
               </p>
-            </b-col>
-          </b-row>
+            </div>
+          </div>
           <BaseButton>
             view case
           </BaseButton>
@@ -30,12 +30,19 @@
           <nuxt-img class="desktop" :src="companies[current].desctopImg" :alt="companies[current].name + '-desktop'" />
           <nuxt-img class="mobile" :src="companies[current].mobileImg" :alt="companies[current].name + '-mobile'" />
         </div>
+        <BaseButton class="case-button">
+          view case
+        </BaseButton>
+      </div>
+      <div class="navigation">
+        <div v-for="i in companies.length" :class="i - 1 === current ? 'active' : 'dot'" @click="setCurrent(i - 1)">
       </div>
     </div>
-    <div class="navigation">
+    </div>
+    <!-- <div class="navigation">
       <div v-for="i in companies.length" :class="i - 1 === current ? 'active' : 'dot'" @click="setCurrent(i - 1)">
       </div>
-    </div>
+    </div> -->
   </section>
 </template>
 
@@ -146,16 +153,18 @@ section {
   width: 100%;
   margin: auto;
   margin-bottom: 240px;
+  padding: 0;
   .case-study {
     max-width: 1320px;
     background-color: $main-black;
-    padding: 42px;
+    padding: 26px 20px;
     padding-bottom: 93px;
     margin-left: auto;
-    @media screen and (min-width: 1440px) {
-      margin-right: auto;
-    }
     position: relative;
+
+    @include tablet-and-up {
+      padding: 42px;
+    }
     // &::after {
     //   content: "";
     //   height: 100%;
@@ -165,64 +174,160 @@ section {
     //   right: -50vw;
     //   top: 0;
     //   }
+
+    .case-button {
+      @include tablet-and-up {
+        display: none;
+      }
+    }
     h4 {
       text-align: left;
       font-weight: 700;
-      font-size: 30px;
       color: #fff;
-      margin-bottom: 40px;
+      font-size: 18px;
+      margin-bottom: 56px;
+
+      @include tablet-and-up {
+        font-size: 30px;
+      }
     }
     .info {
       display: flex;
+      flex-direction: column;
       gap: 70px;
+
+      @include tablet-and-up {
+        flex-direction: row;
+      }
+
+      @include desktop-and-up {
+        // max-width: 560px;
+      }
       .text-container {
         align-self: center;
         text-align: left;
         color: #fff;
+
+        @include desktop-and-up {
+          max-width: 560px;
+        }
         .name {
           font-weight: 800;
-          font-size: 30px;
+          font-size: 20px;
+          @include tablet-and-up {
+            font-size: 30px;
+          }
         }
         .description {
           font-weight: 500;
-          font-size: 20px;
+          font-size: 16px;
+          margin-bottom: 28px;
+
+          @include tablet-and-up {
+            font-size: 20px;
+          }
+          
         }
         .indicators {
+          display: flex;
           gap: 20px;
-          margin-bottom: 80px;
-          margin-top: 50px;
+          @include tablet-and-up {
+            gap: 10px;
+          }
           .indicator {
             padding: 18px;
-            background-color: #fff;
+            background-color: unset;
+            border: 1px solid #fff;
+            color: #fff;
             text-align: center;
+            flex-basis: 0;
+            flex-grow: 1;
+
+            @include tablet-and-up {
+              margin-bottom: 60px;
+            }
+
+            @include desktop-and-up {
+              color: $main-black;
+              border: 1px solid transparent;
+              background-color: #fff;
+            }
+
             &__title {
               font-weight: 900;
-              font-size: 30px;
-              color: $main-black;
+              font-size: 24px;
               margin-bottom: 0;
+              @include tablet-and-up {
+                font-size: 30px;
+              }
             }
             &__description {
               font-weight: 400;
-              font-size: 18px;
-              color: $main-black;
+              font-size: 14px;
               margin-bottom: 0;
+              @include tablet-and-up {
+                font-size: 18px;
+              }
             }
+          }
+        }
+
+        button {
+          display: none;
+          @include tablet-and-up {
+            display: block;
           }
         }
       }
       .img-container {
-        margin-right: -42px;
+        
         position: relative;
+        overflow: hidden;
+        height: 220px;
+
+        @include tablet-and-up {
+          margin-right: -42px;
+          height: 545px;
+          padding-bottom: 30px;
+        }
+
+        @include desktop-and-up {
+          height: 680px;
+        }
         .desktop {
-          border-top-left-radius: 24px;
-          border-bottom-left-radius: 24px;
+          // margin-left: 128px;
+          height: 100%;
+          margin-bottom: 20px;
+          border-top-left-radius: 10px;
+          border-bottom-left-radius: 10px;
+
+          @include tablet-and-up {
+            border-top-left-radius: 24px;
+            border-bottom-left-radius: 24px;
+          }
         }
         .mobile {
           position: absolute;
-          left: 70px;
-          bottom: -51px;
-          border-radius: 24px;
-          border: 6px solid #000000;
+          left: 25px;
+          bottom: 3px;
+          border-radius: 10px;
+          border: 1px solid #000000;
+          height: 190px;
+
+          @include tablet-and-up {
+            border: 5px solid #000000;
+            border-radius: 20px;
+            height: 400px;
+          }
+
+          @include desktop-and-up {
+            left: 70px;
+            bottom: -51px;
+            left: 25px;
+            bottom: -51px;
+            border-radius: 24px;
+            border: 6px solid #000000;
+          }
         }
       }
     }
@@ -230,6 +335,7 @@ section {
 }
 
 .navigation {
+  width: 100%;
   display: flex;
   margin: auto;
   justify-content: center;

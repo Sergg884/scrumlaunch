@@ -1,10 +1,13 @@
 <template>
   <section class="seo">
+    <div class="breadcrumbs">
+      <nuxt-link to="/blog">Properties</nuxt-link> / {{ article.category }}
+    </div>
     <h1 class="title-global">{{ article.title }}</h1>
     <div v-show="article" class="body" v-html="article.text"></div>
     <div class="description">
       <div class="left">
-        <nuxt-img :src="article.authorImg ? article.authorImg : '/pages/blog/default-author.jpg'" :alt="'article-author-img'" />
+        <img :src="article.authorImg ? article.authorImg : '/pages/blog/default-author.jpg'" :alt="'article-author-img'" />
         <div class="meta">
           <p class="author">
             {{  article.authorName ? article.authorName : 'Thomas Jefferson' }}
@@ -20,19 +23,17 @@
         </div>
       </div>
     </div>
-    <h2>
+    <h2 class="recommended-articles">
       Recommended articles
     </h2>
-    <div class="article" v-for="i in 3">
-      <nuxt-img class="hero" :src="article.previewImage.url" :alt="'article-recomended-hero-' + i" />
+    <div class="article" v-for="i in recomended" :key="i.title">
+      <img class="hero" :src="i.previewImage.url" :alt="'article-recomended-hero-' + i" />
       <div class="details">
-        <h3 class="title">
-          How ScrumLaunch became the best company of 2022?
-        </h3>
+        <nuxt-link class="title" :to="i.slug">{{ i.title }}</nuxt-link>
         <p class="text">
-          Humans tend to subconsciously distort information and sculpt it to fit their existing beliefs. Confronting one’s own cognitive...
+          {{ i.shortText }}
         </p>
-        <nuxt-link class="link" to="/">Read more</nuxt-link>
+        <nuxt-link class="link" :to="i.slug">Read more</nuxt-link>
       </div>
     </div>
   </section>
@@ -40,9 +41,6 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import * as Contentful from 'contentful'
-import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
-import { renderOptions } from '@/utils.js'
 
 export default {
 
@@ -66,8 +64,12 @@ export default {
   computed: {
   ...mapGetters('articles/', ['getAllArticles']),
   article() {
-    let articlesRaw = this.getAllArticles.slice()
+    const articlesRaw = this.getAllArticles.slice()
     return articlesRaw.find(article => article.slug === this.$route.path)
+    },
+  recomended() {
+    const array = [... this.getAllArticles]
+    return array.sort(() => 0.5 - Math.random()).slice(0, 3)
     }
   }
 }
@@ -76,40 +78,137 @@ export default {
 <style lang="scss">
 
 .seo {
+  max-width: 375px;
+  padding: 0 20px;
+  margin: 80px auto;
 
-  h1 {
-    margin-bottom: 40px;
+  @include tablet-and-up {
+    max-width: 768px;
+    padding: 0 30px;
+    margin: 120px auto;
   }
 
-  img {
-    width: 100%;
-    height: auto;
-    margin: 4px 0;
+  @include desktop-and-up {
+    max-width: 1440px;
+    padding: 0 120px;
+    margin: 120px auto;
   }
 
-  a {
-    color: $main-green;
-  }
-
-  p {
+  .breadcrumbs {
     text-align: left;
-    color: $main-black;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 150%;
+    font-size: 16px;
+    color: $dark-grey;
+    padding: 0 20px;
+    margin-bottom: 10px;
+
+    a {
+      color: $main-green;
+      text-decoration: none;
+      transition: 0.3s all;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    @include tablet-and-up {
+      padding: 0 30px;
+      font-size: 20px;
+      margin-bottom: 14px;
+    }
 
     @include desktop-and-up {
-      font-size: 20px;
+      padding: 0 120px;
+      margin-bottom: 16px;
+    }
+
+  }
+
+  .title-global {
+    font-size: 24px;
+    text-align: left;
+    margin-bottom: 40px;
+    font-weight: 900;
+    line-height: 140%;
+    text-transform: uppercase;
+
+    @include tablet-and-up {
+      text-align: center;
+      font-size: 48px;
+    }
+
+    @include desktop-and-up {
+      font-size: 56px;
     }
   }
 
+
+  
   .body {
+    text-align: left;
+    
     @include tablet-and-up {
       padding: 0 24px;
     }
 
     @include desktop-and-up {
       padding: 0 200px;
+    }
+
+    h2 {
+      font-size: 28px;
+      font-style: normal;
+      font-weight: 900;
+      letter-spacing: .02em;
+      line-height: 140%;
+      margin-bottom: 40px;
+      text-transform: uppercase;
+
+      @include tablet-and-up {
+        font-size: 32px;
+      }
+
+      @include desktop-and-up {
+        font-size: 48px;
+      }
+    }
+
+
+    .title {
+      color: #1e1f21;
+      font-size: 30px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 140%;
+      margin-bottom: 21px;
+      
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      margin: 4px 0;
+
+      @include tablet-and-up {
+        margin-bottom: 40px;
+      }
+    }
+
+    a {
+      color: $main-green;
+    }
+
+    p {
+      text-align: left;
+      color: $main-black;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 150%;
+      margin-bottom: 16px;
+
+      @include desktop-and-up {
+        font-size: 20px;
+      }
     }
   }
 
@@ -124,6 +223,7 @@ export default {
   }
 
   .description {
+    margin-top: 40px;
     border-top: 1px solid $main-black;
     display: flex;
     padding-top: 16px;
@@ -135,6 +235,7 @@ export default {
 
     @include desktop-and-up {
       margin: 0 200px;
+      margin-top: 60px;
     }
 
     .left {
@@ -195,7 +296,7 @@ export default {
     }
   }
 
-  h2 {
+  .recommended-articles {
     font-weight: 900;
     font-size: 24px;
     margin-top: 80px;
@@ -255,6 +356,13 @@ export default {
         -webkit-box-orient: vertical;
         overflow: hidden;
         text-overflow: ellipsis;
+        transition: all 0.3s;
+        text-decoration: none;
+        cursor: pointer;
+
+        &:hover {
+          color: $main-green;
+        }
 
         @include tablet-and-up {
           font-size: 24px;

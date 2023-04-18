@@ -70,6 +70,7 @@ section {
       flex-direction: row;
     }
     .tab {
+      text-align: left;
       padding: 28px 20px;
       border: 1px solid $main-black;
       margin-bottom: -1px;

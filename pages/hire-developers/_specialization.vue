@@ -1,5 +1,5 @@
 <template>
-  <div class="hire_developers">
+  <section class="hire_developers">
     <div class="container section_1">
       <div class="flex">
         <div>
@@ -277,7 +277,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -863,11 +863,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
 .accordion_wrapper {
   border-bottom: 1px solid #1e1f21;

@@ -21,12 +21,6 @@ body {
   color: $main-black;
 }
 
-.home {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-}
-
 .section {
   margin-top: 240px;
   margin-bottom: 240px;
@@ -64,16 +58,17 @@ h2 {
 
 .title-global {
   font-weight: 900;
-  font-size: 56px;
+  font-size: 24px;
+  
   line-height: 140%;
   text-transform: uppercase;
 
-  @media screen and (max-width: 1440px) {
+  @include tablet-and-up {
     font-size: 48px;
   }
 
-  @media screen and (max-width: 768px) {
-    font-size: 24px;
+  @include desktop-and-up {
+    font-size: 56px;
     text-align: left;
   }
 }

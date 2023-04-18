@@ -33,7 +33,7 @@
 <style lang="scss" scoped>
 
 .base-button {
-  padding: 28px 76px;
+  padding: 19px 76px;
   background: $main-green;
   border-radius: 100px;
   display: flex;
@@ -53,6 +53,10 @@
   cursor: pointer;
   text-decoration: none;
   white-space: nowrap;
+
+  @include tablet-and-up {
+    padding: 28px 76px;
+  }
 
   &:hover {
     background: $main-black;

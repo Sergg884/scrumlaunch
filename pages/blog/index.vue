@@ -18,6 +18,7 @@
         </button>
         <button
           v-for="category in categories"
+          :key="category"
           class="custom-button"
           @click="activeCategory = category"
         >
@@ -25,17 +26,36 @@
         </button>
       </div>
     </div>
+    <div class="sort-by">
+      <div class="button" @click="dateDropdownSortVisible = !dateDropdownSortVisible">
+        <img
+          :src="require('@/assets/icons/arrow-sort.svg')"
+          class="icon"
+        />
+        <span>
+          Sort by
+        </span>
+      </div>
+      <transition name="dropdown">
+        <div v-if="dateDropdownSortVisible" class="dropdown-menu" @mouseleave="dateDropdownSortVisible = !dateDropdownSortVisible">
+          <div @click="updateDateSort('asc')">
+            Newest to oldest
+          </div>
+          <div @click="updateDateSort('desc')">
+            Oldest to newest
+          </div>
+        </div>
+      </transition>
+    </div>
     <div class="articles" v-if="mainArticle">
       <div class="article--main">
-        <nuxt-img class="hero" :src="mainArticle.previewImage.url" :alt="'main-article-hero'" />
+        <img class="hero" :src="mainArticle.previewImage.url" :alt="'main-article-hero'" />
         <div class="categories" v-if="mainArticle.category">
           <div class="category">
             {{ mainArticle.category }}
           </div>
         </div>
-        <h3 class="title" v-if="mainArticle.title">
-          {{ mainArticle.title }}
-        </h3>
+        <nuxt-link class="title" :to="mainArticle.slug">{{ mainArticle.title }}</nuxt-link>
         <div class="info">
           <p class="text">
             {{ mainArticle.shortText }}
@@ -54,22 +74,20 @@
           </div>
         </div>
       </div>
-      <div class="article" v-for="(article, index) in articles" :key="index">
-        <nuxt-img class="hero" :src="article.previewImage.url" :alt="'article-' + index" />
+      <div class="article" v-for="(article, index) in articles.slice(1,this.articlesToShow)" :key="index">
+        <img class="hero" :src="article.previewImage.url" :alt="'article-' + index" />
         <div class="categories">
           <div class="category">
             {{ article.category ? article.category : 'insights'  }}
           </div>
         </div>
-        <h3 class="title">
-          {{ article.title }}
-        </h3>
+        <nuxt-link class="title" :to="article.slug">{{ article.title }}</nuxt-link>
         <p class="text">
           {{ article.shortText }}
         </p>
         <nuxt-link class="link" :to="article.slug">Read more</nuxt-link>
         <div class="description">
-          <nuxt-img :src="article.authorImg ? article.authorImg : '/pages/blog/default-author.jpg'" :alt="'article-' + index + 'author-img'" />
+          <img :src="article.authorImg ? article.authorImg : '/pages/blog/default-author.jpg'" :alt="'article-' + index + 'author-img'" />
           <div class="meta">
             <p class="author">
               {{  article.authorName ? article.authorName : 'Thomas Jefferson' }}
@@ -81,7 +99,7 @@
         </div>
       </div>
     </div>
-    <BaseButton v-if="articlesToShow < getAllArticles.length" class="show-more" @click="articlesToShow += 2">
+    <BaseButton v-if="articlesToShow < getAllArticles.length" class="show-more" @click="articlesToShow += 4">
       Show More
     </BaseButton>
   </section>
@@ -89,14 +107,8 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import ArticlePreview from '@/components/articles/ArticlePreview'
-import ArticleLink from '@/components/articles/ArticleLink'
 
 export default {
-  components: {
-    ArticlePreview,
-    ArticleLink,
-  },
 
   head: {
     title: 'ScrumLaunch Blog: Articles about Technology, Business & more',
@@ -108,41 +120,77 @@ export default {
   data() {
     return {
       articlesToShow: 5,
-      activeCategory: ''
+      activeCategory: '',
+      dateDropdownSortVisible: false,
+      dateSortStatus: 'Newest'
     };
   },
 
   computed: {
+    
     ...mapGetters('articles/', ['getAllArticles']),
+
     articles () {
       let articlesRaw = this.getAllArticles.slice()
+
       if (this.activeCategory) {
-        let filteredArray = articlesRaw.filter(item => item.category === this.activeCategory)
-        return filteredArray.reverse().slice(1,this.articlesToShow)
+        articlesRaw = articlesRaw.filter(item => item.category === this.activeCategory)
       }
-      return articlesRaw.reverse().slice(1,this.articlesToShow)
+
+      if (this.dateSortStatus === 'asc') {
+        articlesRaw = articlesRaw.slice().sort((a, b) => this.parseDate(a.date) - this.parseDate(b.date));
+      } else if (this.dateSortStatus === 'desc') {
+        articlesRaw = articlesRaw.slice().sort((a, b) => this.parseDate(b.date) - this.parseDate(a.date));
+      }
+
+      return articlesRaw
     },
     mainArticle () {
-      return this.getAllArticles.slice()[this.getAllArticles.length - 1]
+      return this.articles[0]
     },
     categories () {
-      let categories = []
+      const categories = []
       for (let i = 0; i < this.getAllArticles.length; i++) {
-        let category = this.getAllArticles[i].category
+        const category = this.getAllArticles[i].category
         if (category !== '' && !categories.includes(category)) {
           categories.push(category)
         }
       }
       return categories
     }
-
   },
+  methods: {
+    updateDateSort(status) {
+      this.dateSortStatus = status
+      this.dateDropdownSortVisible = !this.dateDropdownSortVisible
+    },
+
+    parseDate(dateString) {
+      const [day, month, year] = dateString.split('/');
+      return new Date(year, month - 1, day);
+    },
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 
 .blog {
+  max-width: 335px;
+  padding: 0 20px;
+  margin: 80px auto;
+
+  @include tablet-and-up {
+    max-width: 708px;
+    padding: 0 30px;
+    margin: 60px auto;
+  }
+
+  @include desktop-and-up {
+    max-width: 1200px;
+    padding: 0 120px;
+    margin: 120px auto;
+  }
   .hero {
     display: flex;
     margin-bottom: 40px;
@@ -181,6 +229,10 @@ export default {
         height: 269px;
       }
     }
+
+    @media screen and (min-width: 768px) {
+      font-size: 90px;
+    }
   }
 
   .swiper {
@@ -209,6 +261,85 @@ export default {
           background-color: $main-green;
         }
       }
+    }
+  }
+
+  .sort-by {
+    display: flex;
+    position: relative;
+    justify-content: right;
+    margin-bottom: 22px;
+    cursor: pointer;
+
+    @include tablet-and-up {
+      margin-bottom: 25px;
+    }
+
+    @include desktop-and-up {
+      margin-bottom: 35px;
+    }
+    
+    .button {
+      font-weight: 700;
+      font-size: 16px;
+
+      @include tablet-and-up {
+        font-size: 20px;
+      }
+
+      @include desktop-and-up {
+        font-size: 24px;
+      }
+
+      .icon {
+        width: 12px;
+        height: 16px;
+        margin-bottom: 4px;
+
+        @include tablet-and-up {
+          width: 18px;
+          height: 24px;
+        }
+
+        @include desktop-and-up {
+          width: 22px;
+          height: 30px;
+        }
+      }
+    }
+
+    .dropdown-menu {
+      left: calc(100% - 240PX);
+      position: absolute;
+      top: calc(100% + 20px);
+      background-color: white;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      padding: 0;
+      border: 1px solid black;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      max-width: 240px;
+
+      div {
+        padding: 20px 18px;
+        font-weight: 700;
+        font-size: 24px;
+        &:hover {
+          background-color: $main-green;
+        }
+      }
+    }
+
+    .dropdown-enter-active,
+    .dropdown-leave-active {
+      transition: all 0.3s ease;
+    }
+
+    .dropdown-enter,
+    .dropdown-leave-to {
+      opacity: 0;
+      visibility: hidden;
     }
   }
 
@@ -277,6 +408,13 @@ export default {
         -webkit-box-orient: vertical;
         overflow: hidden;
         text-overflow: ellipsis;
+        transition: all 0.3s;
+        text-decoration: none;
+        cursor: pointer;
+
+        &:hover {
+          color: $main-green;
+        }
 
         @include tablet-and-up {
           font-size: 24px;
@@ -355,14 +493,19 @@ export default {
 
       &--main {
         @extend .article;
-        
 
+        .info {
+          display: flex;
+          flex-direction: column;
+        }
+        
         @include tablet-and-up {
           flex-basis: 100%;
           flex-direction: row;
           flex-wrap: wrap;
 
           .categories {
+            width: 100%;
             order: 1;
           }
 
@@ -379,8 +522,6 @@ export default {
           }
 
           .info {
-            display: flex;
-            flex-direction: column;
             order: 4;
 
             .link {

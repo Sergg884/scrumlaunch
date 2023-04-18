@@ -51,6 +51,7 @@ export default {
 .talent-map {
   background-color: $main-black;
   color: #fff;
+  display: flex;
 
   .text-container {
     padding: 40px 26px;

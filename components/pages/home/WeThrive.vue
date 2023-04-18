@@ -1,17 +1,17 @@
 <template>
-  <section>
-    <b-container class="section">
+  <div class="thrive">
+    <section>
       <h2 class="title-global">We thrive by making our <br/> clients thrive</h2>
-      <b-row class="data-row" v-for="i in arrayData" :key="i.title">
-        <b-col cols="8" class="title">
+      <div class="data-row" v-for="i in arrayData" :key="i.title" >
+        <div class="title">
           {{ i.title }}
-        </b-col>
-        <b-col cols="4" class="data">
+        </div>
+        <div class="data">
           {{ i.data }}
-        </b-col>
-      </b-row>
-    </b-container>
-  </section>
+        </div>
+      </div>
+    </section>
+  </div>
 </template>
 
 <script>
@@ -43,11 +43,26 @@ export default {
 
 <style lang="scss" scoped>
 
-section {
+.thrive {
+  width: 100%;
   background-color: $main-black;
-  .container {
+  display: flex;
+  section {
+
+    width: 100%;
+
     h2 {
       color: #fff;
+      text-align: center;
+      margin-bottom: 40px;
+
+      @include tablet-and-up {
+        margin-bottom: 60px;
+      }
+
+      @include desktop-and-up {
+        margin-bottom: 80px;
+      }
     }
     .data-row {
       justify-content: space-between;
@@ -56,18 +71,35 @@ section {
       padding: 16px 0;
       color: #fff;
       margin-bottom: -1px;
+      display: flex;
       .title {
         text-align: left;
         font-weight: 700;
-        font-size: 28px;
         align-self: end;
+        font-size: 14px;
+
+        @include tablet-and-up {
+
+        }
+
+        @include desktop-and-up {
+          font-size: 28px;
+        }
       }
       .data {
         text-align: right;
         font-weight: 700;
-        font-size: 142px;
+        font-size: 65px;
         color: $main-green;
         line-height: 100%;
+
+        @include tablet-and-up {
+
+        }
+
+        @include desktop-and-up {
+          font-size: 142px;
+        }
       }
     }
   }
