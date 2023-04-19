@@ -1,5 +1,5 @@
 <template>
-  <div class="talent-map">
+  <div class="talent-map" :class="{'white': isWhite}" >
     <section>
       <b-row class="text-container" no-gutters>
         <div class="text-block">
@@ -18,9 +18,9 @@
         </b-row>
       </b-row>
       <b-row no-gutters>
-        <img
+        <nuxt-img
           class="map-image"
-          :src="require('~/assets/images/home/talent-map/map.svg')"
+          :src="`/shared/talent-map/map${isWhite ? '--white' : ''}.svg`"
           alt="talent-map"
         />
       </b-row>
@@ -31,6 +31,13 @@
 <script>
 
 export default {
+
+  props: {
+    isWhite: {
+      type: Boolean,
+      default: false,
+    },
+  },
 
   data() {
     return {
@@ -49,9 +56,24 @@ export default {
 <style lang="scss" scoped>
 
 .talent-map {
+  display: block;
   background-color: $main-black;
   color: #fff;
   display: flex;
+
+  &.white {
+    color: $main-black;
+    background-color: #fff;
+
+    .text-container {
+      color: $main-black;
+      border: 1px solid $main-black;
+
+      .separator {
+        background-color: $main-black;
+      }
+    }
+  }
 
   .text-container {
     padding: 40px 26px;

@@ -22,7 +22,7 @@
 
     <CaseStudies />
 
-    <!-- <OurClients /> -->
+    <OurClients />
 
     <WeThrive />
 
@@ -35,10 +35,10 @@
 <script>
 import Hero from '~/components/shared/Hero'
 import OurSuperpowers from '~/components/pages/home/OurSuperpowers'
-import TalentMap from '~/components/pages/home/TalentMap'
+import TalentMap from '~/components/shared/TalentMap'
 import Testimonials from '~/components/shared/ClientTestimonials'
 import CaseStudies from '~/components/pages/home/CaseStudies'
-import OurClients from '~/components/pages/home/OurClients'
+import OurClients from '~/components/shared/OurClients'
 import WeThrive from '~/components/pages/home/WeThrive'
 import Services from '~/components/pages/home/Services'
 import Hiring from '~/components/pages/home/Hiring'
@@ -57,7 +57,7 @@ export default {
     Services,
     Hiring,
     TechPartner
-}
+  }
 }
 
 </script>

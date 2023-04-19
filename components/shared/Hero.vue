@@ -30,44 +30,6 @@
       <img :src="require('~/assets/images/shared' + heroImg)" alt="hero-img"/>
     </div>
   </section>
-
-
-  <!-- <b-container class="section">
-    <b-row>
-      <b-col class="text-left px-0">
-        <h1 class="title-global">
-          <slot name="title"></slot>
-        </h1>
-        <p class="text">
-          <slot name="text"></slot>
-        </p>
-        <b-row class="align-items-end">
-          <b-col>
-            <b-form-group
-              class="email-input"
-              id="contact-us-fieldset"
-              label="Email"
-              label-for="email-input"
-              plaintext
-            >
-              <b-form-input id="email-input" v-model="email" trim placeholder="Enter your email here"/>
-            </b-form-group>
-          </b-col>
-          <b-col>
-            <BaseButton @click="sendEmail()">
-              Schedule a call
-            </BaseButton>
-          </b-col>
-        </b-row>
-      </b-col>
-      <b-col>
-        <nuxt-img :src="heroImg"/>
-      </b-col>
-      <div v-if="sideImg" class="team-img">
-        <nuxt-img src="/shared/hero/hero_team.png" />
-      </div>
-    </b-row>
-  </b-container> -->
 </template>
 
 <script>

@@ -105,11 +105,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+h2 {
+  @include desktop-and-up {
+    text-align: center;
+  }
+}
 .carousel {
   position: relative;
   width: 100%;
   margin-top: 80px;
-  .navigation-btn {
+  .navigation-btn { 
     position: absolute;
     width: 61px;
     height: 30px;
