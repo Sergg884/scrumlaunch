@@ -2,692 +2,1018 @@
     {
         "url": "php-developers",
         "expert": "PHP Developers",
-        "lang": "PHP"
+        "title": "PHP",
+        "questions": [
+            {
+                "title": "Why should I use ScrumLaunch to hire Java developers?",
+                "text": "At ScrumLaunch, we hire and train every member of our team individually. All dedicated PHP developers (and any developer or designer, for that matter) undergo in-depth assessment and training to test for skill level, adaptability, creativity, system architecture, and other key components of software development. Our PHP experts have worked on a range of projects from video analysis and machine learning to custom marketplaces."
+            },
+            {
+                "title": "How quickly can I hire PHP developers through ScrumLaunch?",
+                "text": "Many of our clients have been up and running in under 24 hours. Scrumlaunch has the capacity to scale instantly and on-demand. If you already know what you’re building, then book a free consultation with our team to explain your PHP requirements. We’ll match you with PHP experts and a project manager on our team in a matter of hours."
+            },
+            {
+                "title": "How effective is offshore or outsourced PHP?",
+                "text": "PHP is one of our primary development languages. Our team has a collective 600 years of development experience, and we’ve built incredibly complex projects in the language"
+            },
+            {
+                "title": "What is PHP?",
+                "text": "PHP stands for Hypertext Preprocessor. It is an open source server-side scripting language which is widely used for web development. It supports many databases like MySQL, Oracle, Sybase, Solid, PostgreSQL, generic ODBC etc."
+            },
+            {
+                "title": "What is PEAR in PHP?",
+                "text": "PEAR is a framework and repository for reusable PHP components. PEAR stands for PHP Extension and Application Repository. It contains all types of PHP code snippets and libraries. It also provides a command line interface to install 'packages' automatically."
+            },
+            {
+                "title": "Explain the difference b/w static and dynamic websites?",
+                "text": "In static websites, content can't be changed after running the script. You can't change anything on the site. It is predefined. In dynamic websites, content of script can be changed at the run time. Its content is regenerated every time a user visit or reload. Google, yahoo and every search engine is the example of dynamic website."
+            },
+            {
+                "title": "What are the popular Content Management Systems (CMS) in PHP?",
+                "text": "WordPress: WordPress is a free and open-source content management system (CMS) based on PHP & MySQL. It includes a plug-in architecture and template system. It is mostly connected with blogging but supports another kind of web content, containing more traditional mailing lists and forums, media displays, and online stores. Joomla: Joomla is a free and open-source content management system (CMS) for distributing web content, created by Open Source Matters, Inc. It is based on a model-view-controller web application framework that can be used independently of the CMS. Magento: Magento is an open source E-trade programming, made by Varien Inc., which is valuable for online business. It has a flexible measured design and is versatile with many control alternatives that are useful for clients. Magento utilizes E-trade stage which offers organization extreme E-business arrangements and extensive support network. Drupal: Drupal is a CMS platform developed in PHP and distributed under the GNU (General Public License)."
+            },
+            {
+                "title": "What is the difference between $message and $$message?",
+                "text": "$message stores variable data while $$message is used to store a variable of variables. $message stores fixed data whereas the data stored in $$message may be changed dynamically"
+            },
+            {
+                "title": "Describe how the Laravel Framework works.",
+                "text": "Laravel has diverse features such as template engine, MVC architecture support, top security, artisan tool, database migration system and etc. These Laravel advanced features make it better than other PHP frameworks. It provides benchmarked and feature-packed solutions for high-end web application development."
+            }
+        ]
+    },
+    {
+        "url": "kotlin-developers",
+        "expert": "Kotlin Developers",
+        "title": "Kotlin",
+        "questions": [
+            {
+                "title": "Why should I use ScrumLaunch to hire Kotlin developers?",
+                "text": "At ScrumLaunch, we hire and train every member of our team individually. All dedicated Kotlin developers (and any developer or designer, for that matter) undergo in-depth assessment and training to test for skill level, adaptability, creativity, system architecture, and other key components of software development. Our Kotlin experts have worked on a range of projects from video analysis and machine learning to custom marketplaces."
+            },
+            {
+                "title": "How quickly can I hire Kotlin developers through ScrumLaunch?",
+                "text": "Many of our clients have been up and running in under 24 hours. Scrumlaunch has the capacity to scale instantly and on-demand. If you already know what you’re building, then book a free consultation with our team to explain your Kotlin requirements. We’ll match you with Kotlin experts and a project manager on our team in a matter of hours."
+            },
+            {
+                "title": "How effective is offshore or outsourced Kotlin?",
+                "text": "Kotlin is one of our primary development languages. Our team has a collective 600 years of development experience, and we’ve built incredibly complex projects in the language"
+            },
+            {
+                "title": "How does Kotlin work on Android?",
+                "text": "Just like Java, the Kotlin code is also compiled into the Java bytecode and is executed at runtime by the Java Virtual Machine i.e. JVM. When a Kotlin file named Main.kt is compiled then it will eventually turn into a class and then the bytecode of the class will be generated. The name of the bytecode file will be MainKt.class and this file will be executed by the JVM"
+            },
+            {
+                "title": "Why should we use Kotlin?",
+                "text": "Kotlin is concise. Kotlin is null-safe. Kotlin is interoperable"
+            },
+            {
+                "title": "What is the difference between the variable declaration with val and const?",
+                "text": "Both the variables that are declared with val and const are immutable in nature. But the value of the const variable must be known at the compile-time whereas the value of the val variable can be assigned at runtime also."
+            },
+            {
+                "title": "How to ensure null safety in Kotlin?",
+                "text": "One of the major advantages of using Kotlin is null safety. In Java, if you access some null variable then you will get a NullPointerException. So, the following code in Kotlin will produce a compile-time error: var name: String = 'MindOrks' name = null //error So, to assign null values to a variable, you need to declare the name variable as a nullable string and then during the access of this variable, you need to use a safe call operator i.e. ?. var name: String? = 'MindOrks' print(name?.length) // ok name = null // ok"
+            },
+            {
+                "title": "How to convert a Kotlin source file to a Java source file?",
+                "text": "Steps to convert your Kotlin source file to Java source file: Open your Kotlin project in the IntelliJ IDEA / Android Studio. Then navigate to Tools > Kotlin > Show Kotlin Bytecode. Now click on the Decompile button to get your Java code from the bytecode."
+            },
+            {
+                "title": "Can we use primitive types such as int, double, and float in Kotlin?",
+                "text": "In Kotlin, we can't use primitive types directly. We can use classes like Int, Double, etc. as an object wrapper for primitives. But the compiled bytecode has these primitive types."
+            }
+        ]
     },
     {
         "url": "react-js-developers",
         "expert": "React JS Developers",
-        "lang": "React JS"
+        "title": "React JS",
+        "questions": [
+            {
+                "title": "Why should I use ScrumLaunch to hire React developers?",
+                "text": "At ScrumLaunch, we hire and train every member of our team individually. All dedicated React developers (and any developer or designer, for that matter) undergo in-depth assessment and training to test for skill level, adaptability, creativity, system architecture, and other key components of software development. Our React experts have worked on a range of projects from video analysis and machine learning to custom marketplaces."
+            },
+            {
+                "title": "How quickly can I hire React developers through ScrumLaunch?",
+                "text": "Many of our clients have been up and running in under 24 hours. ScrumLaunch has the capacity to scale instantly and on-demand. If you already know what you’re building, then book a free consultation with our team to explain your React requirements. We’ll match you with React experts and a project manager on our team in a matter of hours."
+            },
+            {
+                "title": "How effective is offshore or outsourced React?",
+                "text": "React is one of our primary development languages. Our team has a collective 600 years of development experience, and we’ve built incredibly complex projects in the language"
+            },
+            {
+                "title": "What is React? Share some of its key features.",
+                "text": "React is a front-end JavaScript library that Facebook developed in the year 2013. It is used to create reusable UI by following the component-based approach. React is used to create complicated and interactive web and mobile user interfaces. Some of the key features of React are: React makes use of virtual DOM instead of the regular or real DOM. React is used for server-side rendering. React has uni-directional or one-way data flow or data binding."
+            },
+            {
+                "title": "Explain Virtual DOM in React?",
+                "text": "Virtual DOM is an abstraction of the HTML DOM. It is lightweight and is not connected to the browser-specific implementation details. React provides Virtual DOM for free as the React Elements reside in virtual DOM. These elements make up the basic nodes of the Virtual DOM tree. Once the React Elements are defined, they can be rendered into the real DOM. Every time the state of React Component changes, React runs a diffing algorithm. It identifies what changes have been made in the virtual DOM. It then updates the DOM with the results of diff. This process is faster than it would be in real DOM."
+            },
+            {
+                "title": "What is Redux?v",
+                "text": "A store in React is a simple JavaScript object. The idea behind Redux is to keep the state of the entire application in a single store, be it the state of the UI like which tab is active currently, or the state of Data like the user profile details. The state can be changed by firing actions from your application and then writing reducers for these actions that can modify the state. As the entire state of the application is in a single store it should not have any side effects"
+            },
+            {
+                "title": "What is the difference between state and props?",
+                "text": "The state is a data structure that starts with a default value when a component mounts. This data structure can be mutated over time as a result of user events. Props are short for properties and are the configuration of a Component. It is the way in which components communicate with each other. A component cannot change its props but puts together the props of its child component. The props of a component are received by the component above them, that is, the parent component and are immutable. Some components may have default props and they exist even if the parent component does not pass down props. Props and State are similar but their usage is different. The majority of components are usually Stateless. However, props are used to pass information or data from the parent to the child. Props are immutable and cannot be changed; however, State is used to mutate data and are useful for user input."
+            },
+            {
+                "title": "What are the phases of a React component’s lifecycle?",
+                "text": "Initial rendering phase: In this phase, a component starts its life journey and makes its way to the DOM. Updating phase: When the component is added to the DOM it can update and re-render when its props or state changes. The changes can take place in this phase only. Unmounting phase: It is the final stage of the component. In this phase, the component is destroyed and removed from the lifecycle.."
+            },
+            {
+                "title": "What is CORS?",
+                "text": "Cross-Origin Resource Sharing (CORS) is an HTTP-header based mechanism that allows a server to indicate any origins (domain, scheme, or port) other than its own from which a browser should permit loading resources. CORS also relies on a mechanism by which browsers make a 'preflight' request to the server hosting the cross-origin resource, in order to check that the server will permit the actual request. In that preflight, the browser sends headers that indicate the HTTP method and headers that will be used in the actual request."
+            }
+        ]
     },
     {
         "url": "django-developers",
         "expert": "Django Developers",
-        "lang": "Django"
+        "title": "Django"
     },
     {
         "url": "wordpress-developers",
         "expert": "Wordpress Developers",
-        "lang": "Wordpress"
+        "title": "Wordpress"
     },
     {
         "url": "java-developers",
         "expert": "Java Developers",
-        "lang": "Java"
+        "title": "Java",
+        "questions": [
+            {
+                "title": "Why should I use ScrumLaunch to hire Java developers?",
+                "text": "At ScrumLaunch, we hire and train every member of our team individually. All dedicated Java developers (and any developer or designer, for that matter) undergo in-depth assessment and training to test for skill level, adaptability, creativity, system architecture, and other key components of software development. Our Java experts have worked on a range of projects from video analysis and machine learning to custom marketplaces."
+            },
+            {
+                "title": "How quickly can I hire Java developers through ScrumLaunch?",
+                "text":  "Many of our clients have been up and running in under 24 hours. Scrumlaunch has the capacity to scale instantly and on-demand. If you already know what you’re building, then book a free consultation with our team to explain your Java requirements. We’ll match you with Java experts and a project manager on our team in a matter of hours."
+            },
+            {
+                "title": "How effective is offshore or outsourced Java?",
+                "text": "Java is one of our primary development languages. Our team has a collective 600 years of development experience, and we’ve built incredibly complex projects in the language"
+            }
+        ]
     },
     {
         "url": "ios-developers",
         "expert": "iOS Developers",
-        "lang": "iOS"
+        "title": "iOS"
     },
     {
         "url": "android-developers",
         "expert": "Android Developers",
-        "lang": "Android"
+        "title": "Android"
     },
     {
         "url": "web-developers",
         "expert": "Web Developers",
-        "lang": "Web"
+        "title": "Web"
     },
     {
         "url": "unix-developers",
         "expert": "Unix Developers",
-        "lang": "Unix"
+        "title": "Unix"
     },
     {
         "url": "mobile-app-developers",
         "expert": "Mobile App Developers",
-        "lang": "Mobile App"
+        "title": "Mobile App"
     },
     {
         "url": "asp-dot-net-zero-developers",
         "expert": "Asp Dot Net Zero Developers",
-        "lang": "Asp Dot Net Zero"
+        "title": "Asp Dot Net Zero"
     },
     {
         "url": "angular-js-developers",
         "expert": "Angular JS Developers",
-        "lang": "Angular JS"
+        "title": "Angular JS",
+        "questions": [
+            {
+                "title": "Why should I use ScrumLaunch to hire Angular developers?",
+                "text": "At ScrumLaunch, we hire and train every member of our team individually. All dedicated Angular  developers (and any developer or designer, for that matter) undergo in-depth assessment and training to test for skill level, adaptability, creativity, system architecture, and other key components of software development. Our Angular  experts have worked on a range of projects from video analysis and machine learning to custom marketplaces."
+            },
+            {
+                "title": "How quickly can I hire Angular developers through ScrumLaunch?",
+                "text": "Many of our clients have been up and running in under 24 hours. ScrumLaunch has the capacity to scale instantly and on-demand. If you already know what you’re building, then book a free consultation with our team to explain your Angular  requirements. We’ll match you with Angular experts and a project manager on our team in a matter of hours."
+            },
+            {
+                "title": "How effective is offshore or outsourced Angular?",
+                "text": "Angular is one of our primary development languages. Our team has a collective 600 years of development experience, and we’ve built incredibly complex projects in the language"
+            },
+            {
+                "title": "What is Angular? What versions of Angular have you used?",
+                "text": "Angular is an application design framework and development platform for creating efficient and sophisticated single-page apps. Angular is built entirely in TypeScript and uses it as a primary language. As it is a framework it has many useful built-in features like routing, forms, HTTP client, Internationalization (i18n), animations, and many more."
+            },
+            {
+                "title": "What is TypeScript?",
+                "text": "TypeScript is a typed superset of JavaScript created by Microsoft that adds optional types, classes, async/await, and many other features, and compiles to plain JavaScript. Angular is built entirely in TypeScript and used as a primary language. You can install it globally."
+            },
+            {
+                "title": "What are Angular’s main concepts and the critical components of Angular? Also please say a few words about every component.",
+                "text": "Component: The basic building block of an Angular application and is used to control HTML views. Modules: An Angular module contains basic building blocks like components, services, directives, etc. Using modules you can split your application into logical pieces where each piece performs a single task and is called a “module”. Templates: A template represents the view of an Angular application. Services: Services are used to create components that can be shared across the entire application. 'Service is a broad category encompassing any value, function, or feature that an app needs. A service is typically a class with a narrow, well-defined purpose. It should do something specific and do it well. An Angular component should focus on presenting data and enabling the user experience. It should mediate between the application logic (data model) and the view (rendered by the template). Angular services help us to separate non-view-related functionality to keep component classes lean and efficient.' Metadata: Metadata is used to add more data to an Angular class."
+            },
+            {
+                "title": "Can you explain various ways of component communication in Angular?",
+                "text": "Data sharing between parent and one or more child components using the @Input() and @Output() directives. Data sharing using an Angular service. Using state management, like NgRx. Read and write data to local storage. Pass data via URL parameters."
+            },
+            {
+                "title": "What is the purpose of an async pipe?",
+                "text": "The AsyncPipe subscribes to an observable or promise and returns the latest value it has emitted. When a new value is emitted, the pipe marks the component to be checked for changes."
+            }
+        ]
     },
     {
         "url": "full-stack-developers",
         "expert": "Full Stack Developers",
-        "lang": "Full Stack"
+        "title": "Full Stack"
     },
     {
         "url": "node-js-developers",
         "expert": "Node JS Developers",
-        "lang": "Node JS"
+        "title": "Node JS",
+        "questions": [
+            {
+                "title": "Why should I use ScrumLaunch to hire Node.js developers?",
+                "text": "At ScrumLaunch, we hire and train every member of our team individually. All dedicated Node developers (and any developer or designer, for that matter) undergo in-depth assessment and training to test for skill level, adaptability, creativity, system architecture, and other key components of software development. Our Node experts have worked on a range of projects from video analysis and machine learning to custom marketplaces."
+            },
+            {
+                "title": "How quickly can I hire Node developers through ScrumLaunch?",
+                "text": "Many of our clients have been up and running in under 24 hours. ScrumLaunch has the capacity to scale instantly and on-demand. If you already know what you’re building, then book a free consultation with our team to explain your Node requirements. We’ll match you with Node experts and a project manager on our team in a matter of hours."
+            },
+            {
+                "title": "How effective is offshore or outsourced Node?",
+                "text": "Node is one of our primary development languages. Our team has a collective 600 years of development experience, and we’ve built incredibly complex projects in the language"
+            },
+            {
+                "title": "What is Node.js? Where can you use it?",
+                "text": "Node.js is an open-source, cross-platform JavaScript runtime environment and library to run web applications outside the client’s browser. It is used to create server-side web applications. Node.js is perfect for data-intensive applications as it uses an asynchronous, event-driven model. You can use  I/O intensive web applications like video streaming sites. You can also use it for developing: Real-time web applications, Network applications, General-purpose applications, and Distributed systems."
+            },
+            {
+                "title": "Why use Node.js?",
+                "text": "Node.js makes building scalable network programs easy. Some of its advantages include: It is generally fast. It rarely blocks. It offers a unified programming language and data type. Everything is asynchronous. It yields great concurrency."
+            },
+            {
+                "title": "If Node.js is single-threaded, then how does it handle concurrency?",
+                "text": "The Multi-Threaded Request/Response Stateless Model is not followed by the Node JS Platform, and it adheres to the Single-Threaded Event Loop Model. The Node JS Processing paradigm is heavily influenced by the JavaScript Event-based model and the JavaScript callback system. As a result, Node.js can easily manage more concurrent client requests. The event loop is the processing model's beating heart in Node.js."
+            },
+            {
+                "title": "How would you define the term I/O?",
+                "text": "The term I/O is used to describe any program, operation, or device that transfers data to or from a medium and to or from another medium. Every transfer is an output from one medium and an input into another. The medium can be a physical device, network, or files within a system."
+            },
+            {
+                "title": "What is NPM?",
+                "text": "NPM stands for Node Package Manager, responsible for managing all the packages and modules for Node.js. Node Package Manager provides two main functionalities: Provides online repositories for node.js packages/modules, which are searchable on search.nodejs.org Provides command-line utility to install Node.js packages and also manages Node.js versions and dependencies"
+            },
+            {
+                "title": "Why is Node.js preferred over other backend technologies like Java and PHP?",
+                "text": "Some of the reasons why Node.js is preferred include: Node.js is very fast. Node Package Manager has over 50,000 bundles available at the developer’s disposal. Perfect for data-intensive, real-time web applications, as Node.js never waits for an API to return data. Better synchronization of code between server and client due to same code base. Easy for web developers to start using Node.js in their projects as it is a JavaScript library."
+            }
+        ]
     },
     {
         "url": "laravel-developers",
         "expert": "Laravel Developers",
-        "lang": "Laravel"
+        "title": "Laravel"
     },
     {
         "url": "ruby-on-rails-developers",
         "expert": "Ruby On Rails Developers",
-        "lang": "Ruby On Rails"
+        "title": "Ruby On Rails"
     },
     {
         "url": "swift-developers",
         "expert": "Swift Developers",
-        "lang": "Swift"
+        "title": "Swift",
+        "questions": [
+            {
+                "title": "Why should I use ScrumLaunch to hire Swift developers?",
+                "text": "At ScrumLaunch, we hire and train every member of our team individually. All dedicated Swift developers (and any developer or designer, for that matter) undergo in-depth assessment and training to test for skill level, adaptability, creativity, system architecture, and other key components of software development. Our Swift experts have worked on a range of projects from video analysis and machine learning to custom marketplaces."
+            },
+            {
+                "title": "How quickly can I hire Swift developers through ScrumLaunch?",
+                "text": "Many of our clients have been up and running in under 24 hours. Scrumlaunch has the capacity to scale instantly and on-demand. If you already know what you’re building, then book a free consultation with our team to explain your Swift requirements. We’ll match you with Swift experts and a project manager on our team in a matter of hours."
+            },
+            {
+                "title": "How effective is offshore or outsourced Swift?",
+                "text": "Swift is one of our primary development languages. Our team has a collective 600 years of development experience, and we’ve built incredibly complex projects in the language"
+            },
+            {
+                "title": "What is the difference between Struct and Class?",
+                "text": "One of the most important differences between structures and classes is that structures are value types and are always copied when they are passed around in your code, and classes are reference type and are passed by reference. Also, classes have Inheritance which allows one class to inherit the characteristics of another. Struct properties are stored on Stack and Class instances are stored on Heap hence, sometimes the stack is drastically faster than a class. Struct gets a default initializer automatically whereas in Class, we have to initialize. Struct is thread safe at any point of time."
+            },
+            {
+                "title": "What is optional?",
+                "text": "Optional is an Enum with 2 cases and one of the cases has an associated value attached to it. Some(Wrapped) and None. Optional is a type that can store a nil value. When it stores a value, it wraps around the value. To enclose a value in an optional parameter, you need to expand it."
+            },
+            {
+                "title": "What are closures?",
+                "text": "Standalone functions organized in blocks. They can be transferred and nested within each other. You can pass the closure as an argument to a function, or store it as a property of an object."
+            },
+            {
+                "title": "What is GCD?",
+                "text": "Grand Central Dispatch (GCD) is a low-level API for managing concurrent operations provided by Apple. It can help improve your app’s responsiveness by deferring computationally expensive tasks to the background. It’s an easier concurrency model to work with than locks and threads.For example, if you want to fetch data from an API, you can use GCD to perform fetch tasks asynchronously."
+            },
+            {
+                "title": "How is memory management handled in iOS?",
+                "text": "Swift uses Automatic Reference Counting (ARC). This is conceptually the same thing in Swift as it is in Objective-C. ARC keeps track of strong references to instances of classes and increases or decreases their reference count accordingly when you assign or unassign instances of classes (reference types) to constants, properties, and variables. It deallocates memory used by objects whose reference count dropped to zero. ARC does not increase or decrease the reference count of value types because, when assigned, these are copied. By default, if you don’t specify otherwise, all the references will be strong references."
+            },
+            {
+                "title": "What do you know about singletons? Where would you use one and where would you not?",
+                "text": "Singletons are sometimes considered to be an anti-pattern. There are multiple disadvantages to using singletons. The main ones are global state, object life-cycle, and dependency injection. When you have only one instance of something, it’s very tempting to reference and use it everywhere directly instead of injecting it into your objects. That leads to unnecessary coupling of concrete implementation in your code instead of working with an interface abstraction. Another malicious side effect of “convenient” singletons is the global state. Often singletons enable global state sharing and play the role of a “public bag” that every object uses to store state. That leads to unpredictable results and bugs or crashes when this uncontrolled state gets overridden or removed by someone."
+            },
+            {
+                "title": "How do you manage dependencies?",
+                "text": "So far the most dominant and robust one is CocoaPods. I was built in the spirit of the Ruby Bundler gem and is a Ruby gem itself. The way it works is you install the gem, create Podfile in the root directory of your project, declare the pods (libraries) you want to use, and run pod install. That’s it. With Carthage, you create a dependencies declaration file called Cartfile but unlike Cocoapods you’d need to do Xcode project setup to make it work. Swift Package Manager is the future of dependency management for any Swift project but it only supports libraries and frameworks and cannot be used to generate iOS targets, although iOS targets can depend on modules built by SPM."},
+            {
+                "title": "What is the difference between stack and heap memory?",
+                "text": "The stack is a simple first-in-first-out (FIFO) memory structure. The stack is always used to store the following two things: the reference portion of local variables and parameters of the reference type, and local variables and method parameters with a value type. Heap memory contains random non-lined objects stored in memory. The advantage is that it allows objects to be allocated or released in a random order. This will require you to use garbage collector functions to free memory. The heap stores the following: the contents of reference type objects."
+            }
+        ]
     },
     {
         "url": "software-developers",
         "expert": "Software Developers",
-        "lang": "Software"
+        "title": "Software"
     },
     {
         "url": "python-developers",
         "expert": "Python Developers",
-        "lang": "Python"
+        "title": "Python",
+        "questions": [
+            {
+                "title": "Why should I use ScrumLaunch to hire Python developers?",
+                "text": "At ScrumLaunch, we hire and train every member of our team individually. All dedicated Python developers (and any developer or designer, for that matter) undergo in-depth assessment and training to test for skill level, adaptability, creativity, system architecture, and other key components of software development. Our Python experts have worked on a range of projects from video analysis and machine learning to custom marketplaces."
+            },
+            {
+                "title": "How quickly can I hire Python developers through ScrumLaunch?",
+                "text": "Many of our clients have been up and running in under 24 hours. Scrumlaunch has the capacity to scale instantly and on-demand. If you already know what you’re building, then book a free consultation with our team to explain your Python requirements. We’ll match you with Python experts and a project manager on our team in a matter of hours."
+            },
+            {
+                "title": "How effective is offshore or outsourced Python?",
+                "text": "Python is one of our primary development languages. Our team has a collective 600 years of development experience, and we’ve built incredibly complex projects in the language"
+            },
+            {
+                "title": "What is Python? What are the benefits of using Python?",
+                "text": "Python is a programming language with objects, modules, threads, exceptions, and automatic memory management. The benefits of pythons are that it is simple and easy, portable, extensible, build-in data structure, and it is open-source."
+            },
+            {
+                "title": "What is PEP 8?",
+                "text": "PEP 8 is a coding convention, a set of recommendations, about how to write your Python code more readable."
+            },
+            {
+                "title": "How is Python interpreted?",
+                "text": "Python language is an interpreted language. Python programs run directly from the source code. They convert the source code that is written by the programmer into an intermediate language, which is translated into machine language that has to be executed."
+            },
+            {
+                "title": "What are the tools that help to find bugs or perform the static analysis?",
+                "text": "PyChecker is a static analysis tool that detects bugs in Python source code and warns about the style and complexity of the bug. Pylint is another tool that verifies whether the module meets the coding standard."
+            },
+            {
+                "title": "How are arguments passed by value or by reference?",
+                "text": "Everything in Python is an object and all variables hold references to objects. The reference values are according to the functions. You cannot change the value of the references. However, you can change an object if it is mutable."
+            },
+            {
+                "title": "What is the difference between a list and a tuple?",
+                "text": "The difference between a list and a tuple is that a list is mutable while a tuple is not. A tuple can be hashed, for example., as a key for dictionaries.."
+            }
+        ]
     },
     {
         "url": "solidity-developers",
         "expert": "Solidity Developers",
-        "lang": "Solidity"
+        "title": "Solidity"
     },
     {
         "url": "react-native-developers",
         "expert": "React Native Developers",
-        "lang": "React Native"
+        "title": "React Native"
     },
     {
         "url": "ruby-developers",
         "expert": "Ruby Developers",
-        "lang": "Ruby"
+        "title": "Ruby"
     },
     {
         "url": "android-studio-developers",
         "expert": "Android Studio Developers",
-        "lang": "Android Studio"
+        "title": "Android Studio"
     },
     {
         "url": "unreal-engine-developers",
         "expert": "Unreal Engine Developers",
-        "lang": "Unreal Engine"
+        "title": "Unreal Engine"
     },
     {
         "url": "game-developers",
         "expert": "Game Developers",
-        "lang": "Game"
+        "title": "Game"
     },
     {
         "url": "php-laravel-developers",
         "expert": "PHP Laravel Developers",
-        "lang": "PHP Laravel"
+        "title": "PHP Laravel"
     },
     {
         "url": "ecommerce-developers",
         "expert": "Ecommerce Developers",
-        "lang": "Ecommerce"
+        "title": "Ecommerce"
     },
     {
         "url": "back-end-developers",
         "expert": "Back End Developers",
-        "lang": "Back End"
+        "title": "Back End"
     },
     {
         "url": "bigcommerce-developers",
         "expert": "Bigcommerce Developers",
-        "lang": "Bigcommerce"
+        "title": "Bigcommerce"
     },
     {
         "url": "startup-developers",
         "expert": "Startup Developers",
-        "lang": "Startup"
+        "title": "Startup"
     },
     {
         "url": "kafka-developers",
         "expert": "Kafka Developers",
-        "lang": "Kafka"
+        "title": "Kafka"
     },
     {
         "url": "google-api-developers",
         "expert": "Google API Developers",
-        "lang": "Google API"
+        "title": "Google API"
     },
     {
         "url": "drupal-developers",
         "expert": "Drupal Developers",
-        "lang": "Drupal"
+        "title": "Drupal"
     },
     {
         "url": "software-architects",
         "expert": "Software Architects",
-        "lang": "Software Architects"
+        "title": "Software Architects"
     },
     {
         "url": "agile-developers",
         "expert": "Agile Developers",
-        "lang": "Agile"
+        "title": "Agile"
     },
     {
         "url": "front-end-developers",
         "expert": "Front End Developers",
-        "lang": "Front End"
+        "title": "Front End"
     },
     {
         "url": "vue-js-developers",
         "expert": "Vue JS Developers",
-        "lang": "Vue JS"
+        "title": "Vue JS"
     },
     {
         "url": "senior-software-engineers",
         "expert": "Senior Software Engineers",
-        "lang": "Senior Software"
+        "title": "Senior Software"
     },
     {
         "url": "javascript-developers",
         "expert": "Javascript Developers",
-        "lang": "Javascript"
+        "title": "Javascript"
     },
     {
         "url": "offshore-developers",
         "expert": "Offshore Developers",
-        "lang": "Offshore"
+        "title": "Offshore"
     },
     {
         "url": "api-developers",
         "expert": "API Developers",
-        "lang": "API"
+        "title": "API"
     },
     {
         "url": "express-js-developers",
         "expert": "Express JS Developers",
-        "lang": "Express JS"
+        "title": "Express JS"
     },
     {
         "url": "c-developers",
         "expert": "C Developers",
-        "lang": "C"
+        "title": "C"
     },
     {
         "url": "html-developers",
         "expert": "Html Developers",
-        "lang": "Html"
+        "title": "Html"
     },
     {
         "url": "sql-developers",
         "expert": "SQL Developers",
-        "lang": "SQL"
+        "title": "SQL"
     },
     {
         "url": "json-developers",
         "expert": "JSon Developers",
-        "lang": "JSon"
+        "title": "JSon"
     },
     {
         "url": "freelance-developers",
         "expert": "Freelance Developers",
-        "lang": "Freelance"
+        "title": "Freelance"
     },
     {
         "url": "css-grids-developers",
         "expert": "Css Grids Developers",
-        "lang": "Css Grids"
+        "title": "Css Grids"
     },
     {
         "url": "rpa-developers",
         "expert": "RPA Developers",
-        "lang": "RPA"
+        "title": "RPA"
     },
     {
         "url": "ui-developers",
         "expert": "UI Developers",
-        "lang": "UI"
+        "title": "UI"
     },
     {
         "url": "unity-developers",
         "expert": "Unity Developers",
-        "lang": "Unity"
+        "title": "Unity"
     },
     {
         "url": "shopify-developers",
         "expert": "Shopify Developers",
-        "lang": "Shopify"
+        "title": "Shopify",
+        "questions": [
+            {
+                "title": "Why should I use ScrumLaunch to hire Shopify developers?",
+                "text": "At ScrumLaunch, we hire and train every member of our team individually. All dedicated Shopify developers (and any developer or designer, for that matter) undergo in-depth assessment and training to test for skill level, adaptability, creativity, system architecture, and other key components of software development. Our Shopify experts have worked on a range of projects from video analysis and machine learning to custom marketplaces."
+            },
+            {
+                "title": "How quickly can I hire Shopify developers through ScrumLaunch?",
+                "text": "Many of our clients have been up and running in under 24 hours. ScrumLaunch has the capacity to scale instantly and on-demand. If you already know what you’re building, then book a free consultation with our team to explain your Shopify  requirements. We’ll match you with Shopify  experts and a project manager on our team in a matter of hours."
+            },
+            {
+                "title": "How effective is offshore or outsourced Shopify?",
+                "text": "Shopify is one of our primary development languages. Our team has a collective 600 years of development experience, and we’ve built incredibly complex projects in the language"
+            },
+            {
+                "title": "What are the benefits of using ScrumLaunch for my Shopify store?",
+                "text": "We specialize in Shopify development and have a team of experienced developers with a collective 25 years of experience. We've built and/or enhanced over 50 Shopify stores and are well-versed in the nuances of its features and functionalities. Every project is different, and we always provide customized solutions for your Shopify store that can help you achieve your business goals. Our developers have years of experience in Shopify development and are up-to-date with the latest trends and technologies. They are also skilled in various areas of development, such as theme customization, app development, and integration with third-party tools."
+            },
+            {
+                "title": "Can ScrumLaunch help me with customizing my Shopify store's design?",
+                "text": "Yes, we have a full team of UI/UX Designers that can help with customizing your Shopify store's design to reflect your brand and vision. We can create a unique theme for your store that matches your brand identity and appeals to your target audience."
+            },
+            {
+                "title": "Can your agency help me integrate third-party tools with my Shopify store?",
+                "text": "Yes, our developers are skilled in integrating third-party tools and services with Shopify. We can help you integrate payment gateways, shipping providers, email marketing tools, and more."
+            },
+            {
+                "title": "How much does it cost to hire a developer from your agency?",
+                "text": "The cost of hiring a developer from our agency depends on the scope and complexity of your project. We offer competitive rates and can provide a custom quote based on your specific needs. You can visit the Pricing section of our site at https://shopify.scrumlaunch.com/#Pricing to get a better idea of our typical rates."
+            },
+            {
+                "title": "Can ScrumLaunch provide ongoing support and maintenance for my Shopify store?",
+                "text": "Yes, we offer ongoing support and maintenance services for Shopify stores. We can help you with updates, backups, bug fixes, and other maintenance tasks to ensure that your store runs smoothly."
+            },
+            {
+                "title": "How can I get started with hiring a developer from ScrumLaunch?",
+                "text": "You can contact us through our website or email us directly at hello@scrumlaunch.com to discuss your project requirements. We'll provide you with a free consultation and a custom quote based on your needs."
+            }
+        ]
     },
     {
         "url": "algorithm-developers",
         "expert": "Algorithm Developers",
-        "lang": "Algorithm"
+        "title": "Algorithm"
     },
     {
         "url": "ipad-developers",
         "expert": "iPad Developers",
-        "lang": "iPad"
+        "title": "iPad"
     },
     {
         "url": "app-developers",
         "expert": "App Developers",
-        "lang": "App"
+        "title": "App"
     },
     {
         "url": "r-developers",
         "expert": "R Developers",
-        "lang": "R"
+        "title": "R"
     },
     {
         "url": "database-developers",
         "expert": "Database Developers",
-        "lang": "Database"
+        "title": "Database"
     },
     {
         "url": "azure-developers",
         "expert": "Azure Developers",
-        "lang": "Azure"
+        "title": "Azure"
     },
     {
         "url": "pyspark-developers",
         "expert": "Pyspark Developers",
-        "lang": "Pyspark"
+        "title": "Pyspark"
     },
     {
         "url": "magento-developers",
         "expert": "Magento Developers",
-        "lang": "Magento"
+        "title": "Magento"
     },
     {
         "url": "machine-learning-engineers",
         "expert": "Machine Learning Engineers",
-        "lang": "Machine Learning"
+        "title": "Machine Learning"
     },
     {
         "url": "cms-developers",
         "expert": "CMS Developers",
-        "lang": "CMS"
+        "title": "CMS"
     },
     {
         "url": "mongodb-developers",
         "expert": "Mongodb Developers",
-        "lang": "Mongodb"
+        "title": "Mongodb"
     },
     {
         "url": "spring-developers",
         "expert": "Spring Developers",
-        "lang": "Spring"
+        "title": "Spring"
     },
     {
         "url": "css-developers",
         "expert": "CSS Developers",
-        "lang": "CSS"
+        "title": "CSS"
     },
     {
         "url": "qlikview-developers",
         "expert": "Qlikview Developers",
-        "lang": "Qlikview"
+        "title": "Qlikview"
     },
     {
         "url": "jquery-developers",
         "expert": "JQuery Developers",
-        "lang": "JQuery"
+        "title": "JQuery"
     },
     {
         "url": "c-programming-developers",
         "expert": "C Programming Developers",
-        "lang": "C Programming"
+        "title": "C Programming"
     },
     {
         "url": "dart-developers",
         "expert": "Dart Developers",
-        "lang": "Dart"
+        "title": "Dart"
     },
     {
         "url": "bitcoin-developers",
         "expert": "Bitcoin Developers",
-        "lang": "Bitcoin"
+        "title": "Bitcoin"
     },
     {
         "url": "android-sdk-developers",
         "expert": "Android SDK Developers",
-        "lang": "Android SDK"
+        "title": "Android SDK"
     },
     {
         "url": "material-ui-developers",
         "expert": "Material UI Developers",
-        "lang": "Material UI"
+        "title": "Material UI"
     },
     {
         "url": "ethereum-developers",
         "expert": "Ethereum Developers",
-        "lang": "Ethereum"
+        "title": "Ethereum"
     },
     {
         "url": "crm-developers",
         "expert": "CRM Developers",
-        "lang": "CRM"
+        "title": "CRM"
     },
     {
         "url": "next-js-developers",
         "expert": "Next JS Developers",
-        "lang": "Next JS"
+        "title": "Next JS"
     },
     {
         "url": "linux-developers",
         "expert": "Linux Developers",
-        "lang": "Linux"
+        "title": "Linux"
     },
     {
         "url": "d3-js-developers",
         "expert": "D3 JS Developers",
-        "lang": "D3 JS"
+        "title": "D3 JS"
     },
     {
         "url": "ajax-developers",
         "expert": "Ajax Developers",
-        "lang": "Ajax"
+        "title": "Ajax"
     },
     {
         "url": "mobile-developers",
         "expert": "Mobile Developers",
-        "lang": "Mobile"
+        "title": "Mobile"
     },
     {
         "url": "mvp-developers",
         "expert": "MPV Developers",
-        "lang": "MPV"
+        "title": "MPV"
     },
     {
         "url": "iphone-developers",
         "expert": "iPhone Developers",
-        "lang": "iPhone"
+        "title": "iPhone"
     },
     {
         "url": "contentful-developers",
         "expert": "Contentful Developers",
-        "lang": "Contentful"
+        "title": "Contentful"
     },
     {
         "url": "mysql-developers",
         "expert": "MySQL Developers",
-        "lang": "MySQL"
+        "title": "MySQL"
     },
     {
         "url": "blockchain-developers",
         "expert": "Blockchain Developers",
-        "lang": "Blockchain"
+        "title": "Blockchain"
     },
     {
         "url": "csharp-developers",
         "expert": "Csharp Developers",
-        "lang": "Csharp"
+        "title": "Csharp"
     },
     {
         "url": "web-crawler-developers",
         "expert": "Web Crawler Developers",
-        "lang": "Web Crawler"
+        "title": "Web Crawler"
     },
     {
         "url": "oracle-developers",
         "expert": "Oracle Developers",
-        "lang": "Oracle"
+        "title": "Oracle"
     },
     {
         "url": "sap-developers",
         "expert": "SAP Developers",
-        "lang": "SAP"
+        "title": "SAP"
     },
     {
         "url": "aws-amplify-developers",
         "expert": "Aws Amplify Developers",
-        "lang": "Aws Amplify"
+        "title": "Aws Amplify"
     },
     {
         "url": "figma-developers",
         "expert": "Figma Developers",
-        "lang": "Figma"
+        "title": "Figma"
     },
     {
         "url": "classic-asp-programmers",
         "expert": "Classic Asp Programmers",
-        "lang": "Classic Asp"
+        "title": "Classic Asp"
     },
     {
         "url": "rest-api-developers",
         "expert": "Rest API Developers",
-        "lang": "Rest API"
+        "title": "Rest API"
     },
     {
         "url": "stripe-developers",
         "expert": "Stripe Developers",
-        "lang": "Stripe"
+        "title": "Stripe"
     },
     {
         "url": "code-review-developers",
         "expert": "Code Review Developers",
-        "lang": "Code Review"
+        "title": "Code Review"
     },
     {
         "url": "dotnet-developers",
         "expert": "Dotnet Developers",
-        "lang": "Dotnet"
+        "title": "Dotnet"
     },
     {
         "url": "odoo-developers",
         "expert": "Odoo Developers",
-        "lang": "Odoo"
+        "title": "Odoo"
     },
     {
         "url": "jira-developers",
         "expert": "Jira Developers",
-        "lang": "Jira"
+        "title": "Jira"
     },
     {
         "url": "react-hooks-developers",
         "expert": "React Hooks Developers",
-        "lang": "React Hooks"
+        "title": "React Hooks"
     },
     {
         "url": "bitbucket-developers",
         "expert": "Bitbucket Developers",
-        "lang": "Bitbucket"
+        "title": "Bitbucket"
     },
     {
         "url": "perl-developers",
         "expert": "Perl Developers",
-        "lang": "Perl"
+        "title": "Perl"
     },
     {
         "url": "zapier-developers",
         "expert": "Zapier Developers",
-        "lang": "Zapier"
+        "title": "Zapier"
     },
     {
         "url": "aem-developers",
         "expert": "Aem Developers",
-        "lang": "Aem"
+        "title": "Aem"
     },
     {
         "url": "flutter-developers",
         "expert": "Flutter Developers",
-        "lang": "Flutter"
+        "title": "Flutter"
     },
     {
         "url": "magento-2-developers",
         "expert": "Magento 2 Developers",
-        "lang": "Magento 2"
+        "title": "Magento 2"
     },
     {
         "url": "salesforce-developers",
         "expert": "Salesforce Developers",
-        "lang": "Salesforce"
+        "title": "Salesforce"
     },
     {
         "url": "bigquery-developers",
         "expert": "Bigquery Developers",
-        "lang": "Bigquery"
+        "title": "Bigquery"
     },
     {
         "url": "phpstorm-developers",
         "expert": "Phpstorm Developers",
-        "lang": "Phpstorm"
+        "title": "Phpstorm"
     },
     {
         "url": "aws-cloud-engineers",
         "expert": "Aws Cloud Engineers",
-        "lang": "Aws Cloud"
+        "title": "Aws Cloud"
     },
     {
         "url": "devops-engineers",
         "expert": "Devops Engineers",
-        "lang": "Devops"
+        "title": "Devops"
     },
     {
         "url": "ionic-developers",
         "expert": "Ionic Developers",
-        "lang": "Ionic"
+        "title": "Ionic"
     },
     {
         "url": "data-visualization-developers",
         "expert": "Data Visualization Developers",
-        "lang": "Data Visualization"
+        "title": "Data Visualization"
     },
     {
         "url": "elasticsearch-developers",
         "expert": "Elasticsearch Developers",
-        "lang": "Elasticsearch"
+        "title": "Elasticsearch"
     },
     {
         "url": "ansible-developers",
         "expert": "Ansible Developers",
-        "lang": "Ansible"
+        "title": "Ansible"
     },
     {
         "url": "web-animation-developers",
         "expert": "Web Animation Developers",
-        "lang": "Web Animation"
+        "title": "Web Animation"
     },
     {
         "url": "tailwind-css-developers",
         "expert": "Tailwind Css Developers",
-        "lang": "Tailwind Css"
+        "title": "Tailwind Css"
     },
     {
         "url": "symfony-developers",
         "expert": "Symfony Developers",
-        "lang": "Symfony"
+        "title": "Symfony"
     },
     {
         "url": "selenium-developers",
         "expert": "Selenium Developers",
-        "lang": "Selenium"
+        "title": "Selenium"
     },
     {
         "url": "flume-developers",
         "expert": "Flume Developers",
-        "lang": "Flume"
+        "title": "Flume"
     },
     {
         "url": "kubernetes-developers",
         "expert": "Kubernetes Developers",
-        "lang": "Kubernetes"
+        "title": "Kubernetes"
     },
     {
         "url": "android-ndk-developers",
         "expert": "Android Ndk Developers",
-        "lang": "Android Ndk"
+        "title": "Android Ndk"
     },
     {
         "url": "ember-js-developers",
         "expert": "Ember JS Developers",
-        "lang": "Ember JS"
+        "title": "Ember JS"
     },
     {
         "url": "haskell-developers",
         "expert": "Haskell Developers",
-        "lang": "Haskell"
+        "title": "Haskell"
     },
     {
         "url": "visual-studio-developers",
         "expert": "Visual Studio Developers",
-        "lang": "Visual Studio"
+        "title": "Visual Studio"
     },
     {
         "url": "woocommerce-developers",
         "expert": "Woocommerce Developers",
-        "lang": "Woocommerce"
+        "title": "Woocommerce"
     },
     {
         "url": "sqlite-developers",
         "expert": "Sqlite Developers",
-        "lang": "Sqlite"
+        "title": "Sqlite"
     },
     {
         "url": "excel-developers",
         "expert": "Excel Developers",
-        "lang": "Excel"
+        "title": "Excel"
     },
     {
         "url": "github-developers",
         "expert": "Github Developers",
-        "lang": "Github"
+        "title": "Github"
     },
     {
         "url": "rust-developers",
         "expert": "Rust Developers",
-        "lang": "Rust"
+        "title": "Rust"
     },
     {
         "url": "firebase-developers",
         "expert": "Firebase Developers",
-        "lang": "Firebase"
+        "title": "Firebase"
     },
     {
         "url": "saas-developers",
         "expert": "Saas Developers",
-        "lang": "Saas"
+        "title": "Saas"
     },
     {
         "url": "joomla-developers",
         "expert": "Joomla Developers",
-        "lang": "Joomla"
+        "title": "Joomla"
     },
     {
         "url": "php-mysql-developers",
         "expert": "Php Mysql Developers",
-        "lang": "Php Mysql"
+        "title": "Php Mysql"
     },
     {
         "url": "cloud-engineers",
         "expert": "Cloud Engineers",
-        "lang": "Cloud"
+        "title": "Cloud"
     },
     {
         "url": "ai-engineers",
         "expert": "AI Engineers",
-        "lang": "AI"
+        "title": "AI"
     },
     {
         "url": "elm-developers",
         "expert": "Elm Developers",
-        "lang": "Elm"
+        "title": "Elm"
     },
     {
         "url": "mocha-developers",
         "expert": "Mocha Developers",
-        "lang": "Mocha"
+        "title": "Mocha"
     },
     {
         "url": "phpixie-developers",
         "expert": "Phpixie Developers",
-        "lang": "Phpixie"
+        "title": "Phpixie"
     },
     {
         "url": "access-developers",
         "expert": "Access Developers",
-        "lang": "Access"
+        "title": "Access"
     }
 
 ]

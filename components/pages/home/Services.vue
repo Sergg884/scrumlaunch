@@ -83,6 +83,7 @@ section {
 
       @include desktop-and-up {
         font-size: 48px;
+        word-spacing: 160px;
         padding: 42px;
       }
     }
