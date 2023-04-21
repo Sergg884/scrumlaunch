@@ -98,7 +98,6 @@ export default {
     text-align: left;
     font-size: 16px;
     color: $dark-grey;
-    padding: 0 20px;
     margin-bottom: 10px;
 
     a {
@@ -112,13 +111,11 @@ export default {
     }
 
     @include tablet-and-up {
-      padding: 0 30px;
       font-size: 20px;
       margin-bottom: 14px;
     }
 
     @include desktop-and-up {
-      padding: 0 120px;
       margin-bottom: 16px;
     }
 
@@ -301,6 +298,7 @@ export default {
     font-size: 24px;
     margin-top: 80px;
     margin-bottom: 40px;
+    text-transform: uppercase;
     @include tablet-and-up {
       margin-top: 140px;
       margin-bottom: 60px;

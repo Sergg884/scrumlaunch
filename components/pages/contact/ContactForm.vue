@@ -155,7 +155,7 @@ export default {
         'i'
       )
       this.nameError = this.name === '' ? 'Please, add your name here' : null
-      this.emailError = !emailRegEx.test(this.email)
+      this.emailError = !emailRegEx.test(this.email.trim())
         ? 'Please, enter your correct email'
         : null
       this.projectError =
@@ -428,6 +428,7 @@ export default {
 
       &--input {
         // width: 47%;
+        margin-top: 27px;
 
         &.input-project {
           width: 48%;
@@ -449,6 +450,7 @@ export default {
 
       .input-item {
         width: 100%;
+        margin-top: 27px;
       }
     }
 

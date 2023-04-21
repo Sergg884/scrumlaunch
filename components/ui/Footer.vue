@@ -6,7 +6,7 @@
           {{ i.title }}
         </NuxtLink>
       </b-col>
-      <b-col class="contact" cols="12" order="1" order-md="2" md="6" xl="4">
+      <b-col class="contact" cols="12" order="1" order-md="2" md="6" xl="3">
         <p class="title">
           Email
         </p>
@@ -19,7 +19,7 @@
           {{ location }}
         </p>
       </b-col>
-      <b-col class="social" cols="12" order="4" xl="2">
+      <b-col class="social" cols="12" order="4" xl="3">
         <div>
           <a
             href="https://www.behance.net/scrumlaunch"
@@ -55,7 +55,7 @@
           </a>
         </div>
         <div class="private">
-          © 2021 ScrumLaunch
+          © 2022 ScrumLaunch LLC. All rights reserved.
         </div>
       </b-col>
     </b-row>

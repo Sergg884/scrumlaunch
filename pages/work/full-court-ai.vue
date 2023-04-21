@@ -102,7 +102,11 @@ export default {
     }
 
   img {
+    height: 60%;
 
+    @include tablet-and-up {
+      height: 70%;
+    }
   }
 }
 

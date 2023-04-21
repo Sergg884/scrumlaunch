@@ -7,7 +7,7 @@
     </NuxtLink>
     <div class="menu" :class="{'white': isHeaderWhite}">
       <NuxtLink to="/work">
-        Case Studies
+        Work
       </NuxtLink>
       <NuxtLink to="/services">
         Services

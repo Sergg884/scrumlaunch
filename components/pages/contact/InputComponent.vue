@@ -129,7 +129,7 @@ export default {
       font-weight: 400;
       line-height: 120%;
       position: absolute;
-      bottom: -26px;
+      bottom: -40px;
       left: 0;
     }
   }

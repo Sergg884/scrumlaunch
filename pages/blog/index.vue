@@ -137,9 +137,9 @@ export default {
         articlesRaw = articlesRaw.filter(item => item.category === this.activeCategory)
       }
 
-      if (this.dateSortStatus === 'asc') {
+      if (this.dateSortStatus === 'desc') {
         articlesRaw = articlesRaw.slice().sort((a, b) => this.parseDate(a.date) - this.parseDate(b.date));
-      } else if (this.dateSortStatus === 'desc') {
+      } else if (this.dateSortStatus === 'asc') {
         articlesRaw = articlesRaw.slice().sort((a, b) => this.parseDate(b.date) - this.parseDate(a.date));
       }
 
@@ -176,19 +176,8 @@ export default {
 <style lang="scss" scoped>
 
 .blog {
-  max-width: 335px;
-  padding: 0 20px;
-  margin: 80px auto;
-
-  @include tablet-and-up {
-    max-width: 708px;
-    padding: 0 30px;
-    margin: 60px auto;
-  }
 
   @include desktop-and-up {
-    max-width: 1200px;
-    padding: 0 120px;
     margin: 120px auto;
   }
   .hero {
