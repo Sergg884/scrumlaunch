@@ -28,7 +28,11 @@
 
     <Services />
 
-    <!-- <Hiring /> -->
+    <Hiring />
+
+    <Blog />
+
+    <GetStarted />
   </div>
 </template>
 
@@ -43,6 +47,8 @@ import WeThrive from '~/components/pages/home/WeThrive'
 import Services from '~/components/pages/home/Services'
 import Hiring from '~/components/pages/home/Hiring'
 import TechPartner from '~/components/pages/home/TechPartner.vue'
+import Blog from '~/components/pages/home/Blog.vue'
+import GetStarted from '~/components/shared/GetStarted.vue'
 
 
 export default {
@@ -56,7 +62,9 @@ export default {
     WeThrive,
     Services,
     Hiring,
-    TechPartner
+    TechPartner,
+    Blog,
+    GetStarted
   }
 }
 

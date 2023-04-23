@@ -1,8 +1,8 @@
 <template>
-  <header>
+  <header :class="{ active: showMobileNavigation }">
     <NuxtLink class="logo" to="/" exact>
       <Logo
-        :fill="isHeaderWhite ? '#fff' : '#1E1F21'"
+        :fill="isHeaderWhite || showMobileNavigation ? '#fff' : '#1E1F21'"
       />
     </NuxtLink>
     <div class="menu" :class="{'white': isHeaderWhite}">
@@ -38,13 +38,20 @@
         Contact
       </NuxtLink>
     </div>
-
-    <div class="menu--mobile">
+    <div class="menu--mobile" @click="toggleNavigation()">
       <img
-        :src="isHeaderWhite ? require('@/assets/icons/menu-mobile--white.svg') : require('@/assets/icons/menu-mobile.svg')"
+        :src="isHeaderWhite || showMobileNavigation ? require('@/assets/icons/menu-mobile--white.svg') : require('@/assets/icons/menu-mobile.svg')"
         alt="menu-mobile"
       />
     </div>
+    <ul
+      class="mobile-navigation"
+      :class="{ active: showMobileNavigation }"
+    >
+      <li v-for="(i, index) in mobileNavigation" :key="index" @click="navigateTo(i.path)">
+        {{ i.title }}
+      </li>
+    </ul>
   </header>
 </template>
 
@@ -66,7 +73,7 @@ export default {
 
   data() {
     return {
-
+      showMobileNavigation: false,
       whiteHeaderPaths: [
         '/work/campus-reel',
         '/work/full-court-ai',
@@ -126,9 +133,59 @@ export default {
           title: 'Software Developers',
           path: '/hire-developers/software-developers'
         },
+      ],
+
+      mobileNavigation: [
+        { 
+          title: 'Home',
+          path: '/'
+        },
+        { 
+          title: 'Work',
+          path: '/work'
+        },
+        { 
+          title: 'Services',
+          path: '/services'
+        },
+        { 
+          title: 'Process',
+          path: '/process'
+        },
+        { 
+          title: 'Leadership',
+          path: '/leadership'
+        },
+        { 
+          title: 'Blog',
+          path: '/Blog'
+        },
+        { 
+          title: 'Job Openings',
+          path: '/remote-developer-job'
+        },
+        { 
+          title: 'Contact',
+          path: '/contact-us'
+        },
       ]
     };
   },
+
+  methods: {
+    toggleNavigation() {
+      this.showMobileNavigation = !this.showMobileNavigation
+      if (this.showMobileNavigation) {
+        document.querySelector('body').classList.add('overflow-hidden')
+      } else {
+        document.querySelector('body').classList.remove('overflow-hidden')
+      }
+    },
+    navigateTo(path) {
+      this.$router.push(path)
+      this.showMobileNavigation = !this.showMobileNavigation
+    }
+  }
 }
 </script>
 
@@ -147,6 +204,22 @@ header {
 
   @include desktop-and-up {
     padding: 35px 120px;
+  }
+
+  &.active {
+    background-color: $main-black;
+
+    &::before{
+      height: 72px;
+      width: 100%;
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      background-color: $main-black;
+      transition: 0.5s;
+    }
   }
 
   .logo {
@@ -190,8 +263,41 @@ header {
       display: none;
     }
   }
-
 }
 
+.mobile-navigation {
+  padding: 20px;
+  position: fixed;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+  list-style: none;
+  background: $main-black;
+  padding-top: 70px;
+  z-index: 99;
+  
+
+
+  &.active {
+    top: 72px;
+    transition: 0.5s;
+  }
+
+  li {
+    color: white;
+    font-weight: 900;
+    font-size: 32px;
+    text-align: left;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+
+    @include tablet-and-up {
+      font-size: 56px;
+      margin-bottom: 10px;
+    }
+  }
+}
 
 </style>
