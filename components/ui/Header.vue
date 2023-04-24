@@ -277,13 +277,14 @@ header {
   background: $main-black;
   padding-top: 70px;
   z-index: 99;
-  
+  opacity: 0;
 
 
   &.active {
     top: 72px;
     transition: 0.5s;
     height: calc(100vh + 72px);
+    opacity: 1;
   }
 
   li {

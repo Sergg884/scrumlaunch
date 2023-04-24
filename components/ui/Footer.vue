@@ -55,7 +55,7 @@
           </a>
         </div>
         <div class="private">
-          © 2022 ScrumLaunch LLC. All rights reserved.
+          © 2023 ScrumLaunch LLC. All rights reserved.
         </div>
       </b-col>
     </b-row>
