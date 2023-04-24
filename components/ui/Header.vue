@@ -183,7 +183,7 @@ export default {
     },
     navigateTo(path) {
       this.$router.push(path)
-      this.showMobileNavigation = !this.showMobileNavigation
+      this.toggleNavigation()
     }
   }
 }
@@ -283,6 +283,7 @@ header {
   &.active {
     top: 72px;
     transition: 0.5s;
+    height: calc(100vh + 72px);
   }
 
   li {
