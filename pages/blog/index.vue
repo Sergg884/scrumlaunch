@@ -55,7 +55,7 @@
         <Article :article="article" :index="index" />
       </div>
     </div>
-    <BaseButton v-if="articlesToShow < getAllArticles.length" class="show-more" @click="articlesToShow += 4">
+    <BaseButton v-if="articlesToShow < articles.length" class="show-more" @click="articlesToShow += 4">
       Show More
     </BaseButton>
   </section>

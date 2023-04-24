@@ -58,10 +58,17 @@
     padding: 28px 76px;
   }
 
-  &:hover {
-    background: $main-black;
-    color: #ffffff;
+  @media (hover: hover) {
+    &:hover {
+      background: $main-black;
+      color: #ffffff;
+    }
   }
+
+  // &:hover {
+  //   background: $main-black;
+  //   color: #ffffff;
+  // }
 
   &:active {
     background: $main-black;
