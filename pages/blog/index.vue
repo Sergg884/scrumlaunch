@@ -51,7 +51,7 @@
       <ArticleMain 
         :article="mainArticle"
       />
-      <div v-for="(article, index) in articles.slice(1,this.articlesToShow)" :key="index">
+      <div class="article-wrap" v-for="(article, index) in articles.slice(1,this.articlesToShow)" :key="index">
         <Article :article="article" :index="index" />
       </div>
     </div>
@@ -297,11 +297,14 @@ export default {
 
   .articles {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 20px;
 
-    @include tablet-and-up {
-      flex-basis: calc(50% - 12px);
+    .article-wrap {
+      @include tablet-and-up {
+        flex-basis: calc(50% - 10px);
+      }
     }
   }
 
