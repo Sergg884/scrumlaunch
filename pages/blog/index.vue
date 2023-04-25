@@ -6,10 +6,8 @@
       </h1>
       <nuxt-img src="/pages/blog/hero.webp" alt="blog-hero"/>
     </div>
-    <div
-      class="swiper"
-    >
-      <div class="content">
+    <div class="swiper">
+      <VueSlickCarousel v-bind="settings" class="content">
         <button
           class="custom-button"
           @click="activeCategory = ''"
@@ -24,7 +22,7 @@
         >
           {{category}}
         </button>
-      </div>
+      </VueSlickCarousel>
     </div>
     <div class="sort-by">
       <div class="button" @click="dateDropdownSortVisible = !dateDropdownSortVisible">
@@ -63,6 +61,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import VueSlickCarousel from 'vue-slick-carousel'
 import ArticleMain from '@/components/articles/ArticleMain.vue';
 import Article from '@/components/articles/Article.vue'
 
@@ -70,7 +69,8 @@ export default {
 
   components: {
     ArticleMain,
-    Article
+    Article,
+    VueSlickCarousel 
   },
 
   head: {
@@ -85,7 +85,16 @@ export default {
       articlesToShow: 5,
       activeCategory: '',
       dateDropdownSortVisible: false,
-      dateSortStatus: 'Newest'
+      dateSortStatus: 'Newest',
+      settings: {
+        "dots": false,
+        "focusOnSelect": false,
+        "infinite": false,
+        "speed": 500,
+        "slidesToShow": 1,
+        "slidesToScroll": 1,
+        "variableWidth": true
+      },
     };
   },
 
@@ -191,6 +200,10 @@ export default {
     position: relative;
     width: 100%;
     margin-bottom: 30px;
+
+    .slick-slide {
+      padding-right: 16px !important;
+    }
     
 
     .content {
@@ -208,6 +221,9 @@ export default {
         background-color: white;
         font-size: 14px;
         transition: background-color 0.3s ease;
+        width: auto;
+        margin-right: 16px;
+        width: unset !important;
 
         &:hover {
           background-color: $main-green;

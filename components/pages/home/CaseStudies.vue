@@ -2,7 +2,7 @@
   <section >
     <div class="case-study">
       <h4>
-        Case studies.
+        Case studies
       </h4>
       <div class="info">
         <div class="text-container">

@@ -40,7 +40,13 @@
     </div>
     <div class="menu--mobile" @click="toggleNavigation()">
       <img
-        :src="isHeaderWhite || showMobileNavigation ? require('@/assets/icons/menu-mobile--white.svg') : require('@/assets/icons/menu-mobile.svg')"
+        v-if="showMobileNavigation"
+        :src="require('@/assets/icons/close.svg')"
+        alt="menu-mobile"
+      />
+      <img
+        v-else
+        :src="isHeaderWhite ? require('@/assets/icons/menu-mobile--white.svg') : require('@/assets/icons/menu-mobile.svg')"
         alt="menu-mobile"
       />
     </div>
@@ -275,7 +281,7 @@ header {
   overflow: auto;
   list-style: none;
   background: $main-black;
-  padding-top: 70px;
+  padding-top: 40px;
   z-index: 99;
   opacity: 0;
 
@@ -283,7 +289,7 @@ header {
   &.active {
     top: 72px;
     transition: 0.5s;
-    height: calc(100vh + 72px);
+    height: calc(100vh - 72px);
     opacity: 1;
   }
 
