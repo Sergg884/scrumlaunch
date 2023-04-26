@@ -1,7 +1,7 @@
 <template>
   <div class="hire-developers">
     <Hero
-      :heroImg="`/hero/${dev_lang}-hero.webp`"  
+      :heroImg="`/shared/hero/${dev_lang}-hero.webp`"  
     >
       <template v-slot:title>
         Hire <span class="mark">{{ dev_lang }} developer</span> 

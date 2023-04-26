@@ -139,6 +139,7 @@ section {
         h3 {
           font-weight: 800;
           font-size: 50px;
+          text-transform: uppercase;
 
           @include tablet-and-up {
             order: 1;

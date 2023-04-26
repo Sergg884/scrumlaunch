@@ -23,7 +23,7 @@
             </div>
           </div>
           <BaseButton>
-            view case
+            View Case Study
           </BaseButton>
         </div>
         <div class="img-container">
@@ -31,7 +31,7 @@
           <nuxt-img class="mobile" :src="companies[current].mobileImg" :alt="companies[current].name + '-mobile'" />
         </div>
         <BaseButton class="case-button">
-          view case
+          View Case Study
         </BaseButton>
       </div>
       <div class="navigation">
@@ -214,6 +214,7 @@ section {
         .name {
           font-weight: 800;
           font-size: 20px;
+          text-transform: uppercase;
           @include tablet-and-up {
             font-size: 30px;
           }
@@ -321,10 +322,8 @@ section {
           }
 
           @include desktop-and-up {
-            left: 70px;
-            bottom: -51px;
-            left: 25px;
-            bottom: -51px;
+            left: 60px;
+            bottom: 0px;
             border-radius: 24px;
             border: 6px solid #000000;
           }

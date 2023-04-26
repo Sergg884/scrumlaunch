@@ -12,7 +12,7 @@
       </div>
     </div>
     <BaseButton v-if="articlesToShow < getAllArticles.length" class="show-more" @click="articlesToShow += appendArticles">
-      Show More
+      View more articles
     </BaseButton>
   </section>
 </template>

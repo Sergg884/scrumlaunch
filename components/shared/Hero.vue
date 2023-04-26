@@ -27,7 +27,7 @@
       </div>
     </div>
     <div class="img">
-      <nuxt-img :src="'/shared' + heroImg" alt="hero-img" />
+      <nuxt-img :src="heroImg" alt="hero-img" />
       <!-- <img :src="require('~/assets/images/shared' + heroImg)" alt="hero-img"/> -->
     </div>
     <div

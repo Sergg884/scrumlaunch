@@ -23,6 +23,7 @@
                 </label>
                 <input
                   v-model="formData.name"
+                  placeholder="Enter your name"
                   type="text"
                   id="name"
                 />
@@ -33,6 +34,7 @@
                 </label>
                 <input
                   v-model="formData.email"
+                  placeholder="Enter your email"
                   type="email"
                   id="email"
                 />
@@ -43,6 +45,7 @@
                 </label>
                 <input
                   v-model="formData.company"
+                  placeholder="Enter company name"
                   type="text"
                   id="company"
                 />
@@ -57,6 +60,7 @@
                   v-model="formData.company"
                   type="text"
                   id="details"
+                  placeholder="Enter your message"
                 />
               </div>
             </div>
@@ -70,21 +74,33 @@
                 <label for="company">
                   Company Size
                 </label>
-                <input
+                <select
                   v-model="formData.size"
                   type="text"
                   id="company"
-                />
+                >
+                <option disabled value="">Select company size</option>
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
+                </select>
               </div>
               <div class="input">
                 <label for="company">
                   Total Project Budget
                 </label>
-                <input
+                <select
                   v-model="formData.budget"
+
                   type="text"
                   id="company"
-                />
+                  placeholder="Select project budget"
+                >
+                  <option disabled value="">Select project budget</option>
+                  <option>A</option>
+                  <option>B</option>
+                  <option>C</option>
+                </select>
               </div>
             </div>
           </div>
@@ -209,10 +225,14 @@ section {
             text-transform: uppercase;
           }
 
-          input {
+          input,textarea,select {
             border: 1px solid $main-black;
             padding: 8px 14px;
             font-size: 14px;
+
+            &::placeholder {
+              color: $main-black;
+            }
 
             @include tablet-and-up {
               font-size: 16px;
