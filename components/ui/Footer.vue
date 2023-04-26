@@ -68,6 +68,10 @@ export default {
   data() {
     return {
       links: [
+      {
+          title: 'Portfolio',
+          href: '/work'
+        },
         {
           title: 'Services',
           href: '/services'

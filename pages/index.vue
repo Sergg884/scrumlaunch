@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <Hero
-      heroImg="/hero/java-hero.jpg"  
+      heroImg="/"  
     >
       <template v-slot:title>
         Tech talent that’s right for your <span class="mark">project</span> 
