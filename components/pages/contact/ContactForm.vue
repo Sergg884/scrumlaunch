@@ -276,6 +276,10 @@ export default {
     z-index: 2;
     transition: background-color 0.2s;
 
+    @include tablet-and-up {
+      top: -85px;
+    }
+
     &.blocked {
       background-color: rgba(255, 255, 255, 0.8);
     }

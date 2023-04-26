@@ -4,13 +4,33 @@
     <Nuxt :key="$route.fullPath" />
     <Footer />
     <ScrollToTop />
+    <ContactModal v-show="isModalVisible" @close="closeModal" />
   </div>
 </template>
 
 <script>
+import ContactModal from '@/components/shared/ContactModal.vue'
+
 export default {
+
+  components: {
+    ContactModal,
+  },
+
   async fetch() {
     await this.fetchArticlesFromStore()
+  },
+
+  data() {
+    return {
+      isModalVisible: false,
+    }
+  },
+  beforeMount() {
+    window.addEventListener("beforeunload", this.showModal)
+  },
+  beforeDestroy() {
+    window.removeEventListener("beforeunload", this.showModal)
   },
 
   mounted() {
@@ -139,6 +159,14 @@ export default {
     async fetchArticlesFromStore() {
       await this.$store.dispatch('articles/fetchArticles');
     },
+    showModal($event) {
+      this.isModalVisible = true
+      $event.preventDefault();
+      $event.returnValue = '';
+    },
+    closeModal() {
+      this.isModalVisible = false;
+    }
   }
 }
 </script>

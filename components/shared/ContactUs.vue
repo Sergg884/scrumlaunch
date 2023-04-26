@@ -6,7 +6,7 @@
 
     <p class="title">Looking to build something amazing? We’d love to help.</p>
 
-    <BaseButton>
+    <BaseButton to="/contact-us">
       Contact us
     </BaseButton>
   </section>

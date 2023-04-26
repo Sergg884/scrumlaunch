@@ -52,6 +52,7 @@ import GetStarted from '~/components/shared/GetStarted.vue'
 
 
 export default {
+
   components: {
     Hero,
     OurSuperpowers,
@@ -65,7 +66,14 @@ export default {
     TechPartner,
     Blog,
     GetStarted
-  }
+  },
+
+  head: {
+    title: 'ScrumLaunch - Software Development Company',
+    meta: [
+      { hid: 'description', name: 'description', content: 'ScrumLaunch enables start-ups, businesses, and organizations to hire developers from a growing network of top talent in the world. Our React, Python, PHP, Kotlin experts ready to work full-time, part-time, or hourly who will seamlessly integrate into your team.' }
+    ],
+  },
 }
 
 </script>

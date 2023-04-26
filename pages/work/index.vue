@@ -31,6 +31,14 @@
 import { mapGetters } from 'vuex'
 
 export default {
+
+  head: {
+    title: 'Case Studies and Success Stories - ScrumLaunch',
+    meta: [
+      { hid: 'description', name: 'description', content: 'Our work & client business outcomes speak for themselves. Join 100+ high growth startups and Fortune 500 companies that are building software teams with ScrumLaunch.' }
+    ],
+  },
+
   computed: {
     ...mapGetters({
       projects: 'projects/getAllProjects'

@@ -25,8 +25,16 @@ import vacancies from '@/seo/vacancies.json'
 import CustomSelect from '@/components/ui/CustomSelect.vue'
 
 export default {
+  
   components: {
     CustomSelect,
+  },
+
+  head: {
+    title: 'Careers at Scrumlaunch',
+    meta: [
+      { hid: 'description', name: 'description', content: 'Grow your career with Scrumlaunch company! U.S Software Engineer Jobs. Work Remotely. No Visa needed. Full time jobs. High salary. Great Companies. Higher Pay. Great team culture. Work Remotely. Interesting Projects.' }
+    ],
   },
 
   data() {

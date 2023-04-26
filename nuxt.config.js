@@ -38,9 +38,11 @@ export default {
     provider: 'ipx',
     ipx: {}
   }, 
-  serverMiddleware: {
-    '/_ipx': '~/server/middleware/ipx.js'
-  },
+
+  serverMiddleware: [
+    { path: '/api', handler: '~/api' },
+    { path: '/_ipx', handler: '~/server/middleware/ipx.js' },
+  ],
 
   // serverMiddleware: [{ path: '/api', handler: '~/api' }],
 

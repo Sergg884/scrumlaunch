@@ -19,7 +19,7 @@
             <p>
               From 1 full-time developer to several experienced developers fully integrated in your team
             </p>
-            <BaseButton small>
+            <BaseButton small to="/contact-us">
               Get started
             </BaseButton>
           </div>

@@ -17,7 +17,7 @@
           label-for="email-input"
           plaintext
         >
-          <b-form-input id="email-input" v-model="email" trim placeholder="Enter your email here"/>
+          <b-form-input id="email-input" v-model="email" trim placeholder="Enter your email here" />
         </b-form-group>
       </div>
       <div class="button">
@@ -29,12 +29,36 @@
     <div class="img">
       <img :src="require('~/assets/images/shared' + heroImg)" alt="hero-img"/>
     </div>
+    <div
+      v-show="is_sent"
+      :class="{ blocked: is_blocked }"
+      class="message-sent"
+    >
+      <lottie
+        v-show="is_done"
+        class="message-sent__image"
+        name="reliabilityDesktopAnim"
+        loop
+        renderer="svg"
+        :options="{
+          animationData: require('~/assets/animation/rocket_launch.json'),
+        }"
+      />
+      <div v-show="is_done" class="title-global">
+        Your message<br />has been sent
+      </div>
+    </div>
   </section>
 </template>
 
 <script>
+import lottie from 'vue-lottie/src/lottie.vue'
 
 export default {
+
+  components: {
+    lottie,
+  },
 
   props: {
     heroImg: {
@@ -51,13 +75,48 @@ export default {
     return {
       email: '',
       emailError: null,
+
+      is_blocked: false,
+      is_sent: false,
+      is_done: false,
     }
   },
 
   methods: {
     sendEmail() {
-      console.log(this.email)
-    }
+      this.is_sent = true
+      this.is_blocked = true
+
+      const data = {
+        name: '',
+        email: this.email,
+        details: '',
+      }
+
+      this.$axios.$post('/api/contact-us', data).then(() => {
+        this.name = ''
+        this.email = ''
+        this.project = ''
+
+        this.is_blocked = false
+        this.is_done = true
+
+        this.track()
+
+        setTimeout(() => {
+          this.is_sent = false
+          this.is_done = false
+        }, 5000)
+      })
+    },
+
+    track() {
+      if (this.$gtag !== undefined) {
+        this.$gtag.event('conversion', {
+          send_to: 'AW-10868833249/37WpCK7nhbQDEOH31L4o',
+        })
+      }
+    },
   }
 }
 
@@ -68,6 +127,8 @@ export default {
 section {
   display: flex;
   flex-direction: column;
+  position: relative;
+
   @include desktop-and-up {
     margin-bottom: 100px;
   }
@@ -107,6 +168,31 @@ section {
       }
     }
     
+  }
+
+  .message-sent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 1);
+    text-align: center;
+    z-index: 2;
+    transition: background-color 0.2s;
+
+    &.blocked {
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+
+    &__image {
+      width: 290px !important;
+      height: 290px !important;
+    }
   }
 
   .img {
