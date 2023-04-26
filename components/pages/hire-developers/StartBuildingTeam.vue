@@ -4,7 +4,7 @@
       <h2 class="title-big">
         Start building my development team now
       </h2>
-      <BaseButton class="button" to="/">
+      <BaseButton class="button" to="/contact-us">
         Hire developers
       </BaseButton>
     </section>

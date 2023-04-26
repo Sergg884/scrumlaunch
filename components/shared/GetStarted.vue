@@ -115,7 +115,7 @@ export default {
   methods: {
     async submitForm() {
       try {
-        const response = await axios.post('/api/contact', this.formData);
+        const response = await axios.post('/api/contact-us', this.formData);
         console.log(response);
       } catch (error) {
         console.error(error);

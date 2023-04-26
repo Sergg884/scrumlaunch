@@ -34,7 +34,7 @@
       <NuxtLink to="/remote-developer-job">
         Job Openings
       </NuxtLink>
-      <NuxtLink to="/contact">
+      <NuxtLink to="/contact-us">
         Contact
       </NuxtLink>
     </div>
@@ -86,7 +86,7 @@ export default {
         '/work/helmm',
         '/work/fgn',
         '/work/comunity-founded',
-        '/contact',
+        '/contact-us',
         '/remote-developer-job'
       ],
       
@@ -165,6 +165,10 @@ export default {
         { 
           title: 'Blog',
           path: '/Blog'
+        },
+        { 
+          title: 'Hire developers',
+          path: '/hire-developers'
         },
         { 
           title: 'Job Openings',
