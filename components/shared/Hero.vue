@@ -27,7 +27,8 @@
       </div>
     </div>
     <div class="img">
-      <img :src="require('~/assets/images/shared' + heroImg)" alt="hero-img"/>
+      <nuxt-img :src="'/shared' + heroImg" alt="hero-img" />
+      <!-- <img :src="require('~/assets/images/shared' + heroImg)" alt="hero-img"/> -->
     </div>
     <div
       v-show="is_sent"
