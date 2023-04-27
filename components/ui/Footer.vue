@@ -86,11 +86,11 @@ export default {
         },
         {
           title: 'Leadership',
-          href: '/services'
+          href: '/leadership'
         },
         {
           title: 'Contact Us',
-          href: '/services'
+          href: '/contact-us'
         }
       ],
       locations: [
