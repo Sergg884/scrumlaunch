@@ -34,32 +34,31 @@ export const state = () => ({
     {
       name: 'Mikhaylo Khizov',
       position: 'COO',
-      inLink: 'https://www.linkedin.com/in/mykhailo-khizov-002934173/',
+      inLink: 'https://www.linkedin.com/in/mikhail-khizov-5a9b74140/',
       photo: 'mikhaylo_khizov.jpg',
     },
     {
       name: 'Dmitriy Yefremov',
       position: 'Head of Mobile Department',
-      inLink: 'https://www.linkedin.com/in/dmitriy-yefremov-208023141/',
+      inLink: 'https://www.linkedin.com/in/dmytro-yefremov-208023141/',
       photo: 'dmitriy_yefremov.jpg',
     },
     {
       name: 'Dmitriy Khmaruk',
       position: 'Head of Backend Department',
-      inLink:
-        'https://www.linkedin.com/in/%D0%B4%D0%BC%D0%B8%D1%82%D1%80%D0%B8%D0%B9-%D1%85%D0%BC%D0%B0%D1%80%D1%83%D0%BA-a8bb83138/',
+      inLink: 'https://www.linkedin.com/in/дмитрий-хмарук-a8bb83138/',
       photo: 'dmitriy_khmaruk.jpg',
     },
     {
-      name: 'Dmitriy Khrystych',
+      name: 'Dmitry Khristich',
       position: 'Head of Frontend Department',
-      inLink: '#',
+      inLink: 'https://www.linkedin.com/in/dmitry-khristich-a78b8b121/',
       photo: 'dmitriy_khrystych.jpg',
     },
     {
       name: 'Vlad Aleksandrov',
       position: 'Head of Project Management Department',
-      inLink: '#',
+      inLink: 'https://www.linkedin.com/in/vladyslav--aleksandrov/',
       photo: 'vlad_aleksandrov.jpg',
     },
     {
@@ -71,7 +70,7 @@ export const state = () => ({
     {
       name: 'Anna Mateichenko',
       position: 'Head of People Management Department',
-      inLink: '#',
+      inLink: 'https://www.linkedin.com/in/anna-m-09240617a/',
       photo: 'anna_mateichenko.jpg',
     },
   ],
