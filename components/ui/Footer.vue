@@ -77,10 +77,6 @@ export default {
           href: '/services'
         },
         {
-          title: 'About us',
-          href: '/about-us'
-        },
-        {
           title: 'Referral Program',
           href: '/referral'
         },
