@@ -67,16 +67,6 @@ import { mapGetters } from 'vuex';
 
 export default {
 
-  computed: {
-    ...mapGetters('articles/', ['getHeaderItems']),
-    isHeaderWhite() {
-      if (this.whiteHeaderPaths.includes(this.$route.path)) {
-        return true
-      }
-      return false
-    }
-  },
-
   data() {
     return {
       showMobileNavigation: false,
@@ -139,6 +129,26 @@ export default {
           title: 'Software Developers',
           path: '/hire-developers/software-developers'
         },
+        { 
+          title: 'Python Developers',
+          path: '/hire-developers/python-developers'
+        },
+        { 
+          title: 'Solidity Developers',
+          path: '/hire-developers/solidity-developers'
+        },
+        { 
+          title: 'React Native Developers',
+          path: '/hire-developers/react-native-developers'
+        },
+        { 
+          title: 'Ruby Developers',
+          path: '/hire-developers/ruby-developers'
+        },
+        { 
+          title: 'View All Languages',
+          path: '/hire-developers'
+        },
       ],
 
       mobileNavigation: [
@@ -180,6 +190,16 @@ export default {
         },
       ]
     };
+  },
+
+  computed: {
+    ...mapGetters('articles/', ['getHeaderItems']),
+    isHeaderWhite() {
+      if (this.whiteHeaderPaths.includes(this.$route.path)) {
+        return true
+      }
+      return false
+    }
   },
 
   methods: {
