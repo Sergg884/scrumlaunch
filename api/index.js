@@ -1,6 +1,7 @@
 const express = require('express')
 
 const contact_us = require('./routes/contact-us')
+const company_contact = require('./routes/company-contact')
 
 const app = express()
 
@@ -8,6 +9,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
 app.use(contact_us)
+app.use(company_contact)
 
 module.exports = app
 
