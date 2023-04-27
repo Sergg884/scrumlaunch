@@ -77,20 +77,16 @@ export default {
           href: '/services'
         },
         {
-          title: 'About us',
-          href: '/about-us'
-        },
-        {
           title: 'Referral Program',
           href: '/referral'
         },
         {
           title: 'Leadership',
-          href: '/services'
+          href: '/leadership'
         },
         {
           title: 'Contact Us',
-          href: '/services'
+          href: '/contact-us'
         }
       ],
       locations: [
