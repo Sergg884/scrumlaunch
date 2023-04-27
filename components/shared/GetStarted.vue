@@ -80,9 +80,9 @@
                   id="company"
                 >
                 <option disabled value="">Select company size</option>
-                <option>A</option>
-                <option>B</option>
-                <option>C</option>
+                <option v-for="option in companySizeOptions" :value="option.value">
+                  {{ option.text }}
+                </option>
                 </select>
               </div>
               <div class="input">
@@ -97,9 +97,10 @@
                   placeholder="Select project budget"
                 >
                   <option disabled value="">Select project budget</option>
-                  <option>A</option>
-                  <option>B</option>
-                  <option>C</option>
+                  <option v-for="option in projectBudgetOptions" :value="option.value">
+                    {{ option.text }}
+                  </option>
+
                 </select>
               </div>
             </div>
@@ -126,6 +127,21 @@ export default {
         size: '',
         budget: ''
       },
+      companySizeOptions: [
+        { text: '1-50', value: '1-50' },
+        { text: '50-200', value: '50-200' },
+        { text: '200-1000', value: '200-1000' },
+        { text: '1000-5000+', value: '1000-5000+' },
+        { text: '10,000+', value: '10,000+' },
+      ],
+      projectBudgetOptions: [
+        { text: 'Less than $10,000', value: 'Less than $10,000' },
+        { text: '$10,000 to $49,999', value: '$10,000 to $49,999' },
+        { text: '$50,000 to $199,999', value: '$50,000 to $199,999' },
+        { text: '$200,000 to $999,999', value: '$200,000 to $999,999' },
+        { text: '$1,000,000 to $9,999,999', value: '$1,000,000 to $9,999,999' },
+        { text: '$10,000,000 +', value: '$10,000,000 +' },
+      ]
     };
   },
   methods: {
