@@ -1,7 +1,7 @@
 <template>
   <component
-    :class="small ? 'base-button--small' : 'base-button'"
     :is="to ? 'nuxt-link' : href ? 'a' : 'button'"
+    :class="small ? 'base-button--small' : 'base-button'"
     :to="to"
     :small="small"
     :href="href"
@@ -31,7 +31,6 @@
 </script> 
 
 <style lang="scss" scoped>
-
 .base-button {
   padding: 19px 76px;
   background: $main-green;
@@ -86,6 +85,9 @@
     @extend .base-button;
     padding: 10px 28px;
   }
+}
+a.base-button {
+  display: inline-block;
 }
 
 </style>

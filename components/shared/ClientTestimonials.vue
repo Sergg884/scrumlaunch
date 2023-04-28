@@ -5,7 +5,7 @@
       <div class="navigation-btn prev" @click="slide(-1)"></div>
       <div class="navigation-btn next" @click="slide(1)"></div>
       <transition-group :name="transitionName" tag="div" class="slider-group">
-        <div v-if="show" class="slide" :key="current">
+        <div v-if="show" :key="current" class="slide">
           <nuxt-img 
             class="avatar"
             :src="slides[current].image"
@@ -25,7 +25,7 @@
         </div>
       </transition-group>
     </div>
-    <BaseButton class="review-btn" @click="validateForm()">
+    <BaseButton class="review-btn" :href="slides[current].clutch">
       <div class="btn-inner">
         <img src="/shared/clutch-logo-black.svg" alt="clutch">
         <p>See {{ slides[current].short }} full review</p>
@@ -53,36 +53,38 @@ export default {
         short: "Rob's",
         position: 'CEO',
         company: 'CampusReel',
+        clutch: 'https://clutch.co/profile/scrumlaunch#review-792050',
       },
       {
         image: '/shared/testimonials/matt_glick.jpeg',
-        withIcon: false,
+        withIcon: true,
         feedback:
           "“ScrumLaunch has been with us since day 1. We've been working with them for 5 years. From an idea to a market leader in our space backed by leading venture funds”",
         name: 'Matt Glick',
         short: "Matt's",
         position: 'CEO',
         company: 'Gipper',
+        clutch: 'https://clutch.co/profile/scrumlaunch#review-754618',
       },
       {
-        image: '/shared/testimonials/clare_maxwell.jpeg',
-        withIcon: false,
-        feedback:
-          '“ScrumLaunch enabled us to completely restructure Community Funded over the past two years and reduce costs by 5x making the company profitable and the technology much more scalable and solid.”',
-        name: 'Clare Maxwell',
-        short: "Clare's",
-        position: 'Venture Investor & Board Observer',
-        company: 'Community Funded',
-      },
-      {
-        image: '/shared/testimonials/nami_baral.jpeg',
-        withIcon: false,
-        feedback:
-          '“ScrumLaunch was an integral partner for the entire lifecycle of our project from launch, venture fundraising to acquisition by a FinTech Unicorn.”',
-        name: 'Nami Baral',
-        short: "Nami's",
+        image: '/shared/testimonials/henry_priest.png',
+        withIcon: true,
+        feedback: '“ScrumLaunch listens to what we need in candidates for our roles.”',
+        name: 'Henry Priest',
+        short: "Henry's",
         position: 'CEO',
-        company: 'Harvest',
+        company: 'Benson Hill',
+        clutch: 'https://clutch.co/profile/scrumlaunch#review-2038753',
+      },
+      {
+        image: '/shared/testimonials/ryan_miller.jpg',
+        withIcon: false,
+        feedback: '“The partnership with ScrumLaunch has sped up the product launch of the company\'s product.”',
+        name: 'Ryan Miller',
+        short: "Ryan's",
+        position: 'CEO',
+        company: 'MODULAR11',
+        clutch: 'https://clutch.co/profile/scrumlaunch#review-1925392',
       },
     ],
   }),
