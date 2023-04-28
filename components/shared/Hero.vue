@@ -11,13 +11,21 @@
     <div class="contact">
       <div class="input-container">
         <b-form-group
-          class="email-input"
           id="contact-us-fieldset"
+          class="email-input"
           label="Email"
           label-for="email-input"
           plaintext
         >
-          <b-form-input id="email-input" v-model="email" trim placeholder="Enter your email here" />
+          <InputComponent
+            id="email-input"
+            class="contact-form--wrapper--input input-email"
+            :model-value="email"
+            placeholder="Enter your email here"
+            name="email"
+            :error-message="emailError"
+            @update:modelValue="handleFieldChange('email', $event)"
+          />
         </b-form-group>
       </div>
       <div class="button">
@@ -54,11 +62,13 @@
 
 <script>
 import lottie from 'vue-lottie/src/lottie.vue'
+import InputComponent from '@/components/ui/InputComponent.vue'
 
 export default {
 
   components: {
     lottie,
+    InputComponent,
   },
 
   props: {
@@ -76,7 +86,6 @@ export default {
     return {
       email: '',
       emailError: null,
-
       is_blocked: false,
       is_sent: false,
       is_done: false,
@@ -84,31 +93,54 @@ export default {
   },
 
   methods: {
-    sendEmail() {
-      this.is_sent = true
-      this.is_blocked = true
+    handleFieldChange(name, value) {
+      this[name] = value
+    },
 
+    sendEmail() {
       const data = {
         name: '',
         email: this.email,
         details: '',
       }
 
-      this.$axios.$post('/api/contact-us', data).then(() => {
-        this.name = ''
-        this.email = ''
-        this.project = ''
+      if (this.validateEmail(this.email)) {
+        this.is_blocked = true
 
-        this.is_blocked = false
-        this.is_done = true
+        this.$axios.$post('/api/contact-us', data).then(() => {
+          this.name = ''
+          this.email = ''
+          this.project = ''
 
-        this.track()
+          this.is_sent = true
+          this.is_blocked = false
+          this.is_done = true
 
-        setTimeout(() => {
-          this.is_sent = false
-          this.is_done = false
-        }, 5000)
-      })
+          this.track()
+
+          setTimeout(() => {
+            this.is_sent = false
+            this.is_done = false
+          }, 5000)
+        })
+      }
+    },
+
+    validateEmail(email) {
+      // eslint-disable-next-line prefer-regex-literals
+      const emailRegEx = new RegExp(
+        '^(([^<>()[\\]\\.,;:\\s@\\"]+(\\.[^<>()[\\]\\.,;:\\s@\\"]+)*)|(\\".+\\"))@(([^<>()[\\]\\.,;:\\s@\\"]+\\.)+[^<>()[\\]\\.,;:\\s@\\"]{2,})$',
+        'i'
+      )
+      this.emailError = !emailRegEx.test(email.trim())
+        ? 'Please, enter your correct email'
+        : null
+
+      if (this.emailError === null) {
+        return true
+      }
+
+      return false
     },
 
     track() {

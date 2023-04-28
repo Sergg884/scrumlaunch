@@ -62,8 +62,6 @@
         />
       </div>
 
-
-
       <div class="contact-form--wrapper-btn">
         <BaseButton @click="validateForm()">
           Send
@@ -95,7 +93,7 @@
 
 <script>
 import lottie from 'vue-lottie/src/lottie.vue'
-import InputComponent from '@/components/pages/contact/InputComponent.vue'
+import InputComponent from '@/components/ui/InputComponent.vue'
 
 export default {
   components: {
