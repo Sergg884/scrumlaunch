@@ -22,7 +22,7 @@
                   Name*
                 </label>
                 <input
-                  v-model="formData.name"
+                  v-model="name"
                   placeholder="Enter your name"
                   type="text"
                   id="name"
@@ -33,7 +33,7 @@
                   Email*
                 </label>
                 <input
-                  v-model="formData.email"
+                  v-model="email"
                   placeholder="Enter your email"
                   type="email"
                   id="email"
@@ -44,7 +44,7 @@
                   Company*
                 </label>
                 <input
-                  v-model="formData.company"
+                  v-model="company"
                   placeholder="Enter company name"
                   type="text"
                   id="company"
@@ -57,7 +57,7 @@
                   Any details you’d like to share?
                 </label>
                 <textarea 
-                  v-model="formData.company"
+                  v-model="details"
                   type="text"
                   id="details"
                   placeholder="Enter your message"
@@ -75,7 +75,7 @@
                   Company Size
                 </label>
                 <select
-                  v-model="formData.size"
+                  v-model="size"
                   type="text"
                   id="company"
                 >
@@ -90,7 +90,7 @@
                   Total Project Budget
                 </label>
                 <select
-                  v-model="formData.budget"
+                  v-model="budget"
 
                   type="text"
                   id="company"
@@ -107,7 +107,7 @@
           </div>
         </form>
       </div>
-      <BaseButton>
+      <BaseButton @click="sendForm()">
         Send message
       </BaseButton>
     </div>
@@ -120,13 +120,17 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      formData: {
-        name: '',
-        email: '',
-        company: '',
-        size: '',
-        budget: ''
-      },
+      is_blocked: false,
+      is_sent: false,
+      is_done: false,
+
+      name: '',
+      email: '',
+      company: '',
+      details: '',
+      size: '',
+      budget: '',
+
       companySizeOptions: [
         { text: '1-50', value: '1-50' },
         { text: '50-200', value: '50-200' },
@@ -147,10 +151,51 @@ export default {
   methods: {
     async submitForm() {
       try {
-        const response = await axios.post('/api/contact-us', this.formData);
+        const response = await axios.post('/api/contact-us', this.name);
         console.log(response);
       } catch (error) {
         console.error(error);
+      }
+    },
+
+    sendForm() {
+      this.is_sent = true
+      this.is_blocked = true
+
+      const data = {
+        name: this.name,
+        email: this.email,
+        company: this.company,
+        details: this.details,
+        size: this.size,
+        budget: this.budget,
+      }
+
+      this.$axios.$post('/api/company-contact', data).then(() => {
+        this.name = ''
+        this.email = ''
+        this.company = ''
+        this.details = ''
+        this.size = ''
+        this.budget = ''
+
+        this.is_blocked = false
+        this.is_done = true
+
+        this.track()
+
+        setTimeout(() => {
+          this.is_sent = false
+          this.is_done = false
+        }, 5000)
+      })
+    },
+
+    track() {
+      if (this.$gtag !== undefined) {
+        this.$gtag.event('conversion', {
+          send_to: 'AW-10868833249/37WpCK7nhbQDEOH31L4o',
+        })
       }
     },
   },

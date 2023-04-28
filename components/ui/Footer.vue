@@ -22,35 +22,14 @@
       <b-col class="social" cols="12" order="4" xl="3">
         <div>
           <a
-            href="https://www.behance.net/scrumlaunch"
+            v-for="i in socials"
+            :href="i.path"
             target="_blank"
             class="icon"
           >
             <img
-              :src="require('@/assets/icons/behance.svg')"
-              alt="footer-behance"
-            />
-          </a>
-
-          <a
-            href="https://www.linkedin.com/company/scrumlaunch/"
-            target="_blank"
-            class="icon"
-          >
-            <img
-              :src="require('@/assets/icons/linkedin.svg')"
-              alt="footer-linkedin"
-            />
-          </a>
-
-          <a
-            href="https://dribbble.com/scrumlaunch"
-            target="_blank"
-            class="icon"
-          >
-            <img
-              :src="require('@/assets/icons/dribbble.svg')"
-              alt="footer-dribbble"
+              :src="require(`@/assets/icons/social/${i.icon}.svg`)"
+              :alt="i.alt"
             />
           </a>
         </div>
@@ -100,6 +79,38 @@ export default {
         'Brazil',
         'Poland',
         'Uttar Pradesh, India'
+      ],
+      socials: [
+        {
+          path: 'https://www.youtube.com/@scrumlaunch',
+          icon:  'youtube',
+          alt: 'footer-youtube'
+        },
+        {
+          path: 'https://www.linkedin.com/company/scrumlaunch/',
+          icon:  'linkedin',
+          alt: 'footer-linkedin'
+        },
+        {
+          path: 'https://dribbble.com/scrumlaunch',
+          icon:  'dribble',
+          alt: 'footer-dribble'
+        },
+        {
+          path: 'https://www.tiktok.com/@scrumlaunch',
+          icon:  'tiktok',
+          alt: 'footer-tiktok'
+        },
+        {
+          path: 'https://www.behance.net/scrumlaunch',
+          icon:  'behance',
+          alt: 'footer-behance'
+        },
+        {
+          path: 'https://www.instagram.com/scrumlaunch.us/',
+          icon:  'instagram',
+          alt: 'footer-instagram'
+        },
       ]
     }
   }
@@ -171,10 +182,7 @@ footer {
     justify-content: space-between;
     margin-top: 40px;
     align-self: center;
-
-    @include tablet-and-up {
-      flex-direction: column;
-    }
+    flex-direction: column;
 
     @include desktop-and-up {
       align-self: stretch;
@@ -206,10 +214,10 @@ footer {
       color: $main-black;
       font-weight: 600;
       font-size: 14px;
-      margin-top: 3px;
+      margin-top: 25px;
 
-      @include tablet-and-up {
-        margin-top: 25px;
+      @include desktop-and-up {
+        margin-top: 0;
       }
     }
   }
