@@ -31,7 +31,7 @@
         :menuItems="developers"
         :isWhite='isHeaderWhite'
       />
-      <NuxtLink to="/remote-developer-job">
+      <NuxtLink to="/remote-developer-jobs">
         Job Openings
       </NuxtLink>
       <NuxtLink to="/contact-us">
@@ -77,7 +77,7 @@ export default {
         '/work/fgn',
         '/work/comunity-founded',
         '/contact-us',
-        '/remote-developer-job'
+        '/remote-developer-jobs'
       ],
       
       developers: [

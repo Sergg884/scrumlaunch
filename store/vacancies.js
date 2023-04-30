@@ -71,14 +71,6 @@ const generateVacancy = (name, jobLocation, description = null, datePosted = '12
 
 const createVacancies = () => {
 
-  // Dummy Vacancies generator
-
-  // const generatedVacancies = skills
-  //   .flatMap((skill) =>
-  //     locations.map((location) => generateVacancy(skill, location))
-  //   )
-  //   .sort((a, b) => Math.random() - Math.random())
-
   const googleVacancies = vacancies.map((el) =>
     generateVacancy(
       el.title,
