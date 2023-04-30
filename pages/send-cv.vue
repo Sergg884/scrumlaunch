@@ -1,140 +1,202 @@
 <template>
-  <div class="container section">
-    <div class="header-container">
-      <div>
-        <h1 class="header-1">Let’s <span class="clr-12e2b0">talk</span></h1>
-        <div class="text">
-          Want to join our team?<br /><span class="mark">Send your CV</span> via
-          filling out the form.
+  <div class="send-cv">
+    <section>
+      <div class="info">
+        <h1 class="title-big">
+          Let's 
+          <span class="green-title">
+            talk
+          </span>
+        </h1>
+        <p class="text">
+          Want to join our team? <br>
+          <span class="mark">Send your CV</span> via filling out the form.
+        </p>
+        <nuxt-img src="/shared/cv-white.svg" alt="cv-white" />
+      </div>
+      <form action="">
+        <div class="wrap">
+          <label> 
+            Name
+          </label>
+          <InputComponent
+            id="name"
+            class="contact-form--wrapper--input"
+            :modelValue="name"
+            placeholder="Enter your name here"
+            name="name"
+            :errorMessage="nameError"
+            @update:modelValue="handleFieldChange('name', $event)"
+          />
         </div>
-      </div>
-      <div class="img_container">
-        <img :src="require('@/assets/illustrations/cv-demo.svg')" />
-      </div>
-    </div>
-
-    <SendCVForm />
+        <div class="wrap">
+          <label> 
+            Name
+          </label>
+          <InputComponent
+            id="name"
+            class="contact-form--wrapper--input"
+            :modelValue="name"
+            placeholder="Enter your name here"
+            name="name"
+            :errorMessage="nameError"
+            @update:modelValue="handleFieldChange('name', $event)"
+          />
+        </div>
+        <div class="wrap">
+          <label> 
+            Name
+          </label>
+          <CustomSelect
+            :modelValue="skill"
+            class="filter"
+            label="Select skill"
+            emptyValueText="Select All"
+            :items="this['vacancies/getAllSkills']"
+            @update:modelValue="handleFieldChange('skill', $event)"
+          />
+        </div>
+        <div class="wrap">
+          <label> 
+            Name
+          </label>
+          <InputComponent
+            id="name"
+            class="contact-form--wrapper--input"
+            :modelValue="name"
+            placeholder="Enter your name here"
+            name="name"
+            :errorMessage="nameError"
+            @update:modelValue="handleFieldChange('name', $event)"
+          />
+        </div>
+        
+      </form>
+    </section>
   </div>
 </template>
 
 <script>
-import SendCVForm from '@/components/contact/SendCVForm.vue'
+import lottie from 'vue-lottie/src/lottie.vue'
 
 export default {
   components: {
-    SendCVForm,
+    lottie,
   },
 
-  scrollToTop: true,
+  data: () => ({
+    name: '',
+    nameError: null,
+    email: '',
+    emailError: null,
+    project: '',
+    projectError: null,
+    skill: '',
+
+    is_blocked: false,
+    is_sent: false,
+    is_done: false,
+  }),
+
+  methods: {
+    handleFieldChange(name, value) {
+      this[name] = value
+    },
+
+    sendForm() {
+      this.is_sent = true
+      this.is_blocked = true
+
+      const data = {
+        name: this.name,
+        email: this.email,
+        details: this.project,
+      }
+
+      this.$axios.$post('/api/contact-us', data).then(() => {
+        this.name = ''
+        this.email = ''
+        this.project = ''
+
+        this.is_blocked = false
+        this.is_done = true
+
+        this.track()
+
+        setTimeout(() => {
+          this.is_sent = false
+          this.is_done = false
+        }, 5000)
+      })
+    },
+
+    validateForm() {
+      // eslint-disable-next-line prefer-regex-literals
+      const emailRegEx = new RegExp(
+        '^(([^<>()[\\]\\.,;:\\s@\\"]+(\\.[^<>()[\\]\\.,;:\\s@\\"]+)*)|(\\".+\\"))@(([^<>()[\\]\\.,;:\\s@\\"]+\\.)+[^<>()[\\]\\.,;:\\s@\\"]{2,})$',
+        'i'
+      )
+      this.nameError = this.name === '' ? 'Please, add your name here' : null
+      this.emailError = !emailRegEx.test(this.email.trim())
+        ? 'Please, enter your correct email'
+        : null
+      this.projectError =
+        this.project === '' ? 'Please, specify your project details here' : null
+
+      if (
+        this.nameError === null &&
+        this.emailError === null &&
+        this.projectError === null
+      ) {
+        this.sendForm()
+      }
+    },
+
+    track() {
+      if (this.$gtag !== undefined) {
+        this.$gtag.event('conversion', {
+          send_to: 'AW-10868833249/37WpCK7nhbQDEOH31L4o',
+        })
+      }
+    },
+  },
 }
 </script>
 
 <style lang="scss" scoped>
-.header-1 {
-  margin-bottom: 40px;
-  font-weight: 900;
-  font-size: 75px;
-  line-height: 140%;
-  color: #fff;
 
-  @media screen and (max-width: 1440px) {
-    margin-bottom: 40px;
-    font-size: 56px;
-  }
+.send-cv {
+  width: 100%;
+  background-color: $main-black;
+  display: inline-block;
+  margin-top: -106px;
+  padding-top: 106px;
 
-  @media screen and (max-width: 768px) {
-    margin-bottom: 24px;
-    text-align: center;
-    font-size: 48px;
-  }
+  section {
+    .info {
+      padding: 0 50px;
+      h1 {
+        color: #fff;
+      }
 
-  @media screen and (max-width: 425px) {
-    margin-bottom: 17px;
-    font-size: 24px;
-  }
-}
+      .text {
+        color: #fff;
+        font-weight: 700;
+        font-size: 16px;
+      }
 
-.header-container {
-  @media screen and (max-width: 1440px) {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  @media screen and (max-width: 768px) {
-    flex-direction: column;
-  }
-}
-
-.clr-12e2b0 {
-  color: #12e2b0;
-}
-
-.mark {
-  background: #12e2b0;
-  color: #1e1f21;
-}
-
-.container {
-  padding-left: 8.32%;
-  padding-right: 8.32%;
-}
-
-.section {
-  padding-top: 240px;
-  padding-bottom: 240px;
-  margin-bottom: 240px;
-  background-color: #1e1f21;
-  text-align: left;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 100px;
-
-  @media screen and (max-width: 1440px) {
-    flex-direction: column;
-
-    padding-top: 150px;
-    padding-bottom: 100px;
-    margin-bottom: 100px;
-  }
-}
-
-.text {
-  font-weight: 700;
-  font-size: 30px;
-  line-height: 140%;
-  color: #fff;
-
-  @media screen and (max-width: 1440px) {
-    max-width: 350px;
-  }
-
-  @media screen and (max-width: 768px) {
-    max-width: inherit;
-    font-size: 16px;
-    text-align: center;
-  }
-}
-
-.img_container {
-  margin-top: 120px;
-
-  @media screen and (max-width: 768px) {
-    margin-top: 20px;
-  }
-
-  & > svg {
-    @media screen and (max-width: 1440px) {
-      width: 300px;
+      img {
+        width: 226px;
+      }
     }
 
-    @media screen and (max-width: 768px) {
-      width: 200px;
-      height: auto;
+    form {
+      background-color: #fff;
+      padding: 20px 40px;
     }
   }
+
+  
 }
+
 </style>

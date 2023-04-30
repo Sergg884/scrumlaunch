@@ -77,7 +77,8 @@ export default {
         '/work/fgn',
         '/work/comunity-founded',
         '/contact-us',
-        '/remote-developer-jobs'
+        '/remote-developer-jobs',
+        '/send-cv'
       ],
       
       developers: [
