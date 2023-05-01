@@ -50,11 +50,11 @@
             English level
           </label>
           <CustomSelect
-            :modelValue="skill"
+            :modelValue="englishLevel"
             class="filter"
             label="Select skill"
             emptyValueText="Select your English level"
-            :items="this['vacancies/getAllSkills']"
+            :items="englishSelect"
             @update:modelValue="handleFieldChange('skill', $event)"
           />
         </div>
@@ -62,14 +62,11 @@
           <label> 
             CV
           </label>
-          <InputComponent
-            id="name"
-            class="contact-form--wrapper--input"
-            :modelValue="name"
+          <FileInput
             placeholder="Upload your CV"
-            name="name"
-            :errorMessage="nameError"
-            @update:modelValue="handleFieldChange('name', $event)"
+            :errorMessage="fileError"
+            :value="file.name"
+            @file-updated="captureFile($event)"
           />
         </div>
         <BaseButton wide>
@@ -93,9 +90,13 @@ export default {
     nameError: null,
     email: '',
     emailError: null,
-    project: '',
-    projectError: null,
+    englishLevel: '',
+    englishLevelError: null,
     skill: '',
+    file: '',
+    fileError: null,
+
+    englishSelect: ['Basic', 'Intermediate', 'Advanced'],
 
     is_blocked: false,
     is_sent: false,
@@ -103,6 +104,10 @@ export default {
   }),
 
   methods: {
+    captureFile($event) {
+      this.file = $event
+    },
+
     handleFieldChange(name, value) {
       this[name] = value
     },
@@ -114,13 +119,16 @@ export default {
       const data = {
         name: this.name,
         email: this.email,
-        details: this.project,
+        english: this.englishLevel,
+        cv: resp.url,
       }
 
-      this.$axios.$post('/api/contact-us', data).then(() => {
+      this.$axios.$post('/api/send-cv', data).then(() => {
         this.name = ''
         this.email = ''
         this.project = ''
+        this.englishLevel = ''
+        this.file = ''
 
         this.is_blocked = false
         this.is_done = true
@@ -140,17 +148,20 @@ export default {
         '^(([^<>()[\\]\\.,;:\\s@\\"]+(\\.[^<>()[\\]\\.,;:\\s@\\"]+)*)|(\\".+\\"))@(([^<>()[\\]\\.,;:\\s@\\"]+\\.)+[^<>()[\\]\\.,;:\\s@\\"]{2,})$',
         'i'
       )
+
       this.nameError = this.name === '' ? 'Please, add your name here' : null
-      this.emailError = !emailRegEx.test(this.email.trim())
+      this.emailError = !emailRegEx.test(this.email)
         ? 'Please, enter your correct email'
         : null
-      this.projectError =
-        this.project === '' ? 'Please, specify your project details here' : null
+      this.englishLevelError =
+        this.englishLevel === '' ? 'Please, choose your english level' : null
+      this.fileError = this.file === '' ? 'Please, upload your CV' : null
 
       if (
         this.nameError === null &&
         this.emailError === null &&
-        this.projectError === null
+        this.englishLevelError === null &&
+        this.fileError === null
       ) {
         this.sendForm()
       }
