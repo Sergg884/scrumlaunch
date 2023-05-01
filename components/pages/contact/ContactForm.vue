@@ -101,6 +101,13 @@ export default {
     lottie,
   },
 
+  mounted() {
+
+  if (this.$router.currentRoute.params.email) {
+    this.email = this.$router.currentRoute.params.email
+    } 
+  },
+
   data: () => ({
     name: '',
     nameError: null,

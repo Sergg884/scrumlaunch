@@ -36,7 +36,6 @@
     </div>
     <div class="img">
       <nuxt-img :src="heroImg" alt="hero-img" />
-      <!-- <img :src="require('~/assets/images/shared' + heroImg)" alt="hero-img"/> -->
     </div>
     <div
       v-show="is_sent"
@@ -108,9 +107,7 @@ export default {
         this.is_blocked = true
 
         this.$axios.$post('/api/contact-us', data).then(() => {
-          this.name = ''
-          this.email = ''
-          this.project = ''
+          
 
           this.is_sent = true
           this.is_blocked = false
@@ -121,6 +118,10 @@ export default {
           setTimeout(() => {
             this.is_sent = false
             this.is_done = false
+            this.$router.push({name: 'Contact-us', params: { email: this.email }});
+            this.name = ''
+            this.email = ''
+            this.project = ''
           }, 5000)
         })
       }
