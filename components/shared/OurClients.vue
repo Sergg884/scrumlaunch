@@ -6,13 +6,13 @@
       </h2>
     </div>
     <div class="clients">
-      <div class="client" v-for="client in clients" :key="client.alt">
+      <div class="client" v-for="(client, index) in clients" :key="client.alt" v-show="isVisible(index)">
         <nuxt-img :src="client.img" :alt="client.alt" />
       </div>
     </div>
     <div class="navigation">
-      <div class="navigation-btn prev" @click="slide(-1)"></div>
-      <div class="navigation-btn next" @click="slide(1)"></div>
+      <div class="navigation-btn prev" @click="prevItems"></div>
+      <div class="navigation-btn next" @click="nextItems"></div>
     </div>
   </section>
 </template>
@@ -25,48 +25,108 @@ export default {
     return {
       clients: [
         {
-          alt: 'Gipper',
-          img: '/shared/our-clients/gipper.svg'
+          alt: 'aloft',
+          img: '/shared/our-clients/aloft.svg'
         },
         {
-          alt: 'Vesta',
-          img: '/shared/our-clients/vesta.svg'
-        },
-        {
-          alt: 'CampusReel',
-          img: '/shared/our-clients/campus-reel.svg'
-        },
-        {
-          alt: 'Community Funded',
-          img: '/shared/our-clients/community-funded.svg'
-        },
-        {
-          alt: 'Benson Hill',
+          alt: 'benson-hill',
           img: '/shared/our-clients/benson-hill.svg'
         },
         {
-          alt: 'Bid My Listing',
+          alt: 'bid-my-listing',
           img: '/shared/our-clients/bid-my-listing.svg'
         },
         {
-          alt: 'Heli',
+          alt: 'bound',
+          img: '/shared/our-clients/bound.svg'
+        },
+        {
+          alt: 'campus-reel',
+          img: '/shared/our-clients/campus-reel.svg'
+        },
+        {
+          alt: 'community-funded',
+          img: '/shared/our-clients/community-funded.svg'
+        },
+        {
+          alt: 'datavations',
+          img: '/shared/our-clients/datavations.svg'
+        },
+        {
+          alt: 'full-court',
+          img: '/shared/our-clients/full-court.svg'
+        },
+        {
+          alt: 'gipper',
+          img: '/shared/our-clients/gipper.svg'
+        },
+        {
+          alt: 'harvest',
+          img: '/shared/our-clients/harvest.svg'
+        },
+        {
+          alt: 'heli',
           img: '/shared/our-clients/heli.svg'
         },
         {
-          alt: 'Harvest',
-          img: '/shared/our-clients/harvest.svg'
+          alt: 'niural',
+          img: '/shared/our-clients/niural.svg'
         },
-
-      ]
+        {
+          alt: 'omella',
+          img: '/shared/our-clients/omella.svg'
+        },
+        {
+          alt: 'shotquality',
+          img: '/shared/our-clients/shotquality.svg'
+        },
+        {
+          alt: 'soil-connect',
+          img: '/shared/our-clients/soil-connect.svg'
+        },
+        {
+          alt: 'vesta',
+          img: '/shared/our-clients/vesta.svg'
+        },
+      ],
+      startIndex: 0,
     }
   },
 
+  computed: {
+    screenWidth() {
+      if (typeof window !== 'undefined') {
+        return window.innerWidth;
+      }
+      return 0;
+    },
+    endIndex() {
+      return this.startIndex + (this.screenWidth >= 1440 ? 8 : 6);
+    },
+  },
   methods: {
-    slide() {
-      
-    }
-  }
-
+    isVisible(index) {
+      return index >= this.startIndex && index < this.endIndex;
+    },
+    prevItems() {
+      const step = this.screenWidth >= 1440 ? 8 : 6;
+      this.startIndex = (this.startIndex - step + this.clients.length) % this.clients.length;
+    },
+    nextItems() {
+      const step = this.screenWidth >= 1440 ? 8 : 6;
+      this.startIndex = (this.startIndex + step) % this.clients.length;
+    },
+    handleResize() {
+      this.startIndex = 0;
+      this.$forceUpdate();
+    },
+  },
+  mounted() {
+    window.addEventListener("resize", this.handleResize);
+  },
+  beforeDestroy() {
+    window.removeEventListener("resize", this.handleResize);
+  },
 }
 
 </script>
