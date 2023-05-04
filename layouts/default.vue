@@ -17,20 +17,14 @@ export default {
     ContactModal,
   },
 
-  async fetch() {
-    await this.fetchArticlesFromStore()
-  },
-
   data() {
     return {
       isModalVisible: false,
     }
   },
-  beforeMount() {
-    window.addEventListener("beforeunload", this.showModal)
-  },
-  beforeDestroy() {
-    window.removeEventListener("beforeunload", this.showModal)
+
+  async fetch() {
+    await this.fetchArticlesFromStore()
   },
 
   mounted() {

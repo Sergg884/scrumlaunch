@@ -19,8 +19,8 @@
         alt="hero-planet"
       />
     </section>
-    <section class="cases" v-if="projects">
-      <div class="case" v-for="i in projects" :key="i.name" @click="navigateTo(i.url)">
+    <section v-if="projects" class="cases">
+      <div v-for="i in projects" :key="i.name" class="case" @click="navigateTo(i.url)">
         <img :src="require('~/assets/images/work' + i.url + '/preview.webp')" />
       </div>
     </section>

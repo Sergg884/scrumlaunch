@@ -11,10 +11,10 @@
           <InputComponent
             id="name"
             class="contact-form--wrapper--input"
-            :modelValue="name"
+            :model-value="name"
             placeholder="Enter your name here"
             name="name"
-            :errorMessage="nameError"
+            :error-message="nameError"
             @update:modelValue="handleFieldChange('name', $event)"
           />
           <img
@@ -37,10 +37,10 @@
         <InputComponent
           id="email"
           class="contact-form--wrapper--input input-email"
-          :modelValue="email"
+          :model-value="email"
           placeholder="Enter your email or phone number here"
           name="email"
-          :errorMessage="emailError"
+          :error-message="emailError"
           @update:modelValue="handleFieldChange('email', $event)"
         />
       </div>
@@ -54,10 +54,10 @@
         <InputComponent
           id="project"
           class="contact-form--wrapper--input input-project"
-          :modelValue="project"
+          :model-value="project"
           placeholder="Enter your project details here"
           name="project"
-          :errorMessage="projectError"
+          :error-message="projectError"
           @update:modelValue="handleFieldChange('project', $event)"
         />
       </div>
@@ -101,13 +101,6 @@ export default {
     lottie,
   },
 
-  mounted() {
-
-  if (this.$router.currentRoute.params.email) {
-    this.email = this.$router.currentRoute.params.email
-    } 
-  },
-
   data: () => ({
     name: '',
     nameError: null,
@@ -115,11 +108,18 @@ export default {
     emailError: null,
     project: '',
     projectError: null,
-
     is_blocked: false,
     is_sent: false,
     is_done: false,
   }),
+
+  mounted() {
+    console.log(105, this.$router.currentRoute.params.email);
+
+  if (this.$router.currentRoute.params.email) {
+    this.email = this.$router.currentRoute.params.email
+    } 
+  },
 
   methods: {
     handleFieldChange(name, value) {

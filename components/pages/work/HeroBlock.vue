@@ -10,7 +10,7 @@
         {{ text }}
       </p>
       <b-row no-gutters class="description">
-        <b-col cols="3" v-for="i in details" :key="i.title">
+        <b-col v-for="i in details" :key="i.title" cols="3">
           <p class="name">
             {{ i.title }}
           </p>

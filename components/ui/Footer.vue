@@ -2,7 +2,7 @@
   <footer>
     <b-row no-gutters>
       <b-col class="links" cols="6" order="2" order-md="1" md="3" xl="3">
-        <NuxtLink v-for="i in links" :to="i.href" :key="i.title">
+        <NuxtLink v-for="i in links" :key="i.title" :to="i.href">
           {{ i.title }}
         </NuxtLink>
       </b-col>

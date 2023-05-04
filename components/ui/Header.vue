@@ -22,14 +22,14 @@
         title="Blog"
         to="/blog"
         wide
-        :menuItems="getHeaderItems"
-        :isWhite='isHeaderWhite'
+        :menu-items="getHeaderItems"
+        :is-white='isHeaderWhite'
       />
       <HeaderDropdown 
         title="Hire Developers"
         to="/hire-developers"
-        :menuItems="developers"
-        :isWhite='isHeaderWhite'
+        :menu-items="developers"
+        :is-white='isHeaderWhite'
       />
       <NuxtLink to="/remote-developer-jobs">
         Job Openings
