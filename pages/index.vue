@@ -1,37 +1,27 @@
 <template>
   <div class="home">
     <Hero
-      heroImg="/"  
+      hero-img="/pages/home/hero/home-desk.jpg"
     >
-      <template v-slot:title>
+      <template #title>
         Tech talent that’s right for your <span class="mark">project</span> 
       </template>
-      <template v-slot:text>
+      <template #text>
         Every technology project is different and it’s just as important to find the right person as it is to find a talented person.
         ScrumLaunch’s talent hubs in Eastern Europe and Latin America combine global scale
       </template>
     </Hero>
 
     <OurSuperpowers />
-
     <TalentMap />
-
     <TechPartner />
-
     <Testimonials />
-
     <CaseStudies />
-
     <OurClients />
-
     <WeThrive />
-
     <Services />
-
     <Hiring />
-
     <Blog />
-
     <GetStarted />
   </div>
 </template>

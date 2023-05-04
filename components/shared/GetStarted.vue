@@ -22,10 +22,10 @@
                   Name*
                 </label>
                 <input
+                  id="name"
                   v-model="name"
                   placeholder="Enter your name"
                   type="text"
-                  id="name"
                 />
               </div>
               <div class="input">
@@ -33,10 +33,10 @@
                   Email*
                 </label>
                 <input
+                  id="email"
                   v-model="email"
                   placeholder="Enter your email"
                   type="email"
-                  id="email"
                 />
               </div>
               <div class="input">
@@ -44,10 +44,10 @@
                   Company*
                 </label>
                 <input
+                  id="company"
                   v-model="company"
                   placeholder="Enter company name"
                   type="text"
-                  id="company"
                 />
               </div>
             </div>
@@ -57,9 +57,9 @@
                   Any details you’d like to share?
                 </label>
                 <textarea 
+                  id="details"
                   v-model="details"
                   type="text"
-                  id="details"
                   placeholder="Enter your message"
                 />
               </div>
@@ -75,9 +75,9 @@
                   Company Size
                 </label>
                 <select
+                  id="company"
                   v-model="size"
                   type="text"
-                  id="company"
                 >
                 <option disabled value="">Select company size</option>
                 <option v-for="option in companySizeOptions" :value="option.value">
@@ -90,10 +90,9 @@
                   Total Project Budget
                 </label>
                 <select
-                  v-model="budget"
-
-                  type="text"
                   id="company"
+                  v-model="budget"
+                  type="text"
                   placeholder="Select project budget"
                 >
                   <option disabled value="">Select project budget</option>
@@ -151,8 +150,7 @@ export default {
   methods: {
     async submitForm() {
       try {
-        const response = await axios.post('/api/contact-us', this.name);
-        console.log(response);
+        await axios.post('/api/contact-us', this.name);
       } catch (error) {
         console.error(error);
       }
@@ -230,6 +228,7 @@ section {
     h4 {
       font-weight: 700;
       font-size: 18px;
+      line-height: 1.4em;
       color: #fff;
       margin-bottom: 32px;
 
