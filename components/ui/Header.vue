@@ -6,33 +6,23 @@
       />
     </NuxtLink>
     <div class="menu" :class="{'white': isHeaderWhite}">
-      <NuxtLink to="/work">
-        Work
-      </NuxtLink>
       <NuxtLink to="/services">
         Services
       </NuxtLink>
-      <NuxtLink to="/process">
-        Process
+      <NuxtLink to="/work">
+        Case Studies
       </NuxtLink>
-      <NuxtLink to="/leadership">
-        Leadership
-      </NuxtLink>
-      <HeaderDropdown 
-        title="Blog"
-        to="/blog"
-        wide
-        :menu-items="getHeaderItems"
-        :is-white='isHeaderWhite'
-      />
-      <HeaderDropdown 
+      <HeaderDropdown
         title="Hire Developers"
         to="/hire-developers"
         :menu-items="developers"
         :is-white='isHeaderWhite'
       />
+      <NuxtLink to="/process">
+        About
+      </NuxtLink>
       <NuxtLink to="/remote-developer-jobs">
-        Job Openings
+        Careers
       </NuxtLink>
       <NuxtLink to="/contact-us">
         Contact

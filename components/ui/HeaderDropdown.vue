@@ -4,11 +4,11 @@
       {{ title }}
     </nuxt-link>
     <transition name="dropdown">
-      <div :class="wide ? 'header-dropdown-menu--wide' : 'header-dropdown-menu'" v-if="dropdownVisible" no-gutters>
+      <div v-if="dropdownVisible" :class="wide ? 'header-dropdown-menu--wide' : 'header-dropdown-menu'" no-gutters>
         <div
-          class="header-dropdown-item"
           v-for="item in menuItems"
           :key="item.title"
+          class="header-dropdown-item"
           @click="selectItem(item.path)"
         >
           {{ item.title }}
