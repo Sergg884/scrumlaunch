@@ -27,10 +27,6 @@ export default {
           text: 'Staff augmentation',
           img: '/pages/home/services/tab-2.jpg'
         },
-        {
-          text: 'Dedicated teams',
-          img: '/pages/home/services/tab-3.jpg'
-        },
       ]
     }
   },
