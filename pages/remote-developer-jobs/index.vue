@@ -126,7 +126,6 @@ export default {
   .hero {
     width: 100%;
     background-color: $main-black;
-    margin-top: -106px;
 
     section {
       margin: auto;

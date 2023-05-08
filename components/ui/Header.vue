@@ -66,8 +66,6 @@ export default {
         '/work/helmm',
         '/work/fgn',
         '/work/comunity-founded',
-        '/contact-us',
-        '/remote-developer-jobs',
         '/send-cv'
       ],
       
