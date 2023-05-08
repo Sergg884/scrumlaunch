@@ -186,7 +186,7 @@ export default {
   computed: {
     ...mapGetters('articles/', ['getHeaderItems']),
     isHeaderWhite() {
-      if (this.whiteHeaderPaths.includes(this.$route.path)) {
+      if (this.whiteHeaderPaths.includes(this.$route.path.toLocaleLowerCase())) {
         return true
       }
       return false

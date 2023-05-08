@@ -118,7 +118,7 @@ export default {
           setTimeout(() => {
             this.is_sent = false
             this.is_done = false
-            this.$router.push({name: 'Contact-us', params: { email: this.email }});
+            this.$router.push({name: 'contact-us', params: { email: this.email }});
             this.name = ''
             this.email = ''
             this.project = ''
