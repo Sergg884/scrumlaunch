@@ -158,6 +158,7 @@ export default {
 
   &__dropdown_item {
     padding: 8px 0;
+    list-style: none;
     font-style: normal;
     font-weight: 600;
     font-size: 18px;

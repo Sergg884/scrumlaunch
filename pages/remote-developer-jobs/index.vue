@@ -18,10 +18,10 @@
         <div class="wrap">
           <div class="label">Skill</div>
           <CustomSelect
-            :modelValue="skill"
+            :model-value="skill"
             class="filter"
             label="Select skill"
-            emptyValueText="Select All"
+            empty-value-text="Select All"
             :items="this['vacancies/getAllSkills']"
             @update:modelValue="handleFieldChange('skill', $event)"
           />
@@ -29,10 +29,10 @@
         <div class="wrap">
           <div class="label">Location</div>
           <CustomSelect
-            :modelValue="location"
+            :model-value="location"
             class="filter"
             label="Select location"
-            emptyValueText="Select All"
+            empty-value-text="Select All"
             :items="this['vacancies/getAllLocations']"
             @update:modelValue="handleFieldChange('location', $event)"
           />
@@ -40,9 +40,9 @@
       </div>
       <div class="vacancies">
         <div
-          class="vacancy"
           v-for="(vacancy, i) in vacancies"
           :key="i"
+          class="vacancy"
         >
             <div class="name">
               <NuxtLink :to="vacancy.slug">{{ vacancy.name }}</NuxtLink>
@@ -72,18 +72,18 @@ import { mapGetters } from 'vuex'
 import vacancies from '@/seo/vacancies.json'
 
 export default {
-    head: {
-        title: "Careers at Scrumlaunch",
-        meta: [
-            { hid: "description", name: "description", content: "Grow your career with Scrumlaunch company! U.S Software Engineer Jobs. Work Remotely. No Visa needed. Full time jobs. High salary. Great Companies. Higher Pay. Great team culture. Work Remotely. Interesting Projects." }
-        ],
-    },
     data() {
       return {
         skill: "",
         location: "",
         vacancies: [],
       };
+    },
+    head: {
+        title: "Careers at Scrumlaunch",
+        meta: [
+            { hid: "description", name: "description", content: "Grow your career with Scrumlaunch company! U.S Software Engineer Jobs. Work Remotely. No Visa needed. Full time jobs. High salary. Great Companies. Higher Pay. Great team culture. Work Remotely. Interesting Projects." }
+        ],
     },
     head() {
       return {
