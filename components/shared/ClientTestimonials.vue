@@ -77,7 +77,7 @@ export default {
         clutch: 'https://clutch.co/profile/scrumlaunch#review-2038753',
       },
       {
-        image: '/shared/testimonials/ryan_miller.jpg',
+        image: '/shared/testimonials/ryan_miller.webp',
         withIcon: false,
         feedback: '“The partnership with ScrumLaunch has sped up the product launch of the company\'s product.”',
         name: 'Ryan Miller',

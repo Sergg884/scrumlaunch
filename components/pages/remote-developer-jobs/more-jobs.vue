@@ -54,9 +54,8 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import vacancies from '@/seo/vacancies.json'
 import VueSlickCarousel from 'vue-slick-carousel'
+import vacancies from '@/seo/vacancies.json'
 
 export default {
 
