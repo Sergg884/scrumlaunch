@@ -4,7 +4,7 @@
       Our superpowers
     </h2>
     <b-row class="justify-content-center" no-gutters>
-      <b-col class="tab" cols="12" md="6" lg="4" v-for="(tab, index) in tabs" :key="index">
+      <b-col v-for="(tab, index) in tabs" :key="index" class="tab" cols="12" md="6" lg="4">
         <nuxt-img :src="tab.img" :alt="'tab-' + index + 1"/>
         <p>{{ tab.text }}</p>
       </b-col>
@@ -54,6 +54,7 @@ section {
 
 h2 {
   margin-bottom: 80px;
+  text-align: center;
 }
 .tab {
   border: 1px solid $main-black;
