@@ -4,7 +4,7 @@
       Your long term tech partner
     </h2>
     <div class="tabs">
-      <div class="tab" v-for="tab in tabs" :key="tab.title">
+      <div v-for="tab in tabs" :key="tab.title" class="tab">
         <p class="title">
           {{  tab.title }}
         </p>
@@ -53,6 +53,7 @@ export default {
 section {
   .title-global {
     margin-bottom: 40px;
+    text-align: center;
 
     @include tablet-and-up {
       margin-bottom: 60px;
