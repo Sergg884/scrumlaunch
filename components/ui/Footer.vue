@@ -170,7 +170,7 @@ footer {
     a {
       font-weight: 700;
       font-size: 24px;
-      color: #FF0000;
+      color: #1E1F21;
     }
   }
   .locations {

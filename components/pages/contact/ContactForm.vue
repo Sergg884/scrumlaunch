@@ -114,8 +114,6 @@ export default {
   }),
 
   mounted() {
-    console.log(105, this.$router.currentRoute.params.email);
-
   if (this.$router.currentRoute.params.email) {
     this.email = this.$router.currentRoute.params.email
     } 
