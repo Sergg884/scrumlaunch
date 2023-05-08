@@ -55,15 +55,6 @@
             {{ vacancy.employmentType }}
           </div>
         </div>
-        <div class="tab">
-          <div class="header">
-            <nuxt-img class="icon" src="/services/icon-4.svg" alt="tab-icon-4" />
-            <h4>Base Salary</h4>
-          </div>
-          <div class="text">
-            {{ vacancy.baseSalary }}
-          </div>
-        </div>
       </div>  
       <BaseButton to="/send-cv">
         Apply now
