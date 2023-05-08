@@ -1,5 +1,5 @@
 <template>
-  <section >
+  <section>
     <div class="case-study">
       <h4>
         Case studies

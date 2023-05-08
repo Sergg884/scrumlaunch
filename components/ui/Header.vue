@@ -66,7 +66,6 @@ export default {
         '/work/helmm',
         '/work/fgn',
         '/work/comunity-founded',
-        '/send-cv'
       ],
       
       developers: [

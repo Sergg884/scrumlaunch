@@ -38,10 +38,10 @@
           <InputComponent
             id="name"
             class="contact-form--wrapper--input"
-            :modelValue="name"
+            :model-value="name"
             placeholder="Enter your email or phone number here"
             name="name"
-            :errorMessage="nameError"
+            :error-message="nameError"
             @update:modelValue="handleFieldChange('name', $event)"
           />
         </div>
@@ -50,10 +50,10 @@
             English level
           </label>
           <CustomSelect
-            :modelValue="englishLevel"
+            :model-value="englishLevel"
             class="filter"
             label="Select skill"
-            emptyValueText="Select your English level"
+            empty-value-text="Select your English level"
             :items="englishSelect"
             @update:modelValue="handleFieldChange('skill', $event)"
           />
@@ -64,7 +64,7 @@
           </label>
           <FileInput
             placeholder="Upload your CV"
-            :errorMessage="fileError"
+            :error-message="fileError"
             :value="file.name"
             @file-updated="captureFile($event)"
           />
@@ -184,8 +184,6 @@ export default {
   width: 100%;
   background-color: $main-black;
   display: inline-block;
-  margin-top: -106px;
-  padding-top: 106px;
 
   section {
     display: flex;
