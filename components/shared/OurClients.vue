@@ -6,7 +6,7 @@
       </h2>
     </div>
     <div class="clients">
-      <div class="client" v-for="(client, index) in clients" :key="client.alt" v-show="isVisible(index)">
+      <div v-for="(client, index) in clients" v-show="isVisible(index)" :key="client.alt" class="client">
         <nuxt-img :src="client.img" :alt="client.alt" />
       </div>
     </div>
@@ -104,6 +104,12 @@ export default {
       return this.startIndex + (this.screenWidth >= 1440 ? 8 : 6);
     },
   },
+  mounted() {
+    window.addEventListener("resize", this.handleResize);
+  },
+  beforeDestroy() {
+    window.removeEventListener("resize", this.handleResize);
+  },
   methods: {
     isVisible(index) {
       return index >= this.startIndex && index < this.endIndex;
@@ -120,12 +126,6 @@ export default {
       this.startIndex = 0;
       this.$forceUpdate();
     },
-  },
-  mounted() {
-    window.addEventListener("resize", this.handleResize);
-  },
-  beforeDestroy() {
-    window.removeEventListener("resize", this.handleResize);
   },
 }
 
@@ -215,6 +215,7 @@ section {
       width: 61px;
       height: 30px;
       background-size: contain;
+      background-repeat: no-repeat;
       background-image: url(/shared/arrow_not_filled.svg);
       cursor: pointer;
       z-index: 100;

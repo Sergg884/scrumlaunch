@@ -39,10 +39,6 @@
       </div>
     </div>
     </div>
-    <!-- <div class="navigation">
-      <div v-for="i in companies.length" :class="i - 1 === current ? 'active' : 'dot'" @click="setCurrent(i - 1)">
-      </div>
-    </div> -->
   </section>
 </template>
 

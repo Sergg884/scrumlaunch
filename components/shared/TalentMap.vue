@@ -8,7 +8,7 @@
         </div>
         <div class="separator" />
         <b-row class="locations" no-gutters>
-          <b-col class="location" v-for="(location, index) in locations" :key="index">
+          <b-col v-for="(location, index) in locations" :key="index" class="location">
             <img
               :src="require('@/assets/icons/marker.svg')"
               alt="mark"
