@@ -41,7 +41,7 @@
                   Closed
                 </div>
               </div>
-              <div class="navigation-btn" @click="navigateTo(vacancy.slug)" />
+              <NuxtLink class="navigation-btn" :to="vacancy.slug"></NuxtLink>
             </div>
           </div>
         </div>
@@ -55,7 +55,6 @@
 
 <script>
 import VueSlickCarousel from 'vue-slick-carousel'
-import vacancies from '@/seo/vacancies.json'
 
 export default {
 
