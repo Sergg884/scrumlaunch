@@ -190,6 +190,7 @@ export default {
         }
 
         .navigation-btn { 
+          display: block;
           background-size: contain;
           width: 50px;
           height: 24px;
