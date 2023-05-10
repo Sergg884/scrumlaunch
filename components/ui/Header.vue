@@ -12,6 +12,9 @@
       <NuxtLink to="/work">
         Case Studies
       </NuxtLink>
+      <NuxtLink to="/blog">
+        Blog
+      </NuxtLink>
       <HeaderDropdown
         title="Hire Developers"
         to="/hire-developers"

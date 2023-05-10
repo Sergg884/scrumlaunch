@@ -1,18 +1,18 @@
 <template>
   <div class="hire-developers">
     <Hero
-      :heroImg="`/shared/hero/${dev_lang}-hero.webp`"  
+      :hero-img="`/shared/hero/${dev_lang}-hero.webp`"  
     >
-      <template v-slot:title>
+      <template #title>
         Hire <span class="mark">{{ dev_lang }} developer</span> 
       </template>
-      <template v-slot:text>
+      <template #text>
         Every technology project is different and it’s just as important to find the right person as it is to find a talented person.
         ScrumLaunch’s talent hubs in Eastern Europe and Latin America combine global scale
       </template>
     </Hero>
 
-    <TalentMap isWhite />
+    <TalentMap is-white />
 
     <OurClients />
 
