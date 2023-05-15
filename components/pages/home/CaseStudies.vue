@@ -160,7 +160,7 @@ section {
 
   @include desktop-and-up {
     max-width: 1320px;
-    margin-left: 10%;
+    margin: auto;
   }
 }
 

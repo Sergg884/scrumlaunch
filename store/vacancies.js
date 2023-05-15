@@ -92,15 +92,15 @@ export const getters = {
     return state.vacancies
       .filter((item) => {
         if (skill && !location) {
-          return item.name === skill
+          return item.name.includes(skill)
         }
 
         if (!skill && location) {
-          return item.jobLocation === location
+          return item.jobLocation.includes(location)
         }
 
         if (skill && location) {
-          return item.name === skill && item.jobLocation === location
+          return item.name.includes(skill) && item.jobLocation.includes(location)
         }
 
         return item.open

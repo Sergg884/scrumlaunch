@@ -67,9 +67,20 @@ export default {
 
   mounted() {
     this.setSelectItems()
+    document.addEventListener('click', this.close)
+  },
+
+  beforeDestroy () {
+    document.removeEventListener('click',this.close)
   },
 
   methods: {
+    close (e) {
+      if (!this.$el.contains(e.target)) {
+        this.dropdown = false
+      }
+    },
+
     setSelectItems() {
       this.selectItems = this.items.map((item) => {
         return { text: item, value: item }

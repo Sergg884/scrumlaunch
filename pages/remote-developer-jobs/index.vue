@@ -80,30 +80,26 @@ export default {
       };
     },
     head: {
-        title: "Careers at Scrumlaunch",
-        meta: [
-            { hid: "description", name: "description", content: "Grow your career with Scrumlaunch company! U.S Software Engineer Jobs. Work Remotely. No Visa needed. Full time jobs. High salary. Great Companies. Higher Pay. Great team culture. Work Remotely. Interesting Projects." }
-        ],
-    },
-    head() {
-      return {
-        script: [
-          {
-            type: "application/ld+json",
-            json: vacancies,
-          },
-        ],
-      };
+      title: "Careers at Scrumlaunch",
+      meta: [
+        { hid: "description", name: "description", content: "Grow your career with Scrumlaunch company! U.S Software Engineer Jobs. Work Remotely. No Visa needed. Full time jobs. High salary. Great Companies. Higher Pay. Great team culture. Work Remotely. Interesting Projects." }
+      ],
+      script: [
+        {
+          type: "application/ld+json",
+          json: vacancies,
+        },
+      ],
     },
     computed: {
       ...mapGetters(["vacancies/getAllSkills", "vacancies/getAllLocations"]),
     },
     watch: {
       skill() {
-          this.vacancies = this.getVacancies();
+        this.vacancies = this.getVacancies();
       },
       location() {
-          this.vacancies = this.getVacancies();
+        this.vacancies = this.getVacancies();
       },
     },
     mounted() {
@@ -111,10 +107,10 @@ export default {
     },
     methods: {
       handleFieldChange(name, value) {
-          this[name] = value;
+        this[name] = value;
       },
       getVacancies() {
-          return this.$store.getters["vacancies/getVacancies"](this.skill, this.location);
+        return this.$store.getters["vacancies/getVacancies"](this.skill, this.location);
       },
     }
 }
