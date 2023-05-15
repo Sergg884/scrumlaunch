@@ -74,33 +74,31 @@
                 <label for="company">
                   Company Size
                 </label>
-                <select
+                <CustomSelect
                   id="company"
-                  v-model="size"
+                  class="form-select"
+                  :model-value="size"
+                  label="Select company size"
+                  empty-value-text="Select company size"
                   type="text"
-                >
-                <option disabled value="">Select company size</option>
-                <option v-for="option in companySizeOptions" :value="option.value">
-                  {{ option.text }}
-                </option>
-                </select>
+                  :items="companySizeOptions"
+                  @update:modelValue="handleFieldChange('size', $event)"
+                />
               </div>
               <div class="input">
                 <label for="company">
                   Total Project Budget
                 </label>
-                <select
+                <CustomSelect
                   id="company"
-                  v-model="budget"
+                  class="form-select"
+                  :model-value="budget"
+                  label="Select project budget"
+                  empty-value-text="Select project budget"
                   type="text"
-                  placeholder="Select project budget"
-                >
-                  <option disabled value="">Select project budget</option>
-                  <option v-for="option in projectBudgetOptions" :value="option.value">
-                    {{ option.text }}
-                  </option>
-
-                </select>
+                  :items="projectBudgetOptions"
+                  @update:modelValue="handleFieldChange('budget', $event)"
+                />
               </div>
             </div>
           </div>
@@ -130,20 +128,14 @@ export default {
       size: '',
       budget: '',
 
-      companySizeOptions: [
-        { text: '1-50', value: '1-50' },
-        { text: '50-200', value: '50-200' },
-        { text: '200-1000', value: '200-1000' },
-        { text: '1000-5000+', value: '1000-5000+' },
-        { text: '10,000+', value: '10,000+' },
-      ],
+      companySizeOptions: ['1-50', '50-200', '200-1000', '1000-5000+', '10,000+'],
       projectBudgetOptions: [
-        { text: 'Less than $10,000', value: 'Less than $10,000' },
-        { text: '$10,000 to $49,999', value: '$10,000 to $49,999' },
-        { text: '$50,000 to $199,999', value: '$50,000 to $199,999' },
-        { text: '$200,000 to $999,999', value: '$200,000 to $999,999' },
-        { text: '$1,000,000 to $9,999,999', value: '$1,000,000 to $9,999,999' },
-        { text: '$10,000,000 +', value: '$10,000,000 +' },
+        'Less than $10,000',
+        '$10,000 to $49,999',
+        '$50,000 to $199,999',
+        '$200,000 to $999,999',
+        '$1,000,000 to $9,999,999',
+        '$10,000,000 +'
       ]
     };
   },
@@ -154,6 +146,10 @@ export default {
       } catch (error) {
         console.error(error);
       }
+    },
+
+    handleFieldChange(name, value) {
+      this[name] = value
     },
 
     sendForm() {
@@ -291,12 +287,24 @@ section {
             font-size: 14px;
 
             &::placeholder {
-              color: $main-black;
+                color: $main-black;
             }
 
             @include tablet-and-up {
               font-size: 16px;
             }
+          }
+          .form-select {
+            padding: 0 14px;
+            background-color: #fff;
+            border: 1px solid $main-black;
+            :deep(div) {
+              font-size: 16px;
+              border-bottom: 0;
+            }
+            :deep(.select__dropdown) {
+              border-bottom: 1px solid $main-black;
+            }            
           }
         }
 
