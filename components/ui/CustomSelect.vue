@@ -136,13 +136,13 @@ export default {
       display: block;
       width: 24px;
       height: 24px;
-      background: url(/images/select_arrow.svg) 0 0 no-repeat;
-      transform: rotate(180deg);
+      background: url(/icons/chevron.svg) center no-repeat;
+      transform: rotate(0deg);
     }
 
     &.reverse {
       &:before {
-        transform: rotate(0deg);
+        transform: rotate(180deg);
       }
     }
   }

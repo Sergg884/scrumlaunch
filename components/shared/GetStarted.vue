@@ -270,6 +270,7 @@ section {
           display: flex;
           flex-direction: column;
           margin-bottom: 16px;
+          font-size: 18px;
 
           @include desktop-and-up {
             margin-bottom: 32px;
@@ -303,8 +304,22 @@ section {
               border-bottom: 0;
             }
             :deep(.select__dropdown) {
+              top: 40px;
+              left: -1px;
+              width: calc(100% + 2px);
               border-bottom: 1px solid $main-black;
-            }            
+            }
+            :deep(.select__dropdown_inner) {
+              padding: 0px;
+              margin: 0;
+            }
+            :deep(.select__dropdown_item) {
+              padding-left: 20px;
+              &:hover {
+                background-color: $main-green;
+                color: $main-black;
+              }
+            }
           }
         }
 
