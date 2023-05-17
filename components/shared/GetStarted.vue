@@ -17,42 +17,57 @@
           </h3>
           <div class="main-inputs">
             <div class="single-inputs">
-              <div class="input">
+              <div class="input-wrapper">
                 <label for="name">
                   Name*
                 </label>
-                <input
-                  id="name"
-                  v-model="name"
-                  placeholder="Enter your name"
-                  type="text"
-                />
+                <div class="input" :class="{'input-error': is_error_name }">
+                  <input
+                    id="name"
+                    v-model="name"
+                    placeholder="Enter your name"
+                    type="text"
+                  />
+                  <div class="error">
+                    <div class="error-popup">Please enter your name</div>
+                  </div>
+                </div>
               </div>
-              <div class="input">
+              <div class="input-wrapper">
                 <label for="email">
                   Email*
                 </label>
-                <input
-                  id="email"
-                  v-model="email"
-                  placeholder="Enter your email"
-                  type="email"
-                />
+                <div class="input" :class="{'input-error': is_error_email }">
+                  <input
+                    id="email"
+                    v-model="email"
+                    placeholder="Enter your email"
+                    type="email"
+                  />
+                  <div class="error">
+                    <div class="error-popup">Please enter valid email</div>
+                  </div>
+                </div>
               </div>
-              <div class="input">
+              <div class="input-wrapper">
                 <label for="company">
                   Company*
                 </label>
-                <input
-                  id="company"
-                  v-model="company"
-                  placeholder="Enter company name"
-                  type="text"
-                />
+                <div class="input" :class="{'input-error': is_error_company_name }">
+                  <input
+                    id="company"
+                    v-model="company"
+                    placeholder="Enter company name"
+                    type="text"
+                  />
+                  <div class="error">
+                    <div class="error-popup">Please enter your company name</div>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="text-areas">
-              <div class="input">
+              <div class="input-wrapper">
                 <label for="details">
                   Any details you’d like to share?
                 </label>
@@ -70,7 +85,7 @@
               Additional Information
             </h3>
             <div class="selects">
-              <div class="input">
+              <div class="input-wrapper">
                 <label for="company">
                   Company Size
                 </label>
@@ -85,7 +100,7 @@
                   @update:modelValue="handleFieldChange('size', $event)"
                 />
               </div>
-              <div class="input">
+              <div class="input-wrapper">
                 <label for="company">
                   Total Project Budget
                 </label>
@@ -120,6 +135,9 @@ export default {
       is_blocked: false,
       is_sent: false,
       is_done: false,
+      is_error_name: false,
+      is_error_email: false,
+      is_error_company_name: false,
 
       name: '',
       email: '',
@@ -155,6 +173,11 @@ export default {
     sendForm() {
       this.is_sent = true
       this.is_blocked = true
+      // eslint-disable-next-line prefer-regex-literals
+      const emailRegEx = new RegExp(
+        '^(([^<>()[\\]\\.,;:\\s@\\"]+(\\.[^<>()[\\]\\.,;:\\s@\\"]+)*)|(\\".+\\"))@(([^<>()[\\]\\.,;:\\s@\\"]+\\.)+[^<>()[\\]\\.,;:\\s@\\"]{2,})$',
+        'i'
+      )
 
       const data = {
         name: this.name,
@@ -165,6 +188,19 @@ export default {
         budget: this.budget,
       }
 
+      if (this.name.length <= 0) {
+        this.is_error_name = true
+        return
+      }
+      if (!emailRegEx.test(this.email.trim())) {
+        this.is_error_email = true
+        return
+      }
+      if (this.company.length <= 0) {
+        this.is_error_company_name = true
+        return
+      }
+
       this.$axios.$post('/api/company-contact', data).then(() => {
         this.name = ''
         this.email = ''
@@ -172,6 +208,10 @@ export default {
         this.details = ''
         this.size = ''
         this.budget = ''
+
+        this.is_error_email = false
+        this.is_error_name = false
+        this.is_error_company_name = false
 
         this.is_blocked = false
         this.is_done = true
@@ -266,8 +306,9 @@ section {
           padding: 32px;
         }
 
-        .input {
+        .input-wrapper {
           display: flex;
+          position: relative;
           flex-direction: column;
           margin-bottom: 16px;
           font-size: 18px;
@@ -282,10 +323,25 @@ section {
             text-transform: uppercase;
           }
 
+          .input {
+            position: relative;
+          }
+
+          .input-error {
+            input {
+              border: 1px solid #FF0000;
+            }
+
+            .error {
+              display: block;
+            }
+          }
+
           input,textarea,select {
             border: 1px solid $main-black;
             padding: 8px 14px;
             font-size: 14px;
+            width: 100%;
 
             &::placeholder {
                 color: $main-black;
@@ -295,6 +351,61 @@ section {
               font-size: 16px;
             }
           }
+
+          .error {
+            display: none;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 18px;
+            height: 18px;
+            margin: 12px;
+            background: url(/icons/alert.svg) center no-repeat;
+            cursor: pointer;
+            font-size: 16px;
+            line-height: 150%;
+
+            &:hover .error-popup {
+              display: block;
+            }
+          }
+
+          .error-popup {
+            display: none;
+            width: 190px;
+            padding: 10px;
+            position: absolute;
+            border: 1px solid #D6D9DE ;
+            background-color: #F1F2F4;
+            top: 40px;
+            left: -85px;
+            z-index: 1;
+
+            &:after, &:before{
+              content:'';
+              display:block;
+              width:0;
+              height:0;
+              position:absolute;
+              top: -8px;
+              left: 85px;
+              z-index: 1;
+              border-bottom: 8px solid #F1F2F4;
+              border-right:8px solid transparent;
+              border-left:8px solid transparent;
+
+            }
+
+            &:after {
+              left: 83px;
+              top: -10px;
+              z-index: 0;
+              border-bottom: 10px solid #D6D9DE;
+              border-right: 10px solid transparent;
+              border-left: 10px solid transparent;
+            }
+          }
+
           .form-select {
             padding: 0 14px;
             background-color: #fff;
@@ -366,7 +477,7 @@ section {
               margin-bottom: 32px;
             }
 
-            .input {
+            .input-wrapper {
               height: 100%;
 
               textarea {
@@ -391,7 +502,7 @@ section {
               gap: 20px;
             }
 
-            .input {
+            .input-wrapper {
               @include tablet-and-up {
                 flex-grow: 1;
                 flex-basis: 0;
