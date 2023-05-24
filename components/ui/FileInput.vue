@@ -98,7 +98,7 @@ input[type='file'] {
       display: block;
       width: 24px;
       height: 24px;
-      background: url(/images/clip.svg) 0 0 no-repeat;
+      background: url(/icons/clip.svg) 0 0 no-repeat;
       transform: rotate(180deg);
     }
   }

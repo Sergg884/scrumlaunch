@@ -16,7 +16,8 @@
         </div>
         <nuxt-img src="/shared/cv-white.svg" alt="cv-white" />
       </div>
-      <form action="">
+
+      <form @submit.prevent="validateForm()">
         <div class="wrap">
           <label> 
             Name
@@ -36,13 +37,13 @@
             Contact
           </label>
           <InputComponent
-            id="name"
+            id="email"
             class="contact-form--wrapper--input"
-            :model-value="name"
+            :model-value="email"
             placeholder="Enter your email or phone number here"
-            name="name"
-            :error-message="nameError"
-            @update:modelValue="handleFieldChange('name', $event)"
+            name="email"
+            :error-message="emailError"
+            @update:modelValue="handleFieldChange('email', $event)"
           />
         </div>
         <div class="wrap">
@@ -51,11 +52,12 @@
           </label>
           <CustomSelect
             :model-value="englishLevel"
+            :error-message="englishLevelError"
             class="filter"
             label="Select skill"
             empty-value-text="Select your English level"
             :items="englishSelect"
-            @update:modelValue="handleFieldChange('skill', $event)"
+            @update:modelValue="handleFieldChange('englishLevel', $event)"
           />
         </div>
         <div class="wrap">
@@ -68,10 +70,31 @@
             :value="file.name"
             @file-updated="captureFile($event)"
           />
+          <p class="help_text">Accept only .pdf</p>
         </div>
         <BaseButton wide>
           Send cv
         </BaseButton>
+
+        <div
+          v-show="is_sent"
+          :class="{ blocked: is_blocked }"
+          class="contact-form__frame_2"
+        >
+          <lottie
+            v-show="is_done"
+            class="contact-form__frame_2__image"
+            name="reliabilityDesktopAnim"
+            loop
+            renderer="svg"
+            :options="{
+              animationData: require('../assets/animation/rocket_launch.json'),
+            }"
+          />
+          <div v-show="is_done" class="header-1">
+            Your message<br />has been sent
+          </div>
+        </div>
       </form>
     </section>
   </div>
@@ -116,30 +139,58 @@ export default {
       this.is_sent = true
       this.is_blocked = true
 
-      const data = {
-        name: this.name,
-        email: this.email,
-        english: this.englishLevel,
-        cv: resp.url,
+      const reader = new FileReader()
+      reader.readAsDataURL(this.file)
+
+      reader.onload = () => {
+        fetch(
+          'https://script.google.com/macros/s/AKfycbxmI7N5aQ3PcX_VHoGsNN5xJhsXY_NH5HVivuGd2W6N_Y2YRVhAhNP7vqhPKT-DPjHw8A/exec',
+          {
+            method: 'POST',
+            body: JSON.stringify({
+              fname: 'uploadFilesToGoogleDrive',
+              dataReq: {
+                data: reader.result.split(',')[1],
+                name: this.file.name,
+                type: this.file.type,
+              },
+            }),
+          }
+        )
+          .then((res) => res.json())
+          .then((resp) => {
+            const data = {
+              name: this.name,
+              email: this.email,
+              english: this.englishLevel,
+              cv_attachment: resp.url,
+            }
+
+            this.$axios.$post('/api/send-cv', data).then(() => {
+              this.name = ''
+              this.email = ''
+              this.englishLevel = ''
+              this.file = ''
+
+              this.is_blocked = false
+              this.is_done = true
+
+              this.track()
+
+              setTimeout(() => {
+                this.is_sent = false
+                this.is_done = false
+              }, 5000)
+            })
+            .catch(() => {
+              this.is_sent = false
+              this.is_blocked = false
+            })
+          })
+          .catch((error) => {
+            console.error(error)
+          })
       }
-
-      this.$axios.$post('/api/send-cv', data).then(() => {
-        this.name = ''
-        this.email = ''
-        this.project = ''
-        this.englishLevel = ''
-        this.file = ''
-
-        this.is_blocked = false
-        this.is_done = true
-
-        this.track()
-
-        setTimeout(() => {
-          this.is_sent = false
-          this.is_done = false
-        }, 5000)
-      })
     },
 
     validateForm() {
@@ -150,7 +201,7 @@ export default {
       )
 
       this.nameError = this.name === '' ? 'Please, add your name here' : null
-      this.emailError = !emailRegEx.test(this.email)
+      this.emailError = !emailRegEx.test(this.email.trim())
         ? 'Please, enter your correct email'
         : null
       this.englishLevelError =
@@ -249,6 +300,7 @@ export default {
     }
 
     form {
+      position: relative;
       background-color: #fff;
       padding: 40px 20px;
 
@@ -296,7 +348,46 @@ export default {
     }
   }
 
-  
+  .header-1 {
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 140%;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .help_text {
+    margin-top: 5px;
+    font-size: 12px;
+  }
+
+  .contact-form {
+    &__frame_2 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 1);
+      text-align: center;
+      z-index: 2;
+      transition: background-color 0.2s;
+
+      &.blocked {
+        background-color: rgba(255, 255, 255, 0.8);
+      }
+
+      &__image {
+        width: 290px !important;
+        height: 290px !important;
+      }
+    }
+  }
 }
 
 </style>
