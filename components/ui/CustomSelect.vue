@@ -20,6 +20,9 @@
         </li>
       </ul>
     </div>
+    <p v-show="errorMessage" class="input-error">
+      {{ errorMessage }}
+    </p>
   </div>
 </template>
 
@@ -54,6 +57,10 @@ export default {
     itemValue: {
       type: String,
       default: 'value',
+    },
+    errorMessage: {
+      type: String,
+      default: '',
     },
   },
 
@@ -105,6 +112,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.input-error {
+  margin-top: 5px;
+  color: #ff0000;
+}
 .select {
   & * {
     box-sizing: border-box;
