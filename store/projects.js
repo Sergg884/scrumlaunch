@@ -48,6 +48,22 @@ export const state = () => ({
       name: 'Vesta Home',
       tags: ['Design', 'Frontend', 'Backend', 'QA', 'Support'],
     },
+    {
+      url: '/harvest',
+      type: 'Web & Mobile Application',
+      id: 7,
+      year: '2021',
+      name: 'Harvest',
+      tags: ['UX/UI Design', 'Development'],
+    },
+    {
+      url: '/gipper',
+      type: 'Web & Mobile Application',
+      id: 8,
+      year: '2016',
+      name: 'Gipper',
+      tags: ['UX/UI Design', 'Development'],
+    },
   ],
 })
 

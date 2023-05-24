@@ -3,13 +3,12 @@
     <section class="hero-section">
       <div class="hero">
         <AppearFromMask>
-          <h1 class="title-big">
-            We design a lot of things
-          </h1>
+          <h1 class="title-big">We design a lot of things</h1>
         </AppearFromMask>
         <AppearFromMask>
           <p class="text-main">
-            We master digital production and development. What we also master is the fine art of listening. Truly listening. 
+            We master digital production and development. What we also master is
+            the fine art of listening. Truly listening.
           </p>
         </AppearFromMask>
       </div>
@@ -20,7 +19,12 @@
       />
     </section>
     <section v-if="projects" class="cases">
-      <div v-for="i in projects" :key="i.name" class="case" @click="navigateTo(i.url)">
+      <div
+        v-for="i in projects"
+        :key="i.name"
+        class="case"
+        @click="navigateTo(i.url)"
+      >
         <img :src="require('~/assets/images/work' + i.url + '/preview.webp')" />
       </div>
     </section>
@@ -31,33 +35,34 @@
 import { mapGetters } from 'vuex'
 
 export default {
-
   head: {
     title: 'Case Studies and Success Stories - ScrumLaunch',
     meta: [
-      { hid: 'description', name: 'description', content: 'Our work & client business outcomes speak for themselves. Join 100+ high growth startups and Fortune 500 companies that are building software teams with ScrumLaunch.' }
+      {
+        hid: 'description',
+        name: 'description',
+        content:
+          'Our work & client business outcomes speak for themselves. Join 100+ high growth startups and Fortune 500 companies that are building software teams with ScrumLaunch.',
+      },
     ],
   },
 
   computed: {
     ...mapGetters({
-      projects: 'projects/getAllProjects'
+      projects: 'projects/getAllProjects',
     }),
   },
 
   methods: {
     navigateTo(url) {
-      this.$router.push('work' + url);
+      this.$router.push('work' + url)
     },
-  }
+  },
 }
-
 </script>
 
 <style lang="scss" scoped>
-
 .case-studies {
-
   .hero-section {
     display: flex;
     align-items: center;
@@ -93,15 +98,19 @@ export default {
     }
 
     @include desktop-and-up {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
     }
 
     .case {
       img {
         width: 100%;
+        height: 255px;
+
+        @include for-phone-only {
+          height: 265px;
+        }
       }
     }
   }
 }
-
 </style>
