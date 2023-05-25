@@ -152,16 +152,7 @@ section {
   margin-bottom: 240px;
   margin: 0;
   max-width: 100%;
-
-  @include tablet-and-up {
-    background-color: none;
-    margin: auto;
-  }
-
-  @include desktop-and-up {
-    max-width: 1320px;
-    margin: auto;
-  }
+  background-color: $main-black;
 }
 
 .case-study {
@@ -171,9 +162,9 @@ section {
   overflow: hidden;
 
   @include desktop-and-up {
-    max-width: 1320px;
-    width: 1320px;
-    margin-left: auto;
+    max-width: 1440px;
+    width: 1440px;
+    margin: auto;
     padding-bottom: 93px;
   }
 }
@@ -319,6 +310,7 @@ h4 {
 
   @include desktop-and-up {
     width: 900px;
+    margin-right: 100px;
   }
 }
 
