@@ -11,9 +11,11 @@
     <section class="info">
       <h2>Main goal</h2>
       <p>
-        The mark is built using the golden ratio design system by applying a 42º slant.
-        All corners and curves are rounded using the same radius. <br>
-        The smile is constructed based on a circle with the same amount of width as the house.
+        The mark is built using the golden ratio design system by <br> applying a 42º slant.
+        All corners and curves are rounded <br> using the same radius.
+      </p>
+      <p>
+        The smile is constructed based on a circle with the same <br> amount of width as the house.
       </p>
     </section>
 
@@ -139,6 +141,7 @@ export default {
   }
 
   @include desktop-and-up {
+    margin-bottom: 50px;
     width: 1440px;
   }
   
