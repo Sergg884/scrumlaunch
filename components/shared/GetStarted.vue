@@ -239,7 +239,10 @@ export default {
 <style lang="scss" scoped>
 
 section {
-  padding-left: 0;
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+
   h2 {
     margin-bottom: 40px;
     
@@ -284,7 +287,9 @@ section {
 
     .info-wrap {
       display: flex;
+      justify-content: center;
       margin-bottom: 32px;
+
       @include tablet-and-up {
         margin-bottom: 60px;
       }
@@ -301,6 +306,7 @@ section {
         background-color: $main-green;
         padding: 24px 12px;
         text-align: left;
+        max-width: 768px;
 
         @include tablet-and-up {
           padding: 32px;
