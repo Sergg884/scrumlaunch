@@ -5,31 +5,19 @@
         :fill="isHeaderWhite || showMobileNavigation ? '#fff' : '#1E1F21'"
       />
     </NuxtLink>
-    <div class="menu" :class="{'white': isHeaderWhite}">
-      <NuxtLink to="/services">
-        Services
-      </NuxtLink>
-      <NuxtLink to="/work">
-        Case Studies
-      </NuxtLink>
-      <NuxtLink to="/blog">
-        Blog
-      </NuxtLink>
+    <div class="menu" :class="{ white: isHeaderWhite }">
+      <NuxtLink to="/services"> Services </NuxtLink>
+      <NuxtLink to="/work"> Case Studies </NuxtLink>
+      <NuxtLink to="/blog"> Blog </NuxtLink>
       <HeaderDropdown
         title="Hire Developers"
         to="/hire-developers"
         :menu-items="developers"
-        :is-white='isHeaderWhite'
+        :is-white="isHeaderWhite"
       />
-      <NuxtLink to="/process">
-        About
-      </NuxtLink>
-      <NuxtLink to="/remote-developer-jobs">
-        Careers
-      </NuxtLink>
-      <NuxtLink to="/contact-us">
-        Contact
-      </NuxtLink>
+      <NuxtLink to="/process"> About </NuxtLink>
+      <NuxtLink to="/remote-developer-jobs"> Careers </NuxtLink>
+      <NuxtLink to="/contact-us"> Contact </NuxtLink>
     </div>
     <div class="menu--mobile" @click="toggleNavigation()">
       <img
@@ -39,15 +27,20 @@
       />
       <img
         v-else
-        :src="isHeaderWhite ? require('@/assets/icons/menu-mobile--white.svg') : require('@/assets/icons/menu-mobile.svg')"
+        :src="
+          isHeaderWhite
+            ? require('@/assets/icons/menu-mobile--white.svg')
+            : require('@/assets/icons/menu-mobile.svg')
+        "
         alt="menu-mobile"
       />
     </div>
-    <ul
-      class="mobile-navigation"
-      :class="{ active: showMobileNavigation }"
-    >
-      <li v-for="(i, index) in mobileNavigation" :key="index" @click="navigateTo(i.path)">
+    <ul class="mobile-navigation" :class="{ active: showMobileNavigation }">
+      <li
+        v-for="(i, index) in mobileNavigation"
+        :key="index"
+        @click="navigateTo(i.path)"
+      >
         {{ i.title }}
       </li>
     </ul>
@@ -55,11 +48,9 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-
+import { mapGetters } from 'vuex'
 
 export default {
-
   data() {
     return {
       showMobileNavigation: false,
@@ -69,128 +60,131 @@ export default {
         '/work/helmm',
         '/work/fgn',
         '/work/comunity-founded',
+        '/work/gipper',
       ],
-      
+
       developers: [
-        { 
+        {
           title: 'PHP Developers',
-          path: '/hire-developers/php-developers'
+          path: '/hire-developers/php-developers',
         },
-        { 
+        {
           title: 'React JS Developers',
-          path: '/hire-developers/react-js-developers'
+          path: '/hire-developers/react-js-developers',
         },
-        { 
+        {
           title: 'Django Developers',
-          path: '/hire-developers/django-developers'
+          path: '/hire-developers/django-developers',
         },
-        { 
+        {
           title: 'Wordpress Developers',
-          path: '/hire-developers/wordpress-developers'
+          path: '/hire-developers/wordpress-developers',
         },
-        { 
+        {
           title: 'Java Developers',
-          path: '/hire-developers/java-developers'
+          path: '/hire-developers/java-developers',
         },
-        { 
+        {
           title: 'iOS Developers',
-          path: '/hire-developers/ios-developers'
+          path: '/hire-developers/ios-developers',
         },
-        { 
+        {
           title: 'Android Developers',
-          path: '/hire-developers/android-developers'
+          path: '/hire-developers/android-developers',
         },
-        { 
+        {
           title: 'Web Developers',
-          path: '/hire-developers/web-developers'
+          path: '/hire-developers/web-developers',
         },
-        { 
+        {
           title: 'Angular JS Developers',
-          path: '/hire-developers/angular-js-developers'
+          path: '/hire-developers/angular-js-developers',
         },
-        { 
+        {
           title: 'Node JS Developers',
-          path: '/hire-developers/node-js-developers'
+          path: '/hire-developers/node-js-developers',
         },
-        { 
+        {
           title: 'Ruby On Rails Developers',
-          path: '/hire-developers/ruby-on-rails-developers'
+          path: '/hire-developers/ruby-on-rails-developers',
         },
-        { 
+        {
           title: 'Software Developers',
-          path: '/hire-developers/software-developers'
+          path: '/hire-developers/software-developers',
         },
-        { 
+        {
           title: 'Python Developers',
-          path: '/hire-developers/python-developers'
+          path: '/hire-developers/python-developers',
         },
-        { 
+        {
           title: 'Solidity Developers',
-          path: '/hire-developers/solidity-developers'
+          path: '/hire-developers/solidity-developers',
         },
-        { 
+        {
           title: 'React Native Developers',
-          path: '/hire-developers/react-native-developers'
+          path: '/hire-developers/react-native-developers',
         },
-        { 
+        {
           title: 'Ruby Developers',
-          path: '/hire-developers/ruby-developers'
+          path: '/hire-developers/ruby-developers',
         },
-        { 
+        {
           title: 'View All Languages',
-          path: '/hire-developers'
+          path: '/hire-developers',
         },
       ],
 
       mobileNavigation: [
-        { 
+        {
           title: 'Home',
-          path: '/'
+          path: '/',
         },
-        { 
+        {
           title: 'Work',
-          path: '/work'
+          path: '/work',
         },
-        { 
+        {
           title: 'Services',
-          path: '/services'
+          path: '/services',
         },
-        { 
+        {
           title: 'Process',
-          path: '/process'
+          path: '/process',
         },
-        { 
+        {
           title: 'Leadership',
-          path: '/leadership'
+          path: '/leadership',
         },
-        { 
+        {
           title: 'Blog',
-          path: '/Blog'
+          path: '/Blog',
         },
-        { 
+        {
           title: 'Hire developers',
-          path: '/hire-developers'
+          path: '/hire-developers',
         },
-        { 
+        {
           title: 'Job Openings',
-          path: '/remote-developer-job'
+          path: '/remote-developer-job',
         },
-        { 
+        {
           title: 'Contact',
-          path: '/contact-us'
+          path: '/contact-us',
         },
-      ]
-    };
+      ],
+    }
   },
 
   computed: {
     ...mapGetters('articles/', ['getHeaderItems']),
     isHeaderWhite() {
-      if (this.whiteHeaderPaths.includes(this.$route.path.toLocaleLowerCase())) {
+      if (
+        this.whiteHeaderPaths.includes(this.$route.path.toLocaleLowerCase())
+      ) {
         return true
       }
       return false
-    }
+    },
   },
 
   methods: {
@@ -205,16 +199,15 @@ export default {
     navigateTo(path) {
       this.$router.push(path)
       this.toggleNavigation()
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style lang="scss" scoped>
-
 header {
   margin: auto;
-  padding: 18px 20px; 
+  padding: 18px 20px;
   display: flex;
   justify-content: space-between;
   max-width: 1440px;
@@ -230,7 +223,7 @@ header {
   &.active {
     background-color: $main-black;
 
-    &::before{
+    &::before {
       height: 72px;
       width: 100%;
       content: '';
@@ -246,7 +239,6 @@ header {
   .logo {
     z-index: 100;
   }
-
 }
 
 .menu {
@@ -279,7 +271,7 @@ header {
 
   &--mobile {
     z-index: 100;
-    
+
     @include desktop-and-up {
       display: none;
     }
@@ -299,7 +291,6 @@ header {
   padding-top: 40px;
   z-index: 99;
   opacity: 0;
-
 
   &.active {
     top: 72px;
@@ -322,5 +313,4 @@ header {
     }
   }
 }
-
 </style>
