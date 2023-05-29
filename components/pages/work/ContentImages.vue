@@ -34,20 +34,30 @@ export default {
 
 <style lang="scss" scoped>
 .content-images {
-  margin: 0;
   padding: 0;
-  max-width: 100vw;
+  margin: auto;
 
   &__img-wrapper {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 375px;
 
     .image {
       width: inherit;
       object-fit: cover;
       max-height: 1440px;
-      padding-bottom: 50px;
+
+      margin-bottom: 10px;
+
+        @include tablet-and-up {
+          width: 768px;
+          margin-bottom: 30px;
+        }
+
+        @include desktop-and-up {
+          width: 1440px;
+          margin-bottom: 50px;
+        }
     }
   }
 }

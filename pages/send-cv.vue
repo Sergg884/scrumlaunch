@@ -136,11 +136,17 @@ export default {
     },
 
     sendForm() {
-      this.is_sent = true
-      this.is_blocked = true
-
       const reader = new FileReader()
       reader.readAsDataURL(this.file)
+
+      if (this.file.type !== 'application/pdf') {
+        this.fileError = 'Should be a pdf file'
+
+        return
+      }
+
+      this.is_sent = true
+      this.is_blocked = true
 
       reader.onload = () => {
         fetch(
