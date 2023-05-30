@@ -120,7 +120,7 @@ footer {
 
   @include desktop-and-up {
     max-width: 1440px;
-    padding: 0px;
+    padding: 0px 120px;
     margin: 80px auto;
   }
 
@@ -239,6 +239,7 @@ footer {
 
     @include desktop-and-up {
       display: block;
+      margin-top: 0;
       .title {
         display: block;
         float: none;
