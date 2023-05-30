@@ -110,3 +110,21 @@ h2 {
   font-size: 26px;
   line-height: 150%;
 }
+
+.case-studies {
+  .slick-dots {
+    bottom: 0px;
+
+    @include tablet-and-up {
+      left: 30px;
+      bottom: -30px;
+      width: auto;
+    }
+
+    @include desktop-and-up {
+      bottom: -130px;
+      width: 100%;
+      left: 0;
+    }
+  }
+}

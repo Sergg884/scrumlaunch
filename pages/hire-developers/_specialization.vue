@@ -86,8 +86,8 @@ export default {
   methods: {
     getInfo() {
       let itemIndex = dev_langs.findIndex(item => item.url === this.$route.params.specialization)
-      this.dev_lang = dev_langs[itemIndex].title
-      this.questions = dev_langs[itemIndex].questions
+      this.dev_lang = dev_langs[itemIndex]?.title
+      this.questions = dev_langs[itemIndex]?.questions
     },
   },
 }

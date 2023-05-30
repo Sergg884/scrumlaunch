@@ -10,6 +10,10 @@ $dark-grey: #50535A;
   @media (min-width: 768px) { @content; }
 }
 
+@mixin tablet-landscape-and-up {
+  @media (min-width: 1024px) { @content; }
+}
+
 @mixin desktop-and-up {
   @media (min-width: 1440px) { @content; }
 }
