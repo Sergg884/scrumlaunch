@@ -55,10 +55,8 @@ export default {
       this.dropdownVisible = false;
     },
     selectItem(item) {
-
       this.dropdownVisible = false;
       this.$router.push(item);
-      // Do something with the selected item
     },
   },
 };

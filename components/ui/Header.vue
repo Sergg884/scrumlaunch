@@ -36,12 +36,42 @@
       />
     </div>
     <ul class="mobile-navigation" :class="{ active: showMobileNavigation }">
-      <li
-        v-for="(i, index) in mobileNavigation"
-        :key="index"
-        @click="navigateTo(i.path)"
-      >
-        {{ i.title }}
+      <li @click="navigateTo('/')">
+        Home
+      </li>
+      <li @click="navigateTo('/work')">
+        Work
+      </li>
+      <li @click="navigateTo('/services')">
+        Services
+      </li>
+      <li @click="navigateTo('/process')">
+        Process
+      </li>
+      <li @click="navigateTo('/leadership')">
+        Leadership
+      </li>
+      <li @click="navigateTo('/blog')">
+        Blog
+      </li>
+      <li class="dropdown" :class="{ 'active-dropdown': isHireDevUp }" @click="dropDownUp($event)">
+        Hire developers
+        <img class="chevron" src="/icons/chevron-white.svg" />
+        <ul class="header-dropdown">
+          <li
+            v-for="item in developers"
+            :key="item.title"
+            @click="navigateTo(item.path)"
+          >
+            {{ item.title }}
+          </li>
+        </ul>
+      </li>
+      <li @click="navigateTo('/remote-developer-jobs')">
+        Job Openings
+      </li>
+      <li @click="navigateTo('/contact-us')">
+        Contact
       </li>
     </ul>
   </header>
@@ -62,7 +92,6 @@ export default {
         '/work/comunity-founded',
         '/work/gipper',
       ],
-
       developers: [
         {
           title: 'PHP Developers',
@@ -133,45 +162,7 @@ export default {
           path: '/hire-developers',
         },
       ],
-
-      mobileNavigation: [
-        {
-          title: 'Home',
-          path: '/',
-        },
-        {
-          title: 'Work',
-          path: '/work',
-        },
-        {
-          title: 'Services',
-          path: '/services',
-        },
-        {
-          title: 'Process',
-          path: '/process',
-        },
-        {
-          title: 'Leadership',
-          path: '/leadership',
-        },
-        {
-          title: 'Blog',
-          path: '/Blog',
-        },
-        {
-          title: 'Hire developers',
-          path: '/hire-developers',
-        },
-        {
-          title: 'Job Openings',
-          path: '/remote-developer-job',
-        },
-        {
-          title: 'Contact',
-          path: '/contact-us',
-        },
-      ],
+      isHireDevUp: false,
     }
   },
 
@@ -188,6 +179,9 @@ export default {
   },
 
   methods: {
+    dropDownUp(_e) {
+      this.isHireDevUp = !this.isHireDevUp
+    },
     toggleNavigation() {
       this.showMobileNavigation = !this.showMobileNavigation
       if (this.showMobileNavigation) {
@@ -291,6 +285,48 @@ header {
   padding-top: 40px;
   z-index: 99;
   opacity: 0;
+
+  .active-dropdown .chevron {
+    transform: rotate(180deg);
+  }
+
+  .dropdown {
+    position: relative;
+    .chevron {
+      width: 22px;
+      height: 22px;
+      margin-bottom: 4px;
+    }
+
+    @include tablet-and-up {
+      .chevron {
+        width: 38px;
+        height: 38px;
+        margin-bottom: 8px;
+      }
+    }
+  }
+
+  .active-dropdown {
+    .header-dropdown {
+      display: block;
+    }
+  }
+
+  .header-dropdown {
+    display: none;
+    padding-top: 10px;
+    padding-left: 0;
+
+    li {
+      list-style: none;
+      font-size: 18px;
+      margin-bottom: 10px;
+      font-weight: 500;
+      text-transform: capitalize;
+      text-decoration: underline;
+    }
+  }
 
   &.active {
     top: 72px;
