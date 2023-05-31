@@ -10,15 +10,6 @@
 
     <img class="image" :src="require(`~/assets/images/work/vesta/img2.webp`)" alt="vesta-img-2">
 
-    <section class="info">
-      <h2>Product Objective</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nisl dolor sit erat neque, tellus elit elementum,
-        ultricies. Donec vivamus lacus risus, neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Nisl dolor sit erat neque, tellus elit elementum, ultricies.
-      </p>
-    </section>
-
     <img class="image" :src="require(`~/assets/images/work/vesta/img3.webp`)" alt="vesta-img-3">
 
     <img class="image" :src="require(`~/assets/images/work/vesta/img4.webp`)" alt="vesta-img-4">
@@ -52,12 +43,12 @@ export default {
 
   data() {
     return {
-      name: 'VESTA HOME',
+      name: 'VESTA',
       text: 'Vesta Home is a leading luxury home staging company that is powered by a sophisticated logistics and e-commerce platform. The platform is dual purpose– it acts as an inventory management and booking system for the internal team to coordinate, schedule and reserve furniture items from its collection for use in home staging events. It also enables consumers to buy gently used luxury furniture.',
       details: [
         {
           title: 'Details',
-          text: ['2020-2021']
+          text: ['2020 - present']
         },
         {
           title: 'Work',
@@ -68,7 +59,6 @@ export default {
             'Shopify',
             'Heroku',
             'Product Management',
-            'UI',
             'UX Design'
           ]
         },

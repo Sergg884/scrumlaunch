@@ -56,6 +56,13 @@ export default {
             'UI/UX Design',
           ]
         },
+        {
+          title: 'Team',
+          text: [
+            'Alisa Kapler',
+            'Victoria Vasilets'
+          ]
+        }
       ],
     }
   }

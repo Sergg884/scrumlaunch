@@ -41,32 +41,27 @@ export default {
 
   data() {
     return {
-      name: 'helmm HOME',
-      text: 'helmm Home is a leading luxury home staging company that is powered by a sophisticated logistics and e-commerce platform. The platform is dual purpose– it acts as an inventory management and booking system for the internal team to coordinate, schedule and reserve furniture items from its collection for use in home staging events. It also enables consumers to buy gently used luxury furniture.',
+      name: 'helmm',
+      text: 'Helmm is a rapidly growing direct to consumer e-commerce brand that provides environmentally sustainable deodorant for me. The product has gained significant adoption over the past 5 years and we’ve built a highly scalable end to end e-Commerce system.',
       details: [
         {
           title: 'Details',
-          text: ['2020-2021']
+          text: ['2017 - 2021']
         },
         {
           title: 'Work',
           text: [
-            'React',
-            'Swift',
-            'RubyOnRails',
-            'Shopify',
-            'Heroku',
-            'Product Management',
-            'UI',
-            'UX Design'
+            'Ruby on Rails',
+            'Javascript',
+            'Payment & Order Management',
+            'Integrations',
           ]
         },
         {
           title: 'Team',
           text: [
-            'Yulia Hlushkina',
-            'Denis Didenko',
-            'Anton Kharytonov',
+            'Dmitriy Hmaruk',
+            'Ekaterina Andreeva',
           ]
         },
       ],

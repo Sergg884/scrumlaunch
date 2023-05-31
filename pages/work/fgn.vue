@@ -8,17 +8,6 @@
 
     <img class="image" :src="require(`~/assets/images/work/fgn/img1.webp`)" alt="fgn-img-1">
 
-    <section class="info">
-      <h2>Main goal</h2>
-      <p>
-        The mark is built using the golden ratio design system by <br> applying a 42º slant.
-        All corners and curves are rounded <br> using the same radius.
-      </p>
-      <p>
-        The smile is constructed based on a circle with the same <br> amount of width as the house.
-      </p>
-    </section>
-
     <img class="image" :src="require(`~/assets/images/work/fgn/img2.webp`)" alt="fgn-img-2">
 
     <img class="image" :src="require(`~/assets/images/work/fgn/img3.webp`)" alt="fgn-img-3">
@@ -53,7 +42,7 @@ export default {
   data() {
     return {
       name: 'Seven: brain teasers & puzzle',
-      text: 'fgn Home is a leading luxury home staging company that is powered by a sophisticated logistics and e-commerce platform. The platform is dual purpose– it acts as an inventory management and booking system for the internal team to coordinate, schedule and reserve furniture items from its collection for use in home staging events. It also enables consumers to buy gently used luxury furniture.',
+      text: 'Discovery, design and development of a social gaming platform specifically designed for seniors to play intellectually stimulating games and stay connected with family members while collecting data and monitoring for cognitive decline.',
       details: [
         {
           title: 'Details',
@@ -62,7 +51,14 @@ export default {
         {
           title: 'Work',
           text: [
-            'UX Design'
+            'Angular',
+            'Ruby on Rails',
+            'Heroku',
+            'Ionic',
+            'Twilio',
+            'Product Management',
+            'UI/UX Design',
+            'User Research',
           ]
         },
         {

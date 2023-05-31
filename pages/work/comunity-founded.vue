@@ -39,32 +39,34 @@ export default {
 
   data() {
     return {
-      name: 'comunity-founded HOME',
-      text: 'comunity-founded Home is a leading luxury home staging company that is powered by a sophisticated logistics and e-commerce platform. The platform is dual purpose– it acts as an inventory management and booking system for the internal team to coordinate, schedule and reserve furniture items from its collection for use in home staging events. It also enables consumers to buy gently used luxury furniture.',
+      name: 'comunity funded',
+      text: 'Community Funded is an enterprise crowd fundraising platform that powers digital philanthropy for some of the largest Universities in the United States. The platform is a market leader in the space and supports millions of daily unique users during major giving events. The ScrumLaunch team has been entirely responsible for the development of the platform since 2019.',
       details: [
         {
           title: 'Details',
-          text: ['2020-2021']
+          text: ['2019 - 2021']
         },
         {
           title: 'Work',
           text: [
+            'User Research',
+            'UI/UX design',
             'React',
-            'Swift',
-            'RubyOnRails',
-            'Shopify',
-            'Heroku',
+            'NodeJS',
+            'GraphQL',
+            'AWS',
+            'Terraform',
+            'Postgres',
+            'Selenium',
+            'DevOps',
             'Product Management',
-            'UI',
-            'UX Design'
           ]
         },
         {
           title: 'Team',
           text: [
-            'Yulia Hlushkina',
-            'Denis Didenko',
-            'Anton Kharytonov',
+            'Vlad Antonenko',
+            'Anastasia Shaduro'
           ]
         },
       ],

@@ -91,6 +91,7 @@ export default {
         '/work/fgn',
         '/work/comunity-founded',
         '/work/gipper',
+        '/work/harvest',
       ],
       developers: [
         {

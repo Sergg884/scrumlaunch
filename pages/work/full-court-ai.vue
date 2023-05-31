@@ -9,12 +9,15 @@
     <img class="image" :src="require(`~/assets/images/work/full-court-ai/img1.webp`)" alt="full-court-ai-img-1">
 
     <section class="info">
-      <h2>Product Objective</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nisl dolor sit erat neque, tellus elit elementum,
-        ultricies. Donec vivamus lacus risus, neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Nisl dolor sit erat neque, tellus elit elementum, ultricies.
-      </p>
+      <div>
+        <h2>Product Objective</h2>
+        <p>
+          During recording users can mark certain moments of the game with stickers which would help cutting the whole video into clips.
+        </p>
+        <p>
+          The application allows to create and edit videos, create your own teams and share clips within the team.
+        </p>
+      </div>
     </section>
 
     <img class="image" :src="require(`~/assets/images/work/full-court-ai/img2.webp`)" alt="full-court-ai-img-2">
@@ -50,32 +53,37 @@ export default {
 
   data() {
     return {
-      name: 'full-court-ai HOME',
-      text: 'full-court-ai Home is a leading luxury home staging company that is powered by a sophisticated logistics and e-commerce platform. The platform is dual purpose– it acts as an inventory management and booking system for the internal team to coordinate, schedule and reserve furniture items from its collection for use in home staging events. It also enables consumers to buy gently used luxury furniture.',
+      name: 'full court ai',
+      text: 'FullCourtAI is an AI-powered mobile application and cloud video processing pipeline that enables users to effortlessly record, edit and share youth sports games as if they were recorded by a cameraman by combining computer vision and neural networks to automatically track the action. The company is backed by Silicon Valley investors.',
       details: [
         {
           title: 'Details',
-          text: ['2020-2021']
+          text: ['2018 - present']
         },
         {
           title: 'Work',
           text: [
-            'React',
+            'Work',
             'Swift',
-            'RubyOnRails',
-            'Shopify',
-            'Heroku',
+            'Composable Architecture',
+            'AWS',
+            'GCP',
+            'Python',
+            'Machine Learning',
+            'Neural Networks',
+            'Computer Vision',
+            'Video Transcoding',
+            'ETL Pipeline',
             'Product Management',
-            'UI',
-            'UX Design'
+            'Webflow',
+            'Rollbar',
           ]
         },
         {
           title: 'Team',
           text: [
-            'Yulia Hlushkina',
-            'Denis Didenko',
-            'Anton Kharytonov',
+            'Dasha Shyf',
+            'Yuliia Hlushkina'
           ]
         },
       ],
@@ -112,6 +120,14 @@ export default {
 
 .info {
   text-align: left;
+
+  div {
+    @include desktop-and-up {
+      width: 80%;
+    }
+  }
+
+
 
   h2 {
     font-weight: 900;

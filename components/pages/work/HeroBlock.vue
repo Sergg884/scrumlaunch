@@ -5,12 +5,12 @@
         {{ name }}
       </h1>
     </div>
-    <div>
+    <div class="text-wrapper">
       <p class="text-main">
         {{ text }}
       </p>
       <b-row no-gutters class="description">
-        <b-col v-for="i in details" :key="i.title" cols="3">
+        <b-col v-for="i in details" :key="i.title" cols="4">
           <p class="name">
             {{ i.title }}
           </p>
@@ -59,10 +59,10 @@ export default {
   }
 
   .title {
-    width: 100%;
 
     @include desktop-and-up {
-      min-width: 500px;
+      padding-right: 10%;
+      width: 45%;
     }
     
     h1 {
@@ -80,11 +80,17 @@ export default {
       }
     }
   }
+  .text-wrapper {
+    @include desktop-and-up {
+      width: 55%;
+    }
+  }
+
   .description {
     margin-top: 40px;
 
     @include tablet-and-up {
-      margin-top: 120px;
+      margin-top: 60px;
     }
     
     @include desktop-and-up {
