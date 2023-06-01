@@ -5,7 +5,7 @@
     </h2>
     <div class="work-with-us">
       <div class="image">
-        <nuxt-img src="/pages/hire-developers/work-with-us/hero.webp" alt="work-with-us-hero" />
+        <nuxt-img src="/pages/hire-developers/work-with-us-hero.png" alt="work-with-us-hero" />
       </div>
       <div class="tabs">
         <div v-for="(tab, index) in tabs" :key="tab.title" class="tab">
@@ -131,6 +131,7 @@ section {
         }
 
         .info {
+          text-align: left;
           @include desktop-and-up {
             margin-left: 76px;
           }

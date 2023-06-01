@@ -1,16 +1,30 @@
 <template>
   <div class="hire-developers">
-    <Hero
-      :hero-img="`/shared/hero/${dev_lang}-hero.webp`"  
-    >
-      <template #title>
-        Hire <span class="mark">{{ dev_lang }} developer</span> 
-      </template>
-      <template #text>
-        Every technology project is different and it’s just as important to find the right person as it is to find a talented person.
-        ScrumLaunch’s talent hubs in Eastern Europe and Latin America combine global scale
-      </template>
-    </Hero>
+    <div class="hero-section">
+      <Hero
+        :developersPage="true"
+        :developersMainPage="developersPage"
+        :hero-img="`/pages/hire-developers/${dev_lang || 'main'}-hero.png`"
+        :hero-img-mobile="`/pages/hire-developers/${dev_lang || 'main'}-hero-mobile.png`"
+      >
+        <template #title>
+          <span v-if="developersPage">
+              Hire <span class="mark">EXPERTS</span> <br> on demand
+          </span>
+          <span v-else>
+            Hire <span class="mark">{{ dev_lang }} developer</span> 
+          </span>
+        </template>
+        <template #text>
+          <span v-if="developersPage">
+            Hire developers that are vetted, trained and managed by ScrumLaunch. We place high-quality software developers across all types of businesses from venture-backed startups to large corporations.
+          </span>
+          <span v-else>
+            Quickly add experienced {{ dev_lang }} developers to your project. We handle all the sourcing, vetting and back office management so you can get an experienced Shopify developer up and running within days or weeks. We’ll take care of the rest.
+          </span>
+        </template>
+      </Hero>
+    </div>
 
     <TalentMap is-white />
 
@@ -60,20 +74,25 @@ export default {
     GetStarted
 },
 
+
+  
+
   data() {
     return {
       dev_lang: '',
-      questions: []
+      dev_lang_hero: '',
+      questions: [],
+      developersPage: !this.$route.params.specialization
     }
   },
 
   head() {
     return {
-      title: `Hire ${this.dev_lang} Developers - Top Rated | ScrumLaunch`,
+      title: `Hire ${this.dev_lang || ''} Developers - Top Rated | ScrumLaunch`,
       meta: [
         {
           name: 'description',
-          content: `Hire and scale ${this.dev_lang} developers with the best-in-class website development and design consulting firm. Book a free consultation now.`,
+          content: `Hire and scale ${this.dev_lang || ''} developers with the best-in-class website development and design consulting firm. Book a free consultation now.`,
         },
       ],
     }
@@ -85,9 +104,25 @@ export default {
 
   methods: {
     getInfo() {
-      let itemIndex = dev_langs.findIndex(item => item.url === this.$route.params.specialization)
+      const mainQuestions = [
+        {
+          "title": "Why should I use ScrumLaunch to Hire Developers?",
+          "text": "At ScrumLaunch, we hire and train every member of our team individually. All dedicated developers (and any developer or designer, for that matter) undergo in-depth assessment and training to test for skill level, adaptability, creativity, system architecture, and other key components of software development. Our experts have worked on a range of projects from video analysis and machine learning to custom marketplaces."
+        },
+        {
+          "title": "How Quickly can I hire developers through ScrumLaunch?",
+          "text": "Many of our clients have been up and running in under 24 hours. ScrumLaunch has the capacity to scale instantly and on-demand. If you already know what you’re building, then book a free consultation with our team to explain your requirements. We’ll match you with experts and a project manager on our team in a matter of hours."
+        },
+        {
+          "title": "How Effective is Offshore or Outsourced ?",
+          "text": "Offshore development is an incredibly cost-effecitve and efficient way to stand up new projects or build out existing ones. However, outsourcing development offshore should be done with a reputable firm that has a proven track record of success."
+        },
+      ]
+
+      const spec = this.$route.params.specialization
+      let itemIndex = dev_langs.findIndex(item => item.url === spec)
       this.dev_lang = dev_langs[itemIndex]?.title
-      this.questions = dev_langs[itemIndex]?.questions
+      this.questions = spec ? dev_langs[itemIndex]?.questions : mainQuestions
     },
   },
 }
@@ -96,7 +131,16 @@ export default {
 <style lang="scss" scoped>
 
 .hire-developers {
+  .hero-section {
+    overflow: hidden;
 
+    section {
+      @include desktop-and-up {
+        grid-template-columns: 0.5fr 0.5fr;
+        padding: 0 0 0 120px;
+      }
+    }
+  }
 }
 
 </style>

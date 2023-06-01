@@ -99,33 +99,33 @@ export default {
           path: '/hire-developers/php-developers',
         },
         {
-          title: 'React JS Developers',
+          title: 'React Developers',
           path: '/hire-developers/react-js-developers',
         },
-        {
-          title: 'Django Developers',
-          path: '/hire-developers/django-developers',
-        },
-        {
-          title: 'Wordpress Developers',
-          path: '/hire-developers/wordpress-developers',
-        },
+        // {
+        //   title: 'Django Developers',
+        //   path: '/hire-developers/django-developers',
+        // },
+        // {
+        //   title: 'Wordpress Developers',
+        //   path: '/hire-developers/wordpress-developers',
+        // },
         {
           title: 'Java Developers',
           path: '/hire-developers/java-developers',
         },
-        {
-          title: 'iOS Developers',
-          path: '/hire-developers/ios-developers',
-        },
-        {
-          title: 'Android Developers',
-          path: '/hire-developers/android-developers',
-        },
-        {
-          title: 'Web Developers',
-          path: '/hire-developers/web-developers',
-        },
+        // {
+        //   title: 'iOS Developers',
+        //   path: '/hire-developers/ios-developers',
+        // },
+        // {
+        //   title: 'Android Developers',
+        //   path: '/hire-developers/android-developers',
+        // },
+        // {
+        //   title: 'Web Developers',
+        //   path: '/hire-developers/web-developers',
+        // },
         {
           title: 'Angular JS Developers',
           path: '/hire-developers/angular-js-developers',
@@ -134,30 +134,42 @@ export default {
           title: 'Node JS Developers',
           path: '/hire-developers/node-js-developers',
         },
-        {
-          title: 'Ruby On Rails Developers',
-          path: '/hire-developers/ruby-on-rails-developers',
-        },
-        {
-          title: 'Software Developers',
-          path: '/hire-developers/software-developers',
-        },
+        // {
+        //   title: 'Ruby On Rails Developers',
+        //   path: '/hire-developers/ruby-on-rails-developers',
+        // },
+        // {
+        //   title: 'Software Developers',
+        //   path: '/hire-developers/software-developers',
+        // },
         {
           title: 'Python Developers',
           path: '/hire-developers/python-developers',
         },
         {
-          title: 'Solidity Developers',
-          path: '/hire-developers/solidity-developers',
+          title: 'Swift Developers',
+          path: '/hire-developers/swift-developers',
         },
         {
-          title: 'React Native Developers',
-          path: '/hire-developers/react-native-developers',
+          title: 'Kotlin Developers',
+          path: '/hire-developers/kotlin-developers',
         },
         {
-          title: 'Ruby Developers',
-          path: '/hire-developers/ruby-developers',
+          title: 'Shopify Developers',
+          path: '/hire-developers/shopify-developers',
         },
+        // {
+        //   title: 'Solidity Developers',
+        //   path: '/hire-developers/solidity-developers',
+        // },
+        // {
+        //   title: 'React Native Developers',
+        //   path: '/hire-developers/react-native-developers',
+        // },
+        // {
+        //   title: 'Ruby Developers',
+        //   path: '/hire-developers/ruby-developers',
+        // },
         {
           title: 'View All Languages',
           path: '/hire-developers',

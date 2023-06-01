@@ -3,7 +3,7 @@
     <section>
       <div class="case-study">
         <h4>
-          Case studies.
+          Case studies
         </h4>
 
         <VueSlickCarousel v-bind="settings" class="content">
@@ -119,7 +119,7 @@ export default {
               description: 'Saved on Development Costs'
             },
             {
-              title: '6M',
+              title: '$6M',
               description: 'Keyword value per year'
             },
           ],
@@ -128,7 +128,7 @@ export default {
           url: '/work/campus-reel'
         },
         {
-          name: 'Vest Home',
+          name: 'Vesta Home',
           class: 'vesta',
           description: 'Vesta Home collaborated with ScrumLaunch to develop and launch their digital platform, crucial for their ongoing business.',
           indicators: [

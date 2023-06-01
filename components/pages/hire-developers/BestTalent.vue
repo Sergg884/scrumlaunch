@@ -4,8 +4,8 @@
       <h2 class="title-global">
         <span class="mark">The Best Talent</span> at Every<span class="mark">Experience Level</span>
       </h2>
-      <nuxt-img class="desktop" src="/pages/hire-developers/best-talent/desktop.svg" alt="best-talent-desktop" />
-      <nuxt-img class="mobile"  src="/pages/hire-developers/best-talent/mobile.svg" alt="best-talent-modile" />
+      <nuxt-img class="desktop" src="/pages/hire-developers/best-talent-desktop.png" alt="best-talent-desktop" />
+      <nuxt-img class="mobile"  src="/pages/hire-developers/best-talent-mobile.png" alt="best-talent-mobile" />
     </section>
   </div>
 </template>
@@ -22,7 +22,6 @@
     color: #fff;
     line-height: 1.8;
     margin-bottom: 40px;
-    display: none;
 
     @include tablet-and-up {
       display: block;
@@ -45,6 +44,8 @@
   }
 
   .mobile {
+    width: 100%;
+
     @include tablet-and-up {
       display: none;
     }

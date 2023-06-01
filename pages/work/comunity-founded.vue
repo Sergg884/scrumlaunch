@@ -39,7 +39,7 @@ export default {
 
   data() {
     return {
-      name: 'comunity funded',
+      name: 'community funded',
       text: 'Community Funded is an enterprise crowd fundraising platform that powers digital philanthropy for some of the largest Universities in the United States. The platform is a market leader in the space and supports millions of daily unique users during major giving events. The ScrumLaunch team has been entirely responsible for the development of the platform since 2019.',
       details: [
         {

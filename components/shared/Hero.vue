@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="hero">
-      <h1 class="title-big">
+      <h1 :class="`title-big ${developersPage ? 'title-developers' : ''}`">
         <slot name="title"></slot>
       </h1>
       <p class="text-main">
@@ -34,8 +34,11 @@
         </BaseButton>
       </div>
     </div>
-    <div class="img">
+    <div :class="`img ${developersPage ? 'img-main img-main-desktop' : ''} ${developersMainPage ? 'main' : ''}`">
       <nuxt-img :src="heroImg" alt="hero-img" />
+    </div>
+    <div v-if="developersPage" class="img img-main-mobile">
+      <nuxt-img :src="heroImgMobile" alt="hero-img-mobile" />
     </div>
     <div
       v-show="is_sent"
@@ -75,7 +78,19 @@ export default {
       type: String,
       default: ''
     },
+    heroImgMobile: {
+      type: String,
+      default: ''
+    },
     sideImg: {
+      type: Boolean,
+      default: false
+    },
+    developersPage: {
+      type: Boolean,
+      default: false
+    },
+    developersMainPage: {
       type: Boolean,
       default: false
     }
@@ -191,6 +206,10 @@ section {
       @include tablet-and-up {
         margin-bottom: 36px;
       }
+
+      &.title-developers {
+        line-height: 130%;
+      }
     }
 
     p {
@@ -231,6 +250,48 @@ section {
 
   .img {
     margin-bottom: 40px;
+
+    &.img-main {
+      
+      @include desktop-and-up {
+        padding: 0 0 0 100px;
+        position: absolute;
+        top: -70px;
+
+        img {
+          width: 940px;
+        }
+      }
+
+      &.main {
+        img {
+          width: 800px;
+        }
+      }
+
+      &-desktop {
+        display: none;
+
+        @include desktop-and-up {
+        display: block;
+        }
+      }
+
+      &-mobile {
+
+        img {
+          width: 425px;
+
+          @media (min-width: 568px) {
+            width: 100%;
+          }
+        }
+
+        @include desktop-and-up {
+          display: none;
+        }
+      }
+    }
 
     img {
       width: 100%;
@@ -283,11 +344,15 @@ section {
   margin-bottom: 0;
   label {
     font-weight: 900;
-    font-size: 36px;
+    font-size: 18px;
     line-height: 140%;
     color: $main-black;
     letter-spacing: 0.02em;
     text-transform: uppercase;
+
+    @include desktop-and-up {
+      font-size: 36px;
+    }
   }
 
   input {

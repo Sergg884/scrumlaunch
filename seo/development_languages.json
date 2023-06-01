@@ -5,7 +5,7 @@
         "title": "PHP",
         "questions": [
             {
-                "title": "Why should I use ScrumLaunch to hire Java developers?",
+                "title": "Why should I use ScrumLaunch to hire PHP developers?",
                 "text": "At ScrumLaunch, we hire and train every member of our team individually. All dedicated PHP developers (and any developer or designer, for that matter) undergo in-depth assessment and training to test for skill level, adaptability, creativity, system architecture, and other key components of software development. Our PHP experts have worked on a range of projects from video analysis and machine learning to custom marketplaces."
             },
             {
@@ -88,7 +88,7 @@
     {
         "url": "react-js-developers",
         "expert": "React JS Developers",
-        "title": "React JS",
+        "title": "React",
         "questions": [
             {
                 "title": "Why should I use ScrumLaunch to hire React developers?",
@@ -234,7 +234,7 @@
     {
         "url": "node-js-developers",
         "expert": "Node JS Developers",
-        "title": "Node JS",
+        "title": "Node.JS",
         "questions": [
             {
                 "title": "Why should I use ScrumLaunch to hire Node.js developers?",

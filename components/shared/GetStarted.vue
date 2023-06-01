@@ -51,7 +51,7 @@
               </div>
               <div class="input-wrapper">
                 <label for="company">
-                  Company*
+                  Company
                 </label>
                 <div class="input" :class="{'input-error': is_error_company_name }">
                   <input
@@ -194,10 +194,6 @@ export default {
       }
       if (!emailRegEx.test(this.email.trim())) {
         this.is_error_email = true
-        return
-      }
-      if (this.company.length <= 0) {
-        this.is_error_company_name = true
         return
       }
 
