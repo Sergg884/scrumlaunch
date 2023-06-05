@@ -121,7 +121,7 @@ export default {
 
       const spec = this.$route.params.specialization
       let itemIndex = dev_langs.findIndex(item => item.url === spec)
-      this.dev_lang = dev_langs[itemIndex]?.title
+      this.dev_lang = dev_langs[itemIndex]?.title?.toLowerCase()
       this.questions = spec ? dev_langs[itemIndex]?.questions : mainQuestions
     },
   },
@@ -137,7 +137,7 @@ export default {
     section {
       @include desktop-and-up {
         grid-template-columns: 0.5fr 0.5fr;
-        padding: 0 0 0 120px;
+        padding: 0 0 1px 120px;
       }
     }
   }

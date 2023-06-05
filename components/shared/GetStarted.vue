@@ -118,6 +118,25 @@
             </div>
           </div>
         </form>
+          <div
+            v-show="is_sent"
+            :class="{ blocked: is_blocked }"
+            class="message-sent"
+          >
+            <lottie
+              v-show="is_done"
+              class="message-sent__image"
+              name="reliabilityDesktopAnim"
+              loop
+              renderer="svg"
+              :options="{
+                animationData: require('~/assets/animation/rocket_launch.json'),
+              }"
+            />
+            <div v-show="is_done" class="title-global">
+              Your message<br />has been sent
+            </div>
+          </div>
       </div>
       <BaseButton @click="sendForm()">
         Send message
@@ -128,8 +147,13 @@
 
 <script>
 import axios from 'axios';
+import lottie from 'vue-lottie/src/lottie.vue';
 
 export default {
+  components: {
+    lottie
+  },
+
   data() {
     return {
       is_blocked: false,
@@ -255,6 +279,7 @@ section {
   .contact-us {
     background-color: $main-black;
     padding: 40px 20px;
+    position: relative;
 
     @include tablet-and-up {
       padding: 60px 32px;
@@ -522,6 +547,31 @@ section {
       margin: auto;
     }
   }
+
+    .message-sent {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 1);
+      text-align: center;
+      z-index: 2;
+      transition: background-color 0.2s;
+
+      &.blocked {
+        background-color: rgba(255, 255, 255, 0.8);
+      }
+
+      &__image {
+        width: 290px !important;
+        height: 290px !important;
+      }
+    }
 }
 
 </style>

@@ -34,7 +34,7 @@
         </BaseButton>
       </div>
     </div>
-    <div :class="`img ${developersPage ? 'img-main img-main-desktop' : ''} ${developersMainPage ? 'main' : ''}`">
+    <div v-if="!is_done" :class="`img ${developersPage ? 'img-main img-main-desktop' : ''} ${developersMainPage ? 'main' : ''}`">
       <nuxt-img :src="heroImg" alt="hero-img" />
     </div>
     <div v-if="developersPage" class="img img-main-mobile">
@@ -103,6 +103,7 @@ export default {
       is_blocked: false,
       is_sent: false,
       is_done: false,
+      hide_hero_img: false
     }
   },
 
@@ -122,7 +123,6 @@ export default {
         this.is_blocked = true
 
         this.$axios.$post('/api/contact-us', data).then(() => {
-          
 
           this.is_sent = true
           this.is_blocked = false
