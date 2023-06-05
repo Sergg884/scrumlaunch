@@ -39,17 +39,11 @@
       <li @click="navigateTo('/')">
         Home
       </li>
-      <li @click="navigateTo('/work')">
-        Work
-      </li>
       <li @click="navigateTo('/services')">
         Services
       </li>
-      <li @click="navigateTo('/process')">
-        Process
-      </li>
-      <li @click="navigateTo('/leadership')">
-        Leadership
+      <li @click="navigateTo('/work')">
+        Case Studies
       </li>
       <li @click="navigateTo('/blog')">
         Blog
@@ -67,8 +61,11 @@
           </li>
         </ul>
       </li>
+      <li @click="navigateTo('/process')">
+        About
+      </li>
       <li @click="navigateTo('/remote-developer-jobs')">
-        Job Openings
+        Careers
       </li>
       <li @click="navigateTo('/contact-us')">
         Contact
