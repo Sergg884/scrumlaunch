@@ -102,6 +102,10 @@ export default {
           title: 'React Developers',
           path: '/hire-developers/react-js-developers',
         },
+        {
+          title: 'React Native Developers',
+          path: '/hire-developers/react-native-developers',
+        },
         // {
         //   title: 'Django Developers',
         //   path: '/hire-developers/django-developers',
@@ -134,10 +138,10 @@ export default {
           title: 'Node JS Developers',
           path: '/hire-developers/node-js-developers',
         },
-        // {
-        //   title: 'Ruby On Rails Developers',
-        //   path: '/hire-developers/ruby-on-rails-developers',
-        // },
+        {
+          title: 'Ruby On Rails Developers',
+          path: '/hire-developers/ruby-on-rails-developers',
+        },
         // {
         //   title: 'Software Developers',
         //   path: '/hire-developers/software-developers',
@@ -161,10 +165,6 @@ export default {
         // {
         //   title: 'Solidity Developers',
         //   path: '/hire-developers/solidity-developers',
-        // },
-        // {
-        //   title: 'React Native Developers',
-        //   path: '/hire-developers/react-native-developers',
         // },
         // {
         //   title: 'Ruby Developers',

@@ -30,7 +30,12 @@
             },
             {
                 "title": "What are the popular Content Management Systems (CMS) in PHP?",
-                "text": "WordPress: WordPress is a free and open-source content management system (CMS) based on PHP & MySQL. It includes a plug-in architecture and template system. It is mostly connected with blogging but supports another kind of web content, containing more traditional mailing lists and forums, media displays, and online stores. Joomla: Joomla is a free and open-source content management system (CMS) for distributing web content, created by Open Source Matters, Inc. It is based on a model-view-controller web application framework that can be used independently of the CMS. Magento: Magento is an open source E-trade programming, made by Varien Inc., which is valuable for online business. It has a flexible measured design and is versatile with many control alternatives that are useful for clients. Magento utilizes E-trade stage which offers organization extreme E-business arrangements and extensive support network. Drupal: Drupal is a CMS platform developed in PHP and distributed under the GNU (General Public License)."
+                "list": [
+                  "WordPress: WordPress is a free and open-source content management system (CMS) based on PHP & MySQL. It includes a plug-in architecture and template system. It is mostly connected with blogging but supports another kind of web content, containing more traditional mailing lists and forums, media displays, and online stores.",
+                  "Joomla: Joomla is a free and open-source content management system (CMS) for distributing web content, created by Open Source Matters, Inc. It is based on a model-view-controller web application framework that can be used independently of the CMS.",
+                  "Magento: Magento is an open source E-trade programming, made by Varien Inc., which is valuable for online business. It has a flexible measured design and is versatile with many control alternatives that are useful for clients. Magento utilizes E-trade stage which offers organization extreme E-business arrangements and extensive support network.",
+                  "Drupal: Drupal is a CMS platform developed in PHP and distributed under the GNU (General Public License)."
+                ]
             },
             {
                 "title": "What is the difference between $message and $$message?",
@@ -65,7 +70,11 @@
             },
             {
                 "title": "Why should we use Kotlin?",
-                "text": "Kotlin is concise. Kotlin is null-safe. Kotlin is interoperable"
+                "list": [
+                  "Kotlin is concise",
+                  "Kotlin is null-safe",
+                  "Kotlin is interoperable"
+                ]
             },
             {
                 "title": "What is the difference between the variable declaration with val and const?",
@@ -77,7 +86,12 @@
             },
             {
                 "title": "How to convert a Kotlin source file to a Java source file?",
-                "text": "Steps to convert your Kotlin source file to Java source file: Open your Kotlin project in the IntelliJ IDEA / Android Studio. Then navigate to Tools > Kotlin > Show Kotlin Bytecode. Now click on the Decompile button to get your Java code from the bytecode."
+                "text": "Steps to convert your Kotlin source file to Java source file:",
+                "list": [
+                  "Open your Kotlin project in the IntelliJ IDEA / Android Studio.",
+                  "Then navigate to Tools > Kotlin > Show Kotlin Bytecode.",
+                  "Now click on the Decompile button to get your Java code from the bytecode."
+                ]
             },
             {
                 "title": "Can we use primitive types such as int, double, and float in Kotlin?",
@@ -104,14 +118,19 @@
             },
             {
                 "title": "What is React? Share some of its key features.",
-                "text": "React is a front-end JavaScript library that Facebook developed in the year 2013. It is used to create reusable UI by following the component-based approach. React is used to create complicated and interactive web and mobile user interfaces. Some of the key features of React are: React makes use of virtual DOM instead of the regular or real DOM. React is used for server-side rendering. React has uni-directional or one-way data flow or data binding."
+                "text": "React is a front-end JavaScript library that Facebook developed in the year 2013. It is used to create reusable UI by following the component-based approach. React is used to create complicated and interactive web and mobile user interfaces. Some of the key features of React are:",
+                "list": [
+                  "React makes use of virtual DOM instead of the regular or real DOM.",
+                  "React is used for server-side rendering.",
+                  "React has uni-directional or one-way data flow or data binding."
+                ]
             },
             {
                 "title": "Explain Virtual DOM in React?",
                 "text": "Virtual DOM is an abstraction of the HTML DOM. It is lightweight and is not connected to the browser-specific implementation details. React provides Virtual DOM for free as the React Elements reside in virtual DOM. These elements make up the basic nodes of the Virtual DOM tree. Once the React Elements are defined, they can be rendered into the real DOM. Every time the state of React Component changes, React runs a diffing algorithm. It identifies what changes have been made in the virtual DOM. It then updates the DOM with the results of diff. This process is faster than it would be in real DOM."
             },
             {
-                "title": "What is Redux?v",
+                "title": "What is Redux?",
                 "text": "A store in React is a simple JavaScript object. The idea behind Redux is to keep the state of the entire application in a single store, be it the state of the UI like which tab is active currently, or the state of Data like the user profile details. The state can be changed by firing actions from your application and then writing reducers for these actions that can modify the state. As the entire state of the application is in a single store it should not have any side effects"
             },
             {
@@ -120,7 +139,11 @@
             },
             {
                 "title": "What are the phases of a React component’s lifecycle?",
-                "text": "Initial rendering phase: In this phase, a component starts its life journey and makes its way to the DOM. Updating phase: When the component is added to the DOM it can update and re-render when its props or state changes. The changes can take place in this phase only. Unmounting phase: It is the final stage of the component. In this phase, the component is destroyed and removed from the lifecycle.."
+                "list": [
+                  "Initial rendering phase: In this phase, a component starts its life journey and makes its way to the DOM.",
+                  "Updating phase: When the component is added to the DOM it can update and re-render when its props or state changes. The changes can take place in this phase only.",
+                  "Unmounting phase: It is the final stage of the component. In this phase, the component is destroyed and removed from the lifecycle.."
+                ]
             },
             {
                 "title": "What is CORS?",
@@ -214,11 +237,27 @@
             },
             {
                 "title": "What are Angular’s main concepts and the critical components of Angular? Also please say a few words about every component.",
-                "text": "Component: The basic building block of an Angular application and is used to control HTML views. Modules: An Angular module contains basic building blocks like components, services, directives, etc. Using modules you can split your application into logical pieces where each piece performs a single task and is called a “module”. Templates: A template represents the view of an Angular application. Services: Services are used to create components that can be shared across the entire application. 'Service is a broad category encompassing any value, function, or feature that an app needs. A service is typically a class with a narrow, well-defined purpose. It should do something specific and do it well. An Angular component should focus on presenting data and enabling the user experience. It should mediate between the application logic (data model) and the view (rendered by the template). Angular services help us to separate non-view-related functionality to keep component classes lean and efficient.' Metadata: Metadata is used to add more data to an Angular class."
+                "list": [
+                  "Component: The basic building block of an Angular application and is used to control HTML views.",
+                  "Modules: An Angular module contains basic building blocks like components, services, directives, etc. Using modules you can split your application into logical pieces where each piece performs a single task and is called a “module”.",
+                  "Templates: A template represents the view of an Angular application.",
+                  "Services: Services are used to create components that can be shared across the entire application. Service is a broad category encompassing any value, function, or feature that an app needs. A service is typically a class with a narrow, well-defined purpose. It should do something specific and do it well.",
+                  "An Angular component should focus on presenting data and enabling the user experience. It should mediate between the application logic (data model) and the view (rendered by the template)."
+                ],
+                "subText": "Angular services help us to separate non-view-related functionality to keep component classes lean and efficient.",
+                "subList": [
+                  "Metadata: Metadata is used to add more data to an Angular class."
+                ]
             },
             {
                 "title": "Can you explain various ways of component communication in Angular?",
-                "text": "Data sharing between parent and one or more child components using the @Input() and @Output() directives. Data sharing using an Angular service. Using state management, like NgRx. Read and write data to local storage. Pass data via URL parameters."
+                "list": [
+                  "Data sharing between parent and one or more child components using the @Input() and @Output() directives.",
+                  "Data sharing using an Angular service",
+                  "Using state management, like NgRx",
+                  "Read and write data to local storage",
+                  "Pass data via URL parameters"
+                ]
             },
             {
                 "title": "What is the purpose of an async pipe?",
@@ -282,7 +321,40 @@
     {
         "url": "ruby-on-rails-developers",
         "expert": "Ruby On Rails Developers",
-        "title": "Ruby On Rails"
+        "title": "Ruby On Rails",
+        "questions": [
+          {
+              "title": "What is Ruby on Rails?",
+              "text": "Ruby on Rails, often referred to as Rails, is an open-source web application framework written in Ruby. It follows the Model-View-Controller (MVC) architectural pattern and provides developers with a set of conventions for building robust and scalable web applications."
+          },
+          {
+              "title": "How do I install Ruby on Rails?",
+              "text": "To install Ruby on Rails, you'll need to have Ruby and a package manager like RubyGems installed on your system. Once Ruby is set up, open your command line and run the following command: gem install rails. This will download and install the latest version of Rails on your machine."
+          },
+          {
+              "title": "What are the advantages of using Ruby on Rails?",
+              "text": "Ruby on Rails offers several advantages, including:",
+              "list": [
+                "Rapid development: Rails emphasizes convention over configuration, making it easy to get started quickly and build applications faster.",
+                "Productivity: Rails provides a rich set of built-in tools and libraries that streamline common development tasks, allowing developers to focus on business logic instead of boilerplate code.",
+                "Scalability: Rails scales well for handling high-traffic applications and offers various performance optimization techniques.",
+                "Community and ecosystem: Rails has a vibrant community that actively contributes to its growth, resulting in numerous gems, plugins, and resources available to developers."
+              ]
+          },
+          {
+              "title": "What is ActiveRecord in Ruby on Rails?",
+              "text": "ActiveRecord is the Object-Relational Mapping (ORM) layer provided by Ruby on Rails. It simplifies database interactions by abstracting the database tables as Ruby objects, allowing developers to perform database operations using familiar object-oriented syntax instead of writing raw SQL queries."
+          },
+          {
+              "title": "How can I deploy a Ruby on Rails application?",
+              "text": "There are several options for deploying a Ruby on Rails application, including:",
+              "list": [
+                "Traditional server deployment: You can deploy Rails applications on web servers like Apache or Nginx using tools like Passenger or Unicorn as the application server.",
+                "Platform as a Service (PaaS): PaaS providers like Heroku or AWS Elastic Beanstalk provide easy deployment options for Rails applications.",
+                "Containerization: Docker containers can be used to package the Rails application along with its dependencies, making it easy to deploy on any server or cloud platform."
+              ]
+          }
+        ]
     },
     {
         "url": "swift-developers",
@@ -303,7 +375,12 @@
             },
             {
                 "title": "What is the difference between Struct and Class?",
-                "text": "One of the most important differences between structures and classes is that structures are value types and are always copied when they are passed around in your code, and classes are reference type and are passed by reference. Also, classes have Inheritance which allows one class to inherit the characteristics of another. Struct properties are stored on Stack and Class instances are stored on Heap hence, sometimes the stack is drastically faster than a class. Struct gets a default initializer automatically whereas in Class, we have to initialize. Struct is thread safe at any point of time."
+                "list": [
+                  "One of the most important differences between structures and classes is that structures are value types and are always copied when they are passed around in your code, and classes are reference type and are passed by reference.",
+                  "Also, classes have Inheritance which allows one class to inherit the characteristics of another.",
+                  "Struct properties are stored on Stack and Class instances are stored on Heap hence, sometimes the stack is drastically faster than a class. Struct gets a default initializer automatically whereas in Class, we have to initialize.",
+                  "Struct is thread safe at any point of time."
+                ]
             },
             {
                 "title": "What is optional?",
@@ -327,7 +404,12 @@
             },
             {
                 "title": "How do you manage dependencies?",
-                "text": "So far the most dominant and robust one is CocoaPods. I was built in the spirit of the Ruby Bundler gem and is a Ruby gem itself. The way it works is you install the gem, create Podfile in the root directory of your project, declare the pods (libraries) you want to use, and run pod install. That’s it. With Carthage, you create a dependencies declaration file called Cartfile but unlike Cocoapods you’d need to do Xcode project setup to make it work. Swift Package Manager is the future of dependency management for any Swift project but it only supports libraries and frameworks and cannot be used to generate iOS targets, although iOS targets can depend on modules built by SPM."},
+                "list": [
+                  "So far the most dominant and robust one is CocoaPods. I was built in the spirit of the Ruby Bundler gem and is a Ruby gem itself. The way it works is you install the gem, create Podfile in the root directory of your project, declare the pods (libraries) you want to use, and run pod install. That’s it.",
+                  "With Carthage, you create a dependencies declaration file called Cartfile but unlike Cocoapods you’d need to do Xcode project setup to make it work.",
+                  "Swift Package Manager is the future of dependency management for any Swift project but it only supports libraries and frameworks and cannot be used to generate iOS targets, although iOS targets can depend on modules built by SPM."
+                ]
+            },
             {
                 "title": "What is the difference between stack and heap memory?",
                 "text": "The stack is a simple first-in-first-out (FIFO) memory structure. The stack is always used to store the following two things: the reference portion of local variables and parameters of the reference type, and local variables and method parameters with a value type. Heap memory contains random non-lined objects stored in memory. The advantage is that it allows objects to be allocated or released in a random order. This will require you to use garbage collector functions to free memory. The heap stores the following: the contents of reference type objects."
@@ -390,7 +472,29 @@
     {
         "url": "react-native-developers",
         "expert": "React Native Developers",
-        "title": "React Native"
+        "title": "React Native",
+        "questions": [
+          {
+            "title": "What is React Native?",
+            "text": "React Native is an open-source framework developed by Facebook that allows developers to build mobile applications using JavaScript and the React library. It enables the creation of cross-platform apps, meaning you can write code once and deploy it on both iOS and Android devices."
+          },
+          {
+            "title": "How is React Native different from React?",
+            "text": "While React is primarily used for building web applications, React Native focuses on building native mobile applications. React Native uses native components and APIs, which allows it to deliver a more native-like user experience compared to traditional hybrid frameworks."
+          },
+          {
+            "title": "Can I use React Native for both iOS and Android development?",
+            "text": "Yes, React Native is designed to support both iOS and Android platforms. It provides a set of platform-specific components and APIs that allow you to create consistent user interfaces and access device functionalities on both platforms."
+          },
+          {
+            "title": "Do I need to know Swift or Java to develop with React Native?",
+            "text": "No, you don't need to learn Swift or Java to develop with React Native. React Native applications are primarily written in JavaScript, which means you can leverage your existing JavaScript skills to build mobile apps. However, if you want to write platform-specific code or integrate native modules, knowledge of Swift (for iOS) or Java (for Android) can be beneficial."
+          },
+          {
+            "title": "Can I use existing React components in React Native?",
+            "text": "React Native uses a similar component-based architecture to React, but the components themselves are different. While some components might have the same name and similar functionality, React Native components are designed specifically for mobile environments and have a different implementation. However, you can reuse your existing React knowledge and apply it to React Native development."
+          }
+        ]
     },
     {
         "url": "ruby-developers",

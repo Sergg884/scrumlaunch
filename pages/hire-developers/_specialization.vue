@@ -4,8 +4,8 @@
       <Hero
         :developersPage="true"
         :developersMainPage="developersPage"
-        :hero-img="`/pages/hire-developers/${dev_lang || 'main'}-hero.png`"
-        :hero-img-mobile="`/pages/hire-developers/${dev_lang || 'main'}-hero-mobile.png`"
+        :hero-img="`/pages/hire-developers/${hero_image || 'main'}-hero.png`"
+        :hero-img-mobile="`/pages/hire-developers/${hero_image || 'main'}-hero-mobile.png`"
       >
         <template #title>
           <span v-if="developersPage">
@@ -20,7 +20,7 @@
             Hire developers that are vetted, trained and managed by ScrumLaunch. We place high-quality software developers across all types of businesses from venture-backed startups to large corporations.
           </span>
           <span v-else>
-            Quickly add experienced {{ dev_lang }} developers to your project. We handle all the sourcing, vetting and back office management so you can get an experienced Shopify developer up and running within days or weeks. We’ll take care of the rest.
+            Quickly add experienced {{ dev_lang }} developers to your project. We handle all the sourcing, vetting and back office management so you can get an experienced {{ dev_lang }} developer up and running within days or weeks. We’ll take care of the rest.
           </span>
         </template>
       </Hero>
@@ -81,6 +81,7 @@ export default {
     return {
       dev_lang: '',
       dev_lang_hero: '',
+      hero_image: '',
       questions: [],
       developersPage: !this.$route.params.specialization
     }
@@ -121,7 +122,8 @@ export default {
 
       const spec = this.$route.params.specialization
       let itemIndex = dev_langs.findIndex(item => item.url === spec)
-      this.dev_lang = dev_langs[itemIndex]?.title?.toLowerCase()
+      this.dev_lang = dev_langs[itemIndex]?.title
+      this.hero_image = dev_langs[itemIndex]?.title?.toLowerCase()?.replaceAll(' ', '-')
       this.questions = spec ? dev_langs[itemIndex]?.questions : mainQuestions
     },
   },

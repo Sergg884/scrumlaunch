@@ -5,12 +5,12 @@
     </h2>
     <div class="questions" v-if="questions">
       <div v-for="(question, index) in questions" :key="index" class="question">
-        <div class="main">
+        <div class="main" @click="setActiveQuestion(index)">
           <nuxt-img class="icon" :src="getImage(index)" :alt="`faq-img-${index + 1}`" />
           <h3>
             {{ question.title }}
           </h3>
-          <div class="expand-icon" @click="setActiveQuestion(index)">
+          <div class="expand-icon">
             <Transition name="fade">
               <nuxt-img :src="activeQuestion == index ? '/shared/faq/minus.svg' : '/shared/faq/plus.svg'" />
             </Transition>
@@ -21,6 +21,19 @@
             <p>
               {{ question.text }}
             </p>
+            <ul v-if="question.list">
+              <li v-for="(item, index) in question.list" :key="index">
+                {{ item }}
+              </li>
+            </ul>
+            <p v-if="question.subText">
+              {{ question.subText }}
+            </p>
+            <ul v-if="question.subList">
+              <li v-for="(subListItem, subListItemIndex) in question.subList" :key="subListItemIndex">
+                {{ subListItem }}
+              </li>
+            </ul>
           </div>
         </Transition>
       </div>
@@ -95,6 +108,8 @@ section {
         display: flex;
         align-items: flex-start;
         text-align: left;
+        cursor: pointer;
+
         @include tablet-and-up {
           align-items: center;
         }
@@ -146,11 +161,14 @@ section {
         text-align: left;
         margin-top: 26px;
         margin-bottom: 0;
+
         @include tablet-and-up {
           font-size: 18px;
         }
         @include desktop-and-up {
           font-size: 20px;
+          margin-left: 98px;
+          margin-right: 120px;
         }
       }
     }
