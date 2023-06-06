@@ -19,7 +19,7 @@
             <p>
               From 1 full-time developer to several experienced developers fully integrated in your team
             </p>
-            <BaseButton small to="/contact-us">
+            <BaseButton small @click="doScrollTop()">
               Get started
             </BaseButton>
           </div>
@@ -49,6 +49,19 @@ export default {
         }
       ]
     }
+  },
+
+  methods: {
+    doScrollTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      })
+
+      setTimeout(() => {
+        document.getElementById('email-input').focus()
+      }, 1000)
+    },
   },
 }
 </script>

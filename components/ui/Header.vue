@@ -15,9 +15,9 @@
         :menu-items="developers"
         :is-white="isHeaderWhite"
       />
-      <NuxtLink to="/process"> About </NuxtLink>
+      <!-- <NuxtLink to="/process"> About </NuxtLink> -->
       <NuxtLink to="/remote-developer-jobs"> Careers </NuxtLink>
-      <NuxtLink to="/contact-us"> Contact </NuxtLink>
+      <!-- <NuxtLink to="/contact-us"> Contact </NuxtLink> -->
     </div>
     <div class="menu--mobile" @click="toggleNavigation()">
       <img
@@ -61,15 +61,15 @@
           </li>
         </ul>
       </li>
-      <li @click="navigateTo('/process')">
+      <!-- <li @click="navigateTo('/process')">
         About
-      </li>
+      </li> -->
       <li @click="navigateTo('/remote-developer-jobs')">
         Careers
       </li>
-      <li @click="navigateTo('/contact-us')">
+      <!-- <li @click="navigateTo('/contact-us')">
         Contact
-      </li>
+      </li> -->
     </ul>
   </header>
 </template>

@@ -35,10 +35,10 @@
       </div>
     </div>
     <div v-if="!is_done" :class="`img ${developersPage ? 'img-main img-main-desktop' : ''} ${developersMainPage ? 'main' : ''}`">
-      <nuxt-img :src="heroImg" alt="hero-img" />
+      <nuxt-img format="webp" :src="heroImg" alt="hero-img" />
     </div>
     <div v-if="developersPage" class="img img-main-mobile">
-      <nuxt-img :src="heroImgMobile" alt="hero-img-mobile" />
+      <nuxt-img format="webp" :src="heroImgMobile" alt="hero-img-mobile" />
     </div>
     <div
       v-show="is_sent"

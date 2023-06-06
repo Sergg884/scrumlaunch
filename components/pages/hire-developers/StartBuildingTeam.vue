@@ -4,12 +4,32 @@
       <h2 class="title-big">
         Start building my development team now
       </h2>
-      <BaseButton class="button" to="/contact-us">
+      <BaseButton class="button" @click="doScrollTop()">
         Hire developers
       </BaseButton>
     </section>
   </div>
 </template>
+
+<script>
+  export default {
+    
+    methods: {
+      doScrollTop() {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth',
+        })
+
+        setTimeout(() => {
+          document.getElementById('email-input').focus()
+        }, 1000)
+      },
+    },
+  }
+
+
+</script>
 
 <style lang="scss" scoped>
 
