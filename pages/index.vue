@@ -8,7 +8,7 @@
       </template>
       <template #text>
         Every technology project is different and it’s just as important to find the right person as it is to find a talented person.
-        ScrumLaunch’s talent hubs in Eastern Europe and Latin America combine global scale
+        ScrumLaunch’s talent hubs in Eastern Europe and Latin America combine global scale and personalization to ensure you get the right person for your project.
       </template>
     </Hero>
 
