@@ -8,7 +8,7 @@
       </AppearFromMask>
       <AppearFromMask>
         <p class="text-main">
-          Our leadership team is lorem ipsum dolor sit amet, consectetur adipiscing elit. Interdum non, odio nunc quisque lobortis ac proin vitae, eu. Lorem ac ipsum, senectus elementum venenatis aliquam et mollis quis.
+          ScrumLaunch was built based on our founding team’s experience as both founders and leaders at startups & growth companies.
         </p>
       </AppearFromMask>
       <div class="members">
