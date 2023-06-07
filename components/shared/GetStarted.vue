@@ -195,8 +195,6 @@ export default {
     },
 
     sendForm() {
-      this.is_sent = true
-      this.is_blocked = true
       // eslint-disable-next-line prefer-regex-literals
       const emailRegEx = new RegExp(
         '^(([^<>()[\\]\\.,;:\\s@\\"]+(\\.[^<>()[\\]\\.,;:\\s@\\"]+)*)|(\\".+\\"))@(([^<>()[\\]\\.,;:\\s@\\"]+\\.)+[^<>()[\\]\\.,;:\\s@\\"]{2,})$',
@@ -220,6 +218,9 @@ export default {
         this.is_error_email = true
         return
       }
+
+      this.is_sent = true
+      this.is_blocked = true
 
       this.$axios.$post('/api/company-contact', data).then(() => {
         this.name = ''
