@@ -35,3 +35,22 @@ export const createAirTableRow = (fields, tableName) => {
     )
   })
 }
+
+function cleanString(text) {
+  const replacedNewlines = text.replace(/\n+/g, ' ');
+  const removedExtraSpaces = replacedNewlines.replace(/\s{2,}/g, ' ');
+  return removedExtraSpaces;
+}
+
+function delay(duration) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, duration);
+  });
+}
+
+module.exports = {
+  cleanString,
+  delay
+};

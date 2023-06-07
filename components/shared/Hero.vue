@@ -8,6 +8,29 @@
         <slot name="text"></slot>
       </p>
     </div>
+
+    <div class="requirements">
+      <label class="requirements-label" for="requirements"> Any details you’d like to share? </label>
+      <div class="requirements-input">
+        <textarea
+          id="requirements"
+          v-model="requirements"
+          type="text"
+          placeholder="Enter requirements"
+        />
+        <span class="requirements-input_characters">{{requirements.length}}/200</span>
+        <img class="requirements-input_icon" src="/icons/attention.svg" alt="attention">
+        <div class="requirements-input_attention hide">
+          <p>Enter a detailed description of your needs whether product requirements or specific technical roles you need filled. See examples below.</p>
+          <ul>
+            <li>I need a team of react & python developers for my used clothing marketplace. It requires a mobile application for users to list, buy and sell items as well as an admin dashboard for managing users and analytics.</li>
+            <li>I need a react developer with NextJS experience who is able to work in the EST time zone and has great interpersonal skills and strong English.</li>
+          </ul>
+        </div>
+        <BaseButton class="requirements-input_button" @click="sendEmail()">GENERATE</BaseButton>
+      </div>
+    </div>
+    
     <div class="contact">
       <div class="input-container">
         <b-form-group
@@ -29,22 +52,21 @@
         </b-form-group>
       </div>
       <div class="button">
-        <BaseButton @click="sendEmail()">
-          Schedule a call
-        </BaseButton>
+        <BaseButton @click="sendEmail()"> Schedule a call </BaseButton>
       </div>
     </div>
-    <div v-if="!is_done" :class="`img ${developersPage ? 'img-main img-main-desktop' : ''} ${developersMainPage ? 'main' : ''}`">
+    <div
+      v-if="!is_done"
+      :class="`img ${developersPage ? 'img-main img-main-desktop' : ''} ${
+        developersMainPage ? 'main' : ''
+      }`"
+    >
       <nuxt-img format="webp" :src="heroImg" alt="hero-img" />
     </div>
     <div v-if="developersPage" class="img img-main-mobile">
       <nuxt-img format="webp" :src="heroImgMobile" alt="hero-img-mobile" />
     </div>
-    <div
-      v-show="is_sent"
-      :class="{ blocked: is_blocked }"
-      class="message-sent"
-    >
+    <div v-show="is_sent" :class="{ blocked: is_blocked }" class="message-sent">
       <lottie
         v-show="is_done"
         class="message-sent__image"
@@ -67,7 +89,6 @@ import lottie from 'vue-lottie/src/lottie.vue'
 import InputComponent from '@/components/ui/InputComponent.vue'
 
 export default {
-
   components: {
     lottie,
     InputComponent,
@@ -76,24 +97,24 @@ export default {
   props: {
     heroImg: {
       type: String,
-      default: ''
+      default: '',
     },
     heroImgMobile: {
       type: String,
-      default: ''
+      default: '',
     },
     sideImg: {
       type: Boolean,
-      default: false
+      default: false,
     },
     developersPage: {
       type: Boolean,
-      default: false
+      default: false,
     },
     developersMainPage: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
 
   data() {
@@ -103,7 +124,8 @@ export default {
       is_blocked: false,
       is_sent: false,
       is_done: false,
-      hide_hero_img: false
+      hide_hero_img: false,
+      requirements: ''
     }
   },
 
@@ -123,7 +145,6 @@ export default {
         this.is_blocked = true
 
         this.$axios.$post('/api/contact-us', data).then(() => {
-
           this.is_sent = true
           this.is_blocked = false
           this.is_done = true
@@ -133,7 +154,10 @@ export default {
           setTimeout(() => {
             this.is_sent = false
             this.is_done = false
-            this.$router.push({name: 'contact-us', params: { email: this.email }});
+            this.$router.push({
+              name: 'contact-us',
+              params: { email: this.email },
+            })
             this.name = ''
             this.email = ''
             this.project = ''
@@ -166,13 +190,11 @@ export default {
         })
       }
     },
-  }
+  },
 }
-
 </script>
 
 <style lang="scss" scoped>
-
 section {
   display: flex;
   flex-direction: column;
@@ -182,7 +204,6 @@ section {
     margin-bottom: 100px;
   }
 
-
   @include desktop-and-up {
     display: grid;
     grid-template-columns: 0.7fr 0.5fr;
@@ -190,7 +211,6 @@ section {
     grid-row-gap: 0px;
     margin-top: 80px;
   }
-  
 
   .hero {
     @include tablet-and-up {
@@ -220,7 +240,100 @@ section {
         padding: 0;
       }
     }
-    
+  }
+
+  .requirements {
+    margin-top: 20px;
+    text-align: left;
+
+    &-label {
+      font-weight: 700;
+      font-size: 16px;
+      text-transform: uppercase;
+    }
+
+    &-input {
+      display: flex;
+      position: relative;
+      border: 1px solid #1E1F21;
+
+      textarea {
+        width: 80%;
+        padding: 8px 20px;
+        border: none;
+        resize: none;
+        font-weight: 500;
+        font-size: 18px;
+        color: #1E1F21;
+        letter-spacing: -0.01em;
+        overflow: auto;
+        outline: none;
+
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+
+        &::placeholder {
+          font-weight: 600;
+          color: #1E1F21;
+        }
+      }
+
+      &_button {
+        width: 185px;
+        border-radius: 0;
+      }
+
+      &_characters {
+        position: absolute;
+        bottom: -25px;
+        font-weight: 500;
+        font-size: 14px;
+        color: #A9A69E;
+      }
+
+      &_icon {
+        position: absolute;
+        right: -40px;
+        top: 28px;
+
+        &:hover + .hide {
+          display: block;
+        }
+      }
+
+      &_attention {
+        display: none;
+        width: 600px;
+        position: absolute;
+        top: -230px;
+        right: -28px;
+        padding: 25px 20px;
+        background-color: #1E1F21;
+        color: #fff;
+        font-weight: 600;
+        z-index: 1;
+
+        ul {
+          list-style-type: decimal;
+          padding-left: 15px;
+          color: #12E2B0;
+          font-size: 14px;
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          width: 0;
+          height: 0;
+          bottom: -19px;
+          right: 0;
+          border-style: solid;
+          border-width: 0 20px 20px 0;
+          border-color: transparent #1E1F21 transparent transparent;
+        }
+      }
+    }
   }
 
   .message-sent {
@@ -252,7 +365,6 @@ section {
     margin-bottom: 40px;
 
     &.img-main {
-      
       @include desktop-and-up {
         padding: 0 0 0 100px;
         position: absolute;
@@ -273,12 +385,11 @@ section {
         display: none;
 
         @include desktop-and-up {
-        display: block;
+          display: block;
         }
       }
 
       &-mobile {
-
         img {
           width: 425px;
 
@@ -296,7 +407,6 @@ section {
     img {
       width: 100%;
     }
-    
 
     @include tablet-and-up {
       padding: 0 30px;
@@ -306,7 +416,6 @@ section {
       grid-area: 1 / 2 / 3 / 3;
       text-align: right;
     }
-    
   }
 
   .contact {
@@ -339,8 +448,7 @@ section {
   }
 }
 
-
-::v-deep .email-input{
+::v-deep .email-input {
   margin-bottom: 0;
   label {
     font-weight: 900;
@@ -371,5 +479,4 @@ section {
     }
   }
 }
-
 </style>
