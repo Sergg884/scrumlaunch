@@ -368,7 +368,7 @@ section {
           input,textarea,select {
             border: 1px solid $main-black;
             padding: 8px 14px;
-            font-size: 14px;
+            font-size: 16px;
             width: 100%;
 
             &::placeholder {

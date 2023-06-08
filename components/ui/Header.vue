@@ -215,6 +215,7 @@ header {
   display: flex;
   justify-content: space-between;
   max-width: 1440px;
+  z-index: 100;
 
   @include tablet-and-up {
     padding: 30px;
@@ -226,6 +227,9 @@ header {
 
   &.active {
     background-color: $main-black;
+    position: fixed;
+    top: 0;
+    width: 100vw;
 
     &::before {
       height: 72px;
@@ -283,7 +287,7 @@ header {
 }
 
 .mobile-navigation {
-  padding: 20px;
+  padding: 20px 20px 50px 20px;
   position: fixed;
   top: -100%;
   left: 0;
@@ -293,7 +297,7 @@ header {
   list-style: none;
   background: $main-black;
   padding-top: 40px;
-  z-index: 99;
+  z-index: 100;
   opacity: 0;
 
   .active-dropdown .chevron {
@@ -341,7 +345,7 @@ header {
   &.active {
     top: 72px;
     transition: 0.5s;
-    height: calc(100vh - 72px);
+    height: 100vh;
     opacity: 1;
   }
 

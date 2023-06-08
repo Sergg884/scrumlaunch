@@ -40,7 +40,7 @@
             id="email"
             class="contact-form--wrapper--input"
             :model-value="email"
-            placeholder="Enter your email or phone number here"
+            placeholder="Enter your email"
             name="email"
             :error-message="emailError"
             @update:modelValue="handleFieldChange('email', $event)"

@@ -67,7 +67,7 @@ export default {
     pointer-events: none;
     transition: opacity 0.3s;
     cursor: pointer;
-    z-index: 999;
+    z-index: 99;
 
     @media screen and (max-width: 768px) {
       bottom: 90px;
