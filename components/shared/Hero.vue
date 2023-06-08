@@ -251,6 +251,12 @@ section {
   .img {
     margin-bottom: 40px;
 
+    @include desktop-and-up {
+      position: absolute;
+      width: 630px;
+      top: 15px;
+    }
+
     &.img-main {
       
       @include desktop-and-up {
