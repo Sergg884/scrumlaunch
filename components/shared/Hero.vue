@@ -364,6 +364,12 @@ section {
   .img {
     margin-bottom: 40px;
 
+    @include desktop-and-up {
+      position: absolute;
+      width: 630px;
+      top: 15px;
+    }
+
     &.img-main {
       @include desktop-and-up {
         padding: 0 0 0 100px;
@@ -466,7 +472,6 @@ section {
   input {
     color: $main-black;
     border: none;
-    border-bottom: 1px solid;
     border-radius: 0;
     padding-left: 0;
     font-size: 18px;

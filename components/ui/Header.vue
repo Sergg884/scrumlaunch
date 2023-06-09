@@ -252,7 +252,7 @@ header {
 .menu {
   gap: 40px;
   display: none;
-  z-index: 99;
+  z-index: 100;
 
   &.white {
     a {
@@ -297,7 +297,6 @@ header {
   list-style: none;
   background: $main-black;
   padding-top: 40px;
-  z-index: 100;
   opacity: 0;
 
   .active-dropdown .chevron {

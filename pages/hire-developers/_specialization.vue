@@ -12,7 +12,7 @@
               Hire <span class="mark">EXPERTS</span> <br> on demand
           </span>
           <span v-else>
-            Hire <span class="mark">{{ dev_lang }} developer</span> 
+            Hire <span class="mark">{{ dev_lang }} developers</span> 
           </span>
         </template>
         <template #text>
