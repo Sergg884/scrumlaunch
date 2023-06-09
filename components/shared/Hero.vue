@@ -364,7 +364,6 @@ section {
   input {
     color: $main-black;
     border: none;
-    border-bottom: 1px solid;
     border-radius: 0;
     padding-left: 0;
     font-size: 18px;
