@@ -10,6 +10,7 @@ const openai = new OpenAIApi(configuration);
 const OPENAI_MODEL = "gpt-3.5-turbo";
 
 function makeRequest(messages) {
+  console.log(messages)
   return new Promise((resolve, reject) => {
     openai.createChatCompletion({
       model: OPENAI_MODEL,
@@ -23,6 +24,7 @@ function makeRequest(messages) {
 }
 
 async function start(projectDescription, callbackFn) {
+  console.log(projectDescription)
   callbackFn("Fetching terms of reference...");
   const technicalTask = await makeRequest([{
     role: "user",
@@ -32,6 +34,8 @@ async function start(projectDescription, callbackFn) {
       )
     )
   }]);
+
+  console.log(technicalTask)
 
   callbackFn({ termsOfReference: technicalTask });
   callbackFn("Fetching technologies...");
@@ -44,6 +48,8 @@ async function start(projectDescription, callbackFn) {
       )
     )
   }]);
+
+  console.log(technologies)
 
   callbackFn({ technologies });
   callbackFn("Fetching estimate...");

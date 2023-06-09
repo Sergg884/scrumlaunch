@@ -73,7 +73,100 @@
             </p>
           </div>
         </div>
+      </div>
+      <div class="requirements">
         <h3>Team composition</h3>
+
+        <div class="team">
+          <div class="blocks">
+            <p class="blocks-item_title block">FRONTEND</p>
+
+            <div class="blocks-item">
+              <p class="blocks-item_type">
+                <span class="mark">Technologies Required</span>
+                <span class="employees"><span>3 </span>Employees</span>
+              </p>
+              <b-row class="team-technologies">
+                <b-col cols="12" md="3"> <span>UI/UX</span> </b-col>
+                <b-col cols="12" md="3"> <span>UI/UX</span> </b-col>
+              </b-row>
+              <b-row class="developers">
+                <b-col cols="12" md="6" xl="4">
+                  <div class="developers-item">
+                    <img
+                      :src="'/pages/blog/default-author.jpg'"
+                      :alt="'developer-img'"
+                    />
+                    <div class="developers-item_data">
+                      <p class="name">Mykhailo Harponenko</p>
+                      <p class="exp">
+                        Middle <span class="years"> 5 </span>years of exp.
+                      </p>
+                    </div>
+                  </div>
+                </b-col>
+                <b-col cols="12" md="6" xl="4">
+                  <div class="developers-item">
+                    <img
+                      :src="'/pages/blog/default-author.jpg'"
+                      :alt="'developer-img'"
+                    />
+                    <div class="developers-item_data">
+                      <p class="name">Mykhailo Harponenko</p>
+                      <p class="exp">
+                        Middle <span class="years"> 5 </span>years of exp.
+                      </p>
+                    </div>
+                  </div>
+                </b-col>
+              </b-row>
+            </div>
+
+            <p class="blocks-item_title block">BACKEND</p>
+
+            <div class="blocks-item">
+              <p class="blocks-item_type">
+                <span class="mark">Technologies Required</span>
+              </p>
+              <b-row class="team-technologies">
+                <b-col cols="6" xl="3"> <span>UI/UX</span> </b-col>
+                <b-col cols="6" xl="3"> <span>UI/UX</span> </b-col>
+                <b-col cols="6" xl="3"> <span>UI/UX</span> </b-col>
+                <b-col cols="6" xl="3"> <span>UI/UX</span> </b-col>
+              </b-row>
+              <b-row class="developers">
+                <b-col cols="12" md="6" xl="4">
+                  <div class="developers-item">
+                    <img
+                      :src="'/pages/blog/default-author.jpg'"
+                      :alt="'developer-img'"
+                    />
+                    <div class="developers-item_data">
+                      <p class="name">Mykhailo Harponenko</p>
+                      <p class="exp">
+                        Middle <span class="years"> 5 </span>years of exp.
+                      </p>
+                    </div>
+                  </div>
+                </b-col>
+                <b-col cols="12" md="6" xl="4">
+                  <div class="developers-item">
+                    <img
+                      :src="'/pages/blog/default-author.jpg'"
+                      :alt="'developer-img'"
+                    />
+                    <div class="developers-item_data">
+                      <p class="name">Mykhailo Harponenko</p>
+                      <p class="exp">
+                        Middle <span class="years"> 5 </span>years of exp.
+                      </p>
+                    </div>
+                  </div>
+                </b-col>
+              </b-row>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="loading">
@@ -88,19 +181,22 @@
         <BaseButton class="export-btn" @click="exportToPDF()"
           >Save as PDF</BaseButton
         >
-        <BaseButton @click="exportToPDF()">Request Team</BaseButton>
+        <BaseButton @click="showModal()">Request Team</BaseButton>
       </div>
     </section>
     <OurSuperpowers />
+    <RequestTeamModalVue v-show="isModalVisible" @close="closeModal" />
   </div>
 </template>
 
 <script>
 import OurSuperpowers from '~/components/pages/home/OurSuperpowers'
+import RequestTeamModalVue from '~/components/shared/RequestTeamModal'
 
 export default {
   components: {
     OurSuperpowers,
+    RequestTeamModalVue,
   },
   head: {
     title: 'Build Team with Scrum AI',
@@ -115,6 +211,7 @@ export default {
   },
   data() {
     return {
+      isModalVisible: false,
       projectDetails: [
         {
           title: 'Project Goal',
@@ -216,6 +313,12 @@ export default {
     // exportToPDF() {
     //   html2pdf(document.getElementById('requirements-container'))
     // },
+    showModal() {
+      this.isModalVisible = true
+    },
+    closeModal() {
+      this.isModalVisible = false
+    },
   },
 }
 </script>
@@ -255,17 +358,26 @@ export default {
     margin-top: 20px;
     color: #a9a69e;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 16px;
+
+    @include tablet-and-up {
+      font-size: 20px;
+    }
   }
 
   .loading__dot {
     animation: dot ease-in-out 1.5s infinite;
     background-color: #d9d9d9;
     display: inline-block;
-    height: 32px;
+    height: 20px;
+    width: 20px;
     margin: 10px;
     border-radius: 16px;
-    width: 32px;
+
+    @include tablet-and-up {
+      height: 32px;
+      width: 32px;
+    }
   }
 
   .loading__dot:nth-of-type(2) {
@@ -294,10 +406,11 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 100px 0;
+    margin: 40px 0 70px;
 
     @include tablet-and-up {
       flex-direction: row;
+      margin: 100px 0;
     }
 
     .export-btn {
