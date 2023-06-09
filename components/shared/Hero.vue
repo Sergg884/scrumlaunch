@@ -7,31 +7,58 @@
       <p class="text-main">
         <slot name="text"></slot>
       </p>
-    </div>
 
-    <div class="requirements">
-      <label class="requirements-label" for="requirements"> Any details you’d like to share? </label>
-      <div class="requirements-input">
-        <textarea
-          id="requirements"
-          v-model="requirements"
-          type="text"
-          placeholder="Enter requirements"
-        />
-        <span class="requirements-input_characters">{{requirements.length}}/200</span>
-        <img class="requirements-input_icon" src="/icons/attention.svg" alt="attention">
-        <div class="requirements-input_attention hide">
-          <p>Enter a detailed description of your needs whether product requirements or specific technical roles you need filled. See examples below.</p>
-          <ul>
-            <li>I need a team of react & python developers for my used clothing marketplace. It requires a mobile application for users to list, buy and sell items as well as an admin dashboard for managing users and analytics.</li>
-            <li>I need a react developer with NextJS experience who is able to work in the EST time zone and has great interpersonal skills and strong English.</li>
-          </ul>
+      <div class="hero-requirements" v-if="withRequirements">
+        <label class="hero-requirements-label" for="requirements"
+          >Build requirements & staff your project from a text prompt.</label
+        >
+        <div class="hero-requirements-input">
+          <textarea
+            id="requirements"
+            v-model="requirements"
+            type="text"
+            placeholder="Enter requirements"
+          />
+          <span class="hero-requirements-input_characters"
+            >{{ requirements.length }}/200</span
+          >
+          <img
+            class="hero-requirements-input_icon"
+            src="/icons/attention.svg"
+            alt="attention"
+          />
+          <div class="hero-requirements-input_attention hide">
+            <p>
+              Enter a detailed description of your needs whether product
+              requirements or specific technical roles you need filled. See
+              examples below.
+            </p>
+            <ul>
+              <li>
+                I need a team of react & python developers for my used clothing
+                marketplace. It requires a mobile application for users to list,
+                buy and sell items as well as an admin dashboard for managing
+                users and analytics.
+              </li>
+              <li>
+                I need a react developer with NextJS experience who is able to
+                work in the EST time zone and has great interpersonal skills and
+                strong English.
+              </li>
+            </ul>
+          </div>
+          <BaseButton
+            class="hero-requirements-input_button"
+            @click="sendEmail()"
+          >
+            GENERATE
+          </BaseButton>
         </div>
-        <BaseButton class="requirements-input_button" @click="sendEmail()">GENERATE</BaseButton>
+        <nuxt-link>Want to talk to someone the old fashioned way?  Schedule a call</nuxt-link>
       </div>
     </div>
-    
-    <div class="contact">
+
+    <div class="contact" v-if="!withRequirements">
       <div class="input-container">
         <b-form-group
           id="contact-us-fieldset"
@@ -115,6 +142,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    withRequirements: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   data() {
@@ -125,7 +156,7 @@ export default {
       is_sent: false,
       is_done: false,
       hide_hero_img: false,
-      requirements: ''
+      requirements: '',
     }
   },
 
@@ -242,7 +273,7 @@ section {
     }
   }
 
-  .requirements {
+  .hero-requirements {
     margin-top: 20px;
     text-align: left;
 
@@ -255,7 +286,7 @@ section {
     &-input {
       display: flex;
       position: relative;
-      border: 1px solid #1E1F21;
+      border: 1px solid #1e1f21;
 
       textarea {
         width: 80%;
@@ -264,7 +295,7 @@ section {
         resize: none;
         font-weight: 500;
         font-size: 18px;
-        color: #1E1F21;
+        color: #1e1f21;
         letter-spacing: -0.01em;
         overflow: auto;
         outline: none;
@@ -275,7 +306,7 @@ section {
 
         &::placeholder {
           font-weight: 600;
-          color: #1E1F21;
+          color: #1e1f21;
         }
       }
 
@@ -289,7 +320,7 @@ section {
         bottom: -25px;
         font-weight: 500;
         font-size: 14px;
-        color: #A9A69E;
+        color: #a9a69e;
       }
 
       &_icon {
@@ -309,7 +340,7 @@ section {
         top: -230px;
         right: -28px;
         padding: 25px 20px;
-        background-color: #1E1F21;
+        background-color: #1e1f21;
         color: #fff;
         font-weight: 600;
         z-index: 1;
@@ -317,12 +348,12 @@ section {
         ul {
           list-style-type: decimal;
           padding-left: 15px;
-          color: #12E2B0;
+          color: #12e2b0;
           font-size: 14px;
         }
 
         &::after {
-          content: "";
+          content: '';
           position: absolute;
           width: 0;
           height: 0;
@@ -330,7 +361,7 @@ section {
           right: 0;
           border-style: solid;
           border-width: 0 20px 20px 0;
-          border-color: transparent #1E1F21 transparent transparent;
+          border-color: transparent #1e1f21 transparent transparent;
         }
       }
     }
