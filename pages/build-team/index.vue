@@ -204,7 +204,7 @@
 <script>
 import OurSuperpowers from '~/components/pages/home/OurSuperpowers'
 import RequestTeamModal from '~/components/shared/RequestTeamModal'
-import {formatDate} from '~/utils'
+import { formatDate } from '~/utils'
 
 export default {
   components: {
@@ -221,6 +221,18 @@ export default {
           'Interested in working with us?  Get in touch · hello@scrumlaunch.com · Let’s talk about elevating and accelerating your digital experience.',
       },
     ],
+  },
+  async mounted() {
+    const requirements = this.$store.getters['requirements/GET_REQUIREMENTS']
+
+    // this.$axios
+    //   .$post('/api/ask-ai', { idea: 'Crowdfunding' })
+    //   .then((res) => {
+    //     console.log(res)
+    //   })
+    //   .catch((error) => console.log(error))
+
+    console.log(requirements)
   },
   data() {
     return {
@@ -306,7 +318,7 @@ export default {
 
       if (returnFile) {
         let file = await this.$html2pdf()
-          .set({options})
+          .set({ options })
           .from(container)
           .toPdf()
           .output('datauristring')

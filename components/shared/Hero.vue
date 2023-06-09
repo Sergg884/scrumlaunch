@@ -49,7 +49,7 @@
             </li>
           </ul>
         </div>
-        <BaseButton class="hero-requirements-input_button" @click="sendEmail()">
+        <BaseButton class="hero-requirements-input_button" @click="setRequirements()">
           GENERATE
         </BaseButton>
       </div>
@@ -165,13 +165,10 @@ export default {
       this[name] = value
     },
 
-    askAi() {
-      this.$axios
-        .$post('/api/ask-ai', { idea: 'Crowdfunding' })
-        .then((res) => {
-          console.log(res)
-        })
-        .catch((error) => console.log(error))
+    setRequirements() {
+      console.log(this.requirements)
+      this.$store.commit('requirements/SET_REQUIREMENTS', this.requirements)
+      this.$router.push('build-team')
     },
 
     sendEmail() {
