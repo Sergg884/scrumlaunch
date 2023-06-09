@@ -73,4 +73,16 @@ function dateConverter(date_str, variant = 1) {
   return date_output_str
 }
 
-export { dateConverter, renderOptions }
+const formatDate = (separator = '.', currentDate) => {
+  const date_str = currentDate || new Date()
+  const get_month = parseInt(date_str.getMonth())
+  const year = parseInt(date_str.getFullYear())
+  let month = get_month + 1
+    month = month < 10 ? '0' + month : month
+  const date =
+    date_str.getDate() < 10 ? '0' + date_str.getDate() : date_str.getDate()
+
+  return month + separator + date + separator + year
+}
+
+export { dateConverter, renderOptions, formatDate }

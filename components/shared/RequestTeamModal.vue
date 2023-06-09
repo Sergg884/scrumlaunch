@@ -66,8 +66,9 @@
 </template>
 
 <script>
-export default {
+import { formatDate } from '~/utils'
 
+export default {
   data: () => ({
     name: '',
     nameError: null,
@@ -77,6 +78,7 @@ export default {
     is_sent: false,
     is_done: false,
   }),
+  props: ['getFile'],
   methods: {
     close() {
       this.$emit('close')
@@ -84,25 +86,50 @@ export default {
     handleFieldChange(name, value) {
       this[name] = value
     },
-    sendForm() {
+    async sendForm() {
       this.is_sent = true
       this.is_blocked = true
-      const data = {
-        name: this.name,
-        email: this.email,
-      }
-      this.$axios.$post('/api/contact-us', data).then(() => {
-        this.name = ''
-        this.email = ''
-        this.is_blocked = false
-        this.is_done = true
-        this.track()
-        setTimeout(() => {
-          this.is_sent = false
-          this.is_done = false
-        }, 5000)
-        this.close()
-      })
+
+      const fileBlob = await this.getFile(true)
+
+      fetch(
+        'https://script.google.com/macros/s/AKfycbxmI7N5aQ3PcX_VHoGsNN5xJhsXY_NH5HVivuGd2W6N_Y2YRVhAhNP7vqhPKT-DPjHw8A/exec',
+        {
+          method: 'POST',
+          body: JSON.stringify({
+            fname: 'uploadFilesToGoogleDrive',
+            dataReq: {
+              data: fileBlob.split(',')[1],
+              name: `ScrumLaunch-Build-Team-${formatDate('-')}.pdf`,
+              type: 'application/pdf',
+            },
+          }),
+        }
+      )
+        .then((res) => res.json())
+        .then((resp) => {
+          const data = {
+            name: this.name,
+            email: this.email,
+            pdf: resp.url,
+          }
+
+          this.$axios.$post('/api/send-requirements', data).then(() => {
+            this.name = ''
+            this.email = ''
+            this.is_blocked = false
+            this.is_done = true
+            this.track()
+            setTimeout(() => {
+              this.is_sent = false
+              this.is_done = false
+            }, 5000)
+            this.close()
+          })
+        })
+        .catch((error) => {
+          console.error(error)
+        })
     },
     validateForm() {
       // eslint-disable-next-line prefer-regex-literals

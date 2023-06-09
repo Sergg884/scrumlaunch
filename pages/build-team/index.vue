@@ -61,6 +61,7 @@
         </div>
 
         <h3>Estimate</h3>
+
         <div class="estimate">
           <div
             class="estimate-item"
@@ -72,6 +73,13 @@
               <span>{{ item.number }}</span> {{ item.period }}
             </p>
           </div>
+        </div>
+        <div class="sl-info">
+          <div>
+            <img class="icon" src="/icons/mail.svg" alt="tab-icon-1" />
+            <span>hello@scrumlaunch.com</span>
+          </div>
+          <span>© 2023 ScrumLaunch LLC</span>
         </div>
       </div>
       <div class="requirements">
@@ -178,25 +186,30 @@
         We form a response to your request, this may take some time
       </p>
       <div class="buttons-wrapper">
-        <BaseButton class="export-btn" @click="exportToPDF()"
+        <BaseButton class="export-btn" @click="exportToPDF(false)"
           >Save as PDF</BaseButton
         >
         <BaseButton @click="showModal()">Request Team</BaseButton>
       </div>
     </section>
     <OurSuperpowers />
-    <RequestTeamModalVue v-show="isModalVisible" @close="closeModal" />
+    <RequestTeamModal
+      v-show="isModalVisible"
+      @close="closeModal"
+      :getFile="exportToPDF"
+    />
   </div>
 </template>
 
 <script>
 import OurSuperpowers from '~/components/pages/home/OurSuperpowers'
-import RequestTeamModalVue from '~/components/shared/RequestTeamModal'
+import RequestTeamModal from '~/components/shared/RequestTeamModal'
+import {formatDate} from '~/utils'
 
 export default {
   components: {
     OurSuperpowers,
-    RequestTeamModalVue,
+    RequestTeamModal,
   },
   head: {
     title: 'Build Team with Scrum AI',
@@ -274,45 +287,37 @@ export default {
     }
   },
   methods: {
-    async exportToPDF() {
+    async exportToPDF(returnFile) {
       const container = document.getElementById('requirements-container')
+      container.classList.add('export')
+      container.offsetHeight
+
       const options = {
-        margin: [10, 10],
-        filename: 'file-name.pdf',
+        filename: `ScrumLaunch-Build-Team-${formatDate('-')}.pdf`,
         image: { type: 'jpeg', quality: 1 },
-        html2canvas: {
-          scale: 1.6,
-          // dpi: 192,
-          // letterRendering: true,
-          // ignoreElements: true,
-        },
+        html2canvas: { scale: 2 },
         jsPDF: {
           unit: 'px',
-          format: 'a4',
+          format: [1440, container.offsetHeight],
           orientation: 'p',
           hotfixes: ['px_scaling'],
         },
       }
-      // this.$html2pdf(document.getElementById('requirements-container'), {
-      //   margin: 1,
-      //   filename: 'file-name.pdf',
-      //   image: { type: 'jpeg', quality: 0.98 },
-      //   html2canvas: {
-      //     scale: 1,
-      //     dpi: 192,
-      //     letterRendering: true,
-      //     ignoreElements: true,
-      //   },
-      //   jsPDF: { unit: 'pt', format: 'a4', orientation: 'portrait' },
-      // })
 
-      const res = await this.$html2pdf().set(options).from(container).save()
+      if (returnFile) {
+        let file = await this.$html2pdf()
+          .set({options})
+          .from(container)
+          .toPdf()
+          .output('datauristring')
 
-      console.log(res)
+        return file
+      } else {
+        await this.$html2pdf().set(options).from(container).save()
+      }
+
+      container.classList.remove('export')
     },
-    // exportToPDF() {
-    //   html2pdf(document.getElementById('requirements-container'))
-    // },
     showModal() {
       this.isModalVisible = true
     },

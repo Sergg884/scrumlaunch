@@ -131,8 +131,64 @@ h2 {
 }
 
 .requirements {
+
+  .sl-info {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #A9A69E;
+    padding: 20px 0;
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #000;
+    text-transform: uppercase;
+  }
+
+  &.export {
+    border: 1px solid $main-black;
+    padding: 20px;
+    margin: 20px;
+
+    .sl-info {
+      display: flex;
+    }
+
+    h3 {
+      margin: 10px 0;
+      font-size: 20px;
+    }
+
+    .requirements_title span {
+      font-size: 24px;
+    }
+
+    .blocks-item {
+      margin-bottom: 15px;
+
+      img {
+        width: 15px;
+        height: 15px;
+        margin-bottom: 10px;
+      }
+    }
+
+    .blocks-item_title {
+      font-size: 16px;
+    }
+
+    .blocks-item_text {
+      font-size: 14px;
+    }
+
+    .estimate-item_title {
+      font-size: 14px;
+      margin-bottom: 0;
+    }
+  }
+
   h3 {
-    margin: 20px 0 20px;
+    margin: 20px 0;
     text-align: left;
     font-weight: 800;
     font-size: 18px;
