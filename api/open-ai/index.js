@@ -1,9 +1,10 @@
 const { Configuration, OpenAIApi } = require("openai");
 const utils = require("../utils");
 const prompts = require("./prompts");
+const fetchTeam = require("./fetch-team");
 
 const configuration = new Configuration({
-  apiKey: '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',
+  apiKey: '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',
 });
 
 const openai = new OpenAIApi(configuration);
@@ -24,6 +25,7 @@ function makeRequest(messages) {
 }
 
 async function start(projectDescription, stepCallbackFn, resultCallbackFn) {
+
   stepCallbackFn("Fetching terms of reference...");
   const technicalTask = await makeRequest([{
     role: "user",
@@ -34,7 +36,7 @@ async function start(projectDescription, stepCallbackFn, resultCallbackFn) {
     )
   }]);
 
-  const technicalTaskToJSON = JSON.parse(utils.cleanString(technicalTask))
+  const technicalTaskToJSON = JSON.parse(technicalTask)
   console.log(technicalTask)
 
   resultCallbackFn({ data: technicalTaskToJSON, type: "details" });
@@ -49,7 +51,7 @@ async function start(projectDescription, stepCallbackFn, resultCallbackFn) {
     )
   }]);
 
-  const technologiesToJSON = JSON.parse(utils.cleanString(technologies))
+  const technologiesToJSON = JSON.parse(technologies)
   console.log(technologies)
 
   resultCallbackFn({ data: technologiesToJSON, type: "technologies" });
@@ -64,7 +66,7 @@ async function start(projectDescription, stepCallbackFn, resultCallbackFn) {
     )
   }]);
 
-  const estimateToJSON = JSON.parse(utils.cleanString(estimate))
+  const estimateToJSON = JSON.parse(estimate)
   console.log(estimate)
 
   resultCallbackFn({ data: estimateToJSON, type: "estimate" });
@@ -81,18 +83,15 @@ async function start(projectDescription, stepCallbackFn, resultCallbackFn) {
     )
   }]);
 
-  const teamCompositionToJson = JSON.parse(utils.cleanString(teamComposition))
+  const teamCompositionToJson = JSON.parse(teamComposition)
   console.log(teamComposition)
 
   resultCallbackFn({ data: teamCompositionToJson, type: "teamComposition", finished: true });
   stepCallbackFn("Done");
 
-  process.stdout.write(JSON.stringify({
-    termsOfReference: JSON.parse(utils.cleanString(technicalTask)),
-    technologies: JSON.parse(utils.cleanString(technologies)),
-    estimate: JSON.parse(utils.cleanString(estimate)),
-    teamComposition: JSON.parse(utils.cleanString(teamComposition))
-  }));
+  const team = await fetchTeam({teamComposition: teamCompositionToJson});
+
+  console.log(team);
 }
 
 module.exports = {

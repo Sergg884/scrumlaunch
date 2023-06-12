@@ -10,6 +10,8 @@ router.post('/ask-ai', (req, res) => {
 
   askAi(projectDescription, (responseStep) => {
     console.log(responseStep);
+  }, (responseStep) => {
+    console.log(responseStep);
   });
   res.status(201).json({ success: true })
 });

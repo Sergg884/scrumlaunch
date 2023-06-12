@@ -1,42 +1,42 @@
 const GET_LIST_OF_TECHNOLOGIES = (projectDescription) => {
   return (`You are a software architect. Create a list of technologies for this project: 
-          "${projectDescription}". 
-          Use this JSON format: {
-            "Frontend": 
-              {\${FRONTEND PART N}: 
-                {\${TECHNOLOGY SELECTED}: \${TECHNOLOGY DESCRIPTION}
-              }
-            },
-            "Backend": 
-              {\${BACKEND PART N}: 
-                {\${TECHNOLOGY SELECTED}: \${TECHNOLOGY DESCRIPTION}
-              }
-            },
-            "Deployment": 
-              {\${DEPLOYMENT PART N}: 
-                {\${TECHNOLOGY SELECTED}: \${TECHNOLOGY DESCRIPTION}
-              }
-            },
-            \${OTHER PART N}: 
-              {\${OTHER PARTS PART N}: 
-                {\${TECHNOLOGY SELECTED}: \${TECHNOLOGY DESCRIPTION}
-              }
-            }
-          }.
-          Select only one technology for each part. Response with only JSON.`
+  "${projectDescription}". 
+  Use this JSON format: {
+    "Frontend": 
+      FRONTEND PART NAME(TEXT): 
+        TECHNOLOGY SELECTED: TECHNOLOGY DESCRIPTION
+      }
+    },
+    "Backend": 
+      BACKEND PART NAME(TEXT): 
+        TECHNOLOGY SELECTED: TECHNOLOGY DESCRIPTION
+      }
+    },
+    "Deployment": 
+      DEPLOYMENT PART NAME(TEXT): 
+        TECHNOLOGY SELECTED: TECHNOLOGY DESCRIPTION
+      }
+    },
+    OTHER PART NAME(TEXT): 
+      OTHER PARTS PART N: 
+        TECHNOLOGY SELECTED: TECHNOLOGY DESCRIPTION
+      }
+    }
+  }.
+  Select only one technology for each part. Response with only JSON. Ensure you are using correct format.`
   );
 };
 
 const GET_ESTIMATE = (projectDescription) => {
-  return (`You are a software architect. Create a optimistic estimate for this project: 
+  return(`You are a software architect. Create a optimistic estimate for this project: 
     "${projectDescription}"
     Use this JSON format:
     {
-        "Frontend": \${APPROXIMATE TIME} month,
-        "Backend": \${APPROXIMATE TIME} month,
-        "Deployment": \${APPROXIMATE TIME} month,
-        "Other Parts": \${APPROXIMATE TIME} month,
-        "Total Duration": \${APPROXIMATE TIME (assuming that we can make tasks in parallel)} month
+      "Frontend": APPROXIMATE TIME(human/month),
+      "Backend": APPROXIMATE TIME(human/month),
+      "Deployment": APPROXIMATE TIME(human/month),
+      "Other Parts": APPROXIMATE TIME(human/month),
+      "Total Duration": APPROXIMATE TIME (assuming that we can make tasks in parallel) (human/month)
     }. Response with only JSON.`
   );
 };
@@ -66,20 +66,20 @@ const GET_TEAM_COMPOSITION = (technologies, estimate) => {
       Management: {
         numberOfEmployeesRequired: \${NUMBER OF EMPLOYEES REQUIRED}
       }
-    }. Response with only JSON.
+    }. Response with only JSON. Ensure you are using correct format.
   `);
 };
 
 const GET_TECHNICAL_TASK = (projectDescription) => {
   return (
-    `Write a terms of reference for this project: "${projectDescription}". Send response in this JSON format: 
+    `Create a terms of reference for this project: "${projectDescription}". Send response in JSON format:
     {
-      "Project Goal": \${DESCRIPTION},
-      "Project Features": \${DESCRIPTION},
-      "Target Users": \${DESCRIPTION},
-      "Platform Requirements": \${DESCRIPTION},
-      "Team Structure": \${DESCRIPTION},
-    }. Exclude budget and timeline. Response with only JSON.`
+      "Project Goal": STRING,
+      "Project Features": STRING,
+      "Target Users": STRING,
+      "Platform Requirements": STRING,
+      "Team Structure": STRING,
+    }. Exclude budget and timeline. Response with only JSON. Ensure you are using correct format.`
   );
 }
 
