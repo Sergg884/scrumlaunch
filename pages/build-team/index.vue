@@ -14,10 +14,7 @@
       </AppearFromMask>
     </section>
     <section>
-      <div v-if="error">
-        <p>Oops, something went wrong, please try again.</p>
-      </div>
-      <div v-else>
+      <div>
         <div id="requirements-container" class="requirements">
           <p class="requirements_title">
             <span>The best talents for your project</span>
@@ -124,33 +121,33 @@
                   </div>
                   <b-row class="developers">
                     <b-col cols="12" md="6" xl="4">
-                        <div class="developers-item">
-                          <img
-                            :src="'/pages/blog/default-author.jpg'"
-                            :alt="'developer-img'"
-                          />
-                          <div class="developers-item_data">
-                            <p class="name">Mykhailo Harponenko</p>
-                            <p class="exp">
-                              Middle <span class="years"> 5 </span>years of exp.
-                            </p>
-                          </div>
+                      <div class="developers-item">
+                        <img
+                          :src="'/pages/blog/default-author.jpg'"
+                          :alt="'developer-img'"
+                        />
+                        <div class="developers-item_data">
+                          <p class="name">Mykhailo Harponenko</p>
+                          <p class="exp">
+                            Middle <span class="years"> 5 </span>years of exp.
+                          </p>
                         </div>
-                      </b-col>
-                      <b-col cols="12" md="6" xl="4">
-                        <div class="developers-item">
-                          <img
-                            :src="'/pages/blog/default-author.jpg'"
-                            :alt="'developer-img'"
-                          />
-                          <div class="developers-item_data">
-                            <p class="name">Mykhailo Harponenko</p>
-                            <p class="exp">
-                              Middle <span class="years"> 5 </span>years of exp.
-                            </p>
-                          </div>
+                      </div>
+                    </b-col>
+                    <b-col cols="12" md="6" xl="4">
+                      <div class="developers-item">
+                        <img
+                          :src="'/pages/blog/default-author.jpg'"
+                          :alt="'developer-img'"
+                        />
+                        <div class="developers-item_data">
+                          <p class="name">Mykhailo Harponenko</p>
+                          <p class="exp">
+                            Middle <span class="years"> 5 </span>years of exp.
+                          </p>
                         </div>
-                      </b-col>
+                      </div>
+                    </b-col>
                   </b-row>
                 </div>
               </div>
@@ -163,6 +160,10 @@
             </div>
             <span>© 2023 ScrumLaunch LLC</span>
           </div>
+        </div>
+
+        <div v-if="error">
+          <p>Oops, something went wrong, please try again.</p>
         </div>
 
         <div class="loading" v-if="!finished">
