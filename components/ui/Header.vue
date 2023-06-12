@@ -19,6 +19,13 @@
       <NuxtLink to="/remote-developer-jobs"> Careers </NuxtLink>
       <!-- <NuxtLink to="/contact-us"> Contact </NuxtLink> -->
     </div>
+    <div>
+      <BaseButton
+        :class="`ai-link ${isAILinkGreen ? 'green-ai' : ''}`"
+        :to="'/'"
+        >Build Team with scrum ai
+      </BaseButton>
+    </div>
     <div class="menu--mobile" @click="toggleNavigation()">
       <img
         v-if="showMobileNavigation"
@@ -36,19 +43,15 @@
       />
     </div>
     <ul class="mobile-navigation" :class="{ active: showMobileNavigation }">
-      <li @click="navigateTo('/')">
-        Home
-      </li>
-      <li @click="navigateTo('/services')">
-        Services
-      </li>
-      <li @click="navigateTo('/work')">
-        Case Studies
-      </li>
-      <li @click="navigateTo('/blog')">
-        Blog
-      </li>
-      <li class="dropdown" :class="{ 'active-dropdown': isHireDevUp }" @click="dropDownUp($event)">
+      <li @click="navigateTo('/')">Home</li>
+      <li @click="navigateTo('/services')">Services</li>
+      <li @click="navigateTo('/work')">Case Studies</li>
+      <li @click="navigateTo('/blog')">Blog</li>
+      <li
+        class="dropdown"
+        :class="{ 'active-dropdown': isHireDevUp }"
+        @click="dropDownUp($event)"
+      >
         Hire developers
         <img class="chevron" src="/icons/chevron-white.svg" />
         <ul class="header-dropdown">
@@ -64,9 +67,7 @@
       <!-- <li @click="navigateTo('/process')">
         About
       </li> -->
-      <li @click="navigateTo('/remote-developer-jobs')">
-        Careers
-      </li>
+      <li @click="navigateTo('/remote-developer-jobs')">Careers</li>
       <!-- <li @click="navigateTo('/contact-us')">
         Contact
       </li> -->
@@ -89,6 +90,13 @@ export default {
         '/work/comunity-founded',
         '/work/gipper',
         '/work/harvest',
+      ],
+      greenAILinkPaths: [
+        '/work/full-court-ai',
+        '/work/helmm',
+        '/work/comunity-founded',
+        '/work/campus-reel',
+        '/work/gipper',
       ],
       developers: [
         {
@@ -179,12 +187,14 @@ export default {
   computed: {
     ...mapGetters('articles/', ['getHeaderItems']),
     isHeaderWhite() {
-      if (
-        this.whiteHeaderPaths.includes(this.$route.path.toLocaleLowerCase())
-      ) {
-        return true
-      }
-      return false
+      return this.whiteHeaderPaths.includes(
+        this.$route.path.toLocaleLowerCase()
+      )
+    },
+    isAILinkGreen() {
+      return this.greenAILinkPaths.includes(
+        this.$route.path.toLocaleLowerCase()
+      )
     },
   },
 
@@ -214,6 +224,7 @@ header {
   padding: 18px 20px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   max-width: 1440px;
   z-index: 100;
 
@@ -222,7 +233,7 @@ header {
   }
 
   @include desktop-and-up {
-    padding: 35px 120px;
+    padding: 25px 120px;
   }
 
   &.active {
@@ -246,6 +257,48 @@ header {
 
   .logo {
     z-index: 100;
+  }
+
+  .ai-link {
+    display: flex;
+    padding: 14px 12px;
+    margin-left: auto;
+    margin-right: 15px;
+    line-height: 1;
+    font-size: 12px;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    z-index: 1;
+
+    background-color: #1e1f21;
+    color: #ffffff;
+
+    &:hover {
+      background-color: #12e2b0;
+      color: #1e1f21;
+    }
+
+    &.green-ai {
+      background-color: #12e2b0;
+      color: #1e1f21;
+
+      &:hover {
+        background-color: #1e1f21;
+        color: #ffffff;
+      }
+    }
+
+    @include tablet-and-up {
+      padding: 17px 16px;
+      margin-right: 20px;
+      font-size: 14px;
+    }
+
+    @include desktop-and-up {
+      padding: 18px 30px;
+      margin-left: 10%;
+      margin-right: initial;
+    }
   }
 }
 

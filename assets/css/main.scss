@@ -199,6 +199,7 @@ h2 {
         flex-direction: column;
 
         &_period {
+          padding: 2px 3px;
           font-size: 12px;
 
           span {
@@ -244,6 +245,7 @@ h2 {
     text-align: left;
     font-weight: 800;
     font-size: 18px;
+    text-transform: uppercase;
 
     @include tablet-and-up {
       margin: 30px 0 25px;
@@ -264,6 +266,7 @@ h2 {
       font-weight: 800;
       font-size: 18px;
       text-align: left;
+      text-transform: uppercase;
 
       @include tablet-and-up {
         font-size: 30px;
@@ -309,10 +312,6 @@ h2 {
 
         @include tablet-and-up {
           font-size: 16px;
-        }
-
-        @include desktop-and-up {
-          font-size: 18px;
         }
       }
 
@@ -515,6 +514,7 @@ h2 {
         font-size: 14px;
         font-weight: 700;
         margin-bottom: 0;
+        text-transform: uppercase;
 
         @include tablet-and-up {
           margin-bottom: 10px;

@@ -214,28 +214,28 @@ export default {
   async mounted() {
     const requirements = this.$store.getters['requirements/GET_REQUIREMENTS']
 
-    // if (requirements) {
-    //   socket.emit('fetch-requirements', { query: requirements })
+    if (requirements) {
+      socket.emit('fetch-requirements', { query: requirements })
 
-    //   socket.on('update-step', (step) => {
-    //     console.log(step)
-    //   })
+      socket.on('update-step', (step) => {
+        console.log(step)
+      })
 
-    //   socket.on('update-result', (result) => {
-    //     console.log(result)
-    //     this[result.type] = result.data
+      socket.on('update-result', (result) => {
+        console.log(result)
+        this[result.type] = result.data
 
-    //     if (result.finished) {
-    //       this.finished = true
-    //     }
+        if (result.finished) {
+          this.finished = true
+        }
 
-    //     if (result.error) {
-    //       this.error = true
-    //     }
-    //   })
+        if (result.error) {
+          this.error = true
+        }
+      })
 
-    //   console.log(socket)
-    // }
+      console.log(socket)
+    }
   },
   beforeUnmount() {
     socket.off('update-step')
@@ -244,81 +244,81 @@ export default {
   data() {
     return {
       isModalVisible: false,
-      finished: true,
+      finished: false,
       error: false,
-      // details: null,
-      // technologies: null,
-      // estimate: null,
-      // teamComposition: null,
-      details: {
-        'Project Goal':
-          'To develop a new mobile application that provides users with an intuitive method to track their daily food consumption and exercise routine.',
-        'Project Features':
-          'The mobile app should allow users to log their meals, search nutritional information, and set daily goals. Also, it should include features such as reminders, progress tracking, and syncing with wearables.',
-        'Target Users':
-          'The target audience for this app are health-conscious individuals who are willing to invest in their health and fitness goals.',
-        'Platform Requirements':
-          'The app should be developed for both iOS and Android platforms, and should be optimized for both smartphone and tablet devices.',
-        'Team Structure':
-          'The project requires a team of developers, UX/UI designers, and quality assurance specialists. Additionally, there should be a project manager to oversee the development process and ensure timely delivery of the final product.',
-      },
-      estimate: {
-        Frontend: 3,
-        Backend: 4,
-        Deployment: 1,
-        'Other Parts': 1,
-        'Total Duration': 4,
-      },
-      technologies: {
-        Frontend: {
-          'Mobile App UI': {
-            'React Native':
-              'A framework for building native mobile apps using React',
-          },
-        },
-        Backend: {
-          'API and Data Storage': {
-            'Node.js':
-              'A server-side JavaScript runtime environment used for building the API',
-            MongoDB: 'A document-oriented NoSQL database used for data storage',
-          },
-        },
-        Deployment: {
-          'Cloud Hosting': {
-            'Amazon Web Services (AWS)':
-              'A cloud computing platform used for hosting the app servers and databases',
-          },
-        },
-        'Other Parts': {
-          'Integration with Wearables': {
-            'Google Fit API':
-              'An API used for syncing with wearable fitness devices such as smartwatches',
-          },
-          'Project Management': {
-            Jira: 'A project management tool used for tracking tasks, bugs, and progress',
-          },
-        },
-      },
-      teamComposition: {
-        Frontend: {
-          technologiesRequired: ['React Native'],
-          numberOfEmployeesRequired: 3,
-        },
-        Backend: {
-          technologiesRequired: ['Node.js', 'MongoDB'],
-          numberOfEmployeesRequired: 4,
-        },
-        Deployment: {
-          technologiesRequired: ['Amazon Web Services (AWS)'],
-          numberOfEmployeesRequired: 1,
-        },
-        Design: {
-          numberOfEmployeesRequired: 1,
-        },
-        Management: {
-          numberOfEmployeesRequired: 1,
-        },
-      },
+      details: null,
+      technologies: null,
+      estimate: null,
+      teamComposition: null,
+      // details: {
+      //   'Project Goal':
+      //     'To develop a new mobile application that provides users with an intuitive method to track their daily food consumption and exercise routine.',
+      //   'Project Features':
+      //     'The mobile app should allow users to log their meals, search nutritional information, and set daily goals. Also, it should include features such as reminders, progress tracking, and syncing with wearables.',
+      //   'Target Users':
+      //     'The target audience for this app are health-conscious individuals who are willing to invest in their health and fitness goals.',
+      //   'Platform Requirements':
+      //     'The app should be developed for both iOS and Android platforms, and should be optimized for both smartphone and tablet devices.',
+      //   'Team Structure':
+      //     'The project requires a team of developers, UX/UI designers, and quality assurance specialists. Additionally, there should be a project manager to oversee the development process and ensure timely delivery of the final product.',
+      // },
+      // estimate: {
+      //   Frontend: 3,
+      //   Backend: 4,
+      //   Deployment: 1,
+      //   'Other Parts': 1,
+      //   'Total Duration': 4,
+      // },
+      // technologies: {
+      //   Frontend: {
+      //     'Mobile App UI': {
+      //       'React Native':
+      //         'A framework for building native mobile apps using React',
+      //     },
+      //   },
+      //   Backend: {
+      //     'API and Data Storage': {
+      //       'Node.js':
+      //         'A server-side JavaScript runtime environment used for building the API',
+      //       MongoDB: 'A document-oriented NoSQL database used for data storage',
+      //     },
+      //   },
+      //   Deployment: {
+      //     'Cloud Hosting': {
+      //       'Amazon Web Services (AWS)':
+      //         'A cloud computing platform used for hosting the app servers and databases',
+      //     },
+      //   },
+      //   'Other Parts': {
+      //     'Integration with Wearables': {
+      //       'Google Fit API':
+      //         'An API used for syncing with wearable fitness devices such as smartwatches',
+      //     },
+      //     'Project Management': {
+      //       Jira: 'A project management tool used for tracking tasks, bugs, and progress',
+      //     },
+      //   },
+      // },
+      // teamComposition: {
+      //   Frontend: {
+      //     technologiesRequired: ['React Native'],
+      //     numberOfEmployeesRequired: 3,
+      //   },
+      //   Backend: {
+      //     technologiesRequired: ['Node.js', 'MongoDB'],
+      //     numberOfEmployeesRequired: 4,
+      //   },
+      //   Deployment: {
+      //     technologiesRequired: ['Amazon Web Services (AWS)'],
+      //     numberOfEmployeesRequired: 1,
+      //   },
+      //   Design: {
+      //     numberOfEmployeesRequired: 1,
+      //   },
+      //   Management: {
+      //     numberOfEmployeesRequired: 1,
+      //   },
+      // },
     }
   },
   methods: {
