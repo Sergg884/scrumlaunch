@@ -52,7 +52,7 @@
                   />
                 </div>
                 <div class="button-container">
-                  <BaseButton class="form_button" @click="validateForm()">
+                  <BaseButton class="form_button" @click="validateForm()" :disabled="is_sent">
                     Request Team
                   </BaseButton>
                 </div>

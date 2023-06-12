@@ -27,57 +27,56 @@
           <div v-if="details">
             <h3>Project details</h3>
             <div class="blocks">
-              <b-row>
+              <div
+                class="blocks-wrapper"
+                v-for="(value, key) in details"
+                :key="key"
+              >
+                <div class="blocks-item">
+                  <img class="icon" src="/icons/blocks.svg" alt="tab-icon-1" />
+                  <p class="blocks-item_title">{{ key }}</p>
+                  <p class="blocks-item_text">{{ value }}</p>
+                </div>
+              </div>
+
+              <!-- <b-row>
                 <b-col
                   cols="12"
                   md="6"
                   v-for="(value, key) in details"
                   :key="key"
                 >
-                  <div class="blocks-item">
-                    <img
-                      class="icon"
-                      src="/icons/blocks.svg"
-                      alt="tab-icon-1"
-                    />
-                    <p class="blocks-item_title">{{ key }}</p>
-                    <p class="blocks-item_text">{{ value }}</p>
-                  </div>
                 </b-col>
-              </b-row>
+              </b-row> -->
             </div>
           </div>
 
           <div v-if="technologies">
             <h3>List of technologies</h3>
             <div class="blocks">
-              <b-row>
-                <b-col
-                  cols="12"
-                  md="6"
-                  v-for="(mainTech, mainTechKey) in technologies"
-                  :key="mainTechKey"
+              <div
+                class="blocks-wrapper"
+                v-for="(mainTech, mainTechKey) in technologies"
+                :key="mainTechKey"
+              >
+                <div
+                  class="blocks-item"
+                  v-for="(tech, techKey) in mainTech"
+                  :key="techKey"
                 >
                   <p class="blocks-item_title block">{{ mainTechKey }}</p>
-
-                  <div
-                    class="blocks-item"
-                    v-for="(tech, techKey) in mainTech"
-                    :key="techKey"
+                  <p class="blocks-item_type">
+                    <span class="mark">{{ techKey }}</span>
+                  </p>
+                  <p
+                    class="blocks-item_text"
+                    v-for="(value, key) in tech"
+                    :key="key"
                   >
-                    <p class="blocks-item_type">
-                      <span class="mark">{{ techKey }}</span>
-                    </p>
-                    <p
-                      class="blocks-item_text"
-                      v-for="(value, key) in tech"
-                      :key="key"
-                    >
-                      <span class="bold">{{ key }}:</span> {{ value }}
-                    </p>
-                  </div>
-                </b-col>
-              </b-row>
+                    <span class="bold">{{ key }}:</span> {{ value }}
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -97,11 +96,15 @@
             </div>
           </div>
 
-          <div v-if="teamComposition">
+          <div v-if="teamComposition" class="hide">
             <h3>Team composition</h3>
             <div class="team">
               <div class="blocks">
-                <div v-for="(value, key) in teamComposition" :key="key">
+                <div
+                  class="blocks-wrapper full"
+                  v-for="(value, key) in teamComposition"
+                  :key="key"
+                >
                   <p class="blocks-item_title block">{{ key }}</p>
                   <div class="blocks-item">
                     <p class="blocks-item_type">
@@ -111,18 +114,16 @@
                         >Employees</span
                       >
                     </p>
-                    <b-row class="team-technologies">
-                      <b-col
-                        cols="12"
-                        md="3"
-                        v-for="(item, index) in value.technologiesRequired"
-                        :key="index"
-                      >
-                        <span>{{ item }}</span>
-                      </b-col>
-                    </b-row>
-                    <b-row class="developers">
-                      <!-- <b-col cols="12" md="6" xl="4">
+                    <div
+                      class="team-technologies"
+                      v-for="(item, index) in value.technologiesRequired"
+                      :key="index"
+                    >
+                      <span>{{ item }}</span>
+                    </div>
+                  </div>
+                  <b-row class="developers">
+                    <b-col cols="12" md="6" xl="4">
                         <div class="developers-item">
                           <img
                             :src="'/pages/blog/default-author.jpg'"
@@ -149,9 +150,8 @@
                             </p>
                           </div>
                         </div>
-                      </b-col> -->
-                    </b-row>
-                  </div>
+                      </b-col>
+                  </b-row>
                 </div>
               </div>
             </div>
@@ -170,7 +170,7 @@
           <span class="loading__dot"></span>
           <span class="loading__dot"></span>
         </div>
-        <p class="loading-text">
+        <p class="loading-text" v-if="!finished">
           We form a response to your request, this may take some time
         </p>
         <div class="buttons-wrapper" v-if="finished">
@@ -324,8 +324,8 @@ export default {
   methods: {
     async exportToPDF(returnFile) {
       const container = document.getElementById('requirements-container')
-      container.classList.add('export')
-      container.offsetHeight
+      const exportContainer = container.cloneNode(true)
+      exportContainer.classList.add('export')
 
       const options = {
         filename: `ScrumLaunch-Build-Team-${formatDate('-')}.pdf`,
@@ -342,16 +342,14 @@ export default {
       if (returnFile) {
         let file = await this.$html2pdf()
           .set({ options })
-          .from(container)
+          .from(exportContainer)
           .toPdf()
           .output('datauristring')
 
         return file
       } else {
-        await this.$html2pdf().set(options).from(container).save()
+        await this.$html2pdf().set(options).from(exportContainer).save()
       }
-
-      container.classList.remove('export')
     },
     showModal() {
       this.isModalVisible = true

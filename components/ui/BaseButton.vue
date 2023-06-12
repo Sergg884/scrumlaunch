@@ -5,6 +5,7 @@
     :to="to"
     :small="small"
     :href="href"
+    :disabled="disabled"
     @click="$emit('click')"
   >
     <slot></slot>
@@ -25,7 +26,11 @@
       small: {
         type: Boolean,
         default: false
-      }
+      },
+      disabled: {
+        type: Boolean,
+        default: false
+      },
     }
   };
 </script> 
@@ -85,6 +90,10 @@
     @extend .base-button;
     padding: 10px 28px;
   }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
 }
 a.base-button {
   display: inline-block;
