@@ -73,7 +73,8 @@ export default {
     '@nuxtjs/pwa',
     '@nuxt/image',
     '@nuxtjs/sitemap',
-    '@nuxtjs/robots'
+    '@nuxtjs/robots',
+    ['~/io'],
   ],
 
   bootstrapVue: {

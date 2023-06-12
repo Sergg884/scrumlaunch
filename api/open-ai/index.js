@@ -23,9 +23,8 @@ function makeRequest(messages) {
   });
 }
 
-async function start(projectDescription, callbackFn) {
-  console.log(projectDescription)
-  callbackFn("Fetching terms of reference...");
+async function start(projectDescription, stepCallbackFn, resultCallbackFn) {
+  stepCallbackFn("Fetching terms of reference...");
   const technicalTask = await makeRequest([{
     role: "user",
     content: utils.cleanString(
@@ -35,10 +34,11 @@ async function start(projectDescription, callbackFn) {
     )
   }]);
 
+  const technicalTaskToJSON = JSON.parse(utils.cleanString(technicalTask))
   console.log(technicalTask)
 
-  callbackFn({ termsOfReference: technicalTask });
-  callbackFn("Fetching technologies...");
+  resultCallbackFn({ data: technicalTaskToJSON, type: "details" });
+  stepCallbackFn("Fetching technologies...");
 
   const technologies = await makeRequest([{
     role: "user",
@@ -49,10 +49,11 @@ async function start(projectDescription, callbackFn) {
     )
   }]);
 
+  const technologiesToJSON = JSON.parse(utils.cleanString(technologies))
   console.log(technologies)
 
-  callbackFn({ technologies });
-  callbackFn("Fetching estimate...");
+  resultCallbackFn({ data: technologiesToJSON, type: "technologies" });
+  stepCallbackFn("Fetching estimate...");
 
   const estimate = await makeRequest([{
     role: "user",
@@ -63,11 +64,14 @@ async function start(projectDescription, callbackFn) {
     )
   }]);
 
-  callbackFn({ estimate });
-  callbackFn("Fetching team composition...");
+  const estimateToJSON = JSON.parse(utils.cleanString(estimate))
+  console.log(estimate)
+
+  resultCallbackFn({ data: estimateToJSON, type: "estimate" });
+  stepCallbackFn("Fetching team composition...");
 
   await utils.delay(20000);
-  const teamCompositon = await makeRequest([{
+  const teamComposition = await makeRequest([{
     role: "user",
     content: utils.cleanString(
       prompts.getTeamComsition(
@@ -77,14 +81,17 @@ async function start(projectDescription, callbackFn) {
     )
   }]);
 
-  callbackFn({ teamCompositon });
-  callbackFn("Done");
+  const teamCompositionToJson = JSON.parse(utils.cleanString(teamComposition))
+  console.log(teamComposition)
+
+  resultCallbackFn({ data: teamCompositionToJson, type: "teamComposition", finished: true });
+  stepCallbackFn("Done");
 
   process.stdout.write(JSON.stringify({
     termsOfReference: JSON.parse(utils.cleanString(technicalTask)),
-    techologies: JSON.parse(utils.cleanString(technologies)),
+    technologies: JSON.parse(utils.cleanString(technologies)),
     estimate: JSON.parse(utils.cleanString(estimate)),
-    teamCompositon: JSON.parse(utils.cleanString(teamCompositon))
+    teamComposition: JSON.parse(utils.cleanString(teamComposition))
   }));
 }
 

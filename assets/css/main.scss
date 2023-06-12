@@ -237,6 +237,7 @@ h2 {
         font-weight: 700;
         font-size: 14px;
         margin-bottom: 10px;
+        text-transform: uppercase;
 
         &.block {
           text-align: left;
@@ -263,7 +264,7 @@ h2 {
         }
 
         .mark {
-          padding: 5px;
+          padding: 3px;
         }
 
         .employees {
@@ -291,6 +292,10 @@ h2 {
       &_text {
         font-size: 14px;
 
+        .bold {
+          font-weight: 700;
+        }
+
         @include tablet-and-up {
           font-size: 16px;
         }
@@ -303,13 +308,14 @@ h2 {
       .team-technologies {
 
         @include tablet-and-up {
-          max-width: 60%;
+          max-width: 80%;
         }
 
         span {
           position: relative;
           font-weight: 500;
           font-size: 14px;
+          text-wrap: nowrap;
 
           @include tablet-and-up {
             font-size: 16px;
@@ -455,6 +461,15 @@ h2 {
         }
       }
 
+      &:last-child {
+
+        .estimate-item_period {
+          background: $main-green;
+          color: $main-black;
+          padding: 5px;
+        }
+      }
+
       &_period {
         display: flex;
         align-items: center;
@@ -463,12 +478,6 @@ h2 {
         font-weight: 400;
         font-size: 14px;
         line-height: 1;
-
-        &.total {
-          background: $main-green;
-          color: $main-black;
-          padding: 5px;
-        }
 
         @include tablet-and-up {
           font-size: 18px;

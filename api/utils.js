@@ -6,9 +6,10 @@ const base = new Airtable({ apiKey: 'keyaqXAOg3U3od8Jw' }).base(
 )
 
 function cleanString(text) {
-  const replacedNewlines = text.replace(/\n+/g, ' ');
+  const replacedNewlines = text.replace(/\n+/g, '');
   const removedExtraSpaces = replacedNewlines.replace(/\s{2,}/g, ' ');
-  return removedExtraSpaces;
+  const replacedQuotes = removedExtraSpaces.replace(/'/g, '"');
+  return replacedQuotes;
 }
 
 function delay(duration) {

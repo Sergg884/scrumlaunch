@@ -14,182 +14,171 @@
       </AppearFromMask>
     </section>
     <section>
-      <div id="requirements-container" class="requirements">
-        <p class="requirements_title">
-          <span>The best talents for your project</span>
-          <Logo :fill="'#1E1F21'" />
-        </p>
+      <div v-if="error">
+        <p>Oops, something went wrong, please try again.</p>
+      </div>
+      <div v-else>
+        <div id="requirements-container" class="requirements">
+          <p class="requirements_title">
+            <span>The best talents for your project</span>
+            <Logo :fill="'#1E1F21'" />
+          </p>
 
-        <h3>Project details</h3>
+          <div v-if="details">
+            <h3>Project details</h3>
+            <div class="blocks">
+              <b-row>
+                <b-col
+                  cols="12"
+                  md="6"
+                  v-for="(value, key) in details"
+                  :key="key"
+                >
+                  <div class="blocks-item">
+                    <img
+                      class="icon"
+                      src="/icons/blocks.svg"
+                      alt="tab-icon-1"
+                    />
+                    <p class="blocks-item_title">{{ key }}</p>
+                    <p class="blocks-item_text">{{ value }}</p>
+                  </div>
+                </b-col>
+              </b-row>
+            </div>
+          </div>
 
-        <div class="blocks">
-          <b-row>
-            <b-col
-              cols="12"
-              md="6"
-              v-for="(item, index) in projectDetails"
-              :key="index"
-            >
-              <div class="blocks-item">
-                <img class="icon" src="/icons/blocks.svg" alt="tab-icon-1" />
-                <p class="blocks-item_title">{{ item.title }}</p>
-                <p class="blocks-item_text">{{ item.text }}</p>
-              </div>
-            </b-col>
-          </b-row>
-        </div>
+          <div v-if="technologies">
+            <h3>List of technologies</h3>
+            <div class="blocks">
+              <b-row>
+                <b-col
+                  cols="12"
+                  md="6"
+                  v-for="(mainTech, mainTechKey) in technologies"
+                  :key="mainTechKey"
+                >
+                  <p class="blocks-item_title block">{{ mainTechKey }}</p>
 
-        <h3>List of technologies</h3>
+                  <div
+                    class="blocks-item"
+                    v-for="(tech, techKey) in mainTech"
+                    :key="techKey"
+                  >
+                    <p class="blocks-item_type">
+                      <span class="mark">{{ techKey }}</span>
+                    </p>
+                    <p
+                      class="blocks-item_text"
+                      v-for="(value, key) in tech"
+                      :key="key"
+                    >
+                      <span class="bold">{{ key }}:</span> {{ value }}
+                    </p>
+                  </div>
+                </b-col>
+              </b-row>
+            </div>
+          </div>
 
-        <div class="blocks">
-          <b-row>
-            <b-col
-              cols="12"
-              md="6"
-              v-for="(item, index) in technologies"
-              :key="index"
-            >
-              <div class="blocks-item">
-                <p class="blocks-item_title">{{ item.title }}</p>
-                <p class="blocks-item_type">
-                  <span class="mark">{{ item.type }}</span>
+          <div v-if="estimate">
+            <h3>Estimate</h3>
+            <div class="estimate">
+              <div
+                class="estimate-item"
+                v-for="(value, key) in estimate"
+                :key="key"
+              >
+                <p class="estimate-item_title">{{ key }}</p>
+                <p class="estimate-item_period">
+                  <span>{{ value }}</span> Months
                 </p>
-                <p class="blocks-item_text">{{ item.text }}</p>
               </div>
-            </b-col>
-          </b-row>
+            </div>
+          </div>
+
+          <div v-if="teamComposition">
+            <h3>Team composition</h3>
+            <div class="team">
+              <div class="blocks">
+                <div v-for="(value, key) in teamComposition" :key="key">
+                  <p class="blocks-item_title block">{{ key }}</p>
+                  <div class="blocks-item">
+                    <p class="blocks-item_type">
+                      <span class="mark">Technologies Required</span>
+                      <span class="employees"
+                        ><span>{{ value.numberOfEmployeesRequired }} </span
+                        >Employees</span
+                      >
+                    </p>
+                    <b-row class="team-technologies">
+                      <b-col
+                        cols="12"
+                        md="3"
+                        v-for="(item, index) in value.technologiesRequired"
+                        :key="index"
+                      >
+                        <span>{{ item }}</span>
+                      </b-col>
+                    </b-row>
+                    <b-row class="developers">
+                      <!-- <b-col cols="12" md="6" xl="4">
+                        <div class="developers-item">
+                          <img
+                            :src="'/pages/blog/default-author.jpg'"
+                            :alt="'developer-img'"
+                          />
+                          <div class="developers-item_data">
+                            <p class="name">Mykhailo Harponenko</p>
+                            <p class="exp">
+                              Middle <span class="years"> 5 </span>years of exp.
+                            </p>
+                          </div>
+                        </div>
+                      </b-col>
+                      <b-col cols="12" md="6" xl="4">
+                        <div class="developers-item">
+                          <img
+                            :src="'/pages/blog/default-author.jpg'"
+                            :alt="'developer-img'"
+                          />
+                          <div class="developers-item_data">
+                            <p class="name">Mykhailo Harponenko</p>
+                            <p class="exp">
+                              Middle <span class="years"> 5 </span>years of exp.
+                            </p>
+                          </div>
+                        </div>
+                      </b-col> -->
+                    </b-row>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="sl-info">
+            <div>
+              <img class="icon" src="/icons/mail.svg" alt="tab-icon-1" />
+              <span>hello@scrumlaunch.com</span>
+            </div>
+            <span>© 2023 ScrumLaunch LLC</span>
+          </div>
         </div>
 
-        <h3>Estimate</h3>
-
-        <div class="estimate">
-          <div
-            class="estimate-item"
-            v-for="(item, index) in estimate"
-            :key="index"
+        <div class="loading" v-if="!finished">
+          <span class="loading__dot"></span>
+          <span class="loading__dot"></span>
+          <span class="loading__dot"></span>
+        </div>
+        <p class="loading-text">
+          We form a response to your request, this may take some time
+        </p>
+        <div class="buttons-wrapper" v-if="finished">
+          <BaseButton class="export-btn" @click="exportToPDF(false)"
+            >Save as PDF</BaseButton
           >
-            <p class="estimate-item_title">{{ item.title }}</p>
-            <p :class="`estimate-item_period ${item.total ? 'total' : ''}`">
-              <span>{{ item.number }}</span> {{ item.period }}
-            </p>
-          </div>
+          <BaseButton @click="showModal()">Request Team</BaseButton>
         </div>
-        <div class="sl-info">
-          <div>
-            <img class="icon" src="/icons/mail.svg" alt="tab-icon-1" />
-            <span>hello@scrumlaunch.com</span>
-          </div>
-          <span>© 2023 ScrumLaunch LLC</span>
-        </div>
-      </div>
-      <div class="requirements">
-        <h3>Team composition</h3>
-
-        <div class="team">
-          <div class="blocks">
-            <p class="blocks-item_title block">FRONTEND</p>
-
-            <div class="blocks-item">
-              <p class="blocks-item_type">
-                <span class="mark">Technologies Required</span>
-                <span class="employees"><span>3 </span>Employees</span>
-              </p>
-              <b-row class="team-technologies">
-                <b-col cols="12" md="3"> <span>UI/UX</span> </b-col>
-                <b-col cols="12" md="3"> <span>UI/UX</span> </b-col>
-              </b-row>
-              <b-row class="developers">
-                <b-col cols="12" md="6" xl="4">
-                  <div class="developers-item">
-                    <img
-                      :src="'/pages/blog/default-author.jpg'"
-                      :alt="'developer-img'"
-                    />
-                    <div class="developers-item_data">
-                      <p class="name">Mykhailo Harponenko</p>
-                      <p class="exp">
-                        Middle <span class="years"> 5 </span>years of exp.
-                      </p>
-                    </div>
-                  </div>
-                </b-col>
-                <b-col cols="12" md="6" xl="4">
-                  <div class="developers-item">
-                    <img
-                      :src="'/pages/blog/default-author.jpg'"
-                      :alt="'developer-img'"
-                    />
-                    <div class="developers-item_data">
-                      <p class="name">Mykhailo Harponenko</p>
-                      <p class="exp">
-                        Middle <span class="years"> 5 </span>years of exp.
-                      </p>
-                    </div>
-                  </div>
-                </b-col>
-              </b-row>
-            </div>
-
-            <p class="blocks-item_title block">BACKEND</p>
-
-            <div class="blocks-item">
-              <p class="blocks-item_type">
-                <span class="mark">Technologies Required</span>
-              </p>
-              <b-row class="team-technologies">
-                <b-col cols="6" xl="3"> <span>UI/UX</span> </b-col>
-                <b-col cols="6" xl="3"> <span>UI/UX</span> </b-col>
-                <b-col cols="6" xl="3"> <span>UI/UX</span> </b-col>
-                <b-col cols="6" xl="3"> <span>UI/UX</span> </b-col>
-              </b-row>
-              <b-row class="developers">
-                <b-col cols="12" md="6" xl="4">
-                  <div class="developers-item">
-                    <img
-                      :src="'/pages/blog/default-author.jpg'"
-                      :alt="'developer-img'"
-                    />
-                    <div class="developers-item_data">
-                      <p class="name">Mykhailo Harponenko</p>
-                      <p class="exp">
-                        Middle <span class="years"> 5 </span>years of exp.
-                      </p>
-                    </div>
-                  </div>
-                </b-col>
-                <b-col cols="12" md="6" xl="4">
-                  <div class="developers-item">
-                    <img
-                      :src="'/pages/blog/default-author.jpg'"
-                      :alt="'developer-img'"
-                    />
-                    <div class="developers-item_data">
-                      <p class="name">Mykhailo Harponenko</p>
-                      <p class="exp">
-                        Middle <span class="years"> 5 </span>years of exp.
-                      </p>
-                    </div>
-                  </div>
-                </b-col>
-              </b-row>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="loading">
-        <span class="loading__dot"></span>
-        <span class="loading__dot"></span>
-        <span class="loading__dot"></span>
-      </div>
-      <p class="loading-text">
-        We form a response to your request, this may take some time
-      </p>
-      <div class="buttons-wrapper">
-        <BaseButton class="export-btn" @click="exportToPDF(false)"
-          >Save as PDF</BaseButton
-        >
-        <BaseButton @click="showModal()">Request Team</BaseButton>
       </div>
     </section>
     <OurSuperpowers />
@@ -205,7 +194,7 @@
 import OurSuperpowers from '~/components/pages/home/OurSuperpowers'
 import RequestTeamModal from '~/components/shared/RequestTeamModal'
 import { formatDate } from '~/utils'
-
+import socket from '~/plugins/socket.io.js'
 export default {
   components: {
     OurSuperpowers,
@@ -225,77 +214,111 @@ export default {
   async mounted() {
     const requirements = this.$store.getters['requirements/GET_REQUIREMENTS']
 
-    // this.$axios
-    //   .$post('/api/ask-ai', { idea: 'Crowdfunding' })
-    //   .then((res) => {
-    //     console.log(res)
-    //   })
-    //   .catch((error) => console.log(error))
+    // if (requirements) {
+    //   socket.emit('fetch-requirements', { query: requirements })
 
-    console.log(requirements)
+    //   socket.on('update-step', (step) => {
+    //     console.log(step)
+    //   })
+
+    //   socket.on('update-result', (result) => {
+    //     console.log(result)
+    //     this[result.type] = result.data
+
+    //     if (result.finished) {
+    //       this.finished = true
+    //     }
+
+    //     if (result.error) {
+    //       this.error = true
+    //     }
+    //   })
+
+    //   console.log(socket)
+    // }
+  },
+  beforeUnmount() {
+    socket.off('update-step')
+    socket.off('update-result')
   },
   data() {
     return {
       isModalVisible: false,
-      projectDetails: [
-        {
-          title: 'Project Goal',
-          text: ' To create a platform that showcases industries and educational-style creators, and positively impacts the education of younger generations from all backgrounds and socioeconomic classes.',
+      finished: true,
+      error: false,
+      // details: null,
+      // technologies: null,
+      // estimate: null,
+      // teamComposition: null,
+      details: {
+        'Project Goal':
+          'To develop a new mobile application that provides users with an intuitive method to track their daily food consumption and exercise routine.',
+        'Project Features':
+          'The mobile app should allow users to log their meals, search nutritional information, and set daily goals. Also, it should include features such as reminders, progress tracking, and syncing with wearables.',
+        'Target Users':
+          'The target audience for this app are health-conscious individuals who are willing to invest in their health and fitness goals.',
+        'Platform Requirements':
+          'The app should be developed for both iOS and Android platforms, and should be optimized for both smartphone and tablet devices.',
+        'Team Structure':
+          'The project requires a team of developers, UX/UI designers, and quality assurance specialists. Additionally, there should be a project manager to oversee the development process and ensure timely delivery of the final product.',
+      },
+      estimate: {
+        Frontend: 3,
+        Backend: 4,
+        Deployment: 1,
+        'Other Parts': 1,
+        'Total Duration': 4,
+      },
+      technologies: {
+        Frontend: {
+          'Mobile App UI': {
+            'React Native':
+              'A framework for building native mobile apps using React',
+          },
         },
-        {
-          title: 'Project Features',
-          text: ' Platform will curate a more interested audience, highlighting experienced individuals and educational-style creators.',
+        Backend: {
+          'API and Data Storage': {
+            'Node.js':
+              'A server-side JavaScript runtime environment used for building the API',
+            MongoDB: 'A document-oriented NoSQL database used for data storage',
+          },
         },
-        {
-          title: 'Target Users',
-          text: 'Younger generations from all backgrounds and socioeconomic classes who are interested in learning about different industries and gaining knowledge from experienced individuals.',
+        Deployment: {
+          'Cloud Hosting': {
+            'Amazon Web Services (AWS)':
+              'A cloud computing platform used for hosting the app servers and databases',
+          },
         },
-      ],
-      technologies: [
-        {
-          title: 'Frontend ',
-          type: 'UX/UI design',
-          text: 'React: A popular, efficient, and flexible JavaScript library for building user interfaces.',
+        'Other Parts': {
+          'Integration with Wearables': {
+            'Google Fit API':
+              'An API used for syncing with wearable fitness devices such as smartwatches',
+          },
+          'Project Management': {
+            Jira: 'A project management tool used for tracking tasks, bugs, and progress',
+          },
         },
-        {
-          title: 'Frontend ',
-          type: 'UX/UI design',
-          text: 'React: A popular, efficient, and flexible JavaScript library for building user interfaces.',
+      },
+      teamComposition: {
+        Frontend: {
+          technologiesRequired: ['React Native'],
+          numberOfEmployeesRequired: 3,
         },
-        {
-          title: 'Frontend ',
-          type: 'UX/UI design',
-          text: 'React: A popular, efficient, and flexible JavaScript library for building user interfaces.',
+        Backend: {
+          technologiesRequired: ['Node.js', 'MongoDB'],
+          numberOfEmployeesRequired: 4,
         },
-      ],
-      estimate: [
-        {
-          title: 'FRONTEND',
-          number: 5,
-          period: 'Months',
+        Deployment: {
+          technologiesRequired: ['Amazon Web Services (AWS)'],
+          numberOfEmployeesRequired: 1,
         },
-        {
-          title: 'BACKEND',
-          number: 5,
-          period: 'Months',
+        Design: {
+          numberOfEmployeesRequired: 1,
         },
-        {
-          title: 'DEPLOYMENT',
-          number: 5,
-          period: 'Months',
+        Management: {
+          numberOfEmployeesRequired: 1,
         },
-        {
-          title: 'OTHER PARTS',
-          number: 5,
-          period: 'Months',
-        },
-        {
-          title: 'TOTAL DURATION',
-          number: 5,
-          period: 'Months',
-          total: true,
-        },
-      ],
+      },
     }
   },
   methods: {
@@ -310,7 +333,7 @@ export default {
         html2canvas: { scale: 2 },
         jsPDF: {
           unit: 'px',
-          format: [1440, container.offsetHeight],
+          format: 'a4',
           orientation: 'p',
           hotfixes: ['px_scaling'],
         },
@@ -369,6 +392,10 @@ export default {
     align-items: center;
     display: flex;
     justify-content: center;
+
+    @include tablet-and-up {
+      margin-top: 40px;
+    }
   }
 
   .loading-text {
