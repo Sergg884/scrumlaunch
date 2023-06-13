@@ -29,13 +29,6 @@ export default {
     Article
   },
 
-  head: {
-    title: 'ScrumLaunch Blog: Articles about Technology, Business & more to Hire Full Stack Developers - Top 1% of 2 million + skilled engineers',
-    meta: [
-      { hid: 'description', name: 'description', content: 'Articles and News from the world of IT: software development insights, best remote practices in Product Management, stories of creating efficient business solutions, and much more.' },
-    ],
-  },
-
   data() {
     return {
       articlesToShow: 3,
