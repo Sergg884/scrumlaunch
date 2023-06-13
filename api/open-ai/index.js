@@ -8,7 +8,7 @@ const configuration = new Configuration({
 });
 
 const openai = new OpenAIApi(configuration);
-const OPENAI_MODEL = "gpt-3.5-turbo";
+const OPENAI_MODEL = "gpt-4";
 
 function makeRequest(messages, temperature = 0.5) {
   console.log(messages)
@@ -48,7 +48,7 @@ async function start(projectDescription, stepCallbackFn, resultCallbackFn) {
     role: "user",
     content: utils.cleanString(
       prompts.getListOfTechnologies(
-        utils.cleanString(technicalTaskToJSON["Platform Requirements"])
+        utils.cleanString(technicalTask)
       )
     )
   }], 0);
@@ -83,7 +83,7 @@ async function start(projectDescription, stepCallbackFn, resultCallbackFn) {
         utils.cleanString(estimate)
       )
     )
-  }]);
+  }], 0);
 
   const teamCompositionToJson = JSON.parse(teamComposition)
   console.log(teamComposition)
