@@ -1,7 +1,6 @@
 const axios = require('axios').default;
 
 async function fetchTeam(teamCompositon) {
-  console.log(teamCompositon);
   try {
     const response = await axios({
       method: 'post',
@@ -9,7 +8,7 @@ async function fetchTeam(teamCompositon) {
       headers: { 'HTTP-API-KEY': process.env.SCRUMTEAMS_API_KEY },
       data: teamCompositon
     });
-    console.log(response);
+    return response.data;
   } catch (error) {
     console.log(error);
   }

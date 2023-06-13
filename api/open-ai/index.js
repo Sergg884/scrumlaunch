@@ -10,12 +10,13 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 const OPENAI_MODEL = "gpt-3.5-turbo";
 
-function makeRequest(messages) {
+function makeRequest(messages, temperature = 0.5) {
   console.log(messages)
   return new Promise((resolve, reject) => {
     openai.createChatCompletion({
       model: OPENAI_MODEL,
-      messages
+      messages,
+      temperature
     }).then((response) => {
       resolve(response.data.choices[0].message.content)
     }).catch((error) => {
@@ -36,6 +37,7 @@ async function start(projectDescription, stepCallbackFn, resultCallbackFn) {
     )
   }]);
 
+  console.log(technicalTask)
   const technicalTaskToJSON = JSON.parse(technicalTask)
   console.log(technicalTask)
 
@@ -46,10 +48,10 @@ async function start(projectDescription, stepCallbackFn, resultCallbackFn) {
     role: "user",
     content: utils.cleanString(
       prompts.getListOfTechnologies(
-        utils.cleanString(technicalTask)
+        utils.cleanString(technicalTaskToJSON["Platform Requirements"])
       )
     )
-  }]);
+  }], 0);
 
   const technologiesToJSON = JSON.parse(technologies)
   console.log(technologies)

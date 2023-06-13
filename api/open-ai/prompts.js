@@ -1,42 +1,47 @@
 const GET_LIST_OF_TECHNOLOGIES = (projectDescription) => {
   return (`You are a software architect. Create a list of technologies for this project: 
   "${projectDescription}". 
-  Use this JSON format: {
-    "Frontend": 
-      FRONTEND PART NAME(TEXT): 
-        TECHNOLOGY SELECTED: TECHNOLOGY DESCRIPTION
+  Use this as an example of format:
+  {
+    Frontend: [
+      {
+        technologySelected: TEXT,
+        description: TEXT
       }
-    },
-    "Backend": 
-      BACKEND PART NAME(TEXT): 
-        TECHNOLOGY SELECTED: TECHNOLOGY DESCRIPTION
+    ],
+    Backend: [
+      {
+        technologySelected: TEXT,
+        description: TEXT
       }
-    },
-    "Deployment": 
-      DEPLOYMENT PART NAME(TEXT): 
-        TECHNOLOGY SELECTED: TECHNOLOGY DESCRIPTION
+    ],
+    Deployment: [
+      {
+        technologySelected: TEXT,
+        description: TEXT
       }
-    },
-    OTHER PARTS PART NAME(TEXT): 
-      OTHER PARTS PART N: 
-        TECHNOLOGY SELECTED: TECHNOLOGY DESCRIPTION
+    ],
+    OTHER: [
+      {
+        technologySelected: TEXT,
+        description: TEXT
       }
-    }
-  }.
+    ]
+  }
   Select only one technology for each part. Response with only JSON. Ensure you are using correct format.`
   );
 };
 
 const GET_ESTIMATE = (projectDescription) => {
-  return(`You are a software architect. Create a optimistic estimate for this project: 
+  return(`You are a software architect. Create an optimistic estimate for this project: 
     "${projectDescription}"
     Use this JSON format:
     {
-      "Frontend": APPROXIMATE TIME(human/month),
-      "Backend": APPROXIMATE TIME(human/month),
-      "Deployment": APPROXIMATE TIME(human/month),
-      "Other Parts": APPROXIMATE TIME(human/month),
-      "Total Duration": APPROXIMATE TIME (assuming that we can make tasks in parallel) (human/month)
+      "Frontend": APPROXIMATE TIME(MONTH),
+      "Backend": APPROXIMATE TIME(MONTH),
+      "Deployment": APPROXIMATE TIME(MONTH),
+      "Other Parts": APPROXIMATE TIME(MONTH),
+      "Total Duration": APPROXIMATE TIME (assuming that we can make tasks in parallel)(MONTH)
     }. Response with only JSON.`
   );
 };
@@ -49,15 +54,15 @@ const GET_TEAM_COMPOSITION = (technologies, estimate) => {
     ${estimate}
     Return me result in this JSON format: {
       Frontend: {
-        technologiesRequired: \${TECHNOLOGIES REQUIRED},
+        technologiesRequired: [TECHNOLOGIES REQUIRED(STRING)],
         numberOfEmployeesRequired: \${NUMBER OF EMPLOYEES REQUIRED}
       },
       Backend: {
-        technologiesRequired: \${TECHNOLOGIES REQUIRED},
+        technologiesRequired: [TECHNOLOGIES REQUIRED(STRING)],
         numberOfEmployeesRequired: \${NUMBER OF EMPLOYEES REQUIRED}
       },
       Deployment: {
-        technologiesRequired: \${TECHNOLOGIES REQUIRED},
+        technologiesRequired: [TECHNOLOGIES REQUIRED(STRING)],
         numberOfEmployeesRequired: \${NUMBER OF EMPLOYEES REQUIRED}
       },
       Design: {
@@ -78,7 +83,7 @@ const GET_TECHNICAL_TASK = (projectDescription) => {
       "Project Features": STRING,
       "Target Users": STRING,
       "Platform Requirements": STRING,
-      "Team Structure": STRING,
+      "Team Structure": STRING
     }. Exclude budget and timeline. Response with only JSON. Ensure you are using correct format.`
   );
 }
