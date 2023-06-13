@@ -17,7 +17,7 @@ export default function () {
         const resultCb = (result) => socket.emit('update-result', result)
 
         try {
-          await askAi(data.require, stepCb, resultCb)
+          await askAi(data.query, stepCb, resultCb)
         } catch (error) {
           console.log('error')
           console.log(error)
