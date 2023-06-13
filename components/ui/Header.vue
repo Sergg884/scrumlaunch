@@ -19,12 +19,27 @@
       <NuxtLink to="/remote-developer-jobs"> Careers </NuxtLink>
       <!-- <NuxtLink to="/contact-us"> Contact </NuxtLink> -->
     </div>
-    <div>
+    <div class="ai-popup">
       <BaseButton
         :class="`ai-link ${isAILinkGreen ? 'green-ai' : ''}`"
-        :to="'/'"
+        @click="aiNavigate()"
         >Build Team with scrum ai
       </BaseButton>
+      <div class="ai-popup_content" v-if="showAIMessage">
+        <img src="/icons/sl-logo-black-small.svg" alt="sl-logo" />
+        <span>
+          Our powerful tool provides personalized project insights and helps you
+          find the right team and technical stacks for your project, saving you
+          time and effort.
+        </span>
+        <img
+          class="ai-popup_content__close"
+          :src="require('@/assets/icons/black_close.svg')"
+          alt="close-message"
+          @click="hideAIMessage()"
+        />
+      </div>
+      <div class="ai-popup_backdrop" v-if="showAIMessage"></div>
     </div>
     <div class="menu--mobile" @click="toggleNavigation()">
       <img
@@ -82,6 +97,7 @@ export default {
   data() {
     return {
       showMobileNavigation: false,
+      showAIMessage: false,
       whiteHeaderPaths: [
         '/work/campus-reel',
         '/work/full-court-ai',
@@ -184,6 +200,13 @@ export default {
     }
   },
 
+  mounted() {
+    if (!localStorage.getItem('ai_notified')) {
+      this.showAIMessage = true
+      document.querySelector('body').classList.add('overflow-hidden')
+    }
+  },
+
   computed: {
     ...mapGetters('articles/', ['getHeaderItems']),
     isHeaderWhite() {
@@ -213,6 +236,16 @@ export default {
     navigateTo(path) {
       this.$router.push(path)
       this.toggleNavigation()
+    },
+    hideAIMessage() {
+      this.showAIMessage = false
+      localStorage.setItem('ai_notified', true)
+      document.querySelector('body').classList.remove('overflow-hidden')
+    },
+
+    aiNavigate() {
+      this.hideAIMessage()
+      this.$router.push('/')
     },
   },
 }
@@ -259,45 +292,135 @@ header {
     z-index: 100;
   }
 
-  .ai-link {
-    display: flex;
-    padding: 14px 12px;
+  .ai-popup {
+    position: relative;
+    width: 185px;
+    height: 40px;
     margin-left: auto;
     margin-right: 15px;
-    line-height: 1;
-    font-size: 12px;
-    letter-spacing: -0.02em;
-    text-transform: uppercase;
-    z-index: 1;
-
-    background-color: #1e1f21;
-    color: #ffffff;
-
-    &:hover {
-      background-color: #12e2b0;
-      color: #1e1f21;
-    }
-
-    &.green-ai {
-      background-color: #12e2b0;
-      color: #1e1f21;
-
-      &:hover {
-        background-color: #1e1f21;
-        color: #ffffff;
-      }
-    }
 
     @include tablet-and-up {
-      padding: 17px 16px;
+      width: 210px;
+      height: 48px;
       margin-right: 20px;
-      font-size: 14px;
     }
 
     @include desktop-and-up {
-      padding: 18px 30px;
+      width: 240px;
+      height: 50px;
       margin-left: 10%;
-      margin-right: initial;
+    }
+
+    .ai-link {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      padding: 14px 15px;
+      margin-left: auto;
+      line-height: 1;
+      font-size: 12px;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      z-index: 102;
+
+      background-color: #1e1f21;
+      color: #ffffff;
+
+      &:hover {
+        background-color: #12e2b0;
+        color: #1e1f21;
+      }
+
+      &.green-ai {
+        background-color: #12e2b0;
+        color: #1e1f21;
+
+        &:hover {
+          background-color: #1e1f21;
+          color: #ffffff;
+        }
+      }
+
+      @include tablet-and-up {
+        padding: 17px 16px;
+        font-size: 14px;
+      }
+
+      @include desktop-and-up {
+        padding: 18px 30px;
+        margin-right: initial;
+      }
+    }
+
+    &_backdrop {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 101;
+    }
+
+    &_content {
+      position: absolute;
+      z-index: 102;
+      display: flex;
+      align-items: flex-start;
+      width: 310px;
+      top: 55px;
+      right: -38px;
+      padding: 12px;
+      background-color: #ffffff;
+
+      @include tablet-and-up {
+        width: 370px;
+        top: 65px;
+        right: -43px;
+      }
+
+      @include desktop-and-up {
+        top: 65px;
+        right: -60px;
+      }
+
+      span {
+        padding: 0 10px;
+        font-size: 12px;
+        font-weight: 600;
+        text-align: left;
+
+        @include tablet-and-up {
+          font-size: 14px;
+          padding: 0 15px;
+        }
+      }
+
+      &__close {
+        width: 10px;
+        cursor: pointer;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        top: -10px;
+        left: 55%;
+        border-style: solid;
+        border-width: 0 11px 16px 11px;
+        border-color: transparent transparent #fff transparent;
+
+        @include tablet-and-up {
+          left: 57%;
+        }
+
+        @include desktop-and-up {
+          left: calc(50% - 5px);
+        }
+      }
     }
   }
 }

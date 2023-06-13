@@ -13,7 +13,7 @@
         </h1>
       </AppearFromMask>
     </section>
-    <section>
+    <section v-if="requirements">
       <div>
         <div id="requirements-container" class="requirements">
           <p class="requirements_title">
@@ -48,7 +48,7 @@
             </div>
           </div>
 
-          <div v-if="technologies">
+          <!-- <div v-if="technologies">
             <h3>List of technologies</h3>
             <div class="blocks">
               <div
@@ -71,6 +71,31 @@
                     :key="key"
                   >
                     <span class="bold">{{ key }}:</span> {{ value }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+          <div v-if="technologies">
+            <h3>List of technologies</h3>
+            <div class="blocks">
+              <div
+                class="blocks-wrapper"
+                v-for="(mainTech, mainTechKey) in technologies"
+                :key="mainTechKey"
+              >
+                <div
+                  class="blocks-item"
+                >
+                  <p class="blocks-item_title block">{{ mainTechKey }}</p>
+                  <p class="blocks-item_type">
+                    <span class="mark">{{ mainTech[`${mainTechKey} Part Name`] }}</span>
+                  </p>
+                  <p
+                    class="blocks-item_text"
+                  >
+                    <span class="bold">{{ mainTech['Technology Selected'] }}:</span> {{ mainTech['Technology Description'] }}
                   </p>
                 </div>
               </div>
@@ -182,6 +207,7 @@
         </div>
       </div>
     </section>
+    <p v-else>No requirements found.</p>
     <OurSuperpowers />
     <RequestTeamModal
       v-show="isModalVisible"
@@ -215,6 +241,8 @@ export default {
   async mounted() {
     const requirements = this.$store.getters['requirements/GET_REQUIREMENTS']
 
+    this.requirements = requirements
+
     if (requirements) {
       socket.emit('fetch-requirements', { query: requirements })
 
@@ -244,6 +272,7 @@ export default {
   },
   data() {
     return {
+      requirements: null,
       isModalVisible: false,
       finished: false,
       error: false,
@@ -272,32 +301,28 @@ export default {
       // },
       // technologies: {
       //   Frontend: {
-      //     'Mobile App UI': {
-      //       'React Native':
-      //         'A framework for building native mobile apps using React',
-      //     },
+      //     'Frontend Part Name': 'Web Interface',
+      //     'Technology Selected': 'ReactJS',
+      //     'Technology Description':
+      //       'A JavaScript library for building user interfaces.',
       //   },
       //   Backend: {
-      //     'API and Data Storage': {
-      //       'Node.js':
-      //         'A server-side JavaScript runtime environment used for building the API',
-      //       MongoDB: 'A document-oriented NoSQL database used for data storage',
-      //     },
+      //     'Backend Part Name': 'Server',
+      //     'Technology Selected': 'Node.js',
+      //     'Technology Description':
+      //       'An open-source, cross-platform JavaScript runtime environment that executes JavaScript code outside of a web browser.',
       //   },
       //   Deployment: {
-      //     'Cloud Hosting': {
-      //       'Amazon Web Services (AWS)':
-      //         'A cloud computing platform used for hosting the app servers and databases',
-      //     },
+      //     'Deployment Part Name': 'Cloud Platform',
+      //     'Technology Selected': 'Amazon Web Services (AWS)',
+      //     'Technology Description':
+      //       'A subsidiary of Amazon that provides on-demand cloud computing platforms.',
       //   },
       //   'Other Parts': {
-      //     'Integration with Wearables': {
-      //       'Google Fit API':
-      //         'An API used for syncing with wearable fitness devices such as smartwatches',
-      //     },
-      //     'Project Management': {
-      //       Jira: 'A project management tool used for tracking tasks, bugs, and progress',
-      //     },
+      //     'Other Parts Part Name': 'Database',
+      //     'Technology Selected': 'MongoDB',
+      //     'Technology Description':
+      //       'A cross-platform document-oriented database program, classified as a NoSQL database program, which uses JSON-like documents with optional schemas.',
       //   },
       // },
       // teamComposition: {

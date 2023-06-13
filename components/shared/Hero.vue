@@ -361,7 +361,7 @@ section {
 
         @include tablet-and-up {
           right: -40px;
-          top: 28px;
+          top: 25px;
         }
       }
 

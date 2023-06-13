@@ -321,6 +321,7 @@ h2 {
         align-items: center;
         font-weight: 600;
         font-size: 14px;
+        margin-bottom: 10px;
 
         @include tablet-and-up {
           font-size: 16px;
@@ -361,10 +362,6 @@ h2 {
 
         @include tablet-and-up {
           font-size: 16px;
-        }
-
-        @include desktop-and-up {
-          font-size: 18px;
         }
       }
 
