@@ -19,7 +19,7 @@
       <NuxtLink to="/remote-developer-jobs"> Careers </NuxtLink>
       <!-- <NuxtLink to="/contact-us"> Contact </NuxtLink> -->
     </div>
-    <div class="ai-popup">
+    <div class="ai-popup" v-if="!hideAILink">
       <BaseButton
         :class="`ai-link ${isAILinkGreen ? 'green-ai' : ''}`"
         @click="aiNavigate()"
@@ -219,6 +219,11 @@ export default {
         this.$route.path.toLocaleLowerCase()
       )
     },
+    hideAILink() {
+            return ['/build-team'].includes(
+        this.$route.path.toLocaleLowerCase()
+      )
+    }
   },
 
   methods: {

@@ -416,12 +416,13 @@ h2 {
       margin-bottom: 20px;
       border: 1px solid $main-black;
 
-      img {
+      .developer-avatar {
         width: 66px;
         height: 66px;
         margin: 0 20px 0 0;
         border: 1px solid $main-black;
         border-radius: 100%;
+        overflow: hidden;
 
         @include tablet-and-up {
           width: 72px;
@@ -431,6 +432,16 @@ h2 {
         @include desktop-and-up {
           width: 80px;
           height: 80px;
+        }
+
+        &.default {
+          padding: 15px;
+          background-color: $main-black;
+        }
+
+        img {
+          width: 100%;
+          object-fit: cover;
         }
       }
 

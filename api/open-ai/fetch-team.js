@@ -8,7 +8,7 @@ async function fetchTeam(teamComposition) {
       headers: { 'HTTP-API-KEY': process.env.SCRUMTEAMS_API_KEY },
       data: teamComposition
     });
-    return JSON.stringify(response.data)
+    return response.data
   } catch (error) {
     console.log(error);
   }

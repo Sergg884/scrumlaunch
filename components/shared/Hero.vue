@@ -166,9 +166,8 @@ export default {
     },
 
     setRequirements() {
-      console.log(this.requirements)
       this.$store.commit('requirements/SET_REQUIREMENTS', this.requirements)
-      this.$router.push('build-team')
+      this.$router.push('/build-team')
     },
 
     sendEmail() {

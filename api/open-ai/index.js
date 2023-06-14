@@ -8,10 +8,10 @@ const configuration = new Configuration({
 });
 
 const openai = new OpenAIApi(configuration);
-const OPENAI_MODEL = "gpt-4";
+// const OPENAI_MODEL = "gpt-4";
+const OPENAI_MODEL = "gpt-3.5-turbo";
 
 function makeRequest(messages, temperature = 0.5) {
-  console.log(messages)
   return new Promise((resolve, reject) => {
     openai.createChatCompletion({
       model: OPENAI_MODEL,
@@ -37,7 +37,6 @@ async function start(projectDescription, stepCallbackFn, resultCallbackFn) {
     )
   }]);
 
-  console.log(technicalTask)
   const technicalTaskToJSON = JSON.parse(technicalTask)
   console.log(technicalTask)
 
@@ -84,19 +83,17 @@ async function start(projectDescription, stepCallbackFn, resultCallbackFn) {
     )
   }], 0);
 
+
   const teamCompositionToJson = JSON.parse(teamComposition)
   console.log(teamComposition)
 
-  resultCallbackFn({ data: teamCompositionToJson, type: "teamComposition"});
+  resultCallbackFn({ data: teamCompositionToJson, type: "teamComposition" });
   stepCallbackFn("Fetching SL team...");
 
-  const fetchTeamResult = await fetchTeam({teamComposition: teamCompositionToJson});
+  const fetchTeamResult = await fetchTeam({ teamComposition: teamCompositionToJson });
 
-  console.log('fetchTeamResult', fetchTeamResult);
-
-  resultCallbackFn({ data: fetchTeamResult?.teamComposition, type: "slTeamComposition", finished: true });
   stepCallbackFn("Done");
-
+  resultCallbackFn({ data: fetchTeamResult?.teamComposition, type: "slTeamComposition", finished: true });
 }
 
 module.exports = {

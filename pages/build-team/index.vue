@@ -1,5 +1,14 @@
 <template>
   <div class="build-team">
+    <div class="success-message" v-if="showSuccessMessage">
+      <div class="success-message_img">
+        <img src="/pages/rocket.png" alt="rocket" />
+      </div>
+      <h1 class="title-big">
+        <span class="green-title">Congratulations!</span>
+        Your team request has been successfully submitted!
+      </h1>
+    </div>
     <section>
       <AppearFromMask class="title-mask">
         <h1 class="title-big">
@@ -120,7 +129,9 @@
                       :key="index"
                     >
                       <div class="developers-item">
-                        <img :src="dev.avatar_url" :alt="'developer-img'" />
+                        <div class="developer-avatar" :class="{ default: !dev.avatar_url }">
+                          <img :src="dev.avatar_url || '/icons/default-avatar.svg'" :alt="'developer-img'" />
+                        </div>
                         <div class="developers-item_data">
                           <p class="name">{{ dev.name }}</p>
                           <!-- <p class="exp">
@@ -169,6 +180,7 @@
       v-show="isModalVisible"
       @close="closeModal"
       :getFile="exportToPDF"
+      :successMessage="successMessage"
     />
   </div>
 </template>
@@ -209,12 +221,12 @@ export default {
       socket.on('update-result', (result) => {
         this[result.type] = result.data
 
-        console.log('result,', result)
-
         if (result.finished) {
           this.finished = true
 
-          socket.removeAllListeners()
+          setTimeout(() => {
+            socket.removeAllListeners()
+          }, 2000)
         }
 
         if (result.error) {
@@ -230,6 +242,7 @@ export default {
     return {
       requirements: null,
       isModalVisible: false,
+      showSuccessMessage: false,
       finished: false,
       error: false,
       details: null,
@@ -237,6 +250,7 @@ export default {
       estimate: null,
       teamComposition: null,
       slTeamComposition: null,
+      pdfDownloaded: false,
       // details: {
       //   'Project Goal':
       //     'To develop a user-friendly crowdfunding platform that allows clients to create their own pages for collecting donations.',
@@ -375,6 +389,15 @@ export default {
       //       experience: null,
       //       stack: 'Design',
       //     },
+      //     {
+      //       name: 'Anastasia',
+      //       avatar_url:
+      //         'https://scrumlaunch-teams.s3.amazonaws.com/profile/avatars/_1673631463005_96159.jpeg',
+      //       user_skills:
+      //         'figma, responsive-design, design-patterns, application-design, designer',
+      //       experience: 3,
+      //       stack: 'Design',
+      //     },
       //   ],
       //   Deployment: [
       //     {
@@ -426,6 +449,8 @@ export default {
         return file
       } else {
         await this.$html2pdf().set(options).from(exportContainer).save()
+
+        this.pdfDownloaded = true
       }
     },
     showModal() {
@@ -433,6 +458,18 @@ export default {
     },
     closeModal() {
       this.isModalVisible = false
+    },
+    successMessage() {
+      this.showSuccessMessage = true
+      this.showModal = false
+
+      setTimeout(() => {
+        this.showSuccessMessage = false
+
+        if (this.pdfDownloaded) {
+          this.$router.push('/')
+        }
+      }, 5000)
     },
   },
 }
@@ -547,6 +584,62 @@ export default {
         color: $main-black;
         background-color: $main-green;
         transition: all 0.4s ease;
+      }
+    }
+  }
+
+  .success-message {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    background-color: #fff;
+    z-index: 1;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    h1 {
+      margin: 0 20px;
+      font-size: 24px;
+
+      @include tablet-and-up {
+        font-size: 48px;
+      }
+
+      @include desktop-and-up {
+        max-width: 75%;
+        font-size: 48px;
+      }
+    }
+
+    &_img {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 215px;
+      height: 160px;
+      margin-bottom: 30px;
+
+      background-color: #d9d9d9;
+
+      @include tablet-and-up {
+        width: 379px;
+        height: 282px;
+      }
+
+      img {
+        width: 70px;
+        height: 85px;
+
+        @include tablet-and-up {
+          width: 122px;
+          height: 148px;
+        }
       }
     }
   }

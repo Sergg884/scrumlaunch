@@ -52,13 +52,18 @@
                   />
                 </div>
                 <div class="button-container">
-                  <BaseButton class="form_button" @click="validateForm()" :disabled="is_sent">
+                  <BaseButton
+                    class="form_button"
+                    @click="validateForm()"
+                    :disabled="is_sent"
+                  >
                     Request Team
                   </BaseButton>
                 </div>
               </div>
             </div>
           </div>
+          <div v-show="is_sent" class="blocked"></div>
         </slot>
       </div>
     </div>
@@ -78,7 +83,7 @@ export default {
     is_sent: false,
     is_done: false,
   }),
-  props: ['getFile'],
+  props: ['getFile', 'successMessage'],
   methods: {
     close() {
       this.$emit('close')
@@ -88,7 +93,6 @@ export default {
     },
     async sendForm() {
       this.is_sent = true
-      this.is_blocked = true
 
       const fileBlob = await this.getFile(true)
 
@@ -117,14 +121,10 @@ export default {
           this.$axios.$post('/api/send-requirements', data).then(() => {
             this.name = ''
             this.email = ''
-            this.is_blocked = false
             this.is_done = true
             this.track()
-            setTimeout(() => {
-              this.is_sent = false
-              this.is_done = false
-            }, 5000)
             this.close()
+            this.successMessage()
           })
         })
         .catch((error) => {
@@ -181,12 +181,29 @@ export default {
   overflow: auto;
   width: 95%;
   max-height: 95%;
+  position: relative;
 
   @include tablet-and-up {
     width: 90%;
   }
   @include desktop-and-up {
     width: 75%;
+  }
+
+  .blocked {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    z-index: 2;
+    transition: background-color 0.2s;
   }
 }
 .modal-header {
