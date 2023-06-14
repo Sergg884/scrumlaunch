@@ -74,7 +74,6 @@ async function start(projectDescription, stepCallbackFn, resultCallbackFn) {
   resultCallbackFn({ data: estimateToJSON, type: "estimate" });
   stepCallbackFn("Fetching team composition...");
 
-  await utils.delay(20000);
   const teamComposition = await makeRequest([{
     role: "user",
     content: utils.cleanString(
@@ -88,12 +87,16 @@ async function start(projectDescription, stepCallbackFn, resultCallbackFn) {
   const teamCompositionToJson = JSON.parse(teamComposition)
   console.log(teamComposition)
 
-  resultCallbackFn({ data: teamCompositionToJson, type: "teamComposition", finished: true });
+  resultCallbackFn({ data: teamCompositionToJson, type: "teamComposition"});
+  stepCallbackFn("Fetching SL team...");
+
+  const fetchTeamResult = await fetchTeam({teamComposition: teamCompositionToJson});
+
+  console.log('fetchTeamResult', fetchTeamResult);
+
+  resultCallbackFn({ data: fetchTeamResult?.teamComposition, type: "slTeamComposition", finished: true });
   stepCallbackFn("Done");
 
-  const team = await fetchTeam({teamComposition: teamCompositionToJson});
-
-  console.log(team);
 }
 
 module.exports = {

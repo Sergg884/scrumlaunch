@@ -1,14 +1,14 @@
 const axios = require('axios').default;
 
-async function fetchTeam(teamCompositon) {
+async function fetchTeam(teamComposition) {
   try {
     const response = await axios({
       method: 'post',
       url: 'https://scrumteams.herokuapp.com/v2/external/employees/by_technology',
       headers: { 'HTTP-API-KEY': process.env.SCRUMTEAMS_API_KEY },
-      data: teamCompositon
+      data: teamComposition
     });
-    return response.data;
+    return JSON.stringify(response.data)
   } catch (error) {
     console.log(error);
   }

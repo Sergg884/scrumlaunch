@@ -19,11 +19,9 @@ export default function () {
         try {
           await askAi(data.query, stepCb, resultCb)
         } catch (error) {
-          console.log('error')
-          console.log(error)
+          console.error(error)
           resultCb({error: true})
         }
-
       })
     })
   })

@@ -35,47 +35,8 @@
                   <p class="blocks-item_text">{{ value }}</p>
                 </div>
               </div>
-
-              <!-- <b-row>
-                <b-col
-                  cols="12"
-                  md="6"
-                  v-for="(value, key) in details"
-                  :key="key"
-                >
-                </b-col>
-              </b-row> -->
             </div>
           </div>
-
-          <!-- <div v-if="technologies">
-            <h3>List of technologies</h3>
-            <div class="blocks">
-              <div
-                class="blocks-wrapper"
-                v-for="(mainTech, mainTechKey) in technologies"
-                :key="mainTechKey"
-              >
-                <div
-                  class="blocks-item"
-                  v-for="(tech, techKey) in mainTech"
-                  :key="techKey"
-                >
-                  <p class="blocks-item_title block">{{ mainTechKey }}</p>
-                  <p class="blocks-item_type">
-                    <span class="mark">{{ techKey }}</span>
-                  </p>
-                  <p
-                    class="blocks-item_text"
-                    v-for="(value, key) in tech"
-                    :key="key"
-                  >
-                    <span class="bold">{{ key }}:</span> {{ value }}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div> -->
 
           <div v-if="technologies">
             <h3>List of technologies</h3>
@@ -85,17 +46,20 @@
                 v-for="(mainTech, mainTechKey) in technologies"
                 :key="mainTechKey"
               >
+                <p class="blocks-item_title block">{{ mainTechKey }}</p>
                 <div
                   class="blocks-item"
+                  v-for="(tech, techKey) in mainTech"
+                  :key="techKey"
                 >
-                  <p class="blocks-item_title block">{{ mainTechKey }}</p>
-                  <p class="blocks-item_type">
-                    <span class="mark">{{ mainTech[`${mainTechKey} Part Name`] }}</span>
-                  </p>
-                  <p
-                    class="blocks-item_text"
-                  >
-                    <span class="bold">{{ mainTech['Technology Selected'] }}:</span> {{ mainTech['Technology Description'] }}
+                  <!-- <p class="blocks-item_type">
+                    <span class="mark">{{ tech.technologySelected }}</span>
+                  </p> -->
+                  <p class="blocks-item_text">
+                    <span class="mark bold"
+                      >{{ tech.technologySelected }}:</span
+                    >
+                    {{ tech.description }}
                   </p>
                 </div>
               </div>
@@ -136,40 +100,32 @@
                         >Employees</span
                       >
                     </p>
-                    <div
-                      class="team-technologies"
-                      v-for="(item, index) in value.technologiesRequired"
-                      :key="index"
-                    >
-                      <span>{{ item }}</span>
+                    <div class="team-technologies">
+                      <span
+                        v-for="(item, index) in value.technologiesRequired"
+                        :key="index"
+                        >{{ item }}</span
+                      >
                     </div>
                   </div>
-                  <b-row class="developers">
-                    <b-col cols="12" md="6" xl="4">
+                  <b-row
+                    class="developers"
+                    v-if="slTeamComposition && slTeamComposition[key]"
+                  >
+                    <b-col
+                      cols="12"
+                      md="6"
+                      xl="4"
+                      v-for="(dev, index) in slTeamComposition[key]"
+                      :key="index"
+                    >
                       <div class="developers-item">
-                        <img
-                          :src="'/pages/blog/default-author.jpg'"
-                          :alt="'developer-img'"
-                        />
+                        <img :src="dev.avatar_url" :alt="'developer-img'" />
                         <div class="developers-item_data">
-                          <p class="name">Mykhailo Harponenko</p>
-                          <p class="exp">
+                          <p class="name">{{ dev.name }}</p>
+                          <!-- <p class="exp">
                             Middle <span class="years"> 5 </span>years of exp.
-                          </p>
-                        </div>
-                      </div>
-                    </b-col>
-                    <b-col cols="12" md="6" xl="4">
-                      <div class="developers-item">
-                        <img
-                          :src="'/pages/blog/default-author.jpg'"
-                          :alt="'developer-img'"
-                        />
-                        <div class="developers-item_data">
-                          <p class="name">Mykhailo Harponenko</p>
-                          <p class="exp">
-                            Middle <span class="years"> 5 </span>years of exp.
-                          </p>
+                          </p> -->
                         </div>
                       </div>
                     </b-col>
@@ -251,24 +207,24 @@ export default {
       })
 
       socket.on('update-result', (result) => {
-        console.log(result)
         this[result.type] = result.data
+
+        console.log('result,', result)
 
         if (result.finished) {
           this.finished = true
+
+          socket.removeAllListeners()
         }
 
         if (result.error) {
           this.error = true
         }
       })
-
-      console.log(socket)
     }
   },
   beforeUnmount() {
-    socket.off('update-step')
-    socket.off('update-result')
+    socket.removeAllListeners()
   },
   data() {
     return {
@@ -280,62 +236,95 @@ export default {
       technologies: null,
       estimate: null,
       teamComposition: null,
+      slTeamComposition: null,
       // details: {
       //   'Project Goal':
-      //     'To develop a new mobile application that provides users with an intuitive method to track their daily food consumption and exercise routine.',
+      //     'To develop a user-friendly crowdfunding platform that allows clients to create their own pages for collecting donations.',
       //   'Project Features':
-      //     'The mobile app should allow users to log their meals, search nutritional information, and set daily goals. Also, it should include features such as reminders, progress tracking, and syncing with wearables.',
+      //     'User account creation, customizable donation pages, secure payment processing, social media integration, analytics and reporting tools, and responsive design.',
       //   'Target Users':
-      //     'The target audience for this app are health-conscious individuals who are willing to invest in their health and fitness goals.',
+      //     'Individuals, non-profit organizations, and small businesses seeking to raise funds for their projects, causes, or events.',
       //   'Platform Requirements':
-      //     'The app should be developed for both iOS and Android platforms, and should be optimized for both smartphone and tablet devices.',
+      //     'Web-based application compatible with all major browsers, mobile app for iOS and Android devices, and compliance with data protection and privacy regulations.',
       //   'Team Structure':
-      //     'The project requires a team of developers, UX/UI designers, and quality assurance specialists. Additionally, there should be a project manager to oversee the development process and ensure timely delivery of the final product.',
-      // },
-      // estimate: {
-      //   Frontend: 3,
-      //   Backend: 4,
-      //   Deployment: 1,
-      //   'Other Parts': 1,
-      //   'Total Duration': 4,
+      //     'Project Manager, UX/UI Designer, Front-end Developer, Back-end Developer, QA Tester, and Marketing Specialist.',
       // },
       // technologies: {
-      //   Frontend: {
-      //     'Frontend Part Name': 'Web Interface',
-      //     'Technology Selected': 'ReactJS',
-      //     'Technology Description':
-      //       'A JavaScript library for building user interfaces.',
-      //   },
-      //   Backend: {
-      //     'Backend Part Name': 'Server',
-      //     'Technology Selected': 'Node.js',
-      //     'Technology Description':
-      //       'An open-source, cross-platform JavaScript runtime environment that executes JavaScript code outside of a web browser.',
-      //   },
-      //   Deployment: {
-      //     'Deployment Part Name': 'Cloud Platform',
-      //     'Technology Selected': 'Amazon Web Services (AWS)',
-      //     'Technology Description':
-      //       'A subsidiary of Amazon that provides on-demand cloud computing platforms.',
-      //   },
-      //   'Other Parts': {
-      //     'Other Parts Part Name': 'Database',
-      //     'Technology Selected': 'MongoDB',
-      //     'Technology Description':
-      //       'A cross-platform document-oriented database program, classified as a NoSQL database program, which uses JSON-like documents with optional schemas.',
-      //   },
+      //   Frontend: [
+      //     {
+      //       technologySelected: 'React',
+      //       description:
+      //         'A popular JavaScript library for building user interfaces, allowing for efficient and reusable components.',
+      //     },
+      //   ],
+      //   Backend: [
+      //     {
+      //       technologySelected: 'Node.js',
+      //       description:
+      //         "A JavaScript runtime built on Chrome's V8 engine, allowing for scalable and efficient server-side development.",
+      //     },
+      //   ],
+      //   Database: [
+      //     {
+      //       technologySelected: 'MongoDB',
+      //       description:
+      //         'A NoSQL database that stores data in flexible, JSON-like documents, allowing for easy integration with the JavaScript-based stack.',
+      //     },
+      //   ],
+      //   Deployment: [
+      //     {
+      //       technologySelected: 'AWS',
+      //       description:
+      //         'A comprehensive cloud services platform that offers a wide range of tools for deploying, scaling, and managing web applications.',
+      //     },
+      //   ],
+      //   Mobile: [
+      //     {
+      //       technologySelected: 'React Native',
+      //       description:
+      //         'A framework for building native mobile apps using React, allowing for code reuse between the web and mobile platforms.',
+      //     },
+      //   ],
+      //   Payment: [
+      //     {
+      //       technologySelected: 'Stripe',
+      //       description:
+      //         'A secure and flexible payment processing platform that supports a wide range of payment methods and currencies.',
+      //     },
+      //   ],
+      //   SocialMediaIntegration: [
+      //     {
+      //       technologySelected: 'OAuth',
+      //       description:
+      //         'An open standard for secure access delegation, allowing users to log in and share information from their social media accounts.',
+      //     },
+      //   ],
+      //   Analytics: [
+      //     {
+      //       technologySelected: 'Google Analytics',
+      //       description:
+      //         'A powerful web analytics service that tracks and reports website traffic, providing insights into user behavior and engagement.',
+      //     },
+      //   ],
+      // },
+      // estimate: {
+      //   Frontend: 2,
+      //   Backend: 2,
+      //   Deployment: 1,
+      //   'Other Parts': 1,
+      //   'Total Duration': 3,
       // },
       // teamComposition: {
       //   Frontend: {
-      //     technologiesRequired: ['React Native'],
-      //     numberOfEmployeesRequired: 3,
+      //     technologiesRequired: ['React', 'React Native'],
+      //     numberOfEmployeesRequired: 2,
       //   },
       //   Backend: {
       //     technologiesRequired: ['Node.js', 'MongoDB'],
-      //     numberOfEmployeesRequired: 4,
+      //     numberOfEmployeesRequired: 2,
       //   },
       //   Deployment: {
-      //     technologiesRequired: ['Amazon Web Services (AWS)'],
+      //     technologiesRequired: ['AWS', 'Stripe', 'OAuth', 'Google Analytics'],
       //     numberOfEmployeesRequired: 1,
       //   },
       //   Design: {
@@ -344,6 +333,68 @@ export default {
       //   Management: {
       //     numberOfEmployeesRequired: 1,
       //   },
+      // },
+      // slTeamComposition: {
+      //   Backend: [
+      //     {
+      //       name: 'Vitalii',
+      //       avatar_url: 'https://scrumlaunch-teams.s3.amazonaws.com/',
+      //       user_skills: '',
+      //       experience: null,
+      //       stack: 'Node.js',
+      //     },
+      //     {
+      //       name: 'Nikolenko',
+      //       avatar_url: null,
+      //       user_skills: '',
+      //       experience: null,
+      //       stack: 'Node.js',
+      //     },
+      //   ],
+      //   Frontend: [
+      //     {
+      //       name: 'Nikolay',
+      //       avatar_url: null,
+      //       user_skills: '',
+      //       experience: null,
+      //       stack: 'React Native',
+      //     },
+      //     {
+      //       name: 'Ann',
+      //       avatar_url: null,
+      //       user_skills: '',
+      //       experience: null,
+      //       stack: 'React Native',
+      //     },
+      //   ],
+      //   Design: [
+      //     {
+      //       name: 'Yuliia',
+      //       avatar_url: null,
+      //       user_skills: '',
+      //       experience: null,
+      //       stack: 'Design',
+      //     },
+      //   ],
+      //   Deployment: [
+      //     {
+      //       name: 'Yuriy',
+      //       avatar_url: null,
+      //       user_skills: '',
+      //       experience: null,
+      //       stack: 'DevOps',
+      //     },
+      //   ],
+      //   Management: [
+      //     {
+      //       name: 'Mykhailo',
+      //       avatar_url:
+      //         'https://scrumlaunch-teams.s3.amazonaws.com/profile/avatars/_1669140085048_scaled_307c8f47cd160bd39826c80e79a48089267.jpeg',
+      //       user_skills: '',
+      //       experience: null,
+      //       stack: 'PM',
+      //     },
+      //   ],
       // },
     }
   },
