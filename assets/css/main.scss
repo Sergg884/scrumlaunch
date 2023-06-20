@@ -172,6 +172,10 @@ h2 {
       }
     }
 
+    .estimate-wrapper {
+      margin-top: 10px;
+    }
+
     h3 {
       margin: 15px 0 10px;
       font-size: 20px;
@@ -308,9 +312,10 @@ h2 {
   &_title {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
     span {
-      padding-right: 80px;
+      padding-right: 60px;
       font-weight: 800;
       font-size: 18px;
       text-align: left;
