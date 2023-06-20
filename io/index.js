@@ -7,7 +7,7 @@ export default function () {
     const server = http.createServer(this.nuxt.renderer.app)
     const io = socketIO(server)
 
-    this.nuxt.server.listen = (port, host) => new Promise(resolve => server.listen(port || 3000, host || 'localhost', resolve))
+    this.nuxt.server.listen = () => new Promise(resolve => server.listen(process.env.PORT || 3000, process.env.HOST || 'localhost', resolve))
 
     this.nuxt.hook('close', () => new Promise(server.close))
 
