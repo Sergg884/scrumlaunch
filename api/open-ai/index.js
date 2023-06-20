@@ -94,13 +94,13 @@ async function start(projectDescription, stepCallbackFn, resultCallbackFn) {
 
   console.log(teamComposition)
 
-  resultCallbackFn({ data: teamComposition, type: "teamComposition" });
-  stepCallbackFn("Fetching SL team...");
-
-  const fetchTeamResult = await fetchTeam({ teamComposition });
-
+  resultCallbackFn({ data: teamComposition, type: "teamComposition", finished: true });
   stepCallbackFn("Done");
-  resultCallbackFn({ data: fetchTeamResult?.teamComposition, type: "slTeamComposition", finished: true });
+
+  // const fetchTeamResult = await fetchTeam({ teamComposition });
+
+  // stepCallbackFn("Done");
+  // resultCallbackFn({ data: fetchTeamResult?.teamComposition, type: "slTeamComposition", finished: true });
 }
 
 module.exports = {

@@ -220,7 +220,7 @@ export default {
       )
     },
     hideAILink() {
-            return ['/build-team'].includes(
+            return ['/build-team', '/build-team/result'].includes(
         this.$route.path.toLocaleLowerCase()
       )
     }
@@ -250,7 +250,7 @@ export default {
 
     aiNavigate() {
       this.hideAIMessage()
-      this.$router.push('/')
+      this.$router.push('/build-team')
     },
   },
 }

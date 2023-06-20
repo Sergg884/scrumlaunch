@@ -136,10 +136,31 @@ h2 {
     display: none;
   }
 
+  #page_2 {
+    .requirements_title {
+      display: none;
+    }
+  }
+
   &.export {
-    border: 1px solid $main-black;
-    padding: 20px;
-    margin: 20px;
+    .requirements_page_wrapper {
+      display: flex;
+      min-height: 1120px;
+    }
+
+    .requirements_page {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid $main-black;
+      padding: 20px;
+      margin: 20px 20px 20px 20px;
+    }
+
+    #page_2 {
+      .requirements_title {
+        display: flex;
+      }
+    }
 
     h3 {
       margin: 15px 0;
@@ -163,9 +184,26 @@ h2 {
         margin-bottom: 10px;
       }
 
+      &_title.block {
+        margin-top: 10px;
+      }
+
       &_type {
         margin-bottom: 5px;
         font-size: 12px;
+
+        .employees {
+          margin-top: -35px;
+          font-size: 16px;
+
+          span {
+            font-size: 20px;
+          }
+        }
+      }
+
+      .team-technologies span {
+        font-size: 14px;
       }
     }
 
@@ -228,7 +266,7 @@ h2 {
       align-items: center;
       border-top: 1px solid #A9A69E;
       padding: 20px 0 10px;
-      margin-top: 20px;
+      margin-top: auto;
       font-size: 16px;
       font-weight: 700;
       color: #000;
@@ -334,11 +372,17 @@ h2 {
         .employees {
           display: flex;
           align-items: center;
+          margin-top: -25px;
           font-weight: 400;
           font-size: 14px;
 
           @include tablet-and-up {
+            margin-top: -30px;
             font-size: 18px;
+          }
+
+          @include desktop-and-up {
+            margin-top: -35px;
           }
 
           span {
