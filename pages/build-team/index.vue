@@ -2,12 +2,11 @@
   <section class="build-team">
     <AppearFromMask class="title-mask">
       <h1 class="title-big">
-        <span class="green-title">Came up</span>
-        with a business idea.
-        <span class="green-title">Describe</span>
-        in details.
-        <span class="green-title">Get</span>
-        a real team.
+        <span class="green-title">The AI-powered</span>
+        solution from project
+        <span class="green-title">estimation</span>
+        and team
+        <span class="green-title">staffing.</span>
       </h1>
     </AppearFromMask>
     <div class="requirements-wrapper">
@@ -17,8 +16,7 @@
         alt="Flutter Developer Image"
       />
       <p class="text">
-        A dynamic and streamlined solution for aspiring entrepreneurs to
-        generate business ideas, form teams, and pursue success.
+        Instantly scope and estimate your technology project.
       </p>
       <AiRequirementsField page />
       <nuxt-img
@@ -112,7 +110,6 @@ export default {
 
   .requirements-wrapper {
     position: relative;
-    padding: 0 10px;
     margin: 0 auto;
 
     @include tablet-and-up {
@@ -143,14 +140,14 @@ export default {
       @include tablet-and-up {
         display: block;
         width: 50px;
-        bottom: -15%;
+        bottom: -25%;
         left: -5%;
       }
 
       @include desktop-and-up {
         width: 110px;
         left: -30%;
-        top: 15%;
+        top: 5%;
       }
     }
 
@@ -168,7 +165,7 @@ export default {
       @include desktop-and-up {
         width: 80px;
         right: -25%;
-        top: 20%;
+        top: -5%;
       }
     }
 

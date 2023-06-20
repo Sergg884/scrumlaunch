@@ -43,6 +43,9 @@
         GENERATE
       </BaseButton>
     </div>
+    <BaseButton class="requirements-button_mobile" @click="setRequirements()">
+      GENERATE
+    </BaseButton>
     <nuxt-link
       to="/contact-us"
       class="requirements_link"
@@ -80,6 +83,18 @@ export default {
   text-align: left;
   order: 3;
 
+  &-button_mobile {
+    margin: 60px auto 0;
+    width: 250px;
+    padding: 17px;
+    font-weight: 400;
+    font-size: 14px;
+
+    @include tablet-and-up {
+      display: none;
+    }
+  }
+
   @include desktop-and-up {
     grid-area: 2 / 1 / 3 / 2;
   }
@@ -102,7 +117,7 @@ export default {
     border: 1px solid #1e1f21;
 
     textarea {
-      width: 80%;
+      width: 100%;
       padding: 5px 10px;
       border: none;
       resize: none;
@@ -123,17 +138,20 @@ export default {
       }
 
       @include tablet-and-up {
+        width: 80%;
         padding: 8px 20px;
         font-size: 18px;
       }
     }
 
     &_button {
+      display: none;
       padding: 10px 20px;
       font-size: 14px;
       border-radius: 0;
 
       @include tablet-and-up {
+        display: block;
         width: 185px;
         font-size: 18px;
       }
@@ -215,18 +233,30 @@ export default {
   }
 
   &_link {
-    display: inline-block;
-    margin-top: 40px;
+    display: block;
+    margin-top: 20px;
+    padding: 0 15px;
     font-weight: 600;
     font-size: 14px;
     color: #1e1f21;
     line-height: 1;
     text-decoration: underline;
+    text-align: center;
+
+    @include tablet-and-up {
+      margin-top: 40px;
+      padding: 0;
+    }
+
+    @include desktop-and-up {
+      margin-top: 60px;
+      text-align: left;
+    }
 
     &.page {
       display: block;
-      text-align: center;
       margin-bottom: 80px;
+      text-align: center;
 
       @include tablet-and-up {
         margin-bottom: 150px;

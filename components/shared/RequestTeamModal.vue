@@ -19,7 +19,7 @@
           <div class="modal-body">
             <p class="title-global popup-title">
               Enter your information to
-              <span class="green-title">book your team</span>
+              <span class="green-title">reserve your team</span>
               and start building!
             </p>
             <div class="modal-body__content">
@@ -57,7 +57,7 @@
                     @click="validateForm()"
                     :disabled="is_sent"
                   >
-                    Request Team
+                    Reserve Team
                   </BaseButton>
                 </div>
               </div>

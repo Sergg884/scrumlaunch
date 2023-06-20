@@ -2,7 +2,11 @@
   <div class="build-team">
     <div class="success-message" v-if="showSuccessMessage">
       <div class="success-message_img">
-        <img src="/pages/rocket.png" alt="rocket" />
+        <nuxt-img
+          format="webp"
+          src="/pages/success-team-reserved.png"
+          alt="rocket"
+        />
       </div>
       <h1 class="title-big">
         <span class="green-title">Congratulations!</span>
@@ -25,18 +29,15 @@
     <section>
       <div v-if="requirements">
         <div id="requirements-container" class="requirements">
-          <div
-            id="page_1"
-            class="requirements_page_wrapper"
-          >
+          <div id="page_1" class="requirements_page_wrapper">
             <div class="requirements_page">
               <p class="requirements_title">
-                <span>The best talents for your project</span>
+                <span>The right tech talent for your project</span>
                 <Logo :fill="'#1E1F21'" />
               </p>
 
               <div v-if="details">
-                <h3>Project details</h3>
+                <h3>Project summary</h3>
                 <div class="blocks">
                   <div
                     class="blocks-wrapper"
@@ -109,7 +110,7 @@
           <div id="page_2" class="requirements_page_wrapper">
             <div class="requirements_page">
               <p class="requirements_title">
-                <span>The best talents for your project</span>
+                <span>The right tech talent for your project</span>
                 <Logo :fill="'#1E1F21'" />
               </p>
               <div v-if="teamComposition">
@@ -194,18 +195,20 @@
           We form a response to your request, this may take some time
         </p>
         <div class="buttons-wrapper" v-if="finished">
-          <BaseButton class="export-btn" @click="exportToPDF(false)"
-            >Save as PDF</BaseButton
-          >
-          <BaseButton class="export-btn" @click="refresh()">Refresh</BaseButton>
-          <BaseButton @click="showModal()">Request Team</BaseButton>
+          <div>
+            <BaseButton class="export-btn" @click="exportToPDF(false)"
+              >Save as PDF</BaseButton
+            >
+            <BaseButton @click="showModal()">Request Team</BaseButton>
+          </div>
+          <nuxt-link to="/build-team" class="refresh-btn"> Refresh </nuxt-link>
         </div>
       </div>
 
       <p v-else>No requirements found.</p>
 
       <div class="error-container" v-if="error">
-        <p>Ooops! Something went wrong. Please try again later.</p>
+        <p>Ooops! Something went wrong.</p>
         <BaseButton @click="refresh()">Try Again</BaseButton>
       </div>
     </section>
@@ -273,6 +276,7 @@ export default {
   },
   beforeUnmount() {
     socket.removeAllListeners()
+    this.$store.commit('requirements/SET_REQUIREMENTS', null)
   },
   data() {
     return {
@@ -465,7 +469,7 @@ export default {
 
       const page1 = container?.querySelector('#page_1')
 
-      // Move estimate block on the second page if it does not fit on the first page 
+      // Move estimate block on the second page if it does not fit on the first page
       if (page1?.offsetHeight > 1500) {
         const estimate = exportContainer?.querySelector('.estimate-wrapper')
 
@@ -474,9 +478,8 @@ export default {
         const page2 = exportContainer?.querySelector('#page_2')
         const title = page2?.querySelector('.requirements_title')
 
-        title?.parentNode.insertBefore(estimate, title.nextSibling);
+        title?.parentNode.insertBefore(estimate, title.nextSibling)
       }
-
 
       const options = {
         filename: `ScrumLaunch-Build-Team-${formatDate('-')}.pdf`,
@@ -523,10 +526,6 @@ export default {
         }
       }, 5000)
     },
-    refresh() {
-      this.$store.commit('requirements/SET_REQUIREMENTS', null)
-      this.$router.push('/build-team')
-    },
   },
 }
 </script>
@@ -535,7 +534,6 @@ export default {
 .build-team {
   section {
     margin: 50px auto;
-    padding: 0;
 
     @include tablet-and-up {
       margin: 90px auto;
@@ -659,10 +657,18 @@ export default {
   }
 
   .buttons-wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 40px 0 70px;
+    div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 40px 0 20px;
+      order: 2;
+
+      @include tablet-and-up {
+        flex-direction: row;
+        margin: 60px 0 40px;
+      }
+    }
 
     button {
       @include tablet-and-up {
@@ -672,11 +678,6 @@ export default {
       @include desktop-and-up {
         min-width: 280px;
       }
-    }
-
-    @include tablet-and-up {
-      flex-direction: row;
-      margin: 100px 0;
     }
 
     .export-btn {
@@ -700,6 +701,24 @@ export default {
         transition: all 0.4s ease;
       }
     }
+
+    .refresh-btn {
+      margin-bottom: 80px;
+      font-weight: 600;
+      font-size: 14px;
+      color: #1e1f21;
+      line-height: 1;
+      text-decoration: underline;
+
+      @include tablet-and-up {
+        margin-bottom: 140px;
+        font-size: 16px;
+      }
+
+      @include desktop-and-up {
+        font-size: 18px;
+      }
+    }
   }
 
   .success-message {
@@ -710,7 +729,7 @@ export default {
     right: 0;
     height: 100vh;
     background-color: #fff;
-    z-index: 1;
+    z-index: 102;
 
     display: flex;
     justify-content: center;
@@ -739,21 +758,13 @@ export default {
       height: 160px;
       margin-bottom: 30px;
 
-      background-color: #d9d9d9;
-
       @include tablet-and-up {
         width: 379px;
         height: 282px;
       }
 
       img {
-        width: 70px;
-        height: 85px;
-
-        @include tablet-and-up {
-          width: 122px;
-          height: 148px;
-        }
+        width: 100%;
       }
     }
   }
