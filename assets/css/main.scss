@@ -136,6 +136,12 @@ h2 {
     display: none;
   }
 
+  #page_1 {
+    .sl_info {
+      page-break-after: always;
+    }
+  }
+
   #page_2 {
     .requirements_title {
       display: none;
@@ -160,10 +166,14 @@ h2 {
       .requirements_title {
         display: flex;
       }
+
+      .estimate-wrapper {
+        display: block;
+      }
     }
 
     h3 {
-      margin: 15px 0;
+      margin: 15px 0 10px;
       font-size: 20px;
     }
 

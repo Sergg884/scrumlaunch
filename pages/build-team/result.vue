@@ -28,7 +28,6 @@
           <div
             id="page_1"
             class="requirements_page_wrapper"
-            style="pagebreakafter: 'always'"
           >
             <div class="requirements_page">
               <p class="requirements_title">
@@ -82,7 +81,7 @@
                 </div>
               </div>
 
-              <div v-if="estimate">
+              <div v-if="estimate" class="estimate-wrapper">
                 <h3>Estimate</h3>
                 <div class="estimate">
                   <div
@@ -290,15 +289,15 @@ export default {
       pdfDownloaded: false,
       // details: {
       //   'Project Goal':
-      //     'To develop a user-friendly crowdfunding platform that allows clients to create their own pages for collecting donations. Android devices, and compliance with data protection and privacy regulations.',
+      //     'To develop a user-friendly crowdfunding platform that allows clients to create their own pages for collecting donations.',
       //   'Project Features':
-      //     'User account creation, customizable donation pages, secure payment processing, social media integration, analytics and reporting tools, and responsive design. Android devices, and compliance with data protection and privacy regulations.',
+      //     'User account creation, customizable donation pages, secure payment processing, social media integration, analytics and reporting tools, and responsive design.',
       //   'Target Users':
-      //     'Individuals, non-profit organizations, and small businesses seeking to raise funds for their projects, causes, or events. Android devices, and compliance with data protection and privacy regulations. Android devices, and compliance with data protection and privacy regulations.',
+      //     'Individuals, non-profit organizations, and small businesses seeking to raise funds for their projects, causes, or events..',
       //   'Platform Requirements':
-      //     'Web-based application compatible with all major browsers, mobile app for iOS and Android devices, and compliance with data protection and privacy regulations. Android devices, and compliance with data protection and privacy regulations.',
+      //     'Web-based application compatible with all major browsers, mobile app for iOS and Android devices, and compliance with data protection and privacy regulations.',
       //   'Team Structure':
-      //     'Project Manager, UX/UI Designer, Front-end Developer, Back-end Developer, QA Tester, and Marketing Specialist. Android devices, and compliance with data protection and privacy regulations.',
+      //     'Project Manager, UX/UI Designer, Front-end Developer, Back-end Developer, QA Tester, and Marketing Specialist.',
       // },
       // technologies: {
       //   Frontend: [
@@ -462,7 +461,22 @@ export default {
     async exportToPDF(returnFile) {
       const container = document.getElementById('requirements-container')
       const exportContainer = container.cloneNode(true)
-      exportContainer.classList.add('export')
+      exportContainer?.classList.add('export')
+
+      const page1 = container?.querySelector('#page_1')
+
+      // Move estimate block on the second page if it does not fit on the first page 
+      if (page1?.offsetHeight > 1500) {
+        const estimate = exportContainer?.querySelector('.estimate-wrapper')
+
+        estimate?.classList.add('hide')
+
+        const page2 = exportContainer?.querySelector('#page_2')
+        const title = page2?.querySelector('.requirements_title')
+
+        title?.parentNode.insertBefore(estimate, title.nextSibling);
+      }
+
 
       const options = {
         filename: `ScrumLaunch-Build-Team-${formatDate('-')}.pdf`,

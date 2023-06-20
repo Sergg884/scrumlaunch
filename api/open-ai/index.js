@@ -1,10 +1,10 @@
 const { Configuration, OpenAIApi } = require("openai");
 const utils = require("../utils");
 const prompts = require("./prompts");
-const fetchTeam = require("./fetch-team");
+// const fetchTeam = require("./fetch-team");
 
 const configuration = new Configuration({
-  apiKey: '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',
+  apiKey: process.env.GTP_API_KEY,
 });
 
 const openai = new OpenAIApi(configuration);
