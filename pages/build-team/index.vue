@@ -47,37 +47,6 @@ export default {
       },
     ],
   },
-  async mounted() {
-    const requirements = this.$store.getters['requirements/GET_REQUIREMENTS']
-
-    this.requirements = requirements
-
-    if (requirements) {
-      socket.emit('fetch-requirements', { query: requirements })
-
-      socket.on('update-step', (step) => {
-        console.log(step)
-      })
-
-      socket.on('update-result', (result) => {
-        this[result.type] = result.data
-
-        if (result.finished) {
-          this.finished = true
-
-          setTimeout(() => {
-            socket.removeAllListeners()
-          }, 2000)
-        }
-
-        if (result.error) {
-          this.error = true
-        }
-      })
-    }
-  },
-
-  methods: {},
 }
 </script>
 
