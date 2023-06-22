@@ -31,10 +31,6 @@
         <div id="requirements-container" class="requirements">
           <div id="page_1" class="requirements_page_wrapper">
             <div class="requirements_page">
-              <p class="requirements_title">
-                <span>The right tech talent for your project</span>
-                <Logo :fill="'#1E1F21'" />
-              </p>
 
               <div v-if="details">
                 <h3>Project summary</h3>
@@ -109,10 +105,6 @@
 
           <div id="page_2" class="requirements_page_wrapper">
             <div class="requirements_page">
-              <p class="requirements_title">
-                <span>The right tech talent for your project</span>
-                <Logo :fill="'#1E1F21'" />
-              </p>
               <div v-if="teamComposition">
                 <h3>Team composition</h3>
                 <div class="team">
@@ -192,16 +184,16 @@
           <span class="loading__dot"></span>
         </div>
         <p class="loading-text" v-if="!finished && !error">
-          We form a response to your request, this may take some time
+          We are forming a response to your request, this may take some time
         </p>
         <div class="buttons-wrapper" v-if="finished">
+          <nuxt-link to="/build-team" class="refresh-btn"> Refresh </nuxt-link>
           <div>
             <BaseButton class="export-btn" @click="exportToPDF(false)"
               >Save as PDF</BaseButton
             >
-            <BaseButton @click="showModal()">Request Team</BaseButton>
+            <BaseButton @click="showModal()">Reserve Team</BaseButton>
           </div>
-          <nuxt-link to="/build-team" class="refresh-btn"> Refresh </nuxt-link>
         </div>
       </div>
 
@@ -247,6 +239,8 @@ export default {
   },
   async mounted() {
     const requirements = this.$store.getters['requirements/GET_REQUIREMENTS']
+
+    if (!requirements) return this.$router.push('/build-team')
 
     this.requirements = requirements
 
@@ -657,16 +651,22 @@ export default {
   }
 
   .buttons-wrapper {
+    margin: 20px 0 0;
+
+    @include tablet-and-up {
+      margin: 40px 0 0;
+    }
+
     div {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      margin: 40px 0 20px;
+      margin: 20px 0;
       order: 2;
 
       @include tablet-and-up {
         flex-direction: row;
-        margin: 60px 0 40px;
+        margin: 40px 0;
       }
     }
 

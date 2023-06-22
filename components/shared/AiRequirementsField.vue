@@ -3,13 +3,15 @@
     <label class="requirements-label" for="requirements"
       >Build requirements & staff your project from a text prompt.</label
     >
-    <div class="requirements-input">
+    <div class="requirements-input" :class="{ 'empty': isRequirementsEmpty }">
       <textarea
         id="requirements"
         v-model="requirements"
         type="text"
-        placeholder="Enter requirements"
+        :placeholder="placeholder"
         maxlength="200"
+        :class="{ 'empty-textarea': isRequirementsEmpty }"
+        @input="onInput"
       />
       <span class="requirements-input_characters"
         >{{ requirements.length }}/200</span
@@ -67,14 +69,27 @@ export default {
   data() {
     return {
       requirements: '',
+      isRequirementsEmpty: false,
     }
   },
   methods: {
+    onInput(e) {
+      this.isRequirementsEmpty = false
+    },
     setRequirements() {
-      this.$store.commit('requirements/SET_REQUIREMENTS', this.requirements)
-      this.$router.push('/build-team/result')
+      if (!this.requirements.length) {
+        this.isRequirementsEmpty = true
+      } else {
+        this.$store.commit('requirements/SET_REQUIREMENTS', this.requirements)
+        this.$router.push('/build-team/result')
+      }
     },
   },
+  computed: {
+    placeholder() {
+      return this.isRequirementsEmpty ? 'Error: missing requirements' : 'Enter requirements'
+    }
+  }
 }
 </script>
 
@@ -116,6 +131,10 @@ export default {
     position: relative;
     border: 1px solid #1e1f21;
 
+    &.empty {
+      border: 1px solid #FF0000;
+    }
+
     textarea {
       width: 100%;
       padding: 5px 10px;
@@ -135,6 +154,13 @@ export default {
       &::placeholder {
         font-weight: 600;
         color: #1e1f21;
+      }
+
+      &.empty-textarea {
+        &::placeholder {
+          font-weight: 600;
+          color: #FF0000;
+        }
       }
 
       @include tablet-and-up {

@@ -3,10 +3,10 @@
     <AppearFromMask class="title-mask">
       <h1 class="title-big">
         <span class="green-title">The AI-powered</span>
-        solution from project
+        solution for project
         <span class="green-title">estimation</span>
         and team
-        <span class="green-title">staffing.</span>
+        <span class="green-title">staffing</span>
       </h1>
     </AppearFromMask>
     <div class="requirements-wrapper">
@@ -16,7 +16,7 @@
         alt="Flutter Developer Image"
       />
       <p class="text">
-        Instantly scope and estimate your technology project.
+        Instantly scope and estimate your technology project
       </p>
       <AiRequirementsField page />
       <nuxt-img
