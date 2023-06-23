@@ -16,12 +16,11 @@
     <section>
       <AppearFromMask class="title-mask">
         <h1 class="title-big">
-          <span class="green-title">Came up</span>
-          with a business idea. <br />
-          <span class="green-title">Describe</span>
-          in details.
-          <span class="green-title">Get</span>
-          a real team.
+          <span class="green-title">The AI-powered</span>
+          solution for project
+          <span class="green-title">estimation</span>
+          and team
+          <span class="green-title">staffing</span>
         </h1>
       </AppearFromMask>
       <p class="requirements-text">{{ requirements }}</p>
