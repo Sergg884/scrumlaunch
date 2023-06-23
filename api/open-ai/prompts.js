@@ -15,6 +15,12 @@ const GET_LIST_OF_TECHNOLOGIES = (projectDescription) => {
         description: TEXT
       }
     ],
+    'Quality Assurance': [
+      {
+        technologySelected: TEXT,
+        description: TEXT
+      }
+    ],
     Deployment: [
       {
         technologySelected: TEXT,
@@ -39,6 +45,7 @@ const GET_ESTIMATE = (projectDescription) => {
     {
       "Frontend": APPROXIMATE TIME(MONTH),
       "Backend": APPROXIMATE TIME(MONTH),
+      "Quality Assurance": APPROXIMATE TIME(MONTH),
       "Deployment": APPROXIMATE TIME(MONTH),
       "Other Parts": APPROXIMATE TIME(MONTH),
       "Total Duration": APPROXIMATE TIME (assuming that we can make tasks in parallel)(MONTH)
@@ -58,6 +65,10 @@ const GET_TEAM_COMPOSITION = (technologies, estimate) => {
         numberOfEmployeesRequired: \${NUMBER OF EMPLOYEES REQUIRED}
       },
       Backend: {
+        technologiesRequired: [TECHNOLOGIES REQUIRED(STRING)],
+        numberOfEmployeesRequired: \${NUMBER OF EMPLOYEES REQUIRED}
+      },
+      'Quality Assurance': {
         technologiesRequired: [TECHNOLOGIES REQUIRED(STRING)],
         numberOfEmployeesRequired: \${NUMBER OF EMPLOYEES REQUIRED}
       },
