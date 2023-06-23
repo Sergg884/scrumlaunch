@@ -192,7 +192,7 @@
             <BaseButton class="export-btn" @click="exportToPDF(false)"
               >Save as PDF</BaseButton
             >
-            <BaseButton @click="showModal()">Reserve Team</BaseButton>
+            <BaseButton class="reserve-btn" @click="showModal()">Reserve Team</BaseButton>
           </div>
         </div>
       </div>
@@ -695,11 +695,23 @@ export default {
         margin-right: 30px;
       }
 
-      &:hover {
+      @media (hover: hover) {
+        &:hover {
+          color: $main-black;
+          background-color: $main-green;
+          transition: all 0.4s ease;
+        }
+      }
+
+      &:active {
         color: $main-black;
         background-color: $main-green;
         transition: all 0.4s ease;
       }
+    }
+
+    .reserve-btn {
+      font-weight: 400;
     }
 
     .refresh-btn {

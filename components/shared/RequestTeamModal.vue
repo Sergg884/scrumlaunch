@@ -62,8 +62,8 @@
                 </div>
               </div>
             </div>
+            <div v-show="is_sent" class="blocked"></div>
           </div>
-          <div v-show="is_sent" class="blocked"></div>
         </slot>
       </div>
     </div>
@@ -192,7 +192,7 @@ export default {
 
   .blocked {
     position: absolute;
-    top: 0;
+    top: -50px;
     left: 0;
     right: 0;
     bottom: 0;
@@ -204,6 +204,10 @@ export default {
     text-align: center;
     z-index: 2;
     transition: background-color 0.2s;
+
+    @include tablet-and-up {
+      top: -90px;
+    }
   }
 }
 .modal-header {

@@ -82,8 +82,7 @@ const GET_TECHNICAL_TASK = (projectDescription) => {
       "Project Goal": STRING,
       "Project Features": STRING,
       "Target Users": STRING,
-      "Platform Requirements": STRING,
-      "Team Structure": STRING
+      "Platform Requirements": STRING
     }. Exclude budget and timeline. Response with only JSON. Ensure you are using correct format.`
   );
 }

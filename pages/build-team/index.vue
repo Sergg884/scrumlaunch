@@ -80,9 +80,9 @@ export default {
   .requirements-wrapper {
     position: relative;
     margin: 0 auto;
+    max-width: 90%;
 
     @include tablet-and-up {
-      max-width: 90%;
       padding: 0;
     }
 
