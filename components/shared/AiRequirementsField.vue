@@ -131,6 +131,10 @@ export default {
     position: relative;
     border: 1px solid #1e1f21;
 
+    @include tablet-and-up {
+      width: 95%;
+    }
+
     &.empty {
       border: 1px solid #FF0000;
     }

@@ -21,7 +21,7 @@
     </div>
     <div class="ai-popup" v-if="!hideAILink">
       <BaseButton
-        :class="`ai-link ${isAILinkGreen ? 'green-ai' : ''}`"
+        :class="`ai-link ${isAILinkGreen || showMobileNavigation ? 'green-ai' : ''}`"
         @click="aiNavigate()"
         >Build Team with scrum ai
       </BaseButton>
@@ -249,6 +249,9 @@ export default {
     },
 
     aiNavigate() {
+      if (this.showMobileNavigation) {
+        this.toggleNavigation()
+      }
       this.hideAIMessage()
       this.$router.push('/build-team')
     },
