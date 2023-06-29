@@ -53,7 +53,7 @@
       class="requirements_link"
       :class="{ page: page }"
     >
-      Want to talk to someone the old fashioned way? Schedule a call
+      Already know exactly what you need? Schedule a call
     </nuxt-link>
   </div>
 </template>
