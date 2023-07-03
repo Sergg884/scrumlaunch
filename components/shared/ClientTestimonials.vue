@@ -116,7 +116,12 @@ h2 {
 .carousel {
   position: relative;
   width: 100%;
-  margin-top: 80px;
+  margin-top: 40px;
+  
+  @include tablet-and-up {
+    margin-top: 60px;
+  }
+
   .navigation-btn { 
     position: absolute;
     width: 61px;
@@ -148,21 +153,24 @@ h2 {
     }
   }
   .slider-group {
-
-    @include desktop-and-up {}
     position: relative;
     max-width: 720px;
-    height: 520px;
+    height: 490px;
     overflow: hidden;
     margin: auto;
 
     @include tablet-and-up {
-      height: 650px;
+      height: 570px;
+    }
+    @include desktop-and-up {
+      height: 612px;
     }
     .slide {
       position: absolute;
       top: 0;
       bottom: 0;
+      left: 0;
+      right: 0;
       .avatar {
         border-radius: 100%;
         width: 130px;
@@ -193,7 +201,6 @@ h2 {
           @include desktop-and-up {
             margin-top: 40px;
             font-size: 30px;
-
           }
         }
 
@@ -237,13 +244,14 @@ h2 {
       .feedback {
         font-weight: 400;
         font-size: 16px;
+        font-style: italic;
         color: $main-black;
         margin: auto;
-        margin-bottom: 80px;
+        margin-bottom: 40px;
 
         @include  tablet-and-up {
-          font-size: 26px;
-          
+          font-size: 20px;
+          margin-bottom: 60px;
         }
       }
     }
