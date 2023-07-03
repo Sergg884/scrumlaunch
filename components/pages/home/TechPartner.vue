@@ -77,6 +77,7 @@ section {
       margin-bottom: -1px;
       flex-basis: 0;
       flex-grow: 1;
+      transition: all 0.3s ease;
 
       @include tablet-and-up {
         padding: 32px 24px;
@@ -88,6 +89,12 @@ section {
       @include desktop-and-up {
         padding: 40px;
       }
+
+      &:hover {
+        background-color: $main-green;
+        border: 1px solid $main-green;
+      }
+      
       .title {
         font-size: 16px;
         font-weight: 400;

@@ -62,6 +62,7 @@ h2 {
   margin-top: -1px;
   margin-left: -1px;
   padding: 20px 28px;
+  transition: all 0.3s ease;
 
   @include tablet-and-up {
     padding: 24px;
@@ -71,8 +72,28 @@ h2 {
     padding: 40px;
   }
 
+  &:hover {
+    background-color: $main-green;
+    border: 1px solid $main-green;
+    height: revert;
+
+    img {
+      opacity: 0;
+    }
+
+    p {
+      top: -73px;
+
+      @include desktop-and-up {
+        top: -83px;
+      }
+    }
+  }
+
   img {
+    opacity: 1;
     margin-bottom: 20px;
+    transition: opacity 0.3s ease;
 
     @include desktop-and-up {
       margin-bottom: 30px;
@@ -84,6 +105,9 @@ h2 {
     font-size: 18px;
     color: $main-black;
     margin-bottom: 0;
+    transition: all 0.3s ease;
+    position: relative;
+    top: 0;
 
     @include tablet-and-up {
       font-size: 18px;
