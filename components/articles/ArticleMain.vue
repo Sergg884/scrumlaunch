@@ -181,18 +181,17 @@ export default {
     text-decoration: underline;
     font-weight: 700;
     font-size: 16px;
-    margin-left: auto;
-    background-color: $main-green;
     padding: 3px 2px;
     margin-bottom: 12px;
     margin-top: 12px;
+    align-self: flex-start;
 
     @include tablet-and-up {
       font-size: 24px;
     }
 
     @include desktop-and-up {
-      font-size: 26px;
+      font-size: 20px;
     }
   }
 
