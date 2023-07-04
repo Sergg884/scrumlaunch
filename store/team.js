@@ -21,7 +21,7 @@ export const state = () => ({
     },
     {
       name: 'Mikhaylo Shatskiy',
-      position: 'CTO',
+      position: 'Chief Research & Innovation Officer',
       inLink: 'https://www.linkedin.com/in/michael-shatskiy-387990bb/',
       photo: 'mikhaylo_shatskiy.jpg',
     },
@@ -39,7 +39,7 @@ export const state = () => ({
     },
     {
       name: 'Dmitriy Yefremov',
-      position: 'Head of Mobile Department',
+      position: 'CTO / Head of Mobile/Angular Development Department',
       inLink: 'https://www.linkedin.com/in/dmytro-yefremov-208023141/',
       photo: 'dmitriy_yefremov.jpg',
     },

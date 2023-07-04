@@ -1,9 +1,9 @@
 <template>
   <div>
     <section class="leadership">
-      <AppearFromMask>
-        <h1 class="title-big text-left">
-          OUR Leadership <br>team
+      <AppearFromMask class="title-mask">
+        <h1 class="title-big">
+          OUR Leadership
         </h1>
       </AppearFromMask>
       <AppearFromMask>
@@ -28,7 +28,7 @@
             </div>
             <div class="links">
               <img
-                :src="require('@/assets/icons/linkedin.svg')"
+                :src="require('@/assets/icons/leadership-linkedin.svg')"
                 class="icon"
                 @click="handleOpenInLink(member.inLink)"
               />
@@ -37,7 +37,7 @@
         </div>
       </div>
     </section>
-    <ContactUs />
+    <!-- <ContactUs /> -->
   </div>
 </template>
 
@@ -48,7 +48,7 @@ import ContactUs from '~/components/shared/ContactUs.vue';
 export default {
   components: {
     ContactUs
-},
+  },
 
   head: {
     title: 'Leadership - ScrumLaunch',
@@ -75,18 +75,28 @@ export default {
 
 .leadership {
 
+  .title-mask {
+    h1 {
+      text-align: center;
+
+      @include desktop-and-up {
+        text-align: left;
+      }
+    }
+  }
+
   .text-main {
-    text-align: left;
-    margin-left: 110px;
+    text-align: center;
+    // margin-left: 110px;
     margin-bottom: 40px;
 
     @include tablet-and-up {
-      margin-left: 188px;
+      // margin-left: 188px;
       margin-bottom: 60px;
     }
 
     @include desktop-and-up {
-      margin-left: 488px;
+      text-align: left;
       margin-bottom: 80px;
     }
   }
@@ -94,73 +104,139 @@ export default {
   .members {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    gap: 20px;
+    gap: 24px;
 
     @include tablet-and-up {
       grid-template-columns: repeat(2, 1fr);
-      gap: 32px;
+      gap: 28px;
     }
 
     @include desktop-and-up {
       grid-template-columns: repeat(3, 1fr);
-      gap: 23px;
+      gap: 56px;
     }
 
     .member {
-      border: 1px solid $main-black;
-
       .photo {
-        width: 100%;
-        height: 342px;
+        width: 220px;
+        height: 220px;
+        border-radius: 50%;
+
+        @include tablet-and-up {
+          width: 300px;
+          height: 300px;
+        }
 
         @include desktop-and-up {
-          height: 394px;
+          width: 340px;
+          height: 340px;
         }
       }
 
       .info {
-        text-align: left;
-        padding: 20px 12px;
-        .name {
-          font-weight: 700;
-          font-size: 18px;
+        text-align: center;
+        padding: 16px 12px;
+
+        @include tablet-and-up {
+          padding: 20px 12px;
         }
+
+        @include desktop-and-up {
+          padding: 24px 12px;
+        }
+
+        .name {
+          font-size: 18px;
+          font-weight: 800;
+          line-height: 135%;
+          letter-spacing: 0.18px;
+          margin-bottom: 4px;
+
+          @include tablet-and-up {
+            font-size: 24px;
+            line-height: 140%;
+            letter-spacing: normal;
+          }
+
+          @include desktop-and-up {
+            font-size: 30px;
+          }
+        }
+
         .position {
           display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 10px;
+
+          @include tablet-and-up {
+            margin-bottom: 12px;
+          }
+
+          @include desktop-and-up {
+            margin-bottom: 16px;
+          }
 
           p {
-            font-weight: 600;
             font-size: 12px;
+            font-weight: 400;
+            line-height: 150%;
+            margin-bottom: 0;
+
+            @include tablet-and-up {
+              font-size: 16px;
+              font-weight: 500;
+            }
 
             &:nth-child(2) {
-              margin-left: 10px;
-              padding-left: 12px;
+              margin-left: 4px;
+              padding-left: 8px;
               position: relative;
+
+              @include tablet-and-up {
+                margin-left: 12px;
+                padding-left: 20px;
+              }
 
               &:before {
                 content: '';
-                width: 8px;
-                height: 8px;
-                top: 8px;
+                width: 4px;
+                height: 4px;
                 position: absolute;
                 background-color: $main-black;
                 border-radius: 100%;
-                left: -2px;
-                top: 4px;
+                left: 0px;
+                top: 7px;
+
+                @include tablet-and-up {
+                  width: 8px;
+                  height: 8px;
+                  top: 8px;
+                }
               }
             }
           }
         }
         .links {
+          .icon {
+            cursor: pointer;
+            width: 24px;
+            height: 24px;
 
+            @include tablet-and-up {
+              width: 28px;
+              height: 28px;
+            }
+
+            @include desktop-and-up {
+              width: 30px;
+              height: 30px;
+            }
+          }
         }
-
       }
     }
-
-
   }
-
 }
 
 </style>
