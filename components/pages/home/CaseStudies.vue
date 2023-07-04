@@ -1,10 +1,9 @@
 <template>
   <div class="case-studies">
     <section>
+      
       <div class="case-study">
-        <h4>
-          Case studies
-        </h4>
+        <h2>Case studies</h2>
 
         <VueSlickCarousel v-bind="settings" class="content">
           <div v-for="company in companies" v-bind:key="company.name" class="info">
@@ -45,14 +44,8 @@
             </div>
           </template>
         </VueSlickCarousel>
-        <BaseButton class="view-all-button view-all-mobile" :to="'/work'">
-          View All
-        </BaseButton>
       </div>
     </section>
-    <BaseButton class="view-all-button" :to="'/work'">
-      View All
-    </BaseButton>
   </div>
 </template>
 
@@ -186,78 +179,41 @@ export default {
 <style lang="scss" scoped>
 
 section {
-  padding: 0;
-  margin: 0;
   max-width: 100%;
   background-color: $main-black;
+  padding: 80px 0;
+
+  @include tablet-and-up {
+    padding: 120px 0;
+  }
 }
 
 .case-study {
   background-color: $main-black;
   color: #fff;
-  padding: 26px 0px;
 
   @include desktop-and-up {
     max-width: 1440px;
     width: 1440px;
     margin: auto;
-    padding-bottom: 60px;
   }
 
-  h4 {
-    text-align: left;
-    font-weight: 700;
+  h2 {
+    font-weight: 900;
+    font-size: 24px;
     color: #fff;
-    font-size: 18px;
-    margin-bottom: 50px;
-    margin-left: 20px;
+    line-height: 140%;
+    text-transform: uppercase;
+    margin-bottom: 40px;
 
     @include tablet-and-up {
-      margin-left: 30px;
+      margin-bottom: 60px;
+      font-size: 48px;
     }
 
     @include desktop-and-up {
-      margin-top: 15px;
-      margin-bottom: 56px;
-      margin-left: 100px;
-      font-size: 30px;
+      font-size: 56px;
     }
-  }
-}
-
-a.view-all-button {
-  display: none;
-  width: 88px;
-  height: 88px;
-  font-size: 12px;
-  border-radius: 53.01px;
-  padding: 35px 17px;
-
-  @include tablet-and-up {
-    width: 124px;
-    height: 124px;
-    font-size: 14px;
-    border-radius: 74.7px;
-    padding: 52px 31px;
-    margin: 60px auto 40px;
-  }
-
-  @include desktop-and-up {
-    display: flex;
-    width: 160px;
-    height: 160px;
-    font-size: 18px;
-    border-radius: 100px;
-    margin: 140px auto 240px;
-  }
-}
-
-a.view-all-mobile {
-  display: block;
-  margin: 30px auto;
-
-  @include desktop-and-up {
-    display: none;
   }
 }
 
@@ -274,7 +230,8 @@ a.view-all-mobile {
   }
 
   @include desktop-and-up {
-    padding-left: 100px;
+    padding-left: 120px;
+    padding-bottom: 0px;
   }
 }
 
@@ -383,7 +340,7 @@ a.case-button {
 
 a.case-button-mobile {
   width: 255px;
-  margin: 0px auto 20px;
+  margin: 0px auto 48px;
   font-size: 12px;
 
   @include tablet-and-up {
@@ -429,6 +386,10 @@ a.case-button-mobile {
     height: 680px;
     margin: 0px auto;
   }
+
+  @include desktop-and-up {
+    padding-bottom: 0px;
+  }
 }
 
 .content > .slick-dots {
@@ -454,8 +415,13 @@ a.case-button-mobile {
   }
 
   @include tablet-and-up {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
+  }
+
+  @include desktop-and-up {
+     width: 16px;
+    height: 16px;
   }
 }
 

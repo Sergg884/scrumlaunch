@@ -116,6 +116,12 @@ h2 {
 .case-studies {
   .slick-dots {
     bottom: 0px;
+    line-height: 0px;
+
+    li {
+      width: fit-content;
+      height: fit-content;
+    }
 
     @include tablet-and-up {
       left: 30px;
@@ -124,7 +130,7 @@ h2 {
     }
 
     @include desktop-and-up {
-      bottom: -130px;
+      bottom: -60px;
       width: 100%;
       left: 0;
     }

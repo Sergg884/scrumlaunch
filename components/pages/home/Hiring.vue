@@ -6,12 +6,12 @@
     <div class="tabs">
       <div class="tab" v-for="(tab, index) in tabs" :key="index">
         <div class="left">
-          <p class="title">
-            {{ tab.title }}
-          </p>
           <h3 class="indicator">
             {{ tab.titleIndicator }}
           </h3>
+          <p class="title">
+            {{ tab.title }}
+          </p>
         </div>
         <div class="right">
           <p class="description-title">
@@ -113,9 +113,9 @@ section {
 
         @include desktop-and-up {
           flex: 0 0 274px;
-          padding: 35px 18px;
+          padding: 18px 20px;
           flex-direction: row;
-          gap: 32px;
+          justify-content: space-between;
           align-items: center;
         }
         
@@ -124,14 +124,15 @@ section {
           font-size: 16px;
           margin-bottom: 0;
           text-align: start;
+          flex: 3;
 
           @include tablet-and-up {
-            order: 2;
+            flex: 0;
             font-size: 20px;
           }
 
           @include desktop-and-up {
-            order: 1;
+            flex: 1;
             font-size: 16px;
           }
         }
@@ -140,15 +141,22 @@ section {
           font-weight: 800;
           font-size: 50px;
           text-transform: uppercase;
+          margin-bottom: 0;
+          text-align: left;
+          flex: 1;
+          margin-right: 12px;
 
           @include tablet-and-up {
-            order: 1;
+            margin-right: 0px;
+            margin-bottom: 12px;
+            flex: 0;
             font-size: 30px;
           }
 
           @include desktop-and-up {
-            order: 2;
+            flex: 1;
             font-size: 56px;
+            margin-bottom: 0px;
           }
         }
       }
@@ -163,6 +171,7 @@ section {
 
         @include desktop-and-up {
           align-self: center;
+          padding: 20px 32px;
         }
 
         .description-title {
