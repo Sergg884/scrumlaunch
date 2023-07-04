@@ -181,9 +181,13 @@ export default {
 section {
   max-width: 100%;
   background-color: $main-black;
-  padding: 80px 0;
+  padding: 80px 0 110px;
 
   @include tablet-and-up {
+    padding: 120px 0 90px;
+  }
+
+  @include desktop-and-up {
     padding: 120px 0;
   }
 }
@@ -222,7 +226,7 @@ section {
   flex-direction: column;
   overflow: hidden;
   padding-left: 20px;
-  padding-bottom: 30px;
+  padding-bottom: 0px;
 
   @include tablet-and-up {
     flex-direction: row;
@@ -237,7 +241,6 @@ section {
 
 .text-container {
   text-align: center;
-  align-self: center;
   width: 100%;
   padding-right: 20px;
 
@@ -247,7 +250,7 @@ section {
   }
 
   @include desktop-and-up {
-    width: 50%;
+    width: 43%;
   }
 }
 
@@ -282,7 +285,7 @@ section {
   justify-content: space-between;
 
   @include desktop-and-up {
-    gap: 34px;
+    gap: 20px;
   }
 
   .indicator {
@@ -300,6 +303,7 @@ section {
     @include desktop-and-up {
       color: #FFF;
       border: 1px solid #fff;
+      margin-bottom: 80px;
     }
 
     &__title {
@@ -359,7 +363,7 @@ a.case-button-mobile {
   display: flex;
   justify-content: flex-end;
   position: relative;
-  margin: 50px 0;
+  margin: 40px 0;
 
   .desktop {
     display: none;
@@ -377,7 +381,7 @@ a.case-button-mobile {
   @include tablet-and-up {
     width: 35%;
     height: 545px;
-    padding-bottom: 30px;
+    margin: 0;
     justify-content: initial;
   }
 

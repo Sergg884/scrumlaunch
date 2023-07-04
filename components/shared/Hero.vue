@@ -258,7 +258,7 @@ section {
 
     @include desktop-and-up {
       position: absolute;
-      width: 630px;
+      width: 620px;
       top: 15px;
     }
 
