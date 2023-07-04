@@ -29,7 +29,7 @@ async function makeRequest(messages, temperature = 0.5, retries = 5, retryDelay 
         currentRetry++;
         return await callApi();
       } else {
-        throw new Error({error: "Something bad happened"});
+        throw new Error("Something bad happened");
       }
     }
   }
@@ -92,7 +92,20 @@ async function start(projectDescription, stepCallbackFn, resultCallbackFn) {
     )
   }], 0);
 
-  console.log(teamComposition)
+  console.log(teamComposition);
+
+  try {
+    for (const depName in teamComposition) {
+      if (Object.hasOwnProperty.call(teamComposition, depName)) {
+        const depRequirements = teamComposition[depName];
+        if (depName !== 'Frontend') {
+          depRequirements.numberOfEmployeesRequired = depRequirements.numberOfEmployeesRequired / 2;
+        }
+      }
+    }
+  } catch(error) {
+    console.log(error);
+  }
 
   resultCallbackFn({ data: teamComposition, type: "teamComposition", finished: true });
   stepCallbackFn("Done");
