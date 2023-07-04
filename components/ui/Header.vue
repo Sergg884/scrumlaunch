@@ -201,7 +201,9 @@ export default {
   },
 
   mounted() {
-    if (!localStorage.getItem('ai_notified')) {
+    if (!localStorage.getItem('ai_notified') && !['/build-team', '/build-team/result'].includes(
+        this.$route.path.toLocaleLowerCase()
+      )) {
       this.showAIMessage = true
       document.querySelector('body').classList.add('overflow-hidden')
     }
@@ -220,7 +222,7 @@ export default {
       )
     },
     hideAILink() {
-            return ['/build-team', '/build-team/result'].includes(
+      return ['/build-team', '/build-team/result'].includes(
         this.$route.path.toLocaleLowerCase()
       )
     }
