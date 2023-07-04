@@ -137,6 +137,8 @@ export default {
     overflow: hidden;
 
     section {
+      margin-bottom: 0;
+      
       @include desktop-and-up {
         grid-template-columns: 0.5fr 0.5fr;
         padding: 0 0 1px 120px;

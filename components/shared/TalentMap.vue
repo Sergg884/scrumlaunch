@@ -65,6 +65,10 @@ export default {
     color: $main-black;
     background-color: #fff;
 
+    section {
+      margin-bottom: 0;
+    }
+
     .text-container {
       color: $main-black;
       border: 1px solid $main-black;
