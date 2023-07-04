@@ -34,6 +34,10 @@ export const actions = {
             },
             slug: el.fields.slug,
             text: documentToHtmlString(el.fields.ttt, renderOptions()),
+            authorImg: {
+              url: `https:${el.fields.authorImage.fields.file.url}`,
+            },
+            authorName: el.fields.author,
           }))
     
           commit('SET_ARTICLES', articles)

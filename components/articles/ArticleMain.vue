@@ -13,7 +13,7 @@
       </p>
       <nuxt-link class="link" :to="article.slug">Read more</nuxt-link>
       <div class="description">
-        <nuxt-img :src="article.authorImg ? article.authorImg : '/pages/blog/default-author.jpg'" :alt="'main-article-author-img'" />
+        <nuxt-img :src="article.authorImg.url ? article.authorImg.url : '/pages/blog/default-author.jpg'" :alt="'main-article-author-img'" />
         <div class="meta">
           <p class="author">
             {{  article.authorName ? article.authorName : 'Thomas Jefferson' }}
