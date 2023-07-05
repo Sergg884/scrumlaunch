@@ -47,21 +47,18 @@ export default {
           img: '/services/icon-6.svg',
           text: 'From 1 full-time developer to several experienced developers fully integrated in your team',
           btn: 'Get started',
-          hero: '/pages/hire-developers/work-with-us-hero.png',
         },
         {
           title: 'Dedicated teams',
           img: '/services/icon-2.svg',
           text: 'Flexible and effective dedicated software engineering team of 5-10 developers, designers, QA and project management resources.',
           btn: 'Build your team',
-          hero: '/pages/hire-developers/work-with-us-hero-1.png',
         },
         {
           title: 'Company-wide partnerships',
           img: '/services/icon-1.svg',
           text: '20+ experts organized into cross-functional teams dedicated to your projects across multiple teams or internal organizations.',
           btn: 'Learn more',
-          hero: '/pages/hire-developers/work-with-us-hero-2.png',
         }
       ],
       activeTab: 0,
