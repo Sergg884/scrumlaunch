@@ -87,11 +87,9 @@ export default {
 
   .text-main {
     text-align: center;
-    // margin-left: 110px;
     margin-bottom: 40px;
 
     @include tablet-and-up {
-      // margin-left: 188px;
       margin-bottom: 60px;
     }
 
