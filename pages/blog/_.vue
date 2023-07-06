@@ -7,7 +7,7 @@
     <div v-show="article" class="body" v-html="article.text"></div>
     <div class="description">
       <div class="left">
-        <img :src="article.authorImg ? article.authorImg : '/pages/blog/default-author.jpg'" :alt="'article-author-img'" />
+        <img :src="article.authorImg.url ? article.authorImg.url : '/pages/blog/default-author.jpg'" :alt="'article-author-img'" />
         <div class="meta">
           <p class="author">
             {{  article.authorName ? article.authorName : 'Thomas Jefferson' }}
