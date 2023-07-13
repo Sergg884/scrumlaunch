@@ -40,6 +40,16 @@ export default {
     title: 'Build Team with Scrum AI',
     meta: [
       {
+        hid: 'og:title',
+        name: 'og:title',
+        content: 'Build Your Team'
+      },
+      {
+        hid: 'og:image',
+        name: 'og:image',
+        content: '/icons/logoSL.png'
+      },
+      {
         hid: 'description',
         name: 'description',
         content:
