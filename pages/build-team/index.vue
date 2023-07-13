@@ -39,6 +39,7 @@ export default {
   head: {
     title: 'Build Team with Scrum AI',
     meta: [
+      { property: "og:site_name", content: "ScrumLaunch" },
       {
         hid: 'og:title',
         name: 'og:title',
@@ -59,6 +60,28 @@ export default {
         name: 'description',
         content:
           'Interested in working with us?  Get in touch · hello@scrumlaunch.com · Let’s talk about elevating and accelerating your digital experience.',
+      },
+      { property: "og:image:width", content: "190" },
+      { property: "og:image:height", content: "87" },
+      {
+        hid: "twitter:url",
+        name: "twitter:url",
+        content: `${process.env.API_URL}/build-team`,
+      },
+      {
+        hid: "twitter:title",
+        name: "twitter:title",
+        content: "Build Your Team",
+      },
+      {
+        hid: "twitter:description",
+        name: "twitter:description",
+        content: "Interested in working with us?  Get in touch · hello@scrumlaunch.com · Let’s talk about elevating and accelerating your digital experience.",
+      },
+      {
+        hid: "twitter:image",
+        name: "twitter:image",
+        content: `${process.env.API_URL}/icons/logoSL.png`,
       },
     ],
   },
