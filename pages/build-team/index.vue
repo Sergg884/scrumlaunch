@@ -47,7 +47,12 @@ export default {
       {
         hid: 'og:image',
         name: 'og:image',
-        content: '/icons/logoSL.png'
+        content: `${process.env.API_URL}/icons/logoSL.png`
+      },
+      {
+        hid: 'og:image:alt',
+        name: 'og:image:alt',
+        content: 'Scrumlaunch logo'
       },
       {
         hid: 'description',
