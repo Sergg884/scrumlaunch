@@ -64,16 +64,6 @@ export default {
         content:
           'Interested in working with us?  Get in touch · hello@scrumlaunch.com · Let’s talk about elevating and accelerating your digital experience.',
       },
-      { 
-        hid: 'og:image:width',
-        property: "og:image:width",
-        content: "190"
-      },
-      {
-        hid: 'og:image:height',
-        property: "og:image:height",
-        content: "87"
-      },
       {
         hid: "twitter:url",
         name: "twitter:url",
