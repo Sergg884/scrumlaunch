@@ -71,11 +71,24 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    // https://github.com/nuxt-community/gtm-module
+    '@nuxtjs/gtm',
     '@nuxt/image',
     '@nuxtjs/sitemap',
     '@nuxtjs/robots',
+
     ['~/io'],
   ],
+
+  gtm: {
+    id: 'GTM-XXXXXXX' // Used as fallback if no runtime config is provided
+  },
+
+  publicRuntimeConfig: {
+    gtm: {
+      id: process.env.GOOGLE_TAG_MANAGER_ID,
+    }
+  },
 
   bootstrapVue: {
     bootstrapCSS: false,
