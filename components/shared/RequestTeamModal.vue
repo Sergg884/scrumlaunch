@@ -132,6 +132,7 @@ export default {
         })
     },
     validateForm() {
+      this.$gtm.push({ event: 'RESERVE TEAM' })
       // eslint-disable-next-line prefer-regex-literals
       const emailRegEx = new RegExp(
         '^(([^<>()[\\]\\.,;:\\s@\\"]+(\\.[^<>()[\\]\\.,;:\\s@\\"]+)*)|(\\".+\\"))@(([^<>()[\\]\\.,;:\\s@\\"]+\\.)+[^<>()[\\]\\.,;:\\s@\\"]{2,})$',

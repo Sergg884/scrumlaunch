@@ -456,6 +456,8 @@ export default {
   },
   methods: {
     async exportToPDF(returnFile) {
+      this.$gtm.push({ event: 'SAVE AS PDF' })
+
       const container = document.getElementById('requirements-container')
       const exportContainer = container.cloneNode(true)
       exportContainer?.classList.add('export')

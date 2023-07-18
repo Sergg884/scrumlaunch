@@ -77,6 +77,8 @@ export default {
       this.isRequirementsEmpty = false
     },
     setRequirements() {
+      this.$gtm.push({ event: 'GENERATE' })
+
       if (!this.requirements.length) {
         this.isRequirementsEmpty = true
       } else {
