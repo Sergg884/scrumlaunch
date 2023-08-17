@@ -72,6 +72,11 @@ export default {
       isRequirementsEmpty: false,
     }
   },
+  computed: {
+    placeholder() {
+      return this.isRequirementsEmpty ? 'Error: missing requirements' : 'Enter requirements'
+    }
+  },
   methods: {
     onInput(e) {
       this.isRequirementsEmpty = false
@@ -86,11 +91,6 @@ export default {
         this.$router.push('/build-team/result')
       }
     },
-  },
-  computed: {
-    placeholder() {
-      return this.isRequirementsEmpty ? 'Error: missing requirements' : 'Enter requirements'
-    }
   }
 }
 </script>
