@@ -565,17 +565,26 @@ h2 {
 
     @include tablet-and-up {
       flex-direction: row;
+
+      .break {
+        display: none;
+      }
     }
 
     &-item {
       width: 100%;
       display: flex;
       justify-content: space-between;
+      padding: 0 10px;
       align-items: center;
       position: relative;
       margin-bottom: 13px;
       padding-bottom: 13px;
       flex-wrap: wrap;
+      
+      @include tablet-and-up {
+        justify-content: flex-start;
+      }
 
       &:not(:last-child) {
         border-bottom: 1px solid #A9A69E;

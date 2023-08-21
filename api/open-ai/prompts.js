@@ -68,7 +68,9 @@ const GET_ESTIMATE = (projectDescription) => {
         "estimate": APPROXIMATE TIME(MONTH),
         "explanation": EXPLANATION OF ESTIMATE
       },
-      "Total Duration": APPROXIMATE TIME (assuming that we can make tasks in parallel)(MONTH)
+      "Total Duration": {
+        "estimate": APPROXIMATE TIME (assuming that we can make tasks in parallel)(MONTH)
+      }
     }. Response with only JSON.`
   );
 };
