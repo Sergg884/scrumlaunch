@@ -18,13 +18,13 @@
       <NuxtLink to="/process"> About </NuxtLink>
       <NuxtLink to="/remote-developer-jobs"> Careers </NuxtLink>
       <NuxtLink to="/contact-us"> Contact </NuxtLink>
-    </div>
-    <div class="ai-popup" v-if="!hideAILink">
       <BaseButton
         :class="`ai-link ${isAILinkGreen || showMobileNavigation ? 'green-ai' : ''}`"
         @click="aiNavigate()"
         >Build Team with Scrum AI
       </BaseButton>
+    </div>
+    <div class="ai-popup" v-if="!hideAILink">
       <div class="ai-popup_content" v-if="showAIMessage">
         <img src="/icons/sl-logo-black-small.svg" alt="sl-logo" />
         <span>
@@ -324,38 +324,6 @@ header {
       margin-left: 10%;
     }
 
-    .ai-link {
-      position: absolute;
-      top: 0;
-      left: 0;
-      display: flex;
-      padding: 14px 15px;
-      margin-left: auto;
-      line-height: 1;
-      font-size: 12px;
-      letter-spacing: -0.02em;
-      z-index: 102;
-  
-      color: #1E1F21;
-      background-color: #12E2B0;
-      border-radius: 0;
-
-      &:hover {
-        background-color: #1E1F21;
-        color: #12E2B0;
-      }
-
-      @include tablet-and-up {
-        padding: 17px 16px;
-        font-size: 14px;
-      }
-
-      @include desktop-and-up {
-        padding: 18px 30px;
-        margin-right: initial;
-      }
-    }
-
     &_backdrop {
       position: fixed;
       top: 0;
@@ -432,12 +400,42 @@ header {
   gap: 30px;
   display: none;
   z-index: 100;
-
+  align-items: center;
   &.white {
     a {
       color: #fff;
     }
   }
+
+  .ai-link {
+      display: flex;
+      padding: 14px 15px;
+      align-self: flex-end;
+      margin-left: auto;
+      line-height: 1;
+      font-size: 12px;
+      letter-spacing: -0.02em;
+      z-index: 102;
+  
+      color: #1E1F21;
+      background-color: #12E2B0;
+      border-radius: 0;
+
+      &:hover {
+        background-color: #1E1F21;
+        color: #12E2B0;
+      }
+
+      @include tablet-and-up {
+        padding: 17px 16px;
+        font-size: 14px;
+      }
+
+      @include desktop-and-up {
+        padding: 18px 30px;
+        margin-right: initial;
+      }
+    }
 
   a {
     font-size: 18px;

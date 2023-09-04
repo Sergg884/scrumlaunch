@@ -329,19 +329,18 @@ export default {
       const exportContainer = container.cloneNode(true)
       exportContainer?.classList.add('export')
 
-      const page1 = container?.querySelector('#page_1')
-
       // Move estimate block on the second page if it does not fit on the first page
-      if (page1?.offsetHeight > 1500) {
-        const estimate = exportContainer?.querySelector('.estimate-wrapper')
+      // const page1 = container?.querySelector('#page_1')
+      // if (page1?.offsetHeight > 1500) {
+      //   const estimate = exportContainer?.querySelector('.estimate-wrapper')
 
-        estimate?.classList.add('hide')
+      //   estimate?.classList.add('hide')
 
-        const page2 = exportContainer?.querySelector('#page_2')
-        const title = page2?.querySelector('.requirements_title')
+      //   const page2 = exportContainer?.querySelector('#page_2')
+      //   const title = page2?.querySelector('.requirements_title')
 
-        title?.parentNode.insertBefore(estimate, title.nextSibling)
-      }
+      //   title?.parentNode.insertBefore(estimate, title.nextSibling)
+      // }
 
       const options = {
         filename: `ScrumLaunch-Build-Team-${formatDate('-')}.pdf`,
