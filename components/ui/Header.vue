@@ -306,7 +306,7 @@ header {
   }
 
   .ai-popup {
-    position: relative;
+    position: absolute;
     width: 185px;
     height: 40px;
     margin-left: auto;
@@ -397,6 +397,9 @@ header {
 }
 
 .menu {
+  display: flex;
+  width: 100%;
+  justify-content: center;
   gap: 30px;
   display: none;
   z-index: 100;
