@@ -9,9 +9,9 @@
       </p>
     </div>
 
-    <AiRequirementsField v-if="withRequirements" />
+    <!-- <AiRequirementsField v-if="withRequirements" /> -->
 
-    <div class="contact" v-if="!withRequirements">
+    <div v-if="!withRequirements" class="contact">
       <div class="input-container">
         <b-form-group
           id="contact-us-fieldset"
@@ -104,6 +104,7 @@ export default {
   },
 
   data() {
+    console.log(this.withRequirements)
     return {
       email: '',
       emailError: null,

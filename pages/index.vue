@@ -2,7 +2,6 @@
   <div class="home">
     <Hero
       hero-img="/pages/home/hero/home-desk.jpg"
-      :with-requirements="true"
     >
       <template #title>
         Tech talent that’s right for your <span class="mark">project</span> 
