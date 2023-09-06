@@ -399,8 +399,8 @@ header {
 .menu {
   display: flex;
   width: 100%;
-  justify-content: center;
-  gap: 30px;
+  justify-content: flex-end;
+  gap: 40px;
   display: none;
   z-index: 100;
   align-items: center;
@@ -414,7 +414,6 @@ header {
       display: flex;
       padding: 14px 15px;
       align-self: flex-end;
-      margin-left: auto;
       line-height: 1;
       font-size: 12px;
       letter-spacing: -0.02em;
