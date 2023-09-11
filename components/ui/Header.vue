@@ -467,7 +467,7 @@ header {
 }
 
 .mobile-navigation {
-  padding: 20px 20px 50px 20px;
+  padding: 20px 20px 100px 20px;
   position: fixed;
   top: -100%;
   left: 0;
