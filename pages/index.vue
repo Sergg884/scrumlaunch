@@ -40,7 +40,6 @@ import TechPartner from '~/components/pages/home/TechPartner.vue'
 import Blog from '~/components/pages/home/Blog.vue'
 import GetStarted from '~/components/shared/GetStarted.vue'
 
-
 export default {
 
   components: {

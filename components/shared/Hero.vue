@@ -46,7 +46,7 @@
     <div v-if="developersPage" class="img img-main-mobile">
       <nuxt-img format="webp" :src="heroImgMobile" alt="hero-img-mobile" />
     </div>
-    <div v-show="is_sent" :class="{ blocked: is_blocked }" class="message-sent">
+    <!-- <div v-show="is_sent" :class="{ blocked: is_blocked }" class="message-sent">
       <lottie
         v-show="is_done"
         class="message-sent__image"
@@ -60,7 +60,11 @@
       <div v-show="is_done" class="title-global">
         Your message<br />has been sent
       </div>
-    </div>
+    </div> -->
+    <SuccessModal
+      v-show="isModalVisible"
+      @close="closeModal"
+    />
   </section>
 </template>
 
@@ -68,12 +72,15 @@
 import lottie from 'vue-lottie/src/lottie.vue'
 import InputComponent from '@/components/ui/InputComponent.vue'
 import AiRequirementsField from '@/components/shared/AiRequirementsField.vue'
+import SuccessModal from '~/components/shared/SuccessModal'
+
 
 export default {
   components: {
     lottie,
     InputComponent,
-    AiRequirementsField
+    SuccessModal,
+    AiRequirementsField,
   },
 
   props: {
@@ -104,9 +111,9 @@ export default {
   },
 
   data() {
-    console.log(this.withRequirements)
     return {
       email: '',
+      isModalVisible: false,
       emailError: null,
       is_blocked: false,
       is_sent: false,
@@ -119,6 +126,12 @@ export default {
   methods: {
     handleFieldChange(name, value) {
       this[name] = value
+    },
+    showModal() {
+      this.isModalVisible = true
+    },
+    closeModal() {
+      this.isModalVisible = false
     },
 
     sendEmail() {
@@ -137,14 +150,15 @@ export default {
           this.is_done = true
 
           this.track()
+          this.isModalVisible = true
 
           setTimeout(() => {
             this.is_sent = false
             this.is_done = false
-            this.$router.push({
-              name: 'contact-us',
-              params: { email: this.email },
-            })
+            // this.$router.push({
+            //   name: 'contact-us',
+            //   params: { email: this.email },
+            // })
             this.name = ''
             this.email = ''
             this.project = ''
