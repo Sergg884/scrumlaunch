@@ -15,9 +15,9 @@
         :menu-items="developers"
         :is-white="isHeaderWhite"
       />
-      <NuxtLink to="/process"> About </NuxtLink>
+      <!-- <NuxtLink to="/process"> About </NuxtLink> -->
       <NuxtLink to="/remote-developer-jobs"> Careers </NuxtLink>
-      <NuxtLink to="/contact-us"> Contact </NuxtLink>
+      <!-- <NuxtLink to="/contact-us"> Contact </NuxtLink> -->
       <BaseButton
         :class="`ai-link ${isAILinkGreen || showMobileNavigation ? 'green-ai' : ''}`"
         @click="aiNavigate()"
@@ -420,13 +420,14 @@ header {
       z-index: 102;
       text-transform: capitalize;
   
-      color: #1E1F21;
-      background-color: #12E2B0;
-      border-radius: 0;
+      border-radius: 100px;
+
+      background-color: #1E1F21;
+      color: #fff;
 
       &:hover {
-        background-color: #1E1F21;
-        color: #12E2B0;
+        color: #1E1F21;
+        background-color: #12E2B0;
       }
 
       @include tablet-and-up {
