@@ -24,7 +24,7 @@
         >Build Team with Scrum AI
       </BaseButton>
     </div>
-    <!-- <div class="ai-popup" v-if="!hideAILink">
+    <div class="ai-popup" v-if="!hideAILink">
       <div class="ai-popup_content" v-if="showAIMessage">
         <img src="/icons/sl-logo-black-small.svg" alt="sl-logo" />
         <span>
@@ -40,7 +40,7 @@
         />
       </div>
       <div class="ai-popup_backdrop" v-if="showAIMessage"></div>
-    </div> -->
+    </div>
     <div class="menu--mobile" @click="toggleNavigation()">
       <img
         v-if="showMobileNavigation"
