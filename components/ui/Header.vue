@@ -79,13 +79,13 @@
           </li>
         </ul>
       </li>
-      <li @click="navigateTo('/process')">
+      <!-- <li @click="navigateTo('/process')">
         About
-      </li>
+      </li> -->
       <li @click="navigateTo('/remote-developer-jobs')">Careers</li>
-      <li @click="navigateTo('/contact-us')">
+      <!-- <li @click="navigateTo('/contact-us')">
         Contact
-      </li>
+      </li> -->
       <li class="green-text" @click="aiNavigate()">
         Build Team with Scrum AI
       </li>
@@ -411,35 +411,35 @@ header {
   }
 
   .ai-link {
-      display: flex;
-      padding: 14px 15px;
-      align-self: flex-end;
-      line-height: 1;
-      font-size: 12px;
-      letter-spacing: -0.02em;
-      z-index: 102;
-      text-transform: capitalize;
-  
-      border-radius: 100px;
+    display: flex;
+    padding: 14px 15px;
+    align-self: flex-end;
+    line-height: 1;
+    font-size: 12px;
+    letter-spacing: -0.02em;
+    z-index: 102;
+    text-transform: capitalize;
 
-      background-color: #1E1F21;
-      color: #fff;
+    border-radius: 100px;
 
-      &:hover {
-        color: #1E1F21;
-        background-color: #12E2B0;
-      }
+    background-color: #1E1F21;
+    color: #fff;
 
-      @include tablet-and-up {
-        padding: 17px 16px;
-        font-size: 14px;
-      }
-
-      @include desktop-and-up {
-        padding: 18px 30px;
-        margin-right: initial;
-      }
+    &:hover {
+      color: #1E1F21;
+      background-color: #12E2B0;
     }
+
+    @include tablet-and-up {
+      padding: 17px 16px;
+      font-size: 14px;
+    }
+
+    @include desktop-and-up {
+      padding: 18px 30px;
+      margin-right: initial;
+    }
+  }
 
   a {
     font-size: 18px;
