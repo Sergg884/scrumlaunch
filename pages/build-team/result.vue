@@ -114,7 +114,8 @@
                     :key="key"
                     class="estimate-item"
                   >
-                    <p class="estimate-item_title">{{ key }}</p>
+                    <p v-if="key === 'Total Duration In Parallel'" class="estimate-item_title">Total Duration</p>
+                    <p v-else class="estimate-item_title">{{ key }}</p>
                     <p class="estimate-item_period">
                       <span>{{ value.estimate }}</span> Months
                     </p>
