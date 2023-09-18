@@ -32,7 +32,7 @@
             </p>
             <div class="modal-body__content">
               <p class="popup-text">
-                We appreciate your interest in work with us and our team will get back to you as soon as possible.
+                We appreciate your interest in working with us and our team will get back to you as soon as possible.
               </p>
               <BaseButton
                 class="form_button"
@@ -237,8 +237,8 @@ export default {
 .message-sent {
 
   &__image {
-    width: 290px !important;
-    height: 290px !important;
+    width: 250px !important;
+    height: 210px !important;
   }
 }
 

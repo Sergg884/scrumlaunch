@@ -415,7 +415,8 @@ header {
     padding: 14px 15px;
     align-self: flex-end;
     line-height: 1;
-    font-size: 12px;
+    font-size: 14px;
+    font-weight: 700;
     letter-spacing: -0.02em;
     z-index: 102;
     text-transform: capitalize;
@@ -432,7 +433,7 @@ header {
 
     @include tablet-and-up {
       padding: 17px 16px;
-      font-size: 14px;
+      font-size: 18px;
     }
 
     @include desktop-and-up {
