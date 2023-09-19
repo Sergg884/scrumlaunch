@@ -2,8 +2,8 @@
   <div class="hire-developers">
     <div class="hero-section">
       <Hero
-        :developersPage="true"
-        :developersMainPage="developersPage"
+        :developers-page="true"
+        :developers-main-page="developersPage"
         :hero-img="`/pages/hire-developers/${hero_image || 'main'}-hero.png`"
         :hero-img-mobile="`/pages/hire-developers/${hero_image || 'main'}-hero-mobile.png`"
       >
