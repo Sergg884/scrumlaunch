@@ -44,7 +44,7 @@
       <nuxt-img format="webp" :src="heroImg" alt="hero-img" onerror="this.style.display='none'" />
     </div>
     <div v-if="developersPage" class="img img-main-mobile">
-      <nuxt-img format="webp" :src="heroImgMobile" alt="hero-img-mobile" />
+      <nuxt-img format="webp" :src="heroImgMobile" alt="hero-img-mobile" onerror="this.style.display='none'" />
     </div>
     <!-- <div v-show="is_sent" :class="{ blocked: is_blocked }" class="message-sent">
       <lottie
