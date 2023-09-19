@@ -238,7 +238,7 @@ export default {
 
   &__image {
     width: 250px !important;
-    height: 210px !important;
+    height: 170px !important;
   }
 }
 
@@ -248,7 +248,7 @@ export default {
 
   @include tablet-and-up {
     padding: 0 30px;
-    font-size: 40px;
+    font-size: 36px;
   }
 
   @include desktop-and-up {
