@@ -2,7 +2,6 @@
   <div class="home">
     <Hero
       hero-img="/pages/home/hero/home-desk.jpg"
-      :with-requirements="true"
     >
       <template #title>
         Tech talent that’s right for your <span class="mark">project</span> 
@@ -40,7 +39,6 @@ import Hiring from '~/components/pages/home/Hiring'
 import TechPartner from '~/components/pages/home/TechPartner.vue'
 import Blog from '~/components/pages/home/Blog.vue'
 import GetStarted from '~/components/shared/GetStarted.vue'
-
 
 export default {
 

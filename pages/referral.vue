@@ -91,6 +91,7 @@ section {
     }
   }
   .img {
+    // here is a problem
     @include desktop-and-up {
       order: 2;
       flex: 430px 0 0;

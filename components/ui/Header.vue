@@ -18,13 +18,13 @@
       <!-- <NuxtLink to="/process"> About </NuxtLink> -->
       <NuxtLink to="/remote-developer-jobs"> Careers </NuxtLink>
       <!-- <NuxtLink to="/contact-us"> Contact </NuxtLink> -->
-    </div>
-    <div class="ai-popup" v-if="!hideAILink">
       <BaseButton
         :class="`ai-link ${isAILinkGreen || showMobileNavigation ? 'green-ai' : ''}`"
         @click="aiNavigate()"
-        >Build Team with scrum ai
+        >Build Team with Scrum AI
       </BaseButton>
+    </div>
+    <!-- <div class="ai-popup" v-if="!hideAILink">
       <div class="ai-popup_content" v-if="showAIMessage">
         <img src="/icons/sl-logo-black-small.svg" alt="sl-logo" />
         <span>
@@ -40,7 +40,7 @@
         />
       </div>
       <div class="ai-popup_backdrop" v-if="showAIMessage"></div>
-    </div>
+    </div> -->
     <div class="menu--mobile" @click="toggleNavigation()">
       <img
         v-if="showMobileNavigation"
@@ -86,6 +86,9 @@
       <!-- <li @click="navigateTo('/contact-us')">
         Contact
       </li> -->
+      <li class="green-text" @click="aiNavigate()">
+        Build Team with Scrum AI
+      </li>
     </ul>
   </header>
 </template>
@@ -124,33 +127,29 @@ export default {
           path: '/hire-developers/react-js-developers',
         },
         {
-          title: 'React Native Developers',
-          path: '/hire-developers/react-native-developers',
+          title: 'Django Developers',
+          path: '/hire-developers/django-developers',
         },
-        // {
-        //   title: 'Django Developers',
-        //   path: '/hire-developers/django-developers',
-        // },
-        // {
-        //   title: 'Wordpress Developers',
-        //   path: '/hire-developers/wordpress-developers',
-        // },
+        {
+          title: 'Wordpress Developers',
+          path: '/hire-developers/wordpress-developers',
+        },
         {
           title: 'Java Developers',
           path: '/hire-developers/java-developers',
         },
-        // {
-        //   title: 'iOS Developers',
-        //   path: '/hire-developers/ios-developers',
-        // },
-        // {
-        //   title: 'Android Developers',
-        //   path: '/hire-developers/android-developers',
-        // },
-        // {
-        //   title: 'Web Developers',
-        //   path: '/hire-developers/web-developers',
-        // },
+        {
+          title: 'iOS Developers',
+          path: '/hire-developers/ios-developers',
+        },
+        {
+          title: 'Android Developers',
+          path: '/hire-developers/android-developers',
+        },
+        {
+          title: 'Web Developers',
+          path: '/hire-developers/web-developers',
+        },
         {
           title: 'Angular JS Developers',
           path: '/hire-developers/angular-js-developers',
@@ -163,33 +162,37 @@ export default {
           title: 'Ruby On Rails Developers',
           path: '/hire-developers/ruby-on-rails-developers',
         },
-        // {
-        //   title: 'Software Developers',
-        //   path: '/hire-developers/software-developers',
-        // },
+        {
+          title: 'Software Developers',
+          path: '/hire-developers/software-developers',
+        },
         {
           title: 'Python Developers',
           path: '/hire-developers/python-developers',
         },
         {
-          title: 'Swift Developers',
-          path: '/hire-developers/swift-developers',
+          title: 'Solidity Developers',
+          path: '/hire-developers/solidity-developers',
         },
         {
-          title: 'Kotlin Developers',
-          path: '/hire-developers/kotlin-developers',
+          title: 'React Native Developers',
+          path: '/hire-developers/react-native-developers',
         },
         {
-          title: 'Shopify Developers',
-          path: '/hire-developers/shopify-developers',
+          title: 'Ruby Developers',
+          path: '/hire-developers/ruby-developers',
         },
         // {
-        //   title: 'Solidity Developers',
-        //   path: '/hire-developers/solidity-developers',
+        //   title: 'Swift Developers',
+        //   path: '/hire-developers/swift-developers',
         // },
         // {
-        //   title: 'Ruby Developers',
-        //   path: '/hire-developers/ruby-developers',
+        //   title: 'Kotlin Developers',
+        //   path: '/hire-developers/kotlin-developers',
+        // },
+        // {
+        //   title: 'Shopify Developers',
+        //   path: '/hire-developers/shopify-developers',
         // },
         {
           title: 'View All Languages',
@@ -201,12 +204,12 @@ export default {
   },
 
   mounted() {
-    if (!localStorage.getItem('ai_notified') && !['/build-team', '/build-team/result'].includes(
-        this.$route.path.toLocaleLowerCase()
-      )) {
-      this.showAIMessage = true
-      document.querySelector('body').classList.add('overflow-hidden')
-    }
+    // if (!localStorage.getItem('ai_notified') && !['/build-team', '/build-team/result'].includes(
+    //     this.$route.path.toLocaleLowerCase()
+    //   )) {
+    //   this.showAIMessage = true
+    //   document.querySelector('body').classList.add('overflow-hidden')
+    // }
   },
 
   computed: {
@@ -303,7 +306,7 @@ header {
   }
 
   .ai-popup {
-    position: relative;
+    position: absolute;
     width: 185px;
     height: 40px;
     margin-left: auto;
@@ -319,48 +322,6 @@ header {
       width: 240px;
       height: 50px;
       margin-left: 10%;
-    }
-
-    .ai-link {
-      position: absolute;
-      top: 0;
-      left: 0;
-      display: flex;
-      padding: 14px 15px;
-      margin-left: auto;
-      line-height: 1;
-      font-size: 12px;
-      letter-spacing: -0.02em;
-      text-transform: uppercase;
-      z-index: 102;
-
-      background-color: #1e1f21;
-      color: #ffffff;
-
-      &:hover {
-        background-color: #12e2b0;
-        color: #1e1f21;
-      }
-
-      &.green-ai {
-        background-color: #12e2b0;
-        color: #1e1f21;
-
-        &:hover {
-          background-color: #1e1f21;
-          color: #ffffff;
-        }
-      }
-
-      @include tablet-and-up {
-        padding: 17px 16px;
-        font-size: 14px;
-      }
-
-      @include desktop-and-up {
-        padding: 18px 30px;
-        margin-right: initial;
-      }
     }
 
     &_backdrop {
@@ -436,13 +397,48 @@ header {
 }
 
 .menu {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
   gap: 40px;
   display: none;
   z-index: 100;
-
+  align-items: center;
   &.white {
     a {
       color: #fff;
+    }
+  }
+
+  .ai-link {
+    display: flex;
+    padding: 14px 15px;
+    align-self: flex-end;
+    line-height: 1;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    z-index: 102;
+    text-transform: capitalize;
+
+    border-radius: 100px;
+
+    background-color: #1E1F21;
+    color: #fff;
+
+    &:hover {
+      color: #1E1F21;
+      background-color: #12E2B0;
+    }
+
+    @include tablet-and-up {
+      padding: 17px 16px;
+      font-size: 18px;
+    }
+
+    @include desktop-and-up {
+      padding: 18px 30px;
+      margin-right: initial;
     }
   }
 
@@ -473,7 +469,7 @@ header {
 }
 
 .mobile-navigation {
-  padding: 20px 20px 50px 20px;
+  padding: 20px 20px 100px 20px;
   position: fixed;
   top: -100%;
   left: 0;
@@ -546,6 +542,10 @@ header {
       font-size: 56px;
       margin-bottom: 10px;
     }
+  }
+
+  .green-text {
+    color: $main-green;
   }
 }
 </style>

@@ -6,8 +6,6 @@ const router = Router()
 router.post('/ask-ai', (req, res) => {
   const projectDescription = req.body.idea;
 
-  console.log(projectDescription)
-
   askAi(projectDescription, (responseStep) => {
     console.log(responseStep);
   }, (responseStep) => {

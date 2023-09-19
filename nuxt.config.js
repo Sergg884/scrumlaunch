@@ -87,7 +87,8 @@ export default {
   publicRuntimeConfig: {
     gtm: {
       id: process.env.GOOGLE_TAG_MANAGER_ID,
-    }
+    },
+    scrumTeamsAPI: process.env.VUE_ST_API,
   },
 
   bootstrapVue: {

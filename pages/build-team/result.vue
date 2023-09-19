@@ -1,6 +1,6 @@
 <template>
   <div class="build-team">
-    <div class="success-message" v-if="showSuccessMessage">
+    <div v-if="showSuccessMessage" class="success-message">
       <div class="success-message_img">
         <nuxt-img
           format="webp"
@@ -35,9 +35,9 @@
                 <h3>Project summary</h3>
                 <div class="blocks">
                   <div
-                    class="blocks-wrapper"
                     v-for="(value, key) in details"
                     :key="key"
+                    class="blocks-wrapper"
                   >
                     <div class="blocks-item">
                       <img
@@ -46,7 +46,33 @@
                         alt="tab-icon-1"
                       />
                       <p class="blocks-item_title">{{ key }}</p>
-                      <p class="blocks-item_text">{{ value }}</p>
+                      <div v-if="key === 'Project Features' || key === 'Target Users'">
+                        <p
+                          v-for="(item, index) in value"
+                          :key="index"
+                          class="blocks-item_text"
+                        >
+                          <template v-if="item.name">
+                            <div><span class="mark bold">{{ item.name }}</span></div>
+                          </template>
+                          <template v-if="item.userStory">
+                            {{ item.userStory }}
+                          </template>
+                          <template v-if="item.description">
+                            {{ item.description }}
+                          </template>
+                        </p>
+                      </div>
+                      <div v-else-if="key === 'Press Release FAQ'">
+                        <p
+                          v-for="(item, index) in value"
+                          :key="index"
+                          class="blocks-item_text"
+                        >
+                          {{ item }}
+                        </p>
+                      </div>
+                      <p v-else class="blocks-item_text">{{ value }}</p>
                     </div>
                   </div>
                 </div>
@@ -56,21 +82,24 @@
                 <h3>List of technologies</h3>
                 <div class="blocks">
                   <div
-                    class="blocks-wrapper"
                     v-for="(mainTech, mainTechKey) in technologies"
                     :key="mainTechKey"
+                    class="blocks-wrapper"
                   >
                     <p class="blocks-item_title block">{{ mainTechKey }}</p>
                     <div
-                      class="blocks-item"
                       v-for="(tech, techKey) in mainTech"
                       :key="techKey"
+                      class="blocks-item"
                     >
                       <p class="blocks-item_text">
                         <span class="mark bold"
                           >{{ tech.technologySelected }}:</span
                         >
                         {{ tech.description }}
+                      </p>
+                      <p class="blocks-item_text">
+                        {{ tech.explanation }}
                       </p>
                     </div>
                   </div>
@@ -81,13 +110,18 @@
                 <h3>Estimate</h3>
                 <div class="estimate">
                   <div
-                    class="estimate-item"
                     v-for="(value, key) in estimate"
                     :key="key"
+                    class="estimate-item"
                   >
-                    <p class="estimate-item_title">{{ key }}</p>
+                    <p v-if="key === 'Total Duration In Parallel'" class="estimate-item_title">Total Duration</p>
+                    <p v-else class="estimate-item_title">{{ key }}</p>
                     <p class="estimate-item_period">
-                      <span>{{ value }}</span> Months
+                      <span>{{ value.estimate }}</span> Months
+                    </p>
+                    <div class="break"></div>
+                    <p class="blocks-item_text">
+                      {{ value.explanation }}
                     </p>
                   </div>
                 </div>
@@ -109,17 +143,18 @@
                 <div class="team">
                   <div class="blocks">
                     <div
-                      class="blocks-wrapper full"
                       v-for="(value, key) in teamComposition"
                       :key="key"
+                      class="blocks-wrapper full"
                     >
                       <p class="blocks-item_title block">{{ key }}</p>
                       <div class="blocks-item">
                         <p class="blocks-item_type">
                           <span class="mark">Technologies Required</span>
-                          <span class="employees"
-                            ><span>{{ value.numberOfEmployeesRequired }} </span
-                            >Employees</span
+                          <span class="employees">
+                            <span>{{ value.numberOfEmployeesRequired }} </span>
+                            Employees
+                          </span
                           >
                         </p>
                         <div class="team-technologies">
@@ -129,17 +164,18 @@
                             >{{ item }}</span
                           >
                         </div>
+                        <p>{{ value.explanation }}</p>
                       </div>
                       <b-row
-                        class="developers"
                         v-if="slTeamComposition && slTeamComposition[key]"
+                        class="developers"
                       >
                         <b-col
+                          v-for="(dev, index) in slTeamComposition[key]"
+                          :key="index"
                           cols="12"
                           md="6"
                           xl="4"
-                          v-for="(dev, index) in slTeamComposition[key]"
-                          :key="index"
                         >
                           <div class="developers-item">
                             <div
@@ -177,15 +213,15 @@
           </div>
         </div>
 
-        <div class="loading" v-if="!finished && !error">
+        <div v-if="!finished && !error" class="loading">
           <span class="loading__dot"></span>
           <span class="loading__dot"></span>
           <span class="loading__dot"></span>
         </div>
-        <p class="loading-text" v-if="!finished && !error">
+        <p v-if="!finished && !error" class="loading-text">
           We are forming a response to your request, this may take some time
         </p>
-        <div class="buttons-wrapper" v-if="finished">
+        <div v-if="finished" class="buttons-wrapper">
           <nuxt-link to="/build-team" class="refresh-btn"> Refresh </nuxt-link>
           <div>
             <BaseButton class="export-btn" @click="exportToPDF(false)"
@@ -198,7 +234,7 @@
 
       <p v-else>No requirements found.</p>
 
-      <div class="error-container" v-if="error">
+      <div v-if="error" class="error-container">
         <p>Ooops! Something went wrong.</p>
         <BaseButton @click="refresh()">Try Again</BaseButton>
       </div>
@@ -207,9 +243,9 @@
     <OurSuperpowers />
     <RequestTeamModal
       v-show="isModalVisible"
+      :get-file="exportToPDF"
+      :success-message="successMessage"
       @close="closeModal"
-      :getFile="exportToPDF"
-      :successMessage="successMessage"
     />
   </div>
 </template>
@@ -225,6 +261,21 @@ export default {
     OurSuperpowers,
     RequestTeamModal,
   },
+  data() {
+    return {
+      requirements: null,
+      isModalVisible: false,
+      showSuccessMessage: false,
+      finished: false,
+      error: false,
+      details: null,
+      technologies: null,
+      estimate: null,
+      teamComposition: null,
+      slTeamComposition: null,
+      pdfDownloaded: false,
+    }
+  },
   head: {
     title: 'Build Team with Scrum AI',
     meta: [
@@ -236,7 +287,7 @@ export default {
       },
     ],
   },
-  async mounted() {
+  mounted() {
     const requirements = this.$store.getters['requirements/GET_REQUIREMENTS']
 
     if (!requirements) return this.$router.push('/build-team')
@@ -271,189 +322,6 @@ export default {
     socket.removeAllListeners()
     this.$store.commit('requirements/SET_REQUIREMENTS', null)
   },
-  data() {
-    return {
-      requirements: null,
-      isModalVisible: false,
-      showSuccessMessage: false,
-      finished: false,
-      error: false,
-      details: null,
-      technologies: null,
-      estimate: null,
-      teamComposition: null,
-      slTeamComposition: null,
-      pdfDownloaded: false,
-      // details: {
-      //   'Project Goal':
-      //     'To develop a user-friendly crowdfunding platform that allows clients to create their own pages for collecting donations.',
-      //   'Project Features':
-      //     'User account creation, customizable donation pages, secure payment processing, social media integration, analytics and reporting tools, and responsive design.',
-      //   'Target Users':
-      //     'Individuals, non-profit organizations, and small businesses seeking to raise funds for their projects, causes, or events..',
-      //   'Platform Requirements':
-      //     'Web-based application compatible with all major browsers, mobile app for iOS and Android devices, and compliance with data protection and privacy regulations.',
-      //   'Team Structure':
-      //     'Project Manager, UX/UI Designer, Front-end Developer, Back-end Developer, QA Tester, and Marketing Specialist.',
-      // },
-      // technologies: {
-      //   Frontend: [
-      //     {
-      //       technologySelected: 'React',
-      //       description:
-      //         'A popular JavaScript library for building user interfaces, allowing for efficient and reusable components.',
-      //     },
-      //   ],
-      //   Backend: [
-      //     {
-      //       technologySelected: 'Node.js',
-      //       description:
-      //         "A JavaScript runtime built on Chrome's V8 engine, allowing for scalable and efficient server-side development.",
-      //     },
-      //   ],
-      //   Database: [
-      //     {
-      //       technologySelected: 'MongoDB',
-      //       description:
-      //         'A NoSQL database that stores data in flexible, JSON-like documents, allowing for easy integration with the JavaScript-based stack.',
-      //     },
-      //   ],
-      //   Deployment: [
-      //     {
-      //       technologySelected: 'AWS',
-      //       description:
-      //         'A comprehensive cloud services platform that offers a wide range of tools for deploying, scaling, and managing web applications.',
-      //     },
-      //   ],
-      //   Mobile: [
-      //     {
-      //       technologySelected: 'React Native',
-      //       description:
-      //         'A framework for building native mobile apps using React, allowing for code reuse between the web and mobile platforms.',
-      //     },
-      //   ],
-      //   Payment: [
-      //     {
-      //       technologySelected: 'Stripe',
-      //       description:
-      //         'A secure and flexible payment processing platform that supports a wide range of payment methods and currencies.',
-      //     },
-      //   ],
-      //   SocialMediaIntegration: [
-      //     {
-      //       technologySelected: 'OAuth',
-      //       description:
-      //         'An open standard for secure access delegation, allowing users to log in and share information from their social media accounts.',
-      //     },
-      //   ],
-      //   Analytics: [
-      //     {
-      //       technologySelected: 'Google Analytics',
-      //       description:
-      //         'A powerful web analytics service that tracks and reports website traffic, providing insights into user behavior and engagement.',
-      //     },
-      //   ],
-      // },
-      // estimate: {
-      //   Frontend: 2,
-      //   Backend: 2,
-      //   Deployment: 1,
-      //   'Other Parts': 1,
-      //   'Total Duration': 3,
-      // },
-      // teamComposition: {
-      //   Frontend: {
-      //     technologiesRequired: ['React', 'React Native'],
-      //     numberOfEmployeesRequired: 2,
-      //   },
-      //   Backend: {
-      //     technologiesRequired: ['Node.js', 'MongoDB'],
-      //     numberOfEmployeesRequired: 2,
-      //   },
-      //   Deployment: {
-      //     technologiesRequired: ['AWS', 'Stripe', 'OAuth', 'Google Analytics'],
-      //     numberOfEmployeesRequired: 1,
-      //   },
-      //   Design: {
-      //     numberOfEmployeesRequired: 1,
-      //   },
-      //   Management: {
-      //     numberOfEmployeesRequired: 1,
-      //   },
-      // },
-      // slTeamComposition: {
-      //   Backend: [
-      //     {
-      //       name: 'Vitalii',
-      //       avatar_url: 'https://scrumlaunch-teams.s3.amazonaws.com/',
-      //       user_skills: '',
-      //       experience: null,
-      //       stack: 'Node.js',
-      //     },
-      //     {
-      //       name: 'Nikolenko',
-      //       avatar_url: null,
-      //       user_skills: '',
-      //       experience: null,
-      //       stack: 'Node.js',
-      //     },
-      //   ],
-      //   Frontend: [
-      //     {
-      //       name: 'Nikolay',
-      //       avatar_url: null,
-      //       user_skills: '',
-      //       experience: null,
-      //       stack: 'React Native',
-      //     },
-      //     {
-      //       name: 'Ann',
-      //       avatar_url: null,
-      //       user_skills: '',
-      //       experience: null,
-      //       stack: 'React Native',
-      //     },
-      //   ],
-      //   Design: [
-      //     {
-      //       name: 'Yuliia',
-      //       avatar_url: null,
-      //       user_skills: '',
-      //       experience: null,
-      //       stack: 'Design',
-      //     },
-      //     {
-      //       name: 'Anastasia',
-      //       avatar_url:
-      //         'https://scrumlaunch-teams.s3.amazonaws.com/profile/avatars/_1673631463005_96159.jpeg',
-      //       user_skills:
-      //         'figma, responsive-design, design-patterns, application-design, designer',
-      //       experience: 3,
-      //       stack: 'Design',
-      //     },
-      //   ],
-      //   Deployment: [
-      //     {
-      //       name: 'Yuriy',
-      //       avatar_url: null,
-      //       user_skills: '',
-      //       experience: null,
-      //       stack: 'DevOps',
-      //     },
-      //   ],
-      //   Management: [
-      //     {
-      //       name: 'Mykhailo',
-      //       avatar_url:
-      //         'https://scrumlaunch-teams.s3.amazonaws.com/profile/avatars/_1669140085048_scaled_307c8f47cd160bd39826c80e79a48089267.jpeg',
-      //       user_skills: '',
-      //       experience: null,
-      //       stack: 'PM',
-      //     },
-      //   ],
-      // },
-    }
-  },
   methods: {
     async exportToPDF(returnFile) {
       this.$gtm.push({ event: 'SAVE AS PDF' })
@@ -462,19 +330,18 @@ export default {
       const exportContainer = container.cloneNode(true)
       exportContainer?.classList.add('export')
 
-      const page1 = container?.querySelector('#page_1')
-
       // Move estimate block on the second page if it does not fit on the first page
-      if (page1?.offsetHeight > 1500) {
-        const estimate = exportContainer?.querySelector('.estimate-wrapper')
+      // const page1 = container?.querySelector('#page_1')
+      // if (page1?.offsetHeight > 1500) {
+      //   const estimate = exportContainer?.querySelector('.estimate-wrapper')
 
-        estimate?.classList.add('hide')
+      //   estimate?.classList.add('hide')
 
-        const page2 = exportContainer?.querySelector('#page_2')
-        const title = page2?.querySelector('.requirements_title')
+      //   const page2 = exportContainer?.querySelector('#page_2')
+      //   const title = page2?.querySelector('.requirements_title')
 
-        title?.parentNode.insertBefore(estimate, title.nextSibling)
-      }
+      //   title?.parentNode.insertBefore(estimate, title.nextSibling)
+      // }
 
       const options = {
         filename: `ScrumLaunch-Build-Team-${formatDate('-')}.pdf`,

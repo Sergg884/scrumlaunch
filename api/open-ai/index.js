@@ -40,6 +40,7 @@ async function makeRequest(messages, temperature = 0.5, retries = 5, retryDelay 
 async function start(projectDescription, stepCallbackFn, resultCallbackFn) {
 
   stepCallbackFn("Fetching terms of reference...");
+
   const technicalTask = await makeRequest([{
     role: "user",
     content: utils.cleanString(
@@ -48,8 +49,6 @@ async function start(projectDescription, stepCallbackFn, resultCallbackFn) {
       )
     )
   }]);
-
-  console.log(technicalTask)
 
   resultCallbackFn({ data: technicalTask, type: "details" });
   stepCallbackFn("Fetching technologies...");
@@ -63,8 +62,6 @@ async function start(projectDescription, stepCallbackFn, resultCallbackFn) {
     )
   }], 0);
 
-  console.log(technologies)
-
   resultCallbackFn({ data: technologies, type: "technologies" });
   stepCallbackFn("Fetching estimate...");
 
@@ -76,8 +73,6 @@ async function start(projectDescription, stepCallbackFn, resultCallbackFn) {
       )
     )
   }]);
-
-  console.log(estimate)
 
   resultCallbackFn({ data: estimate, type: "estimate" });
   stepCallbackFn("Fetching team composition...");
@@ -91,8 +86,6 @@ async function start(projectDescription, stepCallbackFn, resultCallbackFn) {
       )
     )
   }], 0);
-
-  console.log(teamComposition);
 
   try {
     for (const depName in teamComposition) {

@@ -26,6 +26,8 @@
       </Hero>
     </div>
 
+    <!-- <Developers :dev-lang="dev_lang" /> -->
+
     <TalentMap is-white />
 
     <OurClients />
@@ -59,11 +61,13 @@ import WhyScrumlaunch from '~/components/pages/hire-developers/WhyScrumlaunch.vu
 import FAQ from '~/components/shared/FAQ.vue'
 import dev_langs from '@/seo/development_languages.json'
 import GetStarted from '~/components/shared/GetStarted.vue'
+import Developers from '~/components/shared/Developers'
 
 export default {
   components: {
     Hero,
     TalentMap,
+    Developers,
     Testimonials,
     OurClients,
     BestTalent,
@@ -72,10 +76,7 @@ export default {
     WhyScrumlaunch,
     FAQ,
     GetStarted
-},
-
-
-  
+  },
 
   data() {
     return {

@@ -6,31 +6,36 @@ const GET_LIST_OF_TECHNOLOGIES = (projectDescription) => {
     Frontend: [
       {
         technologySelected: TEXT,
-        description: TEXT
+        description: TEXT,
+        explanation: \${EXPLANATION FOR SELECTED TECHNOLOGY}
       }
     ],
     Backend: [
       {
         technologySelected: TEXT,
-        description: TEXT
+        description: TEXT,
+        explanation: \${EXPLANATION FOR SELECTED TECHNOLOGY}
       }
     ],
     'Quality Assurance': [
       {
         technologySelected: TEXT,
-        description: TEXT
+        description: TEXT,
+        explanation: \${EXPLANATION FOR SELECTED TECHNOLOGY}
       }
     ],
     Deployment: [
       {
         technologySelected: TEXT,
-        description: TEXT
+        description: TEXT,
+        explanation: \${EXPLANATION FOR SELECTED TECHNOLOGY}
       }
     ],
     OTHER: [
       {
         technologySelected: TEXT,
-        description: TEXT
+        description: TEXT,
+        explanation: \${EXPLANATION FOR SELECTED TECHNOLOGY}
       }
     ]
   }
@@ -43,12 +48,30 @@ const GET_ESTIMATE = (projectDescription) => {
     "${projectDescription}"
     Use this JSON format:
     {
-      "Frontend": APPROXIMATE TIME(MONTH),
-      "Backend": APPROXIMATE TIME(MONTH),
-      "Quality Assurance": APPROXIMATE TIME(MONTH),
-      "Deployment": APPROXIMATE TIME(MONTH),
-      "Other Parts": APPROXIMATE TIME(MONTH),
-      "Total Duration": APPROXIMATE TIME (assuming that we can make tasks in parallel)(MONTH)
+      "Frontend": {
+        "estimate": APPROXIMATE TIME(MONTH),
+        "explanation": EXPLANATION OF ESTIMATE
+      },
+      "Backend": {
+        "estimate": APPROXIMATE TIME(MONTH),
+        "explanation": EXPLANATION OF ESTIMATE
+      },
+      "Quality Assurance": {
+        "estimate": APPROXIMATE TIME(MONTH),
+        "explanation": EXPLANATION OF ESTIMATE
+      },
+      "Deployment": {
+        "estimate": APPROXIMATE TIME(MONTH),
+        "explanation": EXPLANATION OF ESTIMATE
+      },
+      "Other Parts": {
+        "estimate": APPROXIMATE TIME(MONTH),
+        "explanation": EXPLANATION OF ESTIMATE
+      },
+      "Total Duration In Parallel": {
+        "estimate": APPROXIMATE TIME (assuming that we can make tasks in parallel)(MONTH)
+        "explanation": EXPLANATION OF ESTIMATE
+      }
     }. Response with only JSON.`
   );
 };
@@ -62,25 +85,31 @@ const GET_TEAM_COMPOSITION = (technologies, estimate) => {
     Return me result in this JSON format: {
       Frontend: {
         technologiesRequired: [TECHNOLOGIES REQUIRED(STRING)],
-        numberOfEmployeesRequired: \${NUMBER OF EMPLOYEES REQUIRED}
+        numberOfEmployeesRequired: \${NUMBER OF EMPLOYEES REQUIRED},
+        explanation: \${EXPLANATION FOR NUMBER OF EMPLOYEES REQUIRED}
       },
       Backend: {
         technologiesRequired: [TECHNOLOGIES REQUIRED(STRING)],
-        numberOfEmployeesRequired: \${NUMBER OF EMPLOYEES REQUIRED}
+        numberOfEmployeesRequired: \${NUMBER OF EMPLOYEES REQUIRED},
+        explanation: \${EXPLANATION FOR NUMBER OF EMPLOYEES REQUIRED}
       },
       'Quality Assurance': {
         technologiesRequired: [TECHNOLOGIES REQUIRED(STRING)],
-        numberOfEmployeesRequired: \${NUMBER OF EMPLOYEES REQUIRED}
+        numberOfEmployeesRequired: \${NUMBER OF EMPLOYEES REQUIRED},
+        explanation: \${EXPLANATION FOR NUMBER OF EMPLOYEES REQUIRED}
       },
       Deployment: {
         technologiesRequired: [TECHNOLOGIES REQUIRED(STRING)],
-        numberOfEmployeesRequired: \${NUMBER OF EMPLOYEES REQUIRED}
+        numberOfEmployeesRequired: \${NUMBER OF EMPLOYEES REQUIRED},
+        explanation: \${EXPLANATION FOR NUMBER OF EMPLOYEES REQUIRED}
       },
       Design: {
-        numberOfEmployeesRequired: \${NUMBER OF EMPLOYEES REQUIRED}
+        numberOfEmployeesRequired: \${NUMBER OF EMPLOYEES REQUIRED},
+        explanation: \${EXPLANATION FOR NUMBER OF EMPLOYEES REQUIRED}
       },
       Management: {
-        numberOfEmployeesRequired: \${NUMBER OF EMPLOYEES REQUIRED}
+        numberOfEmployeesRequired: \${NUMBER OF EMPLOYEES REQUIRED},
+        explanation: \${EXPLANATION FOR NUMBER OF EMPLOYEES REQUIRED}
       }
     }. Response with only JSON. Ensure you are using correct format.
   `);
@@ -91,9 +120,17 @@ const GET_TECHNICAL_TASK = (projectDescription) => {
     `Create a terms of reference for this project: "${projectDescription}". Send response in JSON format:
     {
       "Project Goal": STRING,
-      "Project Features": STRING,
-      "Target Users": STRING,
-      "Platform Requirements": STRING
+      "Platform Requirements": STRING(EXPLAIN EACH POINT),
+      "Target Users": [{
+        "name": STRING,
+        "description": STRING,
+      }, ...],
+      "Project Features": [{
+        "name": STRING,
+        "userStory": STRING
+      }, ...],
+      "KPI": STRING,
+      "Press Release FAQ": ARRAY OF STRINGS,
     }. Exclude budget and timeline. Response with only JSON. Ensure you are using correct format.`
   );
 }
