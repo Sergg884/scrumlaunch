@@ -26,7 +26,7 @@
       </Hero>
     </div>
 
-    <!-- <Developers :dev-lang="dev_lang" /> -->
+    <Developers :dev-lang="dev_lang" />
 
     <TalentMap is-white />
 
