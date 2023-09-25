@@ -7,8 +7,8 @@
         Tech talent that’s right for your <span class="mark">project</span> 
       </template>
       <template #text>
-        Every technology project is different and it’s just as important to find the right person as it is to find a talented person.
-        ScrumLaunch’s talent hubs in Eastern Europe and Latin America combine global scale and personalization to ensure you get the right person for your project.
+        ScrumLaunch builds long-term, world-class tech teams for new product development and staff augmentation. Our talent hubs in
+        Eastern Europe and Latin America combine global scale and dedicated people managers to ensure you get the ideal team for your project.
       </template>
     </Hero>
 
