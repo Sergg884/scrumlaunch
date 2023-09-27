@@ -1,7 +1,34 @@
 <template>
   <div class="developers" :class="{'white': isWhite}" >
-    <section>
-      <h3>{{devLang}} developers</h3>
+    <section v-if="developers.length">
+      <h3>{{devLang || "our"}} developers</h3>
+      <div class="stack-switcher">
+        <input id="PHP" type="radio" name="lang" value="PHP" @click="switchHandler('PHP')" />
+        <label for="PHP">PHP</label>
+        <input id="React" type="radio" name="lang" value="React" @click="switchHandler('REACT')" />
+        <label for="React">React</label>
+        <input id="ReactNative" type="radio" name="lang" value="ReactNative" @click="switchHandler('React Native')" />
+        <label for="ReactNative">ReactNative</label>
+        <input id="Java" type="radio" name="lang" value="Java" @click="switchHandler('Java')" />
+        <label for="Java">Java</label>
+        <input id="AngularJS" type="radio" name="lang" value="AngularJS" @click="switchHandler('Angular')" />
+        <label for="AngularJS">AngularJS</label>
+        <input id="NodeJS" type="radio" name="lang" value="NodeJS" @click="switchHandler('Node')" />
+        <label for="NodeJS">NodeJS</label>
+        <input id="Python" type="radio" name="lang" value="Python" @click="switchHandler('Python')" />
+        <label for="Python">Python</label>
+        <input id="Swift" type="radio" name="lang" value="Swift" @click="switchHandler('Swift')" />
+        <label for="Swift">Swift</label>
+        <input id="Kotlin" type="radio" name="lang" value="Kotlin" @click="switchHandler('Kotlin')" />
+        <label for="Kotlin">Kotlin</label>
+        <input id="Shopify" type="radio" name="lang" value="Shopify" @click="switchHandler('Shopify')" />
+        <label for="Shopify">Shopify</label>
+        <input id="RubyOnRails" type="radio" name="lang" value="RubyOnRails" @click="switchHandler('Ruby on Rails')" />
+        <label for="RubyOnRails">RubyOnRails</label>
+        <input id="All" type="radio" name="lang" value="All" @click="switchHandler('')" />
+        <label for="All">All</label>
+
+      </div>
       <b-row no-gutters class="mt-5">
         <b-col
           v-for="(dev, index) in developers"
@@ -70,15 +97,23 @@
           </div>
         </b-col>
       </b-row>
-      <p class="build-team">Want to join our team? Click <span>here</span> to contact us.</p>
+      <p class="build-team">Want to join our team? Click <span @click="showModal">here</span> to contact us.</p>
     </section>
+    <JoinModal
+      v-show="isModalVisible"
+      @close="closeModal"
+    />
   </div>
 </template>
 
 <script>
 import { ref } from 'vue';
+import JoinModal from '~/components/shared/JoinModal';
 
 export default {
+  components: {
+    JoinModal,
+  },
   props: {
     devLang: {
       type: String || null,
@@ -104,6 +139,7 @@ export default {
 
   data() {
     return {
+      isModalVisible: false,
       developers: [],
       page: 1,
       totalCount: 0,
@@ -176,13 +212,11 @@ export default {
       });
 
     },
-
     resizeHandler() {
       for (const refName in this.$refs) {
         this.calculateTagBar(this.$refs[refName])
       }
     },
-
     getCandidate() {
       this.$axios({
         method: 'get',
@@ -190,13 +224,34 @@ export default {
         headers: { 'HTTP-API-KEY': this.$config.scrumTeamsAPI_KEY },
         params: {
           stack_name: this.devLang,
-          page: this.page
+          page: this.page,
         }
       }).then(({data}) => {
         this.developers = [...this.developers, ...data.candidates]
         this.page++;
       }).catch((err) => console.error(err))
-    }
+    },
+    switchHandler(stack) {
+      this.page = 0
+      this.$axios({
+        method: 'get',
+        url: this.$config.scrumTeamsAPI,
+        headers: { 'HTTP-API-KEY': this.$config.scrumTeamsAPI_KEY },
+        params: {
+          stack_name: stack,
+        }
+      }).then(({data}) => {
+        this.page++;
+        this.totalCount = data.total_count;
+        this.developers = data.candidates || [];
+      }).catch((err) => console.error(err))
+    },
+    showModal() {
+      this.isModalVisible = true
+    },
+    closeModal() {
+      this.isModalVisible = false
+    },
   },
 
 
@@ -207,6 +262,44 @@ export default {
 
 .developers {
   display: flex;
+
+  .stack-switcher {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 80px;
+
+    input {
+      display: none;
+    }
+
+    label {
+      cursor: pointer;
+      padding: 10px 26px;
+      border: 1px solid #1E1F21;
+      color: #1E1F21;
+      font-family: 'Proxima Nova';
+      font-size: 30px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 140%; /* 42px */
+    }
+
+    input:checked + label {
+      background: #1E1F21;
+      padding: 10px 26px;
+      justify-content: center;
+      align-items: center;
+      color: #12E2B0;
+      font-family: 'Proxima Nova';
+      font-size: 30px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 140%; /* 42px */
+    }
+
+  }
 
   h3 {
     color: #1E1F21;
