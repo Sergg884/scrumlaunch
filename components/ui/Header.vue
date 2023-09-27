@@ -10,7 +10,7 @@
       <NuxtLink to="/work"> Case Studies </NuxtLink>
       <NuxtLink to="/blog"> Blog </NuxtLink>
       <HeaderDropdown
-        title="Hire Developers"
+        title="Staff Augmentation"
         to="/hire-developers"
         :menu-items="developers"
         :is-white="isHeaderWhite"
@@ -67,7 +67,7 @@
         :class="{ 'active-dropdown': isHireDevUp }"
         @click="dropDownUp($event)"
       >
-        Hire developers
+        Staff Augmentation
         <img class="chevron" src="/icons/chevron-white.svg" />
         <ul class="header-dropdown">
           <li
