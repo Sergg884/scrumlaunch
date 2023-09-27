@@ -88,7 +88,8 @@ export default {
     gtm: {
       id: process.env.GOOGLE_TAG_MANAGER_ID,
     },
-    scrumTeamsAPI: process.env.VUE_ST_API,
+    scrumTeamsAPI: process.env.ST_API,
+    scrumTeamsAPI_KEY: process.env.HTTP_API_KEY
   },
 
   bootstrapVue: {
