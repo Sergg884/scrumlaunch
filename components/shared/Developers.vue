@@ -2,7 +2,7 @@
   <div class="developers" :class="{'white': isWhite}" >
     <section v-if="developers.length">
       <h3>{{devLang || "our"}} developers</h3>
-      <div class="stack-switcher">
+      <div v-if="!devLang" class="stack-switcher">
         <input id="PHP" type="radio" name="lang" value="PHP" @click="switchHandler('PHP')" />
         <label for="PHP">PHP</label>
         <input id="React" type="radio" name="lang" value="React" @click="switchHandler('REACT')" />
@@ -21,13 +21,10 @@
         <label for="Swift">Swift</label>
         <input id="Kotlin" type="radio" name="lang" value="Kotlin" @click="switchHandler('Kotlin')" />
         <label for="Kotlin">Kotlin</label>
-        <input id="Shopify" type="radio" name="lang" value="Shopify" @click="switchHandler('Shopify')" />
-        <label for="Shopify">Shopify</label>
         <input id="RubyOnRails" type="radio" name="lang" value="RubyOnRails" @click="switchHandler('Ruby on Rails')" />
         <label for="RubyOnRails">RubyOnRails</label>
         <input id="All" type="radio" name="lang" value="All" @click="switchHandler('')" />
         <label for="All">All</label>
-
       </div>
       <b-row no-gutters class="mt-5">
         <b-col

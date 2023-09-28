@@ -16,103 +16,107 @@
             />
         </header>
         <slot>
-          <h2>Want to join our team?</h2>
-          <div class="modal-body">
-            <nuxt-img src="/shared/cv-black.svg" alt="cv-black" />
-            <form @submit.prevent="validateForm()">
-              <div class="wrap">
-                <label> 
-                  Name*
-                </label>
-                <InputComponent
-                  id="name"
-                  class="contact-form--wrapper--input"
-                  :modelValue="name"
-                  placeholder="Enter your name here"
-                  name="name"
-                  :errorMessage="nameError"
-                  @update:modelValue="handleFieldChange('name', $event)"
-                />
-              </div>
-              <div class="wrap">
-                <label> 
-                  Email*
-                </label>
-                <InputComponent
-                  id="email"
-                  class="contact-form--wrapper--input"
-                  :model-value="email"
-                  placeholder="Enter your email here"
-                  name="email"
-                  :error-message="emailError"
-                  @update:modelValue="handleFieldChange('email', $event)"
-                />
-              </div>
-              <div class="wrap">
-                <label>
-                  Experience
-                </label>
-                <InputComponent
-                  id="experience"
-                  class="contact-form--wrapper--input"
-                  :model-value="experience"
-                  placeholder="Tell us about your experience"
-                  name="experience"
-                  :error-message="experienceError"
-                  @update:modelValue="handleFieldChange('experience', $event)"
-                />
-              </div>
-              <div class="wrap">
-                <label> 
-                  CV*
-                </label>
-                <FileInput
-                  placeholder="Upload your CV"
-                  :error-message="fileError"
-                  :value="file.name"
-                  @file-updated="captureFile($event)"
-                />
-                <p class="help_text">Accept only .pdf</p>
-              </div>
-              <BaseButton wide>
-                GET STARTED
-              </BaseButton>
-
-              <div
-                v-show="is_sent"
-                :class="{ blocked: is_blocked }"
-                class="contact-form__frame_2"
-              >
-                <lottie
-                  v-show="is_done"
-                  class="contact-form__frame_2__image"
-                  name="reliabilityDesktopAnim"
-                  loop
-                  renderer="svg"
-                  :options="{
-                    animationData: require('~/assets/animation/rocket_launch.json'),
-                  }"
-                />
-                <div v-show="is_done" class="header-1">
-                  Your message<br />has been sent
+          <div v-show="!is_sent">
+            <h2>Want to join our team?</h2>
+            <div class="modal-body">
+              <nuxt-img src="/shared/cv-black.svg" alt="cv-black" />
+              <form @submit.prevent="validateForm()">
+                <div class="wrap">
+                  <label> 
+                    Name*
+                  </label>
+                  <InputComponent
+                    id="name"
+                    class="contact-form--wrapper--input"
+                    :model-value="name"
+                    placeholder="Enter your name here"
+                    name="name"
+                    :error-message="nameError"
+                    @update:modelValue="handleFieldChange('name', $event)"
+                  />
                 </div>
-              </div>
-            </form>
-          </div>
-          <div
-            v-show="is_sent"
-            :class="{ blocked: is_blocked }"
-            class="contact-form__frame_2"
-          >
-            <div v-show="is_done" class="header-1">
-              Your message<br />has been sent
+                <div class="wrap">
+                  <label> 
+                    Email*
+                  </label>
+                  <InputComponent
+                    id="email"
+                    class="contact-form--wrapper--input"
+                    :model-value="email"
+                    placeholder="Enter your email here"
+                    name="email"
+                    :error-message="emailError"
+                    @update:modelValue="handleFieldChange('email', $event)"
+                  />
+                </div>
+                <div class="wrap">
+                  <label>
+                    Experience
+                  </label>
+                  <InputComponent
+                    id="experience"
+                    class="contact-form--wrapper--input"
+                    :model-value="experience"
+                    placeholder="Tell us about your experience"
+                    name="experience"
+                    :error-message="experienceError"
+                    @update:modelValue="handleFieldChange('experience', $event)"
+                  />
+                </div>
+                <div class="wrap">
+                  <label> 
+                    CV*
+                  </label>
+                  <FileInput
+                    placeholder="Upload your CV"
+                    :error-message="fileError"
+                    :value="file.name"
+                    @file-updated="captureFile($event)"
+                  />
+                  <p class="help_text">Accept only .pdf</p>
+                </div>
+                <BaseButton wide>
+                  GET STARTED
+                </BaseButton>
+              </form>
             </div>
           </div>
+
+          <div v-show="is_sent" :class="{full: !is_done}">
+            <lottie
+              v-show=true
+              class="message-sent__image"
+              name="reliabilityDesktopAnim"
+              loop
+              renderer="svg"
+              :options="{
+                animationData: require('~/assets/animation/rocket_launch.json'),
+              }"
+            />
+            <p v-show="is_done" class="title-global popup-title">
+              message has been <br /> successfully sent!
+            </p>
+            <div v-show="is_done" class="modal-body__content">
+              <p class="popup-text">
+                We appreciate your interest in working with us and our team will get back to you as soon as possible.
+              </p>
+              <BaseButton
+                class="form_button"
+                @click="close()"
+              >
+                BACK TO MAIN PAGE
+              </BaseButton>
+            </div>
+          </div>
+
         </slot>
       </div>
     </div>
   </transition>
 </template>
+
+
+
 
 <script>
 import lottie from 'vue-lottie/src/lottie.vue'
@@ -131,11 +135,8 @@ export default {
     emailError: null,
     experience: '',
     experienceError: null,
-    skill: '',
     file: '',
     fileError: null,
-
-    englishSelect: ['Basic', 'Intermediate', 'Advanced'],
 
     is_blocked: false,
     is_sent: false,
@@ -145,6 +146,8 @@ export default {
   methods: {
     close() {
       this.$emit("close");
+      this.is_sent = false
+      this.is_done = false
     },
     captureFile($event) {
       this.file = $event
@@ -187,11 +190,11 @@ export default {
             const data = {
               name: this.name,
               email: this.email,
-              english: this.englishLevel,
+              experience: this.experience,
               cv_attachment: resp.url,
             }
 
-            this.$axios.$post('/api/send-cv', data).then(() => {
+            this.$axios.$post('/api/join-us', data).then(() => {
               this.name = ''
               this.email = ''
               this.englishLevel = ''
@@ -201,11 +204,6 @@ export default {
               this.is_done = true
 
               this.track()
-
-              setTimeout(() => {
-                this.is_sent = false
-                this.is_done = false
-              }, 5000)
             })
             .catch(() => {
               this.is_sent = false
@@ -271,47 +269,6 @@ export default {
   form {
     width: 490px;
   }
-  .modal-fade-enter, .modal-fade-leave-to {
-    opacity: 0;
-  }
-  .modal-fade-enter-active, .modal-fade-leave-active {
-    transition: opacity .5s ease;
-  }
-  .dialog {
-    z-index: 100;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.5);
-    position: fixed;
-    display: flex;
-  }
-  .dialog__content {
-    margin: auto;
-    background: white;
-    overflow: auto;
-    min-height: 50px;
-    max-width: 1000px;
-    min-width: 300px;
-    padding: 20px 30px;
-  }
-  .modal-header {
-    display: flex;
-    justify-content: flex-end;
-    border-bottom: none;
-  }
-  .modal-body {
-    padding: 10px 10px 30px 10px;
-    text-align: start;
-    display: flex;
-    &__content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 30px 10px;
-    }
-  }
 
   label {
     margin-top: 20px;
@@ -335,44 +292,172 @@ export default {
       width: auto;
     }
   }
+  
   .button-container {
     display: flex;
     justify-content: center;
     margin: 30px 10px 40px 10px;
   }
-  .form_button {
-    background: #12e2b0;
-    border-radius: 54px;
-    letter-spacing: 0.01em;
-    text-transform: uppercase;
-    color: #1e1f21;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 150%;
-    padding: 28px 150px;
+
+
+  .modal-fade-enter,
+  .modal-fade-leave-to {
+    opacity: 0;
+  }
+  .modal-fade-enter-active,
+  .modal-fade-leave-active {
+    transition: opacity 0.5s ease;
+  }
+  .dialog {
+    z-index: 100;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    display: flex;
+  }
+  .dialog__content {
+    margin: auto;
+    background: white;
+    overflow: auto;
+    width: 95%;
+    max-height: 95%;
+    position: relative;
+
+    @include tablet-and-up {
+      width: 90%;
+    }
+    @include desktop-and-up {
+      width: 75%;
+    }
+
+    .blocked {
+      position: absolute;
+      top: -50px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.8);
+      text-align: center;
+      z-index: 2;
+      transition: background-color 0.2s;
+
+      @include tablet-and-up {
+        top: -90px;
+      }
+    }
+  }
+  .modal-header {
+    display: flex;
+    justify-content: flex-end;
     border: none;
-    cursor: pointer;
-    transition: all 0.4s ease;
-    font-family: 'Proxima Nova';
+    padding: 0;
 
-    &:active {
-      background: #1e1f21;
-      color: #12e2b0;
+    img {
+      width: 20px;
+      height: 20px;
+      margin: 15px;
+      cursor: pointer;
+
+      @include tablet-and-up {
+        width: 30px;
+        height: 30px;
+        margin: 30px;
+      }
+    }
+  }
+  .modal-body {
+    display: flex;
+    max-width: 848px;
+    margin: auto;
+    padding: 10px 10px 30px 10px;
+    text-align: start;
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+
+      @include tablet-and-up {
+        padding: 20px 40px;
+      }
+
+      @include desktop-and-up {
+        padding: 30px 60px;
+      }
+    }
+  }
+
+  .message-sent {
+
+    &__image {
+      width: 250px !important;
+      height: 170px !important;
+    }
+  }
+
+  .full {
+    height: 400px;
+
+    .message-sent {
+      &__image {
+        width: 350px !important;
+        height: 350px !important;
+      }
+    }
+  }
+
+  .popup-title {
+    font-size: 24px;
+    text-align: center;
+
+    @include tablet-and-up {
+      padding: 0 30px;
+      font-size: 36px;
     }
 
-    &:hover {
-      background: #1e1f21;
-      color: #ffffff;
+    @include desktop-and-up {
+      padding: 0 60px;
+      font-size: 56px;
+    }
+  }
+
+  .popup-text {
+    color: var(--Black, #1E1F21);
+    text-align: center;
+
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%;
+
+    @include tablet-and-up {
+      font-size: 24px;
     }
 
-    @media screen and (max-width: 1439px) {
-      font-size: 14px;
-      padding: 20px 80px;
+    @include desktop-and-up {
+      font-size: 30px;
     }
+  }
 
-    @media screen and (max-width: 790px) {
-      font-size: 12px;
-      padding: 20px 75px;
+  .form_button {
+    width: 255px;
+    height: 82px;
+    margin-top: 40px;
+
+    @include tablet-and-up {
+      padding: 15px 40px;
+      width: 280px;
+    }
+    @include desktop-and-up {
+      width: 360px;
     }
   }
 </style>

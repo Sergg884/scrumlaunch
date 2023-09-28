@@ -1,6 +1,7 @@
 const express = require('express')
 
 const send_vc = require('./routes/send-cv')
+const join_us = require('./routes/join-us')
 const contact_us = require('./routes/contact-us')
 const company_contact = require('./routes/company-contact')
 const askAi = require('./routes/ask-ai')
@@ -12,6 +13,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
 app.use(send_vc)
+app.use(join_us)
 app.use(contact_us)
 app.use(company_contact)
 app.use(send_requirements)
