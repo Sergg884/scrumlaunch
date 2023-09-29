@@ -43,7 +43,7 @@
           <div :class="{'blur': developers.length - 1 === index && totalCount > developers.length}">
             <b-row class="mb-3">
               <nuxt-img class="developer-avatar" :src="'https://scrumlaunch-teams.s3.amazonaws.com/' + dev.avatar_url" alt="candidate avatar" />
-              <div class="flex">
+              <div class="developer-inf">
                 <p class="developer-name">{{dev.name}}</p>
                 <span class="developer-exp">{{dev.exp}} years of exp.</span>
                 <span class="developer-eng">Eng: {{dev.english_level}}</span>
@@ -307,7 +307,7 @@ section {
     color: #1E1F21;
     text-align: center;
     font-family: Proxima Nova;
-    font-size: 56px;
+    font-size: 36px;
     font-style: normal;
     font-weight: 900;
     line-height: 140%; /* 78.4px */
@@ -316,9 +316,11 @@ section {
 
     @include tablet-and-up {
       margin: 0 15px;
+      font-size: 46px;
     }
     @include desktop-and-up {
       margin: 0 40px;
+      font-size: 56px;
     }
   }
 
@@ -355,6 +357,10 @@ section {
       font-style: normal;
       font-weight: 600;
       line-height: 140%; /* 36.4px */
+    }
+    
+    &-inf {
+      text-align: left;
     }
 
     &-exp, &-eng {
@@ -457,6 +463,7 @@ section {
     }
 
     .hidden-skills {
+      color: #121212;
       height: 45px;
       padding: 5px 17px;
       border-radius: 8px;
@@ -492,6 +499,7 @@ section {
       flex-shrink: 0;
       position: absolute;
       border: none;
+      color:#121212;
       border-radius: 54px;
       background: #12E2B0;
       top: calc(50% - 40px);
@@ -509,6 +517,7 @@ section {
 .hidden {
   visibility: hidden;
   position: absolute;
+  left: -1000px;
 }
 
 .build-team {

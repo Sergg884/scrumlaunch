@@ -268,6 +268,7 @@ export default {
 
   form {
     width: 490px;
+    max-width: 100%;
   }
 
   label {
@@ -378,6 +379,17 @@ export default {
     margin: auto;
     padding: 10px 10px 30px 10px;
     text-align: start;
+
+    img {
+      display: none;
+    }
+
+    @include tablet-and-up {
+      img {
+        display: block;
+      }
+    }
+
 
     &__content {
       display: flex;
