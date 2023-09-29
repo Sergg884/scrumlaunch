@@ -56,9 +56,9 @@
                   <nuxt-img :src="'https://scrumlaunch-teams.s3.amazonaws.com/' + skill.stack.icon_s3_key" class="developer--skill-icon"/>
                   <span class="developer--stack-name">{{skill.stack.name}}</span>
                   <div class="star">
-                    <nuxt-img src="pages/hire-developers/empty-star.svg" alt="star" class="empty-star"/>
+                    <nuxt-img src="icons/empty-star.svg" alt="star" class="empty-star"/>
                     <div class="curtain" :style="{width: skill.assessment_result + '%'}">
-                      <nuxt-img src="pages/hire-developers/gold-star.svg" alt="star" class="gold-star"/>
+                      <nuxt-img src="icons/gold-star.svg" alt="star" class="gold-star"/>
                     </div>
                   </div>
                   <span class="skill-percent">{{ skill.assessment_result }}%</span>
@@ -72,9 +72,9 @@
                 <div v-for="skill in dev.candidate_soft_skills" :key="skill.id" class="developer-skill">
                   <span class="developer--skill-name">{{skill.skill.name}}</span>
                   <div class="star">
-                    <nuxt-img src="pages/hire-developers/empty-star.svg" alt="star" class="empty-star"/>
+                    <nuxt-img src="icons/empty-star.svg" alt="star" class="empty-star"/>
                     <div class="curtain" :style="{width: skill.assessment_result + '%'}">
-                      <nuxt-img src="pages/hire-developers/gold-star.svg" alt="star" class="gold-star"/>
+                      <nuxt-img src="icons/gold-star.svg" alt="star" class="gold-star"/>
                     </div>
                   </div>
                   <span class="skill-percent">{{ skill.assessment_result }}%</span>
@@ -256,6 +256,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+
+section {
+  margin-bottom: 0;
+}
 
 .developers {
   display: flex;

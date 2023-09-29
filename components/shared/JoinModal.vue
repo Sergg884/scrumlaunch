@@ -274,7 +274,7 @@ export default {
     margin-top: 20px;
     color: var(--Eerie-Black, #1E1F21);
     font-family: 'Proxima Nova';
-    font-size: 36px;
+    font-size: 22px;
     font-style: normal;
     font-weight: 900;
     line-height: 140%; /* 50.4px */
