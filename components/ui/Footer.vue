@@ -13,7 +13,7 @@
         <NuxtLink key="Services" to="/services">Services</NuxtLink>
         <NuxtLink key="Case Studies" to="/work">Case Studies</NuxtLink>
         <NuxtLink key="Blog" to="/blog">Blog</NuxtLink>
-        <NuxtLink key="Hire Developers" to="/hire-developers">Hire Developers</NuxtLink>
+        <NuxtLink key="Staff Augmentation" to="/hire-developers">Staff Augmentation</NuxtLink>
         <NuxtLink key="About" to="/process">About</NuxtLink>
       </b-col>
       <b-col class="links" cols="6" md="3" xl="3">

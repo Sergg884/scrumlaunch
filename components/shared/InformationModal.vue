@@ -17,9 +17,9 @@
         </header>
         <slot>
           <div v-show="!is_sent">
-            <h2>Want to join our team?</h2>
+            <h2>Enter your information to get the access to the whole team!</h2>
             <div class="modal-body">
-              <nuxt-img src="/shared/cv-black.svg" alt="cv-black" />
+              <nuxt-img src="/shared/candidates.png" alt="candidates" />
               <form @submit.prevent="validateForm()">
                 <div class="wrap">
                   <label> 
@@ -49,33 +49,7 @@
                     @update:modelValue="handleFieldChange('email', $event)"
                   />
                 </div>
-                <div class="wrap">
-                  <label>
-                    Experience
-                  </label>
-                  <InputComponent
-                    id="experience"
-                    class="contact-form--wrapper--input"
-                    :model-value="experience"
-                    placeholder="Tell us about your experience"
-                    name="experience"
-                    :error-message="experienceError"
-                    @update:modelValue="handleFieldChange('experience', $event)"
-                  />
-                </div>
-                <div class="wrap">
-                  <label> 
-                    CV*
-                  </label>
-                  <FileInput
-                    placeholder="Upload your CV"
-                    :error-message="fileError"
-                    :value="file.name"
-                    @file-updated="captureFile($event)"
-                  />
-                  <p class="help_text">Accept only .pdf</p>
-                </div>
-                <BaseButton wide>
+                <BaseButton wide class="form_button">
                   GET STARTED
                 </BaseButton>
               </form>
@@ -123,7 +97,7 @@ import lottie from 'vue-lottie/src/lottie.vue'
 
 
 export default {
-  name: "JoinModal",
+  name: "InformationModal",
   components: {
     lottie,
   },
@@ -135,8 +109,6 @@ export default {
     emailError: null,
     experience: '',
     experienceError: null,
-    file: '',
-    fileError: null,
 
     is_blocked: false,
     is_sent: false,
@@ -149,71 +121,32 @@ export default {
       this.is_sent = false
       this.is_done = false
     },
-    captureFile($event) {
-      this.file = $event
-    },
 
     handleFieldChange(name, value) {
       this[name] = value
     },
 
     sendForm() {
-      const reader = new FileReader()
-      reader.readAsDataURL(this.file)
-
-      if (this.file.type !== 'application/pdf') {
-        this.fileError = 'Should be a pdf file'
-
-        return
-      }
-
       this.is_sent = true
       this.is_blocked = true
 
-      reader.onload = () => {
-        fetch(
-          'https://script.google.com/macros/s/AKfycbxmI7N5aQ3PcX_VHoGsNN5xJhsXY_NH5HVivuGd2W6N_Y2YRVhAhNP7vqhPKT-DPjHw8A/exec',
-          {
-            method: 'POST',
-            body: JSON.stringify({
-              fname: 'uploadFilesToGoogleDrive',
-              dataReq: {
-                data: reader.result.split(',')[1],
-                name: this.file.name,
-                type: this.file.type,
-              },
-            }),
-          }
-        )
-          .then((res) => res.json())
-          .then((resp) => {
-            const data = {
-              name: this.name,
-              email: this.email,
-              experience: this.experience,
-              cv_attachment: resp.url,
-            }
-
-            this.$axios.$post('/api/join-us', data).then(() => {
-              this.name = ''
-              this.email = ''
-              this.experience = ''
-              this.file = ''
-
-              this.is_blocked = false
-              this.is_done = true
-
-              this.track()
-            })
-            .catch(() => {
-              this.is_sent = false
-              this.is_blocked = false
-            })
-          })
-          .catch((error) => {
-            console.error(error)
-          })
+      const data = {
+        name: this.name,
+        email: this.email,
       }
+
+      this.$axios.$post('/api/send-information', data).then(() => {
+        this.name = ''
+        this.email = ''
+
+        this.is_blocked = false
+        this.is_done = true
+        localStorage.setItem('information_sent', true)
+        this.track()
+      }).catch(() => {
+        this.is_sent = false
+        this.is_blocked = false
+      })
     },
 
     validateForm() {
@@ -227,12 +160,12 @@ export default {
       this.emailError = !emailRegEx.test(this.email.trim())
         ? 'Please, enter your correct email'
         : null
-      this.fileError = this.file === '' ? 'Please, upload your CV' : null
+      this.englishLevelError =
+        this.englishLevel === '' ? 'Please, choose your english level' : null
 
       if (
         this.nameError === null &&
-        this.emailError === null &&
-        this.fileError === null
+        this.emailError === null
       ) {
         this.sendForm()
       }
@@ -261,6 +194,7 @@ export default {
     line-height: 140%; /* 67.2px */
     letter-spacing: 0.96px;
     text-transform: uppercase;
+    margin: 0 40px;
 
     @include tablet-and-up {
       font-size: 48px;
@@ -269,7 +203,6 @@ export default {
 
   form {
     width: 490px;
-    margin: auto;
     max-width: 100%;
   }
 
@@ -384,23 +317,20 @@ export default {
     justify-content: space-around;
 
     img {
+      max-width: 479px;
       display: none;
-    }
+      margin-right: 50px;
 
-    @include tablet-and-up {
-      img {
+      @include tablet-and-up {
+        display: block;
         width: 380px;
+      }
+
+      @include desktop-and-up {
         display: block;
+        width: 479px;
       }
     }
-
-    @include desktop-and-up {
-      img {
-        width: auto;
-        display: block;
-      }
-    }
-
 
     &__content {
       display: flex;

@@ -36,7 +36,7 @@
             v-if="developers.length - 1 === index && totalCount > developers.length"
             class="developer--get-more"
             :class="{'visible': developers.length - 1 === index && totalCount > developers.length}"
-            @click="getCandidate()"
+            @click="showInfoModal()"
           >
             SEE MORE
           </button>
@@ -44,9 +44,14 @@
             <b-row class="mb-3">
               <nuxt-img class="developer-avatar" :src="'https://scrumlaunch-teams.s3.amazonaws.com/' + dev.avatar_url" alt="candidate avatar" />
               <div class="developer-inf">
-                <p class="developer-name">{{dev.name}}</p>
-                <span class="developer-exp">{{dev.exp}} years of exp.</span>
-                <span class="developer-eng">Eng: {{dev.english_level}}</span>
+                <div>
+                  <p class="developer-name">{{dev.name}}</p>
+                  <span class="developer-exp">{{dev.exp}} years of exp.</span>
+                  <span class="developer-eng">Eng: {{dev.english_level}}</span>
+                </div>
+                <div>
+                  <button class="developer--hire-btn">Hire {{ dev.name?.split(' ')[0] }}</button>
+                </div>
               </div>
             </b-row>
             <b-row class="developer--hard-skills">
@@ -100,16 +105,22 @@
       v-show="isModalVisible"
       @close="closeModal"
     />
+    <InformationModal
+      v-show="isModalInfoVisible"
+      @close="closeModal"
+    />
   </div>
 </template>
 
 <script>
 import { ref } from 'vue';
 import JoinModal from '~/components/shared/JoinModal';
+import InformationModal from '~/components/shared/InformationModal';
 
 export default {
   components: {
     JoinModal,
+    InformationModal,
   },
   props: {
     devLang: {
@@ -137,6 +148,7 @@ export default {
   data() {
     return {
       isModalVisible: false,
+      isModalInfoVisible: false,
       developers: [],
       page: 1,
       totalCount: 0,
@@ -246,8 +258,16 @@ export default {
     showModal() {
       this.isModalVisible = true
     },
+    showInfoModal() {
+      if (localStorage.getItem('information_sent')) {
+        this.getCandidate();
+      } else {
+        this.isModalInfoVisible = true
+      }
+    },
     closeModal() {
       this.isModalVisible = false
+      this.isModalInfoVisible = false
     },
   },
 
@@ -349,7 +369,6 @@ section {
     }
 
     &-name {
-      margin-top: 10px;
       text-align: left;
       color: var(--primary-colors-black, #121212);
       font-family: Inter;
@@ -360,7 +379,34 @@ section {
     }
     
     &-inf {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: space-between;
       text-align: left;
+    }
+
+    &--hire-btn {
+      display: none;
+      width: 178px;
+      height: 66px;
+      box-sizing: border-box;
+      justify-content: center;
+      align-items: center;
+      border-radius: 33px;
+      border: 1px solid #000;
+      background: transparent;
+
+      color: #000;
+      font-family: 'Inter';
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 150%; /* 30.296px */
+
+      @include tablet-and-up {
+        display: flex;
+      }
     }
 
     &-exp, &-eng {
