@@ -12,6 +12,13 @@ export default {
       { name: 'format-detection', content: 'telephone=no' },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }],
+    script: [{
+      id: "hs-script-loader",
+      type: "text/javascript",
+      src: 'http:////js.hs-scripts.com/43665306.js',
+      async: true,
+      defer: true,
+    }]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
