@@ -50,7 +50,7 @@
                   <span class="developer-eng">Eng: {{dev.english_level}}</span>
                 </div>
                 <div>
-                  <button class="developer--hire-btn">Hire {{ dev.name?.split(' ')[0] }}</button>
+                  <button @click="showInterviewingModal" class="developer--hire-btn">Hire {{ dev.name?.split(' ')[0] }}</button>
                 </div>
               </div>
             </b-row>
@@ -109,6 +109,10 @@
       v-show="isModalInfoVisible"
       @close="closeModal"
     />
+    <StartInterviewingModal
+      v-show="isModalInterviewingVisible"
+      @close="closeModal"
+    />
   </div>
 </template>
 
@@ -116,11 +120,14 @@
 import { ref } from 'vue';
 import JoinModal from '~/components/shared/JoinModal';
 import InformationModal from '~/components/shared/InformationModal';
+import StartInterviewingModal from '~/components/shared/StartInterviewingModal';
+
 
 export default {
   components: {
     JoinModal,
     InformationModal,
+    StartInterviewingModal,
   },
   props: {
     devLang: {
@@ -149,6 +156,7 @@ export default {
     return {
       isModalVisible: false,
       isModalInfoVisible: false,
+      isModalInterviewingVisible: false,
       developers: [],
       page: 1,
       totalCount: 0,
@@ -265,9 +273,13 @@ export default {
         this.isModalInfoVisible = true
       }
     },
+    showInterviewingModal() {
+      this.isModalInterviewingVisible = true
+    },
     closeModal() {
       this.isModalVisible = false
       this.isModalInfoVisible = false
+      this.isModalInterviewingVisible = false
     },
   },
 
