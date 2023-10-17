@@ -50,7 +50,7 @@
                   <span class="developer-eng">Eng: {{dev.english_level}}</span>
                 </div>
                 <div>
-                  <button @click="showInterviewingModal" class="developer--hire-btn">Hire {{ dev.name?.split(' ')[0] }}</button>
+                  <button class="developer--hire-btn" @click="showInterviewingModal(dev.name)">Hire {{ dev.name?.split(' ')[0] }}</button>
                 </div>
               </div>
             </b-row>
@@ -111,6 +111,7 @@
     />
     <StartInterviewingModal
       v-show="isModalInterviewingVisible"
+      :name-hired="nameHired"
       @close="closeModal"
     />
   </div>
@@ -154,6 +155,7 @@ export default {
 
   data() {
     return {
+      nameHired: '',
       isModalVisible: false,
       isModalInfoVisible: false,
       isModalInterviewingVisible: false,
@@ -273,8 +275,9 @@ export default {
         this.isModalInfoVisible = true
       }
     },
-    showInterviewingModal() {
+    showInterviewingModal(name) {
       this.isModalInterviewingVisible = true
+      this.nameHired = name
     },
     closeModal() {
       this.isModalVisible = false

@@ -99,6 +99,12 @@ export default {
   components: {
     lottie,
   },
+  props: {
+    nameHired: {
+      type: String,
+      default: '',
+    },
+  },
 
   data: () => ({
     name: '',
@@ -131,9 +137,10 @@ export default {
       const data = {
         name: this.name,
         email: this.email,
+        devName: this.nameHired,
       }
 
-      this.$axios.$post('/api/send-information', data).then(() => {
+      this.$axios.$post('/api/hire-developer', data).then(() => {
         this.name = ''
         this.email = ''
 
