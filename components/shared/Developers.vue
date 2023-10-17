@@ -49,7 +49,7 @@
                   <span class="developer-exp">{{dev.exp}} years of exp.</span>
                   <span class="developer-eng">Eng: {{dev.english_level}}</span>
                 </div>
-                <div>
+                <div v-if="!isMobile">
                   <button class="developer--hire-btn" @click="showInfoModal">Hire {{ dev.name?.split(' ')[0] }}</button>
                 </div>
               </div>
@@ -96,6 +96,9 @@
                 <button class="hidden-skills hidden">+0</button>
               </div>
             </b-row>
+            <template v-if="isMobile">
+              <button class="developer--hire-btn" @click="showInfoModal">Hire {{ dev.name?.split(' ')[0] }}</button>
+            </template>
           </div>
         </b-col>
       </b-row>
@@ -148,6 +151,7 @@ export default {
   data() {
     return {
       nameHired: '',
+      isMobile: null,
       isModalVisible: false,
       isModalInfoVisible: false,
       developers: [],
@@ -173,6 +177,7 @@ export default {
   fetchOnServer: true,
 
   mounted() {
+    this.isMobile = window.innerWidth < 768
     window.addEventListener("resize", this.resizeHandler);
   },
   unmounted() {
@@ -189,9 +194,9 @@ export default {
       const buttonRoom = 74; /** for 3 numbers */
 
       elements?.forEach(skills => {
-        const containerWidth = skills.clientWidth;
+        const containerWidth = this.isMobile ? skills.clientWidth * 2 : skills.clientWidth;
         let sumWidthChildren = 0;
-        let sumHiddenSkills = 0 
+        let sumHiddenSkills = 0;
 
         for (const skill of skills.children) {
           sumWidthChildren += skill.clientWidth;
@@ -222,7 +227,12 @@ export default {
       });
 
     },
-    resizeHandler() {
+    resizeHandler(event) {
+      if (event.target.innerWidth < 768) {
+        this.isMobile = true
+      } else {
+        this.isMobile = false
+      }
       for (const refName in this.$refs) {
         this.calculateTagBar(this.$refs[refName])
       }
@@ -284,13 +294,24 @@ section {
 
   .stack-switcher {
     display: flex;
-    flex-wrap: wrap;
     gap: 10px;
-    justify-content: center;
     margin-top: 80px;
+    width: 100%;
+    max-width: 100%;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
 
     input {
       display: none;
+      overflow: visible;
+    }
+
+    @include tablet-and-up {
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
     label {
@@ -299,10 +320,14 @@ section {
       border: 1px solid #1E1F21;
       color: #1E1F21;
       font-family: 'Proxima Nova';
-      font-size: 30px;
+      font-size: 14px;
       font-style: normal;
       font-weight: 700;
       line-height: 140%; /* 42px */
+
+      @include tablet-and-up {
+        font-size: 30px;
+      }
     }
 
     input:checked + label {
@@ -312,10 +337,14 @@ section {
       align-items: center;
       color: #12E2B0;
       font-family: 'Proxima Nova';
-      font-size: 30px;
+      font-size: 14px;
       font-style: normal;
       font-weight: 700;
       line-height: 140%; /* 42px */
+
+      @include tablet-and-up {
+        font-size: 30px;
+      }
     }
 
   }
@@ -384,9 +413,8 @@ section {
     }
 
     &--hire-btn {
-      display: none;
-      width: 178px;
-      height: 66px;
+      width: 100%;
+      height: 46px;
       box-sizing: border-box;
       justify-content: center;
       align-items: center;
@@ -403,6 +431,8 @@ section {
 
       @include tablet-and-up {
         display: flex;
+        width: 178px;
+        height: 66px;
       }
     }
 
@@ -457,16 +487,24 @@ section {
     &--additional-skills, &--hard-skills, &--soft-skills {
       display: flex;
       align-items: flex-start;
-      flex-wrap: nowrap;
       gap: 10px;
       overflow: hidden;
       white-space: nowrap;
       margin-bottom: 10px;
+      flex-direction: column;
+
+      @include tablet-and-up {
+        flex-direction: row;
+        flex-wrap: nowrap;
+      }
     }
 
     &--skills-container {
       flex-wrap: wrap;
       display: flex;
+      width: 100%;
+      max-width: 100%;
+
       gap: 10px;
       height: 45px;
       flex: 1;
