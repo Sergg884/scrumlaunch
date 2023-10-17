@@ -7,8 +7,6 @@ const company_contact = require('./routes/company-contact')
 const askAi = require('./routes/ask-ai')
 const send_requirements = require('./routes/send-requirements')
 const send_information = require('./routes/send-information')
-const hire_developer = require('./routes/hire-developer')
-
 
 const app = express()
 
@@ -22,7 +20,6 @@ app.use(company_contact)
 app.use(send_requirements)
 app.use(askAi)
 app.use(send_information)
-app.use(hire_developer)
 
 module.exports = app
 

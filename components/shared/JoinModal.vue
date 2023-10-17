@@ -64,15 +64,30 @@
                   />
                 </div>
                 <div class="wrap">
-                  <label> 
-                    CV*
-                  </label>
-                  <FileInput
-                    placeholder="Upload your CV"
-                    :error-message="fileError"
-                    :value="file.name"
-                    @file-updated="captureFile($event)"
-                  />
+                  <div>
+                    <label class="fileInput__wrap" htmlFor="file-input">
+                      <div
+                        :class="[
+                          'fileInput__base fileInput__clip',
+                          { error: fileError, 'border-default': !fileError },
+                        ]"
+                      >
+                        <span>{{ file.name || "Upload your CV" }}</span>
+                      </div>
+                      <input
+                        id="file-input"
+                        ref="fileInput"
+                        name="file-input"
+                        type="file"
+                        accept="application/pdf"
+                        @change="captureFile($event)"
+                      />
+                    </label>
+                    <p v-show="fileError" class="input-error">
+                      {{ fileError }}
+                    </p>
+                  </div>
+
                   <p class="help_text">Accept only .pdf</p>
                 </div>
                 <BaseButton wide>
@@ -116,8 +131,6 @@
 </template>
 
 
-
-
 <script>
 import lottie from 'vue-lottie/src/lottie.vue'
 
@@ -150,7 +163,7 @@ export default {
       this.is_done = false
     },
     captureFile($event) {
-      this.file = $event
+      this.file = $event.target.files[0]
     },
 
     handleFieldChange(name, value) {
@@ -326,6 +339,7 @@ export default {
     background: white;
     overflow: auto;
     width: 95%;
+    max-width: 1086px;
     max-height: 95%;
     position: relative;
 
@@ -483,4 +497,65 @@ export default {
       width: 360px;
     }
   }
+
+
+input[type='file'] {
+  display: none;
+}
+
+.error {
+  border-bottom: 1px solid #ff0000;
+}
+
+.input-error {
+  margin-top: 5px;
+  color: #ff0000;
+}
+
+.fileInput {
+  & * {
+    box-sizing: border-box;
+  }
+
+  &__wrap {
+    position: relative;
+    margin-top: 20px;
+    width: 100%;
+    cursor: pointer;
+
+    span {
+      color: var(--Eerie-Black, #1E1F21);
+      text-transform: capitalize;
+      font-family: 'Proxima Nova';
+      letter-spacing: 0;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 150%; /* 30px */
+    }
+  }
+
+  &__base {
+    position: relative;
+    padding: 8px 0;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 150%;
+    user-select: none;
+  }
+
+  &__clip {
+    &:before {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 10px;
+      display: block;
+      width: 24px;
+      height: 24px;
+      background: url(/icons/clip.svg) 0 0 no-repeat;
+      transform: rotate(180deg);
+    }
+  }
+}
 </style>

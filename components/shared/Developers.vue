@@ -50,7 +50,7 @@
                   <span class="developer-eng">Eng: {{dev.english_level}}</span>
                 </div>
                 <div>
-                  <button class="developer--hire-btn" @click="showInterviewingModal(dev.name)">Hire {{ dev.name?.split(' ')[0] }}</button>
+                  <button class="developer--hire-btn" @click="showInfoModal">Hire {{ dev.name?.split(' ')[0] }}</button>
                 </div>
               </div>
             </b-row>
@@ -109,11 +109,6 @@
       v-show="isModalInfoVisible"
       @close="closeModal"
     />
-    <StartInterviewingModal
-      v-show="isModalInterviewingVisible"
-      :name-hired="nameHired"
-      @close="closeModal"
-    />
   </div>
 </template>
 
@@ -121,14 +116,11 @@
 import { ref } from 'vue';
 import JoinModal from '~/components/shared/JoinModal';
 import InformationModal from '~/components/shared/InformationModal';
-import StartInterviewingModal from '~/components/shared/StartInterviewingModal';
-
 
 export default {
   components: {
     JoinModal,
     InformationModal,
-    StartInterviewingModal,
   },
   props: {
     devLang: {
@@ -158,7 +150,6 @@ export default {
       nameHired: '',
       isModalVisible: false,
       isModalInfoVisible: false,
-      isModalInterviewingVisible: false,
       developers: [],
       page: 1,
       totalCount: 0,
@@ -269,20 +260,11 @@ export default {
       this.isModalVisible = true
     },
     showInfoModal() {
-      if (localStorage.getItem('information_sent')) {
-        this.getCandidate();
-      } else {
-        this.isModalInfoVisible = true
-      }
-    },
-    showInterviewingModal(name) {
-      this.isModalInterviewingVisible = true
-      this.nameHired = name
+      this.isModalInfoVisible = true
     },
     closeModal() {
       this.isModalVisible = false
       this.isModalInfoVisible = false
-      this.isModalInterviewingVisible = false
     },
   },
 

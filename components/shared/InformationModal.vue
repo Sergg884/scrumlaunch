@@ -17,9 +17,9 @@
         </header>
         <slot>
           <div v-show="!is_sent">
-            <h2>Enter your information to get the access to the whole team!</h2>
+            <h2>Enter your information to <span class="green-title">start interviewing</span></h2>
             <div class="modal-body">
-              <nuxt-img src="/shared/candidates.png" alt="candidates" />
+              <nuxt-img src="/shared/cv-black.svg" alt="candidates" />
               <form @submit.prevent="validateForm()">
                 <div class="wrap">
                   <label> 
@@ -141,7 +141,6 @@ export default {
 
         this.is_blocked = false
         this.is_done = true
-        localStorage.setItem('information_sent', true)
         this.track()
       }).catch(() => {
         this.is_sent = false
@@ -216,6 +215,10 @@ export default {
     line-height: 140%; /* 50.4px */
     letter-spacing: 0.72px;
     text-transform: uppercase;
+
+    @include tablet-and-up {
+      font-size: 36px;
+    }
   }
 
   input[type='text'] {
@@ -244,6 +247,10 @@ export default {
   .modal-fade-leave-active {
     transition: opacity 0.5s ease;
   }
+
+  .green-title {
+    color: $main-green;
+  }
   .dialog {
     z-index: 100;
     top: 0;
@@ -259,6 +266,7 @@ export default {
     background: white;
     overflow: auto;
     width: 95%;
+    max-width: 1086px;
     max-height: 95%;
     position: relative;
 
@@ -328,7 +336,7 @@ export default {
 
       @include desktop-and-up {
         display: block;
-        width: 479px;
+        width: 410px;
       }
     }
 
