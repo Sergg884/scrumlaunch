@@ -1,6 +1,6 @@
 <template>
   <transition name="modal-fade">
-    <div class="dialog" @click="$emit('close')">
+    <div class="dialog" @click="close()">
       <div
         class="dialog__content"
         role="dialog"
@@ -12,7 +12,7 @@
           <img
             :src="require('@/assets/icons/black_close.svg')"
             aria-label="Close modal"
-            @click="$emit('close')"
+            @click="close()"
             />
         </header>
         <slot>
