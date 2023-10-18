@@ -238,7 +238,7 @@ export default {
 
       this.nameError = this.name === '' ? 'Please, add your name here' : null
       this.emailError = !emailRegEx.test(this.email.trim())
-        ? 'Please, enter your correct email'
+        ? 'Enter a valid email'
         : null
       this.fileError = this.file === '' ? 'Please, upload your CV' : null
 

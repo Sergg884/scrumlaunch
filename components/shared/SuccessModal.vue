@@ -122,7 +122,7 @@ export default {
       )
       this.nameError = this.name === '' ? 'Please, add your name here' : null
       this.emailError = !emailRegEx.test(this.email)
-        ? 'Please, enter your correct email'
+        ? 'Enter a valid email'
         : null
       if (this.nameError === null && this.emailError === null) {
         this.sendForm()

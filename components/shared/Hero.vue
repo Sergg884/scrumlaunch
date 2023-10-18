@@ -174,7 +174,7 @@ export default {
         'i'
       )
       this.emailError = !emailRegEx.test(email.trim())
-        ? 'Please, enter your correct email'
+        ? 'Enter a valid email'
         : null
 
       if (this.emailError === null) {
@@ -339,6 +339,7 @@ section {
       display: flex;
       text-align: left;
       gap: 40px;
+      height: 140px;
 
       div {
         flex-basis: 0;

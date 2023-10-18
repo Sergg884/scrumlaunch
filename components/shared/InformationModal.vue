@@ -155,12 +155,10 @@ export default {
         'i'
       )
 
-      this.nameError = this.name === '' ? 'Please, add your name here' : null
+      this.nameError = this.name === '' ? 'Name field requires >1 characters' : null
       this.emailError = !emailRegEx.test(this.email.trim())
-        ? 'Please, enter your correct email'
+        ? 'Enter a valid email'
         : null
-      this.englishLevelError =
-        this.englishLevel === '' ? 'Please, choose your english level' : null
 
       if (
         this.nameError === null &&
@@ -411,12 +409,16 @@ export default {
   .form_button {
     width: 255px;
     height: 82px;
+    margin: auto;
     margin-top: 40px;
 
     @include tablet-and-up {
       padding: 15px 40px;
       width: 280px;
+      margin-left: 0;
+      margin-right: 0;
     }
+
     @include desktop-and-up {
       width: 360px;
     }

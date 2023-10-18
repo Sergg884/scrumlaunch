@@ -118,7 +118,7 @@ export default {
             const emailRegEx = new RegExp("^(([^<>()[\\]\\.,;:\\s@\\\"]+(\\.[^<>()[\\]\\.,;:\\s@\\\"]+)*)|(\\\".+\\\"))@(([^<>()[\\]\\.,;:\\s@\\\"]+\\.)+[^<>()[\\]\\.,;:\\s@\\\"]{2,})$", "i");
             this.nameError = this.name === "" ? "Please, add your name here" : null;
             this.emailError = !emailRegEx.test(this.email)
-                ? "Please, enter your correct email"
+                ? "Enter a valid email"
                 : null;
             if (this.nameError === null &&
                 this.emailError === null) {
