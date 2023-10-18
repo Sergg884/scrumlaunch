@@ -15,7 +15,7 @@ export default {
     script: [{
       id: "hs-script-loader",
       type: "text/javascript",
-      src: 'http:////js.hs-scripts.com/43665306.js',
+      src: 'https:////js.hs-scripts.com/43665306.js',
       async: true,
       defer: true,
     }]
