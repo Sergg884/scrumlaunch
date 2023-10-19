@@ -298,7 +298,7 @@ section {
     margin-top: 80px;
     width: 100%;
     max-width: 100%;
-    overflow-y: scroll;
+    overflow-x: scroll;
 
     &::-webkit-scrollbar {
       display: none;
