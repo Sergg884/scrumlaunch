@@ -487,12 +487,16 @@ export default {
   .form_button {
     width: 255px;
     height: 82px;
+    margin: auto;
     margin-top: 40px;
 
     @include tablet-and-up {
       padding: 15px 40px;
       width: 280px;
+      margin-left: 0;
+      margin-right: 0;
     }
+
     @include desktop-and-up {
       width: 360px;
     }
