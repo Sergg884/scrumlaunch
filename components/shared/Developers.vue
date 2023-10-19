@@ -299,6 +299,7 @@ section {
     width: 100%;
     max-width: 100%;
     overflow-x: scroll;
+    scrollbar-width: none;
 
     &::-webkit-scrollbar {
       display: none;
