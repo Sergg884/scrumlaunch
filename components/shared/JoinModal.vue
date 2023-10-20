@@ -90,7 +90,7 @@
 
                   <p class="help_text">Accept only .pdf</p>
                 </div>
-                <BaseButton wide>
+                <BaseButton wide class="form_button">
                   GET STARTED
                 </BaseButton>
               </form>
