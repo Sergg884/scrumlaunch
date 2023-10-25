@@ -18,6 +18,10 @@ export default {
       src: 'https:////js.hs-scripts.com/43665306.js',
       async: true,
       defer: true,
+    }, {
+      charset: "utf-8",
+      type: "text/javascript",
+      src: "//js.hsforms.net/forms/embed/v2.js",
     }]
   },
 

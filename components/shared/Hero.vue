@@ -123,6 +123,20 @@ export default {
     }
   },
 
+  head() {
+    return {
+      script: [{
+        type:'text/javascript',
+        innerHTML: `
+          hbspt.forms.create({
+            region: "na1",
+            portalId: "43665306",
+            formId: "395db3ac-77c5-4c11-80b7-e83c4e8fcecb"
+          });`
+      }]
+    }
+  },
+
   methods: {
     handleFieldChange(name, value) {
       this[name] = value
