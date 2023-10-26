@@ -12,7 +12,16 @@
     <!-- <AiRequirementsField v-if="withRequirements" /> -->
 
     <div v-if="!withRequirements" class="contact">
-      <div class="input-container">
+      <client-only>
+        <script defer type="text/javascript">
+          hbspt.forms.create({
+            region: "na1",
+            portalId: "43665306",
+            formId: "395db3ac-77c5-4c11-80b7-e83c4e8fcecb"
+          });
+        </script>
+      </client-only>
+      <!-- <div class="input-container">
         <b-form-group
           id="contact-us-fieldset"
           class="email-input"
@@ -30,10 +39,10 @@
             @update:modelValue="handleFieldChange('email', $event)"
           />
         </b-form-group>
-      </div>
-      <div class="button">
+      </div> -->
+      <!-- <div class="button">
         <BaseButton @click="sendEmail()"> Schedule a call </BaseButton>
-      </div>
+      </div> -->
     </div>
     <div
       v-if="!is_done"
@@ -120,20 +129,6 @@ export default {
       is_done: false,
       hide_hero_img: false,
       requirements: '',
-    }
-  },
-
-  head() {
-    return {
-      script: [{
-        type:'text/javascript',
-        innerHTML: `
-          hbspt.forms.create({
-            region: "na1",
-            portalId: "43665306",
-            formId: "395db3ac-77c5-4c11-80b7-e83c4e8fcecb"
-          });`
-      }]
     }
   },
 
