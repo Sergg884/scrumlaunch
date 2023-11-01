@@ -21,6 +21,7 @@
         <NuxtLink key="Contact" to="/contact-us">Contact</NuxtLink>
         <NuxtLink key="Referral Program" to="/referral">Referral Program</NuxtLink>
         <NuxtLink key="Leadership" to="/leadership">Leadership</NuxtLink>
+        <NuxtLink key="Sitemap" to="/sitemap">Sitemap</NuxtLink>
       </b-col>
       <b-col class="contact" order="1" order-md="0" cols="12" md="6" xl="4">
         <div class="email md">

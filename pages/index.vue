@@ -32,6 +32,10 @@
       </script>
     </client-only>
     <!-- <GetStarted /> -->
+    <StartBuildingModal
+      v-show="isModalVisible"
+      @close="closeModal"
+    />
   </div>
 </template>
 
@@ -47,7 +51,8 @@ import Services from '~/components/pages/home/Services'
 import Hiring from '~/components/pages/home/Hiring'
 import TechPartner from '~/components/pages/home/TechPartner.vue'
 import Blog from '~/components/pages/home/Blog.vue'
-import GetStarted from '~/components/shared/GetStarted.vue'
+import StartBuildingModal from '~/components/shared/StartBuildingModal.vue'
+// import GetStarted from '~/components/shared/GetStarted.vue'
 
 export default {
 
@@ -63,7 +68,14 @@ export default {
     Hiring,
     TechPartner,
     Blog,
-    GetStarted
+    StartBuildingModal,
+    // GetStarted
+  },
+
+  data() {
+    return {
+      isModalVisible: false,
+    }
   },
 
   head: {
@@ -72,6 +84,20 @@ export default {
       { hid: 'description', name: 'description', content: 'ScrumLaunch enables start-ups, businesses, and organizations to hire developers from a growing network of top talent in the world. Our React, Python, PHP, Kotlin experts ready to work full-time, part-time, or hourly who will seamlessly integrate into your team.' }
     ],
   },
+
+  getters: {
+    features: (state) => state.modals
+  },
+
+  // computed: {
+    // ...mapGtters(['modals']),
+  // },
+
+  methods: {
+    closeModal() {
+      this.isModalVisible = false
+    },
+  }
 }
 
 </script>

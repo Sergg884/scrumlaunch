@@ -1,0 +1,20 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Frame 20" clip-path="url(#clip0_2811_25762)">
+<g id="Group 75">
+<g id="Mask Group">
+<mask id="mask0_2811_25762" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="-10" y="15" width="53" height="13">
+<rect id="Rectangle 1390" x="42.4062" y="27.1997" width="52" height="11.2" transform="rotate(180 42.4062 27.1997)" fill="#FF4E00"/>
+</mask>
+<g mask="url(#mask0_2811_25762)">
+<circle id="Ellipse 13" cx="15.6031" cy="15.5997" r="11.6" transform="rotate(-180 15.6031 15.5997)" fill="#1E1F21"/>
+</g>
+</g>
+<ellipse id="Ellipse 13_2" cx="3.6" cy="4" rx="3.6" ry="4" transform="matrix(-0.515038 -0.857167 0.865916 -0.50019 14.4062 14.3999)" fill="#12E2B0"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_2811_25762">
+<rect width="32" height="32" fill="white"/>
+</clipPath>
+</defs>
+</svg>
