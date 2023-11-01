@@ -33,13 +33,13 @@ export default {
     return {
       tabs: [
         {
-          title: 'average per every candidate',
+          title: 'interviewing per candidate',
           titleIndicator: '5h',
           descriptionTitle: 'Personalized recruiting',
           description: 'Our five step hiring process includes an English proficiency assessment, culture fit interview, technical interviews and technical assessment. We believe that cultural fit is as important as technical proficiency for long term success.',
         },
         {
-          title: 'saved during onboarding for each new hire',
+          title: 'candidates pass out screening process',
           titleIndicator: '3%',
           descriptionTitle: 'Highly selective',
           description: 'Due to our rigorous vetting procedure we ensure that you get the best talent to boost your success.',
