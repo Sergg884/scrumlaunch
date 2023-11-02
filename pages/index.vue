@@ -21,6 +21,7 @@
     <WeThrive />
     <Services />
     <Hiring />
+    <Awards />
     <Blog />
     <client-only>
       <script defer type="text/javascript">
@@ -49,6 +50,7 @@ import OurClients from '~/components/shared/OurClients'
 import WeThrive from '~/components/pages/home/WeThrive'
 import Services from '~/components/pages/home/Services'
 import Hiring from '~/components/pages/home/Hiring'
+import Awards from '~/components/pages/home/Awards'
 import TechPartner from '~/components/pages/home/TechPartner.vue'
 import Blog from '~/components/pages/home/Blog.vue'
 import StartBuildingModal from '~/components/shared/StartBuildingModal.vue'
@@ -57,6 +59,7 @@ import StartBuildingModal from '~/components/shared/StartBuildingModal.vue'
 export default {
 
   components: {
+    Awards,
     Hero,
     OurSuperpowers,
     TalentMap,
