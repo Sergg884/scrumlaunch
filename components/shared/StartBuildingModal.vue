@@ -17,7 +17,7 @@
         </header>
         <slot>
           <div v-show="!is_sent">
-            <h2>Enter your information to <span class="green-title">start interviewing</span></h2>
+            <h2>Enter your information to <span class="green-title">start building!</span></h2>
             <div class="modal-body">
               <nuxt-img src="/shared/a4.png" alt="candidates" />
               <form @submit.prevent="validateForm()">

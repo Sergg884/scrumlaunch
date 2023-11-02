@@ -34,13 +34,15 @@
     </client-only>
     <!-- <GetStarted /> -->
     <StartBuildingModal
-      v-show="isModalVisible"
+      v-show="isShown"
       @close="closeModal"
     />
   </div>
 </template>
 
 <script>
+
+import { mapState, mapMutations } from "vuex";
 import Hero from '~/components/shared/Hero'
 import OurSuperpowers from '~/components/pages/home/OurSuperpowers'
 import TalentMap from '~/components/shared/TalentMap'
@@ -92,13 +94,14 @@ export default {
     features: (state) => state.modals
   },
 
-  // computed: {
-    // ...mapGtters(['modals']),
-  // },
+  computed: {
+    ...mapState('modals', ['isShown']),
+  },
 
   methods: {
+    ...mapMutations('modals', ['setShowModal']),
     closeModal() {
-      this.isModalVisible = false
+      this.setShowModal(false)
     },
   }
 }

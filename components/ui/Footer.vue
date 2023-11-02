@@ -18,7 +18,10 @@
       </b-col>
       <b-col class="links" cols="6" md="3" xl="3">
         <NuxtLink key="Careers" to="/remote-developer-jobs">Careers</NuxtLink>
-        <NuxtLink key="Contact" to="/contact-us">Contact</NuxtLink>
+        <!-- <NuxtLink key="Contact" to="/contact-us">Contact</NuxtLink> -->
+        <!-- <NuxtLink key="Contact" @click="openModal()">Contact</NuxtLink> -->
+        <a key="Contact" @click="openModal()">Contact</a>
+
         <NuxtLink key="Referral Program" to="/referral">Referral Program</NuxtLink>
         <NuxtLink key="Leadership" to="/leadership">Leadership</NuxtLink>
         <NuxtLink key="Sitemap" to="/sitemap">Sitemap</NuxtLink>
@@ -59,6 +62,8 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
+
 
 export default {
   data() {
@@ -102,6 +107,13 @@ export default {
           alt: 'footer-instagram'
         },
       ]
+    }
+  },
+
+  methods: {
+    ...mapMutations('modals', ['setShowModal']),
+    openModal() {
+      this.setShowModal(true)
     }
   }
 }
