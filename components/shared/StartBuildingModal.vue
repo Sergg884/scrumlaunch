@@ -51,7 +51,7 @@
                 </div>
                 <div class="wrap">
                   <label> 
-                    I'm interested in*
+                    I'm interested in
                   </label>
                   <InputComponent
                     id="project"
