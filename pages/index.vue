@@ -33,16 +33,11 @@
       </script>
     </client-only>
     <!-- <GetStarted /> -->
-    <StartBuildingModal
-      v-show="isShown"
-      @close="closeModal"
-    />
   </div>
 </template>
 
 <script>
 
-import { mapState, mapMutations } from "vuex";
 import Hero from '~/components/shared/Hero'
 import OurSuperpowers from '~/components/pages/home/OurSuperpowers'
 import TalentMap from '~/components/shared/TalentMap'
@@ -55,7 +50,6 @@ import Hiring from '~/components/pages/home/Hiring'
 import Awards from '~/components/pages/home/Awards'
 import TechPartner from '~/components/pages/home/TechPartner.vue'
 import Blog from '~/components/pages/home/Blog.vue'
-import StartBuildingModal from '~/components/shared/StartBuildingModal.vue'
 // import GetStarted from '~/components/shared/GetStarted.vue'
 
 export default {
@@ -73,7 +67,6 @@ export default {
     Hiring,
     TechPartner,
     Blog,
-    StartBuildingModal,
     // GetStarted
   },
 
@@ -93,17 +86,6 @@ export default {
   getters: {
     features: (state) => state.modals
   },
-
-  computed: {
-    ...mapState('modals', ['isShown']),
-  },
-
-  methods: {
-    ...mapMutations('modals', ['setShowModal']),
-    closeModal() {
-      this.setShowModal(false)
-    },
-  }
 }
 
 </script>

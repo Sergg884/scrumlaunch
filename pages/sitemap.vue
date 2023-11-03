@@ -7,25 +7,19 @@
       <div class="page">
         <div class="main">
           <nuxt-img class="icon" :alt="`faq-img-1`" src="/sitemap/icon-6.svg" />
-          <h3>
-            Services
-          </h3>
+          <NuxtLink to="/services"><h3>Services</h3></NuxtLink>
         </div>
       </div>
       <div class="page">
         <div class="main">
           <nuxt-img class="icon" :alt="`faq-img-1`" src="/sitemap/icon-5.svg" />
-          <h3>
-            Case Studies
-          </h3>
+          <NuxtLink to="/work"><h3>Case Studies</h3></NuxtLink>
         </div>
       </div>
       <div class="page">
         <div class="main">
           <nuxt-img class="icon" :alt="`faq-img-1`" src="/sitemap/icon-2.svg" />
-          <h3>
-            Blog
-          </h3>
+          <NuxtLink to="/blog"><h3>Blog</h3></NuxtLink>
         </div>
       </div>
       <div class="page">
@@ -50,25 +44,19 @@
       <div class="page">
         <div class="main">
           <nuxt-img class="icon" :alt="`faq-img-1`" src="/sitemap/icon-2.svg" />
-          <h3>
-            Careers
-          </h3>
+          <NuxtLink to="/remote-developer-jobs"><h3>Careers</h3></NuxtLink>
         </div>
       </div>
       <div class="page">
         <div class="main">
           <nuxt-img class="icon" :alt="`faq-img-1`" src="/sitemap/icon-4.svg" />
-          <h3>
-            About
-          </h3>
+          <NuxtLink to="/process"><h3>About</h3></NuxtLink>
         </div>
       </div>
       <div class="page">
         <div class="main">
           <nuxt-img class="icon" :alt="`faq-img-1`" src="/sitemap/icon-1.svg" />
-          <h3>
-            Contact
-          </h3>
+          <NuxtLink to="/contact-us"><h3>Contact</h3></NuxtLink>
         </div>
       </div>
     </div>
@@ -170,6 +158,14 @@ section {
     @include desktop-and-up {
       margin-bottom: 80px;
     }
+  }
+
+  h3 {
+    color: #1E1F21;
+  }
+
+  a {
+    text-decoration: none;
   }
 
   .pages {

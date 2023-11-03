@@ -19,7 +19,7 @@
       </AppearFromMask>
     </div>
     <div class="button">
-      <BaseButton to="/contact-us">
+      <BaseButton @click="openModal()">
         Talk to us
       </BaseButton>
     </div>
@@ -29,6 +29,20 @@
     
   </section>
 </template>
+
+<script>
+  import { mapMutations } from "vuex";
+
+  export default {
+    methods: {
+      ...mapMutations('modals', ['setShowModal']),
+      openModal() {
+        this.setShowModal(true)
+      }
+    }
+  }
+
+</script>
 
 <style lang="scss" scoped>
 

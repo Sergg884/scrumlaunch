@@ -5,16 +5,23 @@
     <Footer />
     <ScrollToTop />
     <ContactModal v-show="isModalVisible" @close="closeModal" />
+    <StartBuildingModal
+      v-show="isShown"
+      @close="closeStartBuildModal"
+    />
   </div>
 </template>
 
 <script>
+import { mapState, mapMutations } from "vuex";
 import ContactModal from '@/components/shared/ContactModal.vue'
+import StartBuildingModal from '~/components/shared/StartBuildingModal.vue'
 
 export default {
 
   components: {
     ContactModal,
+    StartBuildingModal,
   },
 
   data() {
@@ -27,8 +34,12 @@ export default {
     await this.fetchArticlesFromStore()
   },
 
+  computed: {
+    ...mapState('modals', ['isShown']),
+  },
+
   mounted() {
-        if (window.location.hostname.includes('scrumlaunch.com')) {
+    if (window.location.hostname.includes('scrumlaunch.com')) {
       // luckyorange
       const scriptLucky = document.createElement('script')
       scriptLucky.setAttribute("src", "https://tools.luckyorange.com/core/lo.js?site-id=0a6cf2b2")
@@ -150,8 +161,12 @@ export default {
     }
   },
   methods: {
+    ...mapMutations('modals', ['setShowModal']),
     async fetchArticlesFromStore() {
       await this.$store.dispatch('articles/fetchArticles');
+    },
+    closeStartBuildModal() {
+      this.setShowModal(false)
     },
     showModal($event) {
       this.isModalVisible = true
@@ -161,6 +176,7 @@ export default {
     closeModal() {
       this.isModalVisible = false;
     }
-  }
+  },
+
 }
 </script>

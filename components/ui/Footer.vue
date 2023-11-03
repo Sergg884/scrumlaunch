@@ -18,10 +18,7 @@
       </b-col>
       <b-col class="links" cols="6" md="3" xl="3">
         <NuxtLink key="Careers" to="/remote-developer-jobs">Careers</NuxtLink>
-        <!-- <NuxtLink key="Contact" to="/contact-us">Contact</NuxtLink> -->
-        <!-- <NuxtLink key="Contact" @click="openModal()">Contact</NuxtLink> -->
         <a key="Contact" @click="openModal()">Contact</a>
-
         <NuxtLink key="Referral Program" to="/referral">Referral Program</NuxtLink>
         <NuxtLink key="Leadership" to="/leadership">Leadership</NuxtLink>
         <NuxtLink key="Sitemap" to="/sitemap">Sitemap</NuxtLink>
@@ -149,6 +146,7 @@ footer {
       color: $main-black;
       transition: 0.5s all ease;
       margin-bottom: 6px;
+      cursor: pointer;
 
       &:hover {
         color: $main-green;

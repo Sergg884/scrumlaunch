@@ -5,12 +5,26 @@
     </div>
 
     <p class="title">Looking to build something amazing? We’d love to help.</p>
-
-    <BaseButton to="/contact-us">
+    <!-- to="/contact-us" -->
+    <BaseButton @click="openModal()">
       Contact us
     </BaseButton>
   </section>
 </template>
+
+<script>
+  import { mapMutations } from "vuex";
+
+  export default {
+    methods: {
+      ...mapMutations('modals', ['setShowModal']),
+      openModal() {
+        this.setShowModal(true)
+      }
+    }
+  }
+
+</script>
 
 <style lang="scss" scoped>
 
