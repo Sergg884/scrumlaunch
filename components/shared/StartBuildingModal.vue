@@ -103,12 +103,8 @@
   </transition>
 </template>
 
-
-
-
 <script>
 import lottie from 'vue-lottie/src/lottie.vue'
-
 
 export default {
   name: "InformationModal",
@@ -131,6 +127,8 @@ export default {
 
   methods: {
     close() {
+      this.name = ''
+      this.email = ''
       this.$emit("close");
       this.is_sent = false
       this.is_done = false

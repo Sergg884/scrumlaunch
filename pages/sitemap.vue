@@ -183,7 +183,6 @@ section {
       }
 
       .stack-list {
-        /* padding-left: 60px; */
         padding-top: 25px;
         text-align: left;
         display: grid;
