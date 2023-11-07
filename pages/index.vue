@@ -23,7 +23,7 @@
     <Hiring />
     <Awards />
     <Blog />
-    <client-only>
+    <!-- <client-only>
       <script defer type="text/javascript">
         hbspt.forms.create({
           region: "na1",
@@ -31,8 +31,8 @@
           formId: "f5543543-c014-4e86-a502-79069ed72a34"
         });
       </script>
-    </client-only>
-    <!-- <GetStarted /> -->
+    </client-only> -->
+    <GetStarted />
   </div>
 </template>
 
