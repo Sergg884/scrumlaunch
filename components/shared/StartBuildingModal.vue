@@ -129,6 +129,8 @@ export default {
     close() {
       this.name = ''
       this.email = ''
+      this.project = ''
+
       this.$emit("close");
       this.is_sent = false
       this.is_done = false
