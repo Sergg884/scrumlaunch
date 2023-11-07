@@ -127,13 +127,13 @@ export default {
 
   methods: {
     close() {
-      this.name = ''
-      this.email = ''
-      this.project = ''
-
       this.$emit("close");
       this.is_sent = false
       this.is_done = false
+
+      this.name = ''
+      this.email = ''
+      this.project = ''
     },
 
     handleFieldChange(name, value) {
@@ -257,7 +257,7 @@ export default {
   }
   .modal-fade-enter-active,
   .modal-fade-leave-active {
-    transition: opacity 0.5s ease;
+    transition: opacity .1s ease;
   }
 
   .green-title {

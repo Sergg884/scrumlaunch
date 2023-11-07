@@ -144,7 +144,7 @@ export default {
   }
   .modal-fade-enter-active,
   .modal-fade-leave-active {
-    transition: opacity .5s ease;
+    transition: opacity .1s ease;
   }
   .dialog {
     z-index: 100;
