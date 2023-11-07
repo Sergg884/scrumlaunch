@@ -128,12 +128,14 @@ export default {
   methods: {
     close() {
       this.$emit("close");
-      this.is_sent = false
-      this.is_done = false
 
-      this.name = ''
-      this.email = ''
-      this.project = ''
+      setTimeout(() => {
+        this.name = ''
+        this.email = ''
+        this.project = ''
+        this.is_sent = false
+        this.is_done = false
+      }, 100) // css animation fade
     },
 
     handleFieldChange(name, value) {
