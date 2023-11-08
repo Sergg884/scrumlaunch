@@ -53,12 +53,6 @@
           <NuxtLink to="/process"><h3>About</h3></NuxtLink>
         </div>
       </div>
-      <div class="page">
-        <div class="main">
-          <nuxt-img class="icon" :alt="`faq-img-1`" src="/sitemap/icon-1.svg" />
-          <NuxtLink to="/contact-us"><h3>Contact</h3></NuxtLink>
-        </div>
-      </div>
     </div>
   </section>
 </template>
