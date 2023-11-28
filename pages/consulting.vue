@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <section>
+    <section class="hero">
       <h2 class="title">
         Accelerate your AI transformation with <span class="mark">Generative AI Automation</span>
       </h2>
@@ -440,10 +440,14 @@ export default {
         }
         .img-ta {
           top: -20px;
-          right: -40%;
+          right: -80px;
           z-index: 1;
           width: 119px;
           height: 86px;
+
+          @include desktop-and-up {
+            right: 40px;
+          }
         }
         .img-stack {
           left: 0;
@@ -456,6 +460,12 @@ export default {
           left: 70px;
           width: 174px;
           height: 85px;
+
+          @include desktop-and-up {
+            left: unset;
+            bottom: -100px;
+            right: 0;
+          }
         }
       }
     }
@@ -689,7 +699,6 @@ export default {
     }
   }
 
-
   img {
     width: 100%;
   }
@@ -738,9 +747,29 @@ h3 {
   }
 }
 
+.hero {
+  display: grid;
+
+  @include desktop-and-up {
+    grid-template-columns: repeat(2, 1fr);
+
+    .title, p {
+      text-align: left;
+    }
+  }
+}
+
 .hero-img {
   width: 100%;
   margin-bottom: 40px;
+
+  @include desktop-and-up {
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 4;
+    height: 485px;
+  }
 }
 
 #contact-us-fieldset {
@@ -773,6 +802,7 @@ h3 {
   button {
     width: 255px;
     margin: auto;
+    margin-top: 20px;
 
     color: var(--Eerie-Black, #1E1F21);
     text-align: center;
