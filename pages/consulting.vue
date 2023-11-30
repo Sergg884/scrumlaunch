@@ -43,7 +43,7 @@
       </div>
     </section>
     <section class="section-eco">
-      <h2 class="title">The AI ecosystem is changing at <span class="mark">lightning speed</span></h2>
+      <h2 class="title">The AI ecosystem is <br /> changing at <span class="mark">lightning speed</span></h2>
 
       <div class="eco-block">
         <div class="text-block">
@@ -188,65 +188,65 @@
     </section>
     <section class="section-ai">
       <h2 class="title">Expertise in Generative <span class="mark">AI Operations</span></h2>
-      <div class="ai-list">
+      <div class="ai-list row">
         <div class="ai-item">
-          <nuxt-img src="/services/green&white/icon-1.png" />
+          <nuxt-img src="/services/green&white/icon-1.svg" />
           <div>
             <h3>Discovery</h3>
             <p>Where and how will Generative AI implementation most impact your business?</p>
           </div>
         </div>
         <div class="ai-item">
-          <nuxt-img src="/services/green&white/icon-9.png" />
+          <nuxt-img src="/services/green&white/icon-9.svg" />
           <div>
             <h3>Deployment</h3>
             <p>Configure and launch your LLM pipeline on scalable infrastructure.</p>
           </div>
         </div>
         <div class="ai-item">
-          <nuxt-img src="/services/green&white/icon-4.png" />
+          <nuxt-img src="/services/green&white/icon-4.svg" />
           <div>
             <h3>Fine Tuning</h3>
             <p>Maximize the value of your data by selecting and fine-tuning the right model.</p>
           </div>
         </div>
         <div class="ai-item">
-          <nuxt-img src="/services/green&white/icon-5.png" />
+          <nuxt-img src="/services/green&white/icon-5.svg" />
           <div>
             <h3>Prompt Engineering</h3>
             <p>Where and how will Generative AI implementation most impact your business?</p>
           </div>
         </div>
         <div class="ai-item">
-          <nuxt-img src="/services/green&white/icon-8.png" />
+          <nuxt-img src="/services/green&white/icon-8.svg" />
           <div>
             <h3>Scaling</h3>
             <p>Ensure your Generative AI implementation scales as your needs grow.</p>
           </div>
         </div>
         <div class="ai-item">
-          <nuxt-img src="/services/green&white/icon-7.png" />
+          <nuxt-img src="/services/green&white/icon-7.svg" />
           <div>
             <h3>Monitoring</h3>
             <p>Automate your monitoring, alerts, and error logging systems to ensure 99% uptime.</p>
           </div>
         </div>
         <div class="ai-item">
-          <nuxt-img src="/services/green&white/icon-6.png" />
+          <nuxt-img src="/services/green&white/icon-6.svg" />
           <div>
             <h3>Model Selection & Optimization</h3>
             <p>Select & optimize the right model for your needs</p>
           </div>
         </div>
         <div class="ai-item">
-          <nuxt-img src="/services/green&white/icon-2.png" />
+          <nuxt-img src="/services/green&white/icon-2.svg" />
           <div>
             <h3>Security</h3>
             <p>Using the right models and best practices to keep your proprietary information safe.</p>
           </div>
         </div>
         <div class="ai-item">
-          <nuxt-img src="/services/green&white/icon-3.png" />
+          <nuxt-img src="/services/green&white/icon-3.svg" />
           <div>
             <h3>Cost Optimization</h3>
             <p>Continuous monitoring and analysis of your tooling costs and usage metrics.</p>
@@ -268,14 +268,14 @@
     <section class="section-ways" >
       <h2 class="title-global">We help high-growth tech companies <span class="mark">in two ways</span></h2>
       <div class="ways-block">
-        <div>
+        <div class="col-md-6">
           <nuxt-img src="/services/icon-1.svg" />
           <h3>Build your first Generative AI system</h3>
           <p>Discovery process to define your needs</p>
           <p>Implement and configure your Generative AI tech stack</p>
           <p>Deploy high-impact Generative AI functionality within your business</p>
         </div>
-        <div>
+        <div class="col-md-6">
           <nuxt-img src="/services/icon-4.svg" />
           <h3>Maintain and optimize your existing implementation</h3>
           <p>Audit and optimize your current Generative AI workflows</p>
@@ -284,27 +284,41 @@
         </div>
       </div>
     </section>
-    <section class="section-expert" >
-      <h2 class="title-global"><span class="mark">Generative AI Experts</span> as a Service</h2>
-      <hr />
-      <div class="text-block">
-        <nuxt-img src="/services/icon-2.svg" />
-        <p>Flexible monthly contracts</p>
+    <section class="section-expert">
+      <h2 class="title-global"><span class="mark">Generative AI Experts<br/></span> as a Service</h2>
+      <div class="row">
+        <div class="col-xl-6">
+          <hr />
+          <div class="text-block">
+            <nuxt-img src="/services/icon-2.svg" />
+            <p>Flexible monthly contracts</p>
+          </div>
+          <hr />
+          <div class="text-block">
+            <nuxt-img src="/services/icon-1.svg" />
+            <p>Project-specific or monthly retainer cost model, depending on your needs</p>
+          </div>
+          <hr />
+        </div>
+        <div class="col-xl-6">
+          <nuxt-img src="/pages/consulting/ai-dev.svg" />
+        </div>
       </div>
-      <hr />
-      <div class="text-block">
-        <nuxt-img src="/services/icon-1.svg" />
-        <p>Project-specific or monthly retainer cost model, depending on your needs</p>
-      </div>
-      <hr />
-      <nuxt-img src="/pages/consulting/ai-dev.svg" />
     </section>
+    <SuccessModal
+      v-show="isModalVisible"
+      @close="closeModal"
+    />
   </div>
 </template>
 
 <script>
+import SuccessModal from '~/components/shared/SuccessModal'
 
 export default {
+  components: {
+    SuccessModal,
+  },
 
   props: {
     withRequirements: {
@@ -331,6 +345,9 @@ export default {
   methods: {
     handleFieldChange(name, value) {
       this[name] = value
+    },
+    closeModal() {
+      this.isModalVisible = false
     },
     sendEmail() {
       const data = {
@@ -430,6 +447,10 @@ export default {
         .img-dt, .img-wt {
           left: 0;
           width: 500px;
+
+          @include desktop-and-up {
+            width: 580px;
+          }
         }
         .img-chart {
           left: 0;
@@ -437,6 +458,13 @@ export default {
           z-index: 1;
           width: 135px;
           height: 90px;
+
+          @include desktop-and-up {
+            top: 0;
+            left: -60px;
+            width: 239px;
+            height: 161px;
+          }
         }
         .img-ta {
           top: -20px;
@@ -446,7 +474,9 @@ export default {
           height: 86px;
 
           @include desktop-and-up {
-            right: 40px;
+            right: -75px;
+            width: 212px;
+            height: 154px;
           }
         }
         .img-stack {
@@ -454,6 +484,12 @@ export default {
           bottom: -50px;
           width: 205px;
           height: 79px;
+
+          @include desktop-and-up {
+            bottom: -70px;
+            width: 336px;
+            height: 130px;
+          }
         }
         .img-chat {
           bottom: -50px;
@@ -463,10 +499,19 @@ export default {
 
           @include desktop-and-up {
             left: unset;
-            bottom: -100px;
-            right: 0;
+            bottom: -150px;
+            right: -60px;
+            width: 300px;
+            height: 143px;
           }
         }
+      }
+    }
+
+    @include desktop-and-up {
+      h3 {
+        font-size: 30px;
+        text-align: left;
       }
     }
   }
@@ -488,7 +533,17 @@ export default {
         span {
           font-weight: 600;
         }
+
+        @include desktop-and-up {
+          font-size: 18px;
+        }
       }
+    }
+
+    @include desktop-and-up {
+      min-width: 550px;
+      width: 550px;
+      margin-right: 80px;
     }
   }
 
@@ -516,6 +571,10 @@ export default {
       height: 59px;
       bottom: -6px;
       left: 29px;
+
+      @include desktop-and-up {
+        bottom: -6px;
+      }
     }
     .img-ta {
       position: absolute;
@@ -524,7 +583,6 @@ export default {
       top: -12px;
       right: 33px;
     }
-
     .img-chat {
       position: absolute;
       width: 110px;
@@ -572,15 +630,31 @@ export default {
     }
 
     @include tablet-and-up {
-      width: 50%;
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+
+    @include desktop-and-up {
+      flex: 0 0 33.33333333%;
+      max-width: 33.33333333%;
     }
   }
   .ai-block {
     border: 1px solid var(--White, #FFF);
     padding: 20px;
 
+    @include desktop-and-up {
+      display: flex;
+    }
+
     h3 {
       font-size: 24px;
+
+      @include desktop-and-up {
+        font-size: 30px;
+        min-width: 50%;
+        width: 50%;
+      }
     }
 
     hr {
@@ -592,6 +666,11 @@ export default {
       margin: 0;
       color: #FFF;
       list-style: none;
+
+      @include desktop-and-up {
+        border-left: 1px solid #FFF;
+        padding-left: 40px;
+      }
     }
     li {
       position: relative;
@@ -615,6 +694,11 @@ export default {
   img {
     width: 24px;
     height: 24px;
+
+    @include desktop-and-up {
+      width: 36px;
+      height: 36px;
+    }
   }
   h3 {
     text-transform: capitalize;
@@ -625,6 +709,10 @@ export default {
     font-weight: 600;
     line-height: 150%; /* 24px */
     text-align: left;
+
+    @include desktop-and-up {
+      font-size: 26px;
+    }
   }
   p {
     color: #FFF;
@@ -636,6 +724,9 @@ export default {
     text-align: left;
     @include tablet-and-up {
       font-size: 14px;
+    }
+    @include desktop-and-up {
+      font-size: 18px;
     }
   }
 }
@@ -668,6 +759,13 @@ export default {
 }
 
 .section-expert {
+
+  h2 {
+    @include desktop-and-up {
+      text-align: right;
+      margin-bottom: 40px;
+    }
+  }
   .text-block {
     display: flex;
     align-items: center;
