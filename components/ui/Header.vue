@@ -6,7 +6,7 @@
       />
     </NuxtLink>
     <div class="menu" :class="{ white: isHeaderWhite }">
-      <NuxtLink to="/consulting"> AI Consulting </NuxtLink>
+      <NuxtLink to="/ai-consulting"> AI Consulting </NuxtLink>
       <NuxtLink to="/services"> Services </NuxtLink>
       <NuxtLink to="/work"> Case Studies </NuxtLink>
       <NuxtLink to="/blog"> Blog </NuxtLink>
@@ -60,7 +60,7 @@
     </div>
     <ul class="mobile-navigation" :class="{ active: showMobileNavigation }">
       <li @click="navigateTo('/')">Home</li>
-      <li @click="navigateTo('/consulting')">AI Consulting</li>
+      <li @click="navigateTo('/ai-consulting')">AI Consulting</li>
       <li @click="navigateTo('/services')">Services</li>
       <li @click="navigateTo('/work')">Case Studies</li>
       <li @click="navigateTo('/blog')">Blog</li>
