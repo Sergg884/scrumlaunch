@@ -186,85 +186,87 @@
       </div>
 
     </section>
-    <section class="section-ai">
-      <h2 class="title">Expertise in Generative <span class="mark">AI Operations</span></h2>
-      <div class="ai-list row">
-        <div class="ai-item">
-          <nuxt-img src="/services/green&white/icon-1.svg" />
-          <div>
-            <h3>Discovery</h3>
-            <p>Where and how will Generative AI implementation most impact your business?</p>
+    <div class="layout">
+      <section class="section-ai">
+        <h2 class="title">Expertise in Generative <span class="mark">AI Operations</span></h2>
+        <div class="ai-list row">
+          <div class="ai-item">
+            <nuxt-img src="/services/green&white/icon-1.svg" />
+            <div>
+              <h3>Discovery</h3>
+              <p>Where and how will Generative AI implementation most impact your business?</p>
+            </div>
+          </div>
+          <div class="ai-item">
+            <nuxt-img src="/services/green&white/icon-9.svg" />
+            <div>
+              <h3>Deployment</h3>
+              <p>Configure and launch your LLM pipeline on scalable infrastructure.</p>
+            </div>
+          </div>
+          <div class="ai-item">
+            <nuxt-img src="/services/green&white/icon-4.svg" />
+            <div>
+              <h3>Fine Tuning</h3>
+              <p>Maximize the value of your data by selecting and fine-tuning the right model.</p>
+            </div>
+          </div>
+          <div class="ai-item">
+            <nuxt-img src="/services/green&white/icon-5.svg" />
+            <div>
+              <h3>Prompt Engineering</h3>
+              <p>Where and how will Generative AI implementation most impact your business?</p>
+            </div>
+          </div>
+          <div class="ai-item">
+            <nuxt-img src="/services/green&white/icon-8.svg" />
+            <div>
+              <h3>Scaling</h3>
+              <p>Ensure your Generative AI implementation scales as your needs grow.</p>
+            </div>
+          </div>
+          <div class="ai-item">
+            <nuxt-img src="/services/green&white/icon-7.svg" />
+            <div>
+              <h3>Monitoring</h3>
+              <p>Automate your monitoring, alerts, and error logging systems to ensure 99% uptime.</p>
+            </div>
+          </div>
+          <div class="ai-item">
+            <nuxt-img src="/services/green&white/icon-6.svg" />
+            <div>
+              <h3>Model Selection & Optimization</h3>
+              <p>Select & optimize the right model for your needs</p>
+            </div>
+          </div>
+          <div class="ai-item">
+            <nuxt-img src="/services/green&white/icon-2.svg" />
+            <div>
+              <h3>Security</h3>
+              <p>Using the right models and best practices to keep your proprietary information safe.</p>
+            </div>
+          </div>
+          <div class="ai-item">
+            <nuxt-img src="/services/green&white/icon-3.svg" />
+            <div>
+              <h3>Cost Optimization</h3>
+              <p>Continuous monitoring and analysis of your tooling costs and usage metrics.</p>
+            </div>
           </div>
         </div>
-        <div class="ai-item">
-          <nuxt-img src="/services/green&white/icon-9.svg" />
-          <div>
-            <h3>Deployment</h3>
-            <p>Configure and launch your LLM pipeline on scalable infrastructure.</p>
-          </div>
+        <div class="ai-block">
+          <h3>
+            The benefits of working with ScrumLaunch to build and manage your Generative AI workflows and LLM data pipelines.
+          </h3>
+          <hr />
+          <ul>
+            <li>A team of Generative AI experts with hands-on experience across multiple industries and Generative AI models.</li>
+            <li>Flexible engagements to support you across the entire Generative AI lifecycle.</li>
+            <li>Implementation expertise across both cloud and localized Generative AI models, depending on your needs.</li>
+          </ul>
         </div>
-        <div class="ai-item">
-          <nuxt-img src="/services/green&white/icon-4.svg" />
-          <div>
-            <h3>Fine Tuning</h3>
-            <p>Maximize the value of your data by selecting and fine-tuning the right model.</p>
-          </div>
-        </div>
-        <div class="ai-item">
-          <nuxt-img src="/services/green&white/icon-5.svg" />
-          <div>
-            <h3>Prompt Engineering</h3>
-            <p>Where and how will Generative AI implementation most impact your business?</p>
-          </div>
-        </div>
-        <div class="ai-item">
-          <nuxt-img src="/services/green&white/icon-8.svg" />
-          <div>
-            <h3>Scaling</h3>
-            <p>Ensure your Generative AI implementation scales as your needs grow.</p>
-          </div>
-        </div>
-        <div class="ai-item">
-          <nuxt-img src="/services/green&white/icon-7.svg" />
-          <div>
-            <h3>Monitoring</h3>
-            <p>Automate your monitoring, alerts, and error logging systems to ensure 99% uptime.</p>
-          </div>
-        </div>
-        <div class="ai-item">
-          <nuxt-img src="/services/green&white/icon-6.svg" />
-          <div>
-            <h3>Model Selection & Optimization</h3>
-            <p>Select & optimize the right model for your needs</p>
-          </div>
-        </div>
-        <div class="ai-item">
-          <nuxt-img src="/services/green&white/icon-2.svg" />
-          <div>
-            <h3>Security</h3>
-            <p>Using the right models and best practices to keep your proprietary information safe.</p>
-          </div>
-        </div>
-        <div class="ai-item">
-          <nuxt-img src="/services/green&white/icon-3.svg" />
-          <div>
-            <h3>Cost Optimization</h3>
-            <p>Continuous monitoring and analysis of your tooling costs and usage metrics.</p>
-          </div>
-        </div>
-      </div>
-      <div class="ai-block">
-        <h3>
-          The benefits of working with ScrumLaunch to build and manage your Generative AI workflows and LLM data pipelines.
-        </h3>
-        <hr />
-        <ul>
-          <li>A team of Generative AI experts with hands-on experience across multiple industries and Generative AI models.</li>
-          <li>Flexible engagements to support you across the entire Generative AI lifecycle.</li>
-          <li>Implementation expertise across both cloud and localized Generative AI models, depending on your needs.</li>
-        </ul>
-      </div>
-    </section>
+      </section>
+    </div>
     <section class="section-ways" >
       <h2 class="title-global">We help high-growth tech companies <span class="mark">in two ways</span></h2>
       <div class="ways-block">
@@ -600,8 +602,11 @@ export default {
   }
 }
 
-.section-ai {
+.layout {
   background-color: #1E1F21;
+}
+
+.section-ai {
   padding-top: 80px;
   padding-bottom: 80px;
 
@@ -701,7 +706,6 @@ export default {
     }
   }
   h3 {
-    text-transform: capitalize;
     color: #FFF;
     font-family: 'Proxima Nova';
     font-size: 16px;
@@ -712,6 +716,8 @@ export default {
 
     @include desktop-and-up {
       font-size: 26px;
+      display: flex;
+      align-items: center;
     }
   }
   p {
