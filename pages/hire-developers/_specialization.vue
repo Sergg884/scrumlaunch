@@ -44,16 +44,18 @@
 
     <FAQ v-if="questions" :questions="this.questions"/>
 
-    <!-- <client-only>
-      <script defer type="text/javascript">
-        hbspt.forms.create({
-          region: "na1",
-          portalId: "43665306",
-          formId: "f5543543-c014-4e86-a502-79069ed72a34"
-        });
-      </script>
-    </client-only> -->
-    <GetStarted />
+    <section>
+      <client-only>
+        <script defer type="text/javascript">
+          hbspt.forms.create({
+            region: "na1",
+            portalId: "43665306",
+            formId: "f5543543-c014-4e86-a502-79069ed72a34"
+          });
+        </script>
+      </client-only>
+    </section>
+    <!-- <GetStarted /> -->
 
   </div>
 </template>
