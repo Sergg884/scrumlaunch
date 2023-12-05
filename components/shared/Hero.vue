@@ -372,6 +372,7 @@ section {
 
     .button {
       text-align: -webkit-center;
+      margin-top: 15px;
     }
   }
 }

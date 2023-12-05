@@ -34,7 +34,7 @@
       </script>
     </client-only>
     </section>
-    <GetStarted />
+    <!-- <GetStarted /> -->
   </div>
 </template>
 
@@ -52,7 +52,7 @@ import Hiring from '~/components/pages/home/Hiring'
 import Awards from '~/components/pages/home/Awards'
 import TechPartner from '~/components/pages/home/TechPartner.vue'
 import Blog from '~/components/pages/home/Blog.vue'
-// import GetStarted from '~/components/shared/GetStarted.vue'
+import GetStarted from '~/components/shared/GetStarted.vue'
 
 export default {
 
@@ -69,7 +69,7 @@ export default {
     Hiring,
     TechPartner,
     Blog,
-    // GetStarted
+    GetStarted
   },
 
   data() {
