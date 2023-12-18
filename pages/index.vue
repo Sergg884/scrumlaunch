@@ -23,7 +23,7 @@
     <Hiring />
     <Awards />
     <Blog />
-    <section>
+    <!-- <section>
       <client-only>
         <script defer type="text/javascript">
           hbspt.forms.create({
@@ -33,8 +33,8 @@
           });
         </script>
       </client-only>
-    </section>
-    <!-- <GetStarted /> -->
+    </section> -->
+    <GetStarted />
   </div>
 </template>
 

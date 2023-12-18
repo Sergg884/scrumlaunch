@@ -9,7 +9,7 @@
       </p>
       <nuxt-img class="hero-img" src="/pages/consulting/ai-arm.png"/>
       <div v-if="!withRequirements" class="contact">
-        <client-only>
+        <!-- <client-only>
           <script defer type="text/javascript">
             hbspt.forms.create({
               region: "na1",
@@ -17,8 +17,8 @@
               formId: "395db3ac-77c5-4c11-80b7-e83c4e8fcecb"
             });
           </script>
-        </client-only>
-        <!-- <div class="input-container">
+        </client-only> -->
+        <div class="input-container">
           <b-form-group
             id="contact-us-fieldset"
             class="email-input"
@@ -39,7 +39,7 @@
         </div>
         <div class="button">
           <BaseButton @click="sendEmail()"> Schedule a call </BaseButton>
-        </div> -->
+        </div>
       </div>
     </section>
     <section class="section-eco">

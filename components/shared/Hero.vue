@@ -12,7 +12,7 @@
     <!-- <AiRequirementsField v-if="withRequirements" /> -->
 
     <div v-if="!withRequirements" class="contact">
-      <client-only>
+      <!-- <client-only>
         <script defer type="text/javascript">
           hbspt.forms.create({
             region: "na1",
@@ -20,8 +20,8 @@
             formId: "395db3ac-77c5-4c11-80b7-e83c4e8fcecb"
           });
         </script>
-      </client-only>
-      <!-- <div class="input-container">
+      </client-only> -->
+      <div class="input-container">
         <b-form-group
           id="contact-us-fieldset"
           class="email-input"
@@ -39,10 +39,10 @@
             @update:modelValue="handleFieldChange('email', $event)"
           />
         </b-form-group>
-      </div> -->
-      <!-- <div class="button">
+      </div>
+      <div class="button">
         <BaseButton @click="sendEmail()"> Schedule a call </BaseButton>
-      </div> -->
+      </div>
     </div>
     <div
       v-if="!is_done"
@@ -350,7 +350,7 @@ section {
 
     @include desktop-and-up {
       grid-area: 2 / 1 / 3 / 2;
-      /* display: flex; */
+      display: flex;
       text-align: left;
       gap: 40px;
       height: 140px;
