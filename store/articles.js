@@ -59,7 +59,7 @@ export const getters = {
   },
   getHeaderItems: (state) => {
     if (state.articles) {
-      let rawArticles = state.articles.map(item => {
+      const rawArticles = state.articles.map(item => {
         return {
           title: item.title,
           path: item.slug,
