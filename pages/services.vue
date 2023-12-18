@@ -56,7 +56,7 @@ export default {
             'Our design team works closely with clients across the spectrum of user journey mapping, UI/UX design, illustration, animation and brand development.',
         },
         {
-          title: 'User Research & Product Analitycs',
+          title: 'User Research & Product Analytics',
           icon: 'research',
           description:
             'Our product development philosophy is built on “lean principles”.  We believe in talking directly with users, data drive analysis and rapid iteration.  This helps us get to the core of the problem our client is trying to solve and develop the ideal solution.  “The faster you realize why you are wrong, the sooner you will be right.”',

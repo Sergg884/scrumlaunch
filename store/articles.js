@@ -1,5 +1,6 @@
 import * as Contentful from 'contentful'
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
+import { parse, format } from "date-fns";
 import { renderOptions } from '@/utils.js'
 
 const client = Contentful.createClient({
@@ -24,7 +25,7 @@ export const actions = {
         .then((res) => {
           const articles = res.items.map((el) => ({
             category: el.fields.category,
-            date: el.fields.date,
+            date: format(parse(el.fields.date, 'dd/MM/yyyy', new Date()), 'MM/dd/yyyy'),
             metaDescription: el.fields.metaDescription,
             metaTitle: el.fields.metaTitle,
             shortText: el.fields.shortText,

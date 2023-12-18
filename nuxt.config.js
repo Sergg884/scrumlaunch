@@ -62,6 +62,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
+    '@nuxtjs/date-fns',
     '@nuxtjs/style-resources',
     '@nuxt/postcss8',
   ],
