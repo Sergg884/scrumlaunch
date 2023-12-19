@@ -4,11 +4,11 @@
       hero-img="/pages/home/hero/home-desk.jpg"
     >
       <template #title>
-        Tech talent that’s right for your <span class="mark">project</span> 
+        Engineering<br>
+        <span class="mark">the future</span>
       </template>
       <template #text>
-        ScrumLaunch builds long-term, world-class tech teams for new product development and staff augmentation. Our talent hubs in
-        Eastern Europe and Latin America combine global scale and dedicated people managers to ensure you get the ideal team for your project.
+        Scrumlaunch innovates, designs and builds scalable software products for high growth startups and enterprise brands.
       </template>
     </Hero>
 

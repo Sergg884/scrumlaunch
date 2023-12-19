@@ -1,7 +1,7 @@
 <template>
   <section>
     <h2 class="title-global">
-      Your long term tech partner
+      We deliver high roi business outcome
     </h2>
     <div class="tabs">
       <div v-for="tab in tabs" :key="tab.title" class="tab">
@@ -28,8 +28,8 @@ export default {
       tabs: [
         {
           title: 'Time savings:',
-          text: '45H',
-          description: 'saved on avg for your tech team for each role'
+          text: '400-600 hours',
+          description: 'avg savings on staffing & onboarding of delivery team'
         },
         {
           title: 'Client lifetime:',
@@ -94,7 +94,7 @@ section {
         background-color: $main-green;
         border: 1px solid $main-green;
       }
-      
+
       .title {
         font-size: 16px;
         font-weight: 400;

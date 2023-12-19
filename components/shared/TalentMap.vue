@@ -3,8 +3,8 @@
     <section>
       <b-row class="text-container" no-gutters>
         <div class="text-block">
-          <h3>The best talent from around the globe at your fingertips</h3>
-          <p>ScrumLaunch has talent hubs with management teams on the ground in North America, Latin America, Eastern Europe and India to facilitate deep access to each local market.</p>
+          <h3>Delivery hubs around the world</h3>
+          <p>Our global footprint enables us to recruit and build high performance teams in delivery locations around the world.</p>
         </div>
         <div class="separator" />
         <b-row class="locations" no-gutters>
@@ -116,7 +116,7 @@ export default {
           vertical-align: initial;
           margin-right: 12px;
         }
-        
+
         span {
           white-space: nowrap;
           font-weight: 600;
@@ -132,7 +132,7 @@ export default {
         }
       }
     }
-    
+
     .text-block {
       width: 100%;
       @include desktop-and-up {
