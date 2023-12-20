@@ -8,7 +8,7 @@
         <span class="mark">the future</span>
       </template>
       <template #text>
-        Scrumlaunch innovates, designs and builds scalable software products for high growth startups and enterprise brands.
+        ScrumLaunch innovates, designs and builds scalable software products for high growth startups and enterprise brands. We transform ideas into market-leading digital realities and high ROI business outcomes.
       </template>
     </Hero>
 
