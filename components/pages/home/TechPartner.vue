@@ -28,7 +28,7 @@ export default {
       tabs: [
         {
           title: 'Time savings:',
-          text: '400-600 hours',
+          text: '400-600 HOURS',
           description: 'avg savings on staffing & onboarding of delivery team'
         },
         {
