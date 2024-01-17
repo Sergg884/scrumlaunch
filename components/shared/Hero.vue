@@ -21,27 +21,8 @@
           });
         </script>
       </client-only> -->
-      <div class="input-container">
-        <b-form-group
-          id="contact-us-fieldset"
-          class="email-input"
-          label="Email"
-          label-for="email-input"
-          plaintext
-        >
-          <InputComponent
-            id="email-input"
-            class="contact-form--wrapper--input input-email"
-            :model-value="email"
-            placeholder="Enter your email here"
-            name="email"
-            :error-message="emailError"
-            @update:modelValue="handleFieldChange('email', $event)"
-          />
-        </b-form-group>
-      </div>
       <div class="button">
-        <BaseButton @click="sendEmail()"> Schedule a call </BaseButton>
+        <BaseButton @click="showModal()"> Schedule a call </BaseButton>
       </div>
     </div>
     <div
@@ -70,7 +51,7 @@
         Your message<br />has been sent
       </div>
     </div> -->
-    <SuccessModal
+    <ScheduleACallModal
       v-show="isModalVisible"
       @close="closeModal"
     />
@@ -82,10 +63,12 @@ import lottie from 'vue-lottie/src/lottie.vue'
 import InputComponent from '@/components/ui/InputComponent.vue'
 import AiRequirementsField from '@/components/shared/AiRequirementsField.vue'
 import SuccessModal from '~/components/shared/SuccessModal'
+import ScheduleACallModal from '~/components/shared/ScheduleACallModal.vue'
 
 
 export default {
   components: {
+    ScheduleACallModal,
     lottie,
     InputComponent,
     SuccessModal,
@@ -372,6 +355,10 @@ section {
 
     .button {
       text-align: -webkit-center;
+
+      @include desktop-and-up {
+        text-align: -webkit-left;
+      }
       margin-top: 15px;
     }
   }
