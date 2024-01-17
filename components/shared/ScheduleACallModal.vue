@@ -68,4 +68,10 @@
     }
   }
 }
+
+@media screen and (max-height: 800px) {
+  .modal__content {
+    overflow-y: auto;
+  }
+}
 </style>
