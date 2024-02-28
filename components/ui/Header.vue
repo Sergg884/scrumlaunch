@@ -6,16 +6,16 @@
       />
     </NuxtLink>
     <div class="menu" :class="{ white: isHeaderWhite }">
-      <NuxtLink to="/ai-consulting"> AI Consulting </NuxtLink>
-      <NuxtLink to="/services"> Services </NuxtLink>
+      <NuxtLink to="/ai-consulting"> AI Transformation </NuxtLink>
+      <NuxtLink to="/services"> Product Development </NuxtLink>
+      <HeaderDropdown
+          title="IT Recruiting"
+          to="/hire-developers"
+          :menu-items="developers"
+          :is-white="isHeaderWhite"
+      />
       <NuxtLink to="/work"> Case Studies </NuxtLink>
       <NuxtLink to="/blog"> Blog </NuxtLink>
-      <HeaderDropdown
-        title="Staff Augmentation"
-        to="/hire-developers"
-        :menu-items="developers"
-        :is-white="isHeaderWhite"
-      />
       <!-- <NuxtLink to="/process"> About </NuxtLink> -->
       <NuxtLink to="/remote-developer-jobs"> Careers </NuxtLink>
       <!-- <NuxtLink to="/contact-us"> Contact </NuxtLink> -->
@@ -60,27 +60,27 @@
     </div>
     <ul class="mobile-navigation" :class="{ active: showMobileNavigation }">
       <li @click="navigateTo('/')">Home</li>
-      <li @click="navigateTo('/ai-consulting')">AI Consulting</li>
-      <li @click="navigateTo('/services')">Services</li>
-      <li @click="navigateTo('/work')">Case Studies</li>
-      <li @click="navigateTo('/blog')">Blog</li>
+      <li @click="navigateTo('/ai-consulting')">AI Transformation</li>
+      <li @click="navigateTo('/services')">Product Development</li>
       <li
-        class="dropdown"
-        :class="{ 'active-dropdown': isHireDevUp }"
-        @click="dropDownUp($event)"
+          class="dropdown"
+          :class="{ 'active-dropdown': isHireDevUp }"
+          @click="dropDownUp($event)"
       >
-        Staff Augmentation
+        IT Recruiting
         <img class="chevron" src="/icons/chevron-white.svg" />
         <ul class="header-dropdown">
           <li
-            v-for="item in developers"
-            :key="item.title"
-            @click="navigateTo(item.path)"
+              v-for="item in developers"
+              :key="item.title"
+              @click="navigateTo(item.path)"
           >
             {{ item.title }}
           </li>
         </ul>
       </li>
+      <li @click="navigateTo('/work')">Case Studies</li>
+      <li @click="navigateTo('/blog')">Blog</li>
       <!-- <li @click="navigateTo('/process')">
         About
       </li> -->
@@ -402,7 +402,7 @@ header {
   display: flex;
   width: 100%;
   justify-content: flex-end;
-  gap: 40px;
+  gap: 35px;
   display: none;
   z-index: 100;
   align-items: center;
