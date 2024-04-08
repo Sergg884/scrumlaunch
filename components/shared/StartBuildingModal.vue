@@ -22,7 +22,7 @@
               <nuxt-img src="/shared/a4.png" alt="candidates" />
               <form @submit.prevent="validateForm()">
                 <div class="wrap">
-                  <label> 
+                  <label>
                     Name*
                   </label>
                   <InputComponent
@@ -36,7 +36,7 @@
                   />
                 </div>
                 <div class="wrap">
-                  <label> 
+                  <label>
                     Email*
                   </label>
                   <InputComponent
@@ -50,7 +50,7 @@
                   />
                 </div>
                 <div class="wrap">
-                  <label> 
+                  <label>
                     I'm interested in
                   </label>
                   <InputComponent
@@ -68,6 +68,9 @@
                 </BaseButton>
               </form>
             </div>
+            <span class="form_submittingInfo">
+              *By submitting your information, you agree to receive communications from ScrumLaunch including a technology newsletter.
+            </span>
           </div>
 
           <div v-show="is_sent" :class="{full: !is_done}">
@@ -211,7 +214,7 @@ export default {
 
     @include tablet-and-up {
       font-size: 48px;
-    } 
+    }
   }
 
   form {
@@ -245,7 +248,7 @@ export default {
       width: auto;
     }
   }
-  
+
   .button-container {
     display: flex;
     justify-content: center;
@@ -334,7 +337,7 @@ export default {
     display: flex;
     max-width: 848px;
     margin: auto;
-    padding: 10px 10px 30px 10px;
+    padding: 10px 10px 5px 10px;
     text-align: start;
     justify-content: space-around;
 
@@ -438,5 +441,10 @@ export default {
     @include desktop-and-up {
       width: 360px;
     }
+  }
+
+  .form_submittingInfo {
+    font-size: 13px;
+    color: orangered;
   }
 </style>
