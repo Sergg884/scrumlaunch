@@ -445,6 +445,5 @@ export default {
 
   .form_submittingInfo {
     font-size: 13px;
-    color: orangered;
   }
 </style>
