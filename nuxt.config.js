@@ -8,6 +8,8 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { property: 'og:title', content: 'ScrumLaunch' },
+      { property: 'og:description', content: 'ScrumLaunch enables start-ups, businesses, and organizations to hire developers from a growing network of top talent in the world. Our React, Python, PHP, Kotlin experts ready to work full-time, part-time, or hourly who will seamlessly integrate into your team.' },
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' },
     ],
@@ -49,7 +51,7 @@ export default {
   image: {
     provider: 'ipx',
     ipx: {}
-  }, 
+  },
 
   serverMiddleware: [
     { path: '/api', handler: '~/api' },
