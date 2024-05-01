@@ -24,7 +24,7 @@ export default {
       name: 'harvest',
       backgroundColor: '#74c947',
       projectInfo: {
-        text: 'Harvest is a negotiation fee platform where you can manage debts and expenses. US banks charge clients enormous amount of fee for each transaction or ATM cash transactions. People struggle with negotiating fees through banks and return their money so Harvest helps with this problem and provides and automatic and fast solution to eliminate this problem.',
+        text: 'Harvest is an AI-powered application that helps consumers automatically negotiate bank fees.  The platform has been acquired by Acorns Inc.',
         details: [
           {
             title: 'Details',
