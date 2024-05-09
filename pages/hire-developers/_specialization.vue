@@ -104,6 +104,7 @@ export default {
       title: `Hire ${this.dev_lang || ''} Developers - Top Rated | ScrumLaunch`,
       meta: [
         {
+          hid: 'og:description',
           name: 'description',
           content: `Hire and scale ${this.dev_lang || ''} developers with the best-in-class website development and design consulting firm. Book a free consultation now.`,
         },

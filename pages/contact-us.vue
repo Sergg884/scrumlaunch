@@ -37,7 +37,7 @@ export default {
     title: 'Contact Us | ScrumLaunch',
     meta: [
       {
-        hid: 'description',
+        hid: 'og:description',
         name: 'description',
         content: 'Interested in working with us?  Get in touch · hello@scrumlaunch.com · Let’s talk about elevating and accelerating your digital experience.',
       },

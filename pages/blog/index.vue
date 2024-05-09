@@ -76,7 +76,7 @@ export default {
   head: {
     title: 'ScrumLaunch Blog: Articles about Technology, Business & more',
     meta: [
-      { hid: 'description', name: 'description', content: 'Articles and News from the world of IT: software development insights, best remote practices in Product Management, stories of creating efficient business solutions, and much more.' },
+      { hid: 'og:description', name: 'description', content: 'Articles and News from the world of IT: software development insights, best remote practices in Product Management, stories of creating efficient business solutions, and much more.' },
     ],
   },
 

@@ -54,6 +54,7 @@ export default {
       title: this.article.metaTitle,
       meta: [
         {
+          hid: 'og:description',
           name: 'description',
           content: this.article.metaDescription,
         },

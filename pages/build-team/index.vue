@@ -39,10 +39,6 @@ export default {
   head: {
     title: 'Build Team with Scrum AI',
     meta: [
-      { hid: 'og:site_name', 
-        property: "og:site_name",
-        content: "ScrumLaunch"
-      },
       {
         hid: 'og:title',
         name: 'og:title',
@@ -59,7 +55,7 @@ export default {
         content: 'Scrumlaunch logo'
       },
       {
-        hid: 'description',
+        hid: 'og:description',
         name: 'description',
         content:
           'Interested in working with us?  Get in touch · hello@scrumlaunch.com · Let’s talk about elevating and accelerating your digital experience.',

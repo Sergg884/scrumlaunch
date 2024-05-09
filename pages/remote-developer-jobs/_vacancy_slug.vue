@@ -97,6 +97,7 @@ export default {
       title: `Remote ${language.charAt(0).toUpperCase() + language.slice(1)} Development Job | ScrumLaunch`,
       meta: [
         {
+          hid: 'og:description',
           name: "description",
           content: "ScrumLaunch is seeking skilled software engineers and web developers to join its global remote workforce. We are looking for highly motivated programmers and engineers who love project-based work to join are rapidly growing team.",
         },

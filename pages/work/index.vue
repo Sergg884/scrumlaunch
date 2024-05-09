@@ -39,8 +39,9 @@ export default {
     title: 'Case Studies and Success Stories - ScrumLaunch',
     meta: [
       {
-        hid: 'description',
-        name: 'description',
+        hid: 'og:description',
+        name: 'og:description',
+        property: 'og:description',
         content:
           'Our work & client business outcomes speak for themselves. Join 100+ high growth startups and Fortune 500 companies that are building software teams with ScrumLaunch.',
       },

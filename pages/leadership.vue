@@ -53,7 +53,11 @@ export default {
   head: {
     title: 'Leadership - ScrumLaunch',
     meta: [
-      { hid: 'description', name: 'description', content: 'Our Leadership.' }
+      {
+        hid: 'og:description',
+        name: 'description',
+        content: 'Our Leadership.'
+      }
     ],
   },
 

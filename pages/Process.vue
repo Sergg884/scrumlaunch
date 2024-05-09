@@ -95,7 +95,7 @@ export default {
   head: {
     title: 'Process',
     meta: [
-      { hid: 'description', name: 'description', content: 'Process' }
+      { hid: 'og:description', name: 'description', content: 'Process' }
     ],
   },
 

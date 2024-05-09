@@ -6,12 +6,41 @@ export default {
       lang: 'en',
     },
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { property: 'og:title', content: 'ScrumLaunch' },
-      { property: 'og:description', content: 'ScrumLaunch enables start-ups, businesses, and organizations to hire developers from a growing network of top talent in the world. Our React, Python, PHP, Kotlin experts ready to work full-time, part-time, or hourly who will seamlessly integrate into your team.' },
-      { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' },
+      {
+        charset: 'utf-8',
+        hid: 'charset'
+      },
+      {
+        name: 'viewport',
+        content: 'width=device-width, initial-scale=1'
+      },
+      {
+        hid: 'og:site_name',
+        name: 'og:site_name',
+        property: 'og:site_name',
+        content: 'ScrumLaunch'
+      },
+      {
+        hid: 'og:title',
+        name: 'og:title',
+        property: 'og:title',
+        content: 'ScrumLaunch'
+      },
+      {
+        hid: 'og:description',
+        name: 'description',
+        property: 'og:description',
+        content: 'ScrumLaunch enables start-ups, businesses, and organizations to hire developers from a growing network of top talent in the world. Our React, Python, PHP, Kotlin experts ready to work full-time, part-time, or hourly who will seamlessly integrate into your team.'
+      },
+      {
+        name: 'format-detection',
+        content: 'telephone=no'
+      },
+      {
+        hid: 'apple-mobile-web-app-title',
+        name: 'apple-mobile-web-app-title',
+        content: 'ScrumLaunch'
+      },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }],
     script: [{

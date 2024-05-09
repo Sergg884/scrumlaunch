@@ -36,7 +36,7 @@ export default {
   head: {
     title: 'Software Development and Consulting Services - ScrumLaunch',
     meta: [
-      { hid: 'description', name: 'description', content: 'Our Services. Software Development. DevOps. UI/UX Design. User Research & Product Analytics. Brand Design. Pitch Deck Creation. Strategy.' }
+      { hid: 'og:description', name: 'description', content: 'Our Services. Software Development. DevOps. UI/UX Design. User Research & Product Analytics. Brand Design. Pitch Deck Creation. Strategy.' }
     ],
   },
 

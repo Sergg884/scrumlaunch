@@ -339,9 +339,6 @@ export default {
 
   head: {
     title: 'Hire Full Stack Developers - Top 1% of 2 million + skilled engineers',
-    meta: [
-      { hid: 'description', name: 'description', content: 'ScrumLaunch enables start-ups, businesses, and organizations to hire developers from a growing network of top talent in the world. Our React, Python, PHP, Kotlin experts ready to work full-time, part-time, or hourly who will seamlessly integrate into your team.' }
-    ],
   },
 
   methods: {
