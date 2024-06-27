@@ -4,7 +4,7 @@ const router = Router()
 const {createAirTableRow} = require('../utils')
 
 router.post('/contact-us', (req, res) => {
-  const fields ={
+  const fields = {
     Name: req.body.name,
     Email: req.body.email,
     Details: req.body.details,

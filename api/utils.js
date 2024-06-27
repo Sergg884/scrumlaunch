@@ -1,9 +1,11 @@
 const Airtable = require('airtable')
 const {formatDate} = require('../utils')
 
-const base = new Airtable({ apiKey: 'keyaqXAOg3U3od8Jw' }).base(
-  'appWxByzB6c8rBuQ9'
-)
+Airtable.configure({
+  endpointUrl: 'https://api.airtable.com',
+  apiKey: process.env.AIRTABLE_API_KEY
+})
+const base = Airtable.base(process.env.AIRTABLE_BASE);
 
 function cleanString(text) {
   const replacedNewlines = text.replace(/\n+/g, '');
