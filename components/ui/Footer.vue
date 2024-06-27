@@ -52,7 +52,7 @@
         </li>
       </b-col>
       <b-col class="private" order="2" order-md="2" cols="12" xs="12" sm="12" md="2" xl="12">
-        <p>© ScrumLaunch 2023</p>
+        <p>© ScrumLaunch 2024</p>
       </b-col>
     </b-row>
   </footer>
