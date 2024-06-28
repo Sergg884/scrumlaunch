@@ -7,7 +7,7 @@
       <div class="page">
         <div class="main">
           <nuxt-img class="icon" :alt="`faq-img-1`" src="/sitemap/icon-6.svg" />
-          <NuxtLink to="/ai-consulting"><h3>AI Consulting</h3></NuxtLink>
+          <NuxtLink to="/ai-consulting"><h3>AI Transformation</h3></NuxtLink>
         </div>
       </div>
       <div class="page">

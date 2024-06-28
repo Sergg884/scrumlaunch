@@ -43,7 +43,7 @@ export default {
     return {
       tabs: [
         {
-          title: 'Staff augmentation',
+          title: 'IT Recruiting',
           img: '/services/icon-6.svg',
           text: 'From 1 full-time developer to several experienced developers fully integrated in your team',
           btn: 'Get started',

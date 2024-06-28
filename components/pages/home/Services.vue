@@ -24,7 +24,7 @@ export default {
           img: '/pages/home/services/tab-1.jpg'
         },
         {
-          text: 'Staff augmentation',
+          text: 'IT Recruiting',
           img: '/pages/home/services/tab-2.jpg'
         },
       ]
@@ -70,7 +70,6 @@ section {
       width: 100%;
 
       @include tablet-and-up {
-        word-spacing: 100px;
         font-size: 30px;
         text-align: left;
         flex-basis: 0;
@@ -79,7 +78,6 @@ section {
 
       @include desktop-and-up {
         font-size: 48px;
-        word-spacing: 160px;
         padding: 42px;
       }
     }

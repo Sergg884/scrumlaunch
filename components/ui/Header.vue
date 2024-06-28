@@ -6,18 +6,18 @@
       />
     </NuxtLink>
     <div class="menu" :class="{ white: isHeaderWhite }">
-      <NuxtLink to="/ai-consulting"> AI Consulting </NuxtLink>
-      <NuxtLink to="/services"> Product Development </NuxtLink>
+      <NuxtLink to="/ai-consulting">AI Transformation</NuxtLink>
+      <NuxtLink to="/services">Product Development</NuxtLink>
       <HeaderDropdown
           title="IT Recruiting"
           to="/hire-developers"
           :menu-items="developers"
           :is-white="isHeaderWhite"
       />
-      <NuxtLink to="/work"> Case Studies </NuxtLink>
-      <NuxtLink to="/blog"> Blog </NuxtLink>
+      <NuxtLink to="/work">Case Studies</NuxtLink>
+      <NuxtLink to="/blog">Blog</NuxtLink>
       <!-- <NuxtLink to="/process"> About </NuxtLink> -->
-      <NuxtLink to="/remote-developer-jobs"> Careers </NuxtLink>
+      <NuxtLink to="/remote-developer-jobs">Careers</NuxtLink>
       <!-- <NuxtLink to="/contact-us"> Contact </NuxtLink> -->
       <BaseButton
         :class="`ai-link ${isAILinkGreen || showMobileNavigation ? 'green-ai' : ''}`"
@@ -60,7 +60,7 @@
     </div>
     <ul class="mobile-navigation" :class="{ active: showMobileNavigation }">
       <li @click="navigateTo('/')">Home</li>
-      <li @click="navigateTo('/ai-consulting')">AI Consulting</li>
+      <li @click="navigateTo('/ai-consulting')">AI Transformation</li>
       <li @click="navigateTo('/services')">Product Development</li>
       <li
           class="dropdown"
