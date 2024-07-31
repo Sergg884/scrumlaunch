@@ -2,263 +2,6 @@
   {
     "@context": "https://schema.org/",
     "@type": "JobPosting",
-    "title": "DevOps Engineer",
-    "description": "<p>Requirements:</p><div><p>- 1+ years of commercial experience in a similar position;</p><p>- Scripting skills (Bash, Python);</p><p>- AWS services EC2, lambda, athena, Glue, S3;</p><p>- Web: apache/nginx;</p><p>- Basic knowledge in sql queries;</p><p>- Experience with version control systems (GitHub);</p><p>- Linux OS knowledge;</p><p>- Good knowledge in troubleshooting linux servers;</p><p>- Data Engineering;</p><p>- Apache Airflow;</p><p>- Knowledge in ETL Pipelines;</p><p>- English Upper Intermediate or higher.</p></div><br/><br/><p>Responsibilities:</p><p>- Build and maintain the CI/CD solution;</p><p>- Automate everything that can be automated;</p><p>- Maintaining infrastructures and environments of all types from dev to production;</p><p>- Security monitoring and administration.</p><br/><br/><p>We offer:</p><p>- Opportunity to grow as an expert;</p><p>- Regular results-based salary review;</p><p>- Flexible working conditions;</p><p>- 24 days of paid vacation (working days);</p><p>- 10 sick days;</p><p>- Friendly and open-minded team;</p><p>- English classes.</p>",
-    "datePosted": "2022-08-11",
-    "applicantLocationRequirements": [
-      {
-        "@type": "Country",
-        "name": "Ukraine"
-      },
-      {
-        "@type": "Country",
-        "name": "Europe"
-      }
-    ],
-    "jobLocationType": "TELECOMMUTE",
-    "employmentType": "FULL_TIME",
-    "hiringOrganization": {
-      "@type": "Organization",
-      "name": "Scrumlaunch",
-      "sameAs": "https://www.scrumlaunch.com"
-    },
-    "baseSalary": {
-      "@type": "MonetaryAmount",
-      "currency": "USD"
-    }
-  },
-
-  {
-    "@context": "https://schema.org/",
-    "@type": "JobPosting",
-    "title": "React Native Developer (Brazil)",
-    "description": "<p>Requirements:</p><p>- 1+ years of experience in ReactNative</p><p>- Experience with Redux/Redux-Saga</p><p>- Strong experience with React</p><p>- Firebase/PushNotification</p><br/><br/><p>Will be a plus:</p><p>- experience working with IOS/Android native modules;</p><p>- experience with objective-c and Kotlin;</p><p>- experience with publishing to stores;</p><p>- experience with TypeScript.</p>",
-    "datePosted": "2022-08-18",
-    "applicantLocationRequirements": [
-      {
-        "@type": "Country",
-        "name": "Brazil"
-      },
-      {
-        "@type": "Country",
-        "name": "Argentina"
-      }
-    ],
-    "jobLocationType": "TELECOMMUTE",
-    "employmentType": "FULL_TIME",
-    "hiringOrganization": {
-      "@type": "Organization",
-      "name": "Scrumlaunch",
-      "sameAs": "https://www.scrumlaunch.com"
-    },
-    "baseSalary": {
-      "@type": "MonetaryAmount",
-      "currency": "USD"
-    }
-  },
-
-  {
-    "@context": "https://schema.org/",
-    "@type": "JobPosting",
-    "title": "Shopify Developer",
-    "description": "<p>Requirements:</p><p>- At least one year of Shopify development experience;</p><p>- Experience with creating Shopify themes and Liquid templating;</p><p>- Experience with Shopify’s object/properties, AJAX API, and Metafields;</p><p>- Experience with implementing/debugging 3rd party Shopify apps as well as creating custom solutions if necessary;</p><p>- Experience working with 3rd party services and APIs, specifical plugins for Shopify;</p><p>- Experience with HTML5, CSS3, JavaScript, jQuery;</p><p>- Experience developing responsive layouts for a desktop, tablet, and mobile;</p><p>- Experience with GIT;</p><br/><br/><p>Will be a plus:</p><p>- Experience with Gulp, Grunt, Webpack etc;</p><p>- Experience with testing and debugging skills with browser console and external tools;</p><p>- English — intermediate and above, both written and verbal;</p><p>- Experience with HubSpot CRM and HubL templating language or at least be willing to study it</p><br/><br/><p>Responsibilities:</p><p>- Creating new projects using Shopify platform;</p><p>- Development and implementation of new solutions in existing projects;</p><p>- The ability to experiment with new technologies and influence the development process.</p><br/><br/><p>We offer:</p><p>- Opportunity to grow as an expert;</p><p>- Regular results-based salary review;</p><p>- Flexible working conditions;</p><p>- 24 days of paid vacation (working days);</p><p>- 10 sick days;</p><p>- Friendly and open-minded team;</p><p>- English classes.</p>",
-    "datePosted": "2022-08-26",
-    "applicantLocationRequirements": [
-      {
-        "@type": "Country",
-        "name": "Ukraine"
-      },
-      {
-        "@type": "Country",
-        "name": "Europe"
-      }
-    ],
-    "jobLocationType": "TELECOMMUTE",
-    "employmentType": "FULL_TIME",
-    "hiringOrganization": {
-      "@type": "Organization",
-      "name": "Scrumlaunch",
-      "sameAs": "https://www.scrumlaunch.com"
-    },
-    "baseSalary": {
-      "@type": "MonetaryAmount",
-      "currency": "USD"
-    }
-  },
-
-  {
-    "@context": "https://schema.org/",
-    "@type": "JobPosting",
-    "title": "Node JS Developer",
-    "description": "<p>Requirements:</p><p>- At least 1,5 years of Node.js experience;</p><p>- Experience with TypeGraphQL, Prisma and Knex;</p><p>- Experience with creating unit tests;</p><p>- Experience with git, task trackers (trello, jira etc);</p><p>- Intermediate English level or higher;</p><p>- Ability to work with the team.</p><br/><br/><p>Will be a plus:</p><p>- Experience of work with 3-rd party services, such as AWS, Twilio, Stripe, Google Cloud etc;</p><p>- Knowledge of front-end technologies such as HTML5 and CSS3;</p><p>- Experience with Postgres;</p><p>- Experience with serverless framework;</p><p>- Experience with frontend frameworks such as Angular, React, Vue etc.</p><br/><br/><p>We offer:</p><p>- Opportunity to grow as an expert;</p><p>- Regular results-based salary review;</p><p>- Flexible working conditions;</p><p>- 24 days of paid vacation (working days);</p><p>- 10 sick days;</p><p>- Friendly and open-minded team;</p><p>- English classes.</p>",
-    "datePosted": "2022-09-02",
-    "applicantLocationRequirements": [
-      {
-        "@type": "Country",
-        "name": "Ukraine"
-      },
-      {
-        "@type": "Country",
-        "name": "Europe"
-      }
-    ],
-    "jobLocationType": "TELECOMMUTE",
-    "employmentType": "FULL_TIME",
-    "hiringOrganization": {
-      "@type": "Organization",
-      "name": "Scrumlaunch",
-      "sameAs": "https://www.scrumlaunch.com"
-    },
-    "baseSalary": {
-      "@type": "MonetaryAmount",
-      "currency": "USD"
-    }
-  },
-
-  {
-    "@context": "https://schema.org/",
-    "@type": "JobPosting",
-    "title": "React Native Developer",
-    "description": "<p>You need to have:</p><p>- 2+ years of experience in ReactNative;</p><p>- Experience with Redux/Redux-Saga;</p><p>- Strong experience with React;</p><p>- Firebase/PushNotification;</p><p>- experience with TypeScript;</p><p>- GraphQL;</p><p>- Apollo Client;</p><p>- Prisma;</p><p>- Knex;</p><p>- English Upper-Intermediate or higher;</p><br/><br/><p>Will be a plus:</p><p>- experience working with IOS/Android native modules;</p><p>- experience with objective-c and Kotlin;</p><p>- experience with publishing to stores.</p><br/><br/><p>We offer:</p><p>- Opportunity to grow as an expert;</p><p>- Regular results-based salary review;</p><p>- Flexible working conditions;</p><p>- 24 days of paid vacation (working days);</p><p>- 10 sick days;</p><p>- Friendly and open-minded team;</p><p>- English classes.</p>",
-    "datePosted": "2022-09-05",
-    "applicantLocationRequirements": [
-      {
-        "@type": "Country",
-        "name": "Ukraine"
-      },
-      {
-        "@type": "Country",
-        "name": "Europe"
-      }
-    ],
-    "jobLocationType": "TELECOMMUTE",
-    "employmentType": "FULL_TIME",
-    "hiringOrganization": {
-      "@type": "Organization",
-      "name": "Scrumlaunch",
-      "sameAs": "https://www.scrumlaunch.com"
-    },
-    "baseSalary": {
-      "@type": "MonetaryAmount",
-      "currency": "USD"
-    }
-  },
-
-  {
-    "@context": "https://schema.org/",
-    "@type": "JobPosting",
-    "title": "Junior Data Science/Data Quality Engineer",
-    "description": "<p>You need to have:</p><p>- at least 0,5 years of Python3 experience;</p><p>- strong understanding of main principles of python PEP 8 standards;</p><p>- experience with writing parsers for CSV and JSON files;</p><p>- experience with SQL databases, such as Postgres and MySQL;</p><p>- strong understanding of main OOP principles;</p><p>- experience with data analysis python libraries such as pandas and pySpark;</p><p>- basic knowledge of math statistics.</p><br/><br/><p>Responsibilities:</p><p>- manage all running scrapers;</p><p>- support and maintain data quality process to ensure reliability of data pipelines;</p><p>- data science knowledge/exposure to analytics;</p><p>- deep rooted quality assurance mentality;</p><p>- data manipulation/engineering.</p><br/><br/><p>Will be a plus:</p><p>- experience with ETL systems;</p><p>- experience with data processing platforms such as Databricks;</p><p>- understanding the basic principles of data distribution.</p><br/><br/><p>We offer:</p><p>- Opportunity to grow as an expert;</p><p>- Regular results-based salary review;</p><p>- Flexible working conditions;</p><p>- 24 days of paid vacation (working days);</p><p>- 10 sick days;</p><p>- Friendly and open-minded team;</p><p>- English classes.</p>",
-    "datePosted": "2022-09-20",
-    "applicantLocationRequirements": [
-      {
-        "@type": "Country",
-        "name": "Ukraine"
-      },
-      {
-        "@type": "Country",
-        "name": "Europe"
-      }
-    ],
-    "jobLocationType": "TELECOMMUTE",
-    "employmentType": "FULL_TIME",
-    "hiringOrganization": {
-      "@type": "Organization",
-      "name": "Scrumlaunch",
-      "sameAs": "https://www.scrumlaunch.com"
-    },
-    "baseSalary": {
-      "@type": "MonetaryAmount",
-      "currency": "USD"
-    }
-  },
-
-  {
-    "@context": "https://schema.org/",
-    "@type": "JobPosting",
-    "title": "Mobile/full-stack developer (Brazil)",
-    "description": "<p>You’ll be a founding mobile/full-stack engineer for GoodOnes, working directly with the founders (former leads/execs in Google, Dropbox, Disney, Mattel, with previous exits). Your day-to-day interaction will be with the CEO. You’ll build our mobile app from the ground up, working closely with UX, and iterating quickly based on the build-measure-learn loop. You will build a highly scalable mobile first experience and integrate with Google Photos API and iCloud.</p><br/><br/><p>Required</p><p>- 2 year min experience at product companies (in addition to any dev shops)</p><p>- 5 year min coding experience</p><p>- 2+ years of mobile development experience in Swift;</p><p>- SwiftUI experience, desire to learn the other as necessary</p><p>- Experience working with REST APIs and wrappers to integrate with backend</p><p>- Ability to work at least 6 hours per day overlapping with 8am-5pm PST (US time zones only)</p><p>- Obsession over every pixel</p><p>- Customer empathy and curiosity</p><p>- Bias for action and desire to learn</p><p>- Experience in creating and maintaining project architecture</p><p>- Initiative, willingness to offer and implement proposals to improve the project architecture</p><br/><br/><p>Nice-to-have<p/><p>- Google Photos API knowledge</p><p>- ML experience</p><p>- Computer vision experience</p><p>- Experience working on consumer products</p><p>- Passion for personal photos and videos</p><p>- Experience with React Native</p>",
-    "datePosted": "2022-08-23",
-    "applicantLocationRequirements": [
-      {
-        "@type": "Country",
-        "name": "Brazil"
-      },
-      {
-        "@type": "Country",
-        "name": "Argentina"
-      }
-    ],
-    "jobLocationType": "TELECOMMUTE",
-    "employmentType": "FULL_TIME",
-    "hiringOrganization": {
-      "@type": "Organization",
-      "name": "Scrumlaunch",
-      "sameAs": "https://www.scrumlaunch.com"
-    },
-    "baseSalary": {
-      "@type": "MonetaryAmount",
-      "currency": "USD"
-    }
-  },
-
-  {
-    "@context": "https://schema.org/",
-    "@type": "JobPosting",
-    "title": "Senior Front-end Developer",
-    "description": "<p>Requirements:</p><p>- 4+ years of web development experience.</p><p>- Strong knowledge of JavaScript (CSS, HTML);</p><p>- Strong proficiency with React.js;</p><p>- Experience working with Vue.js;</p><p>- Good knowledge of TypeScript;</p><p>- Knowledge of and hands-on with Unit Testing;</p><p>- Experience working with Sass, SCSS, styled components;</p><p>- Experience working with test framework Jest;</p><p>- Testing Library;</p><p>- Code Coverage;</p> <p>- Experience providing code-review;</p><p>- Upper-intermediate English.</p>",
-    "datePosted": "2022-09-08",
-    "applicantLocationRequirements": [
-      {
-        "@type": "Country",
-        "name": "Brazil"
-      },
-      {
-        "@type": "Country",
-        "name": "Argentina"
-      }
-    ],
-    "jobLocationType": "TELECOMMUTE",
-    "employmentType": "FULL_TIME",
-    "hiringOrganization": {
-      "@type": "Organization",
-      "name": "Scrumlaunch",
-      "sameAs": "https://www.scrumlaunch.com"
-    },
-    "baseSalary": {
-      "@type": "MonetaryAmount",
-      "currency": "USD"
-    }
-  },
-
-  {
-    "@context": "https://schema.org/",
-    "@type": "JobPosting",
-    "title": "Senior QA Automation Engineer",
-    "description": "<p>Project Description</p><div><p>Our Client is one of largest TV providers in North America. We are looking for QA Automation Engineers to assess software quality through automated testing. You will be responsible for finding and reporting bugs and glitches. In this role, you should have a keen eye for detail and excellent communication skills.</p></div><br/><br/><p>Responsibilities:</p><p>- Maintain test automation framework for larger Unified Client testing team</p><p>- Set up and configure different test devices on cloud and on-premise CICD pipeline</p><p>- Keep pipeline test scripts up to date with new test and debug issues with existing tests as needed</p><p>- Develop test automation against backlog</p><p>- Maintain, execute, and create any new client scoring scripts for all platforms (long term tests for bad behavior).</p><p>- Define new Canonical test cases as features are added</p><p>- Perform performance release candidate testing (primarily Automated)</p><p>- Develop and maintain performance test automation scripts.</p><p>- Test other builds (as requested)</p><p>- Write bugs and validate bug fixes</p><br/><br/><p>Mandatory Skills:</p><p>- Good written/verbal communication skills.</p><p>- 2+ years of experience with automation scripts with JavaScript</p><p>- Experience in writing test cases</p><p>- Good problem-solving, and analytical abilities</p><p>- Good planning, organizational, and follow-up skills.</p><p>- Experience in testing iOS, Android, and TV Platforms(i.e., Apple TV, Android TV, Firestick, Roku). - Familiar with Git, JIRA, Bitbucket, Jenkins.</p><p>- English - Advanced (C1)</p><p>- Experience with Agile Development.</p><p>- Development experience with Appium, Selenium, JavaScript, <a href='http://webdriver.io'>Webdriver.io</a>.</p><p>- Knowledge and use of XCode, Android Studio, Charles Proxy, ADB logcat</p><br/><br/><p>Nice to have skills:</p><p>- Client development experience with iOS/Android and TV Platforms a plus</p><p>- knowledge of New Relic is a bonus</p>",
-    "datePosted": "2024-07-25",
-    "applicantLocationRequirements": [
-      {
-        "@type": "Country",
-        "name": "USA, Canada"
-      }
-    ],
-    "jobLocationType": "TELECOMMUTE",
-    "employmentType": "FULL_TIME",
-    "hiringOrganization": {
-      "@type": "Organization",
-      "name": "Scrumlaunch",
-      "sameAs": "https://www.scrumlaunch.com"
-    },
-    "baseSalary": {
-      "@type": "MonetaryAmount",
-      "currency": "USD"
-    }
-  },
-
-  {
-    "@context": "https://schema.org/",
-    "@type": "JobPosting",
     "title": "St Junior Backend Developer",
     "description": "<p>Must have skills:</p><div><p>- Programming Languages: Proficiency in one or more modern programming languages: Kotlin (preferred), Java, Python or Node.js with TypeScript, Understanding of Ruby on Rails.</p><p>- Problem-solving: Demonstrated ability to solve complex technical problems and debug issues.</p><p>- Strong knowledge of RESTful APIs /GraphQL and microservices architecture. Experience in designing, building, and maintaining scalable services.</p><p>- Proficiency in working with SQL and NoSQL databases.</p><p>- Version Control: Understanding of Git and Git-based workflows.</p><p>- Experience with Data technologies like Databricks, Spark and/or EMR (AWS)</p><p>- Experience with Cloud platforms (AWS preferred) and IAAC (Infrastructure as a Code)</p></div><br/><br/><p>Nice-to-Have Skills:</p><p>- Familiarity with CI/CD pipelines.</p><p>- Experience working with Databricks.</p><p>- Experience working in Agile/Scrum environments.</p><p>- Experience with integrating third-party vendor systems.</p><br/><br/><p>Soft Skills:</p><p>- Ability to work effectively within a team, especially cross-functional teams.</p><p>- Ability to quickly learn and adapt to new technologies and tools.</p><p>- Strong attention to detail, particularly in code quality and system integration.</p><br/><br/><p>We offer:</p><p>- Opportunities to work on diverse and challenging projects;</p><p>- Flexible working conditions;</p><p>- A supportive and collaborative team environment.</p><p>- 12 vacation days per year;</p><p>- 5 sick days per year;</p><p>- English classes.</p><p>- Access to psychologist support for mental well-being.</p>",
     "datePosted": "2024-07-25",
@@ -366,6 +109,31 @@
       {
         "@type": "Country",
         "name": "LatAM"
+      }
+    ],
+    "jobLocationType": "TELECOMMUTE",
+    "employmentType": "FULL_TIME",
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "Scrumlaunch",
+      "sameAs": "https://www.scrumlaunch.com"
+    },
+    "baseSalary": {
+      "@type": "MonetaryAmount",
+      "currency": "USD"
+    }
+  },
+
+  {
+    "@context": "https://schema.org/",
+    "@type": "JobPosting",
+    "title": "Web Developer",
+    "description": "<p>Must have skills:</p><p>- At least 5+ years of Web Development Experience;</p><p>- Proficiency with Typescript;</p><p>- Strong understanding of software engineering fundamentals, design patterns, and proper architectures.</p><br/><br/><p>Nice to Have:</p><p>- Working knowledge of Graphql;</p><br/><br/><p>Soft Skills:</p><p>- Ability to work effectively within a team, especially cross-functional teams.</p><p>- Ability to quickly learn and adapt to new technologies and tools.</p><p>- Strong attention to detail, particularly in code quality and system integration.</p><br/><br/><p>We offer:</p><p>- Opportunities to work on diverse and challenging projects;</p><p>- A supportive and collaborative team environment;</p><p>- 12 vacation days per year;</p><p>- 5 sick days per year;</p><p>- Access to psychologist support for mental well-being.</p>",
+    "datePosted": "2024-07-25",
+    "applicantLocationRequirements": [
+      {
+        "@type": "Country",
+        "name": "Brazil"
       }
     ],
     "jobLocationType": "TELECOMMUTE",
