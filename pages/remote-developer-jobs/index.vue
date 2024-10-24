@@ -4,10 +4,10 @@
       <section>
         <AppearFromMask>
           <h1 class="title-big">
-            Scrumlaunch <br>
+            Scrumlaunch <br />
             <span class="green-title">Job openings</span>
           </h1>
-        </AppearFromMask> 
+        </AppearFromMask>
         <div class="img">
           <img :src="require('@/assets/icons/magnifier.svg')" alt="hero-img" />
         </div>
@@ -39,28 +39,18 @@
         </div>
       </div>
       <div class="vacancies">
-        <div
-          v-for="(vacancy, i) in vacancies"
-          :key="i"
-          class="vacancy"
-        >
-            <div class="name">
-              <NuxtLink :to="vacancy.slug">{{ vacancy.name }}</NuxtLink>
+        <div v-for="(vacancy, i) in vacancies" :key="i" class="vacancy">
+          <div class="name">
+            <NuxtLink :to="vacancy.slug">{{ vacancy.name }}</NuxtLink>
+          </div>
+          <div class="info">
+            <div class="location">
+              {{ vacancy.jobLocation }}
+              <span v-show="vacancy.remote" class="remote"> Remote </span>
             </div>
-            <div class="info">
-              <div class="location">
-                {{ vacancy.jobLocation }}
-                <span v-show="vacancy.remote" class="remote">
-                  Remote
-                </span>
-              </div>
-              <div v-if="vacancy.open" class="state open">
-                Open
-              </div>
-              <div v-else class="state closed">
-                Closed
-              </div>
-            </div>
+            <div v-if="vacancy.open" class="state open">Open</div>
+            <div v-else class="state closed">Closed</div>
+          </div>
         </div>
       </div>
     </section>
@@ -72,52 +62,60 @@ import { mapGetters } from 'vuex'
 import vacancies from '@/seo/vacancies.json'
 
 export default {
-    data() {
-      return {
-        skill: "",
-        location: "",
-        vacancies: [],
-      };
-    },
-    head: {
-      title: "Careers at Scrumlaunch",
-      meta: [
-        { hid: "og:description", name: "description", content: "Grow your career with Scrumlaunch company! U.S Software Engineer Jobs. Work Remotely. No Visa needed. Full time jobs. High salary. Great Companies. Higher Pay. Great team culture. Work Remotely. Interesting Projects." }
-      ],
-      script: [
-        {
-          type: "application/ld+json",
-          json: vacancies,
-        },
-      ],
-    },
-    computed: {
-      ...mapGetters(["vacancies/getAllSkills", "vacancies/getAllLocations"]),
-    },
-    watch: {
-      skill() {
-        this.vacancies = this.getVacancies();
-      },
-      location() {
-        this.vacancies = this.getVacancies();
-      },
-    },
-    mounted() {
-      this.vacancies = this.getVacancies();
-    },
-    methods: {
-      handleFieldChange(name, value) {
-        this[name] = value;
-      },
-      getVacancies() {
-        return this.$store.getters["vacancies/getVacancies"](this.skill, this.location);
-      },
+  data() {
+    return {
+      skill: '',
+      location: '',
+      vacancies: [],
     }
+  },
+  head: {
+    title: 'Careers at Scrumlaunch',
+    meta: [
+      {
+        hid: 'og:description',
+        name: 'description',
+        content:
+          'Grow your career with Scrumlaunch company! U.S Software Engineer Jobs. Work Remotely. No Visa needed. Full time jobs. High salary. Great Companies. Higher Pay. Great team culture. Work Remotely. Interesting Projects.',
+      },
+    ],
+    script: [
+      {
+        type: 'application/ld+json',
+        json: vacancies,
+      },
+    ],
+  },
+  computed: {
+    ...mapGetters(['vacancies/getAllSkills', 'vacancies/getAllLocations']),
+  },
+  watch: {
+    skill() {
+      this.vacancies = this.getVacancies()
+    },
+    location() {
+      this.vacancies = this.getVacancies()
+    },
+  },
+  mounted() {
+    this.vacancies = this.getVacancies()
+    console.log(this.vacancies)
+  },
+  methods: {
+    handleFieldChange(name, value) {
+      this[name] = value
+    },
+    getVacancies() {
+      return this.$store.getters['vacancies/getVacancies'](
+        this.skill,
+        this.location
+      )
+    },
+  },
 }
 </script>
 
 <style lang="scss" scoped>
-
 .remote-developer {
   .hero {
     width: 100%;
@@ -235,7 +233,7 @@ export default {
           @include desktop-and-up {
             flex: 570px 0 0;
           }
-          
+
           a {
             text-decoration: none;
             font-weight: 700;
@@ -274,7 +272,6 @@ export default {
             @include tablet-and-up {
               font-size: 18px;
             }
-
           }
 
           .state {
@@ -286,7 +283,7 @@ export default {
             @include tablet-and-up {
               font-size: 18px;
             }
-            
+
             &:before {
               content: '';
               position: relative;
@@ -315,5 +312,4 @@ export default {
     }
   }
 }
-
 </style>
