@@ -99,7 +99,6 @@ export default {
   },
   mounted() {
     this.vacancies = this.getVacancies()
-    console.log(this.vacancies)
   },
   methods: {
     handleFieldChange(name, value) {
