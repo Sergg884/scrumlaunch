@@ -3,7 +3,7 @@
     "@context": "https://schema.org/",
     "@type": "JobPosting",
     "title": "Web Developer",
-    "description": "<p><b>Requirements</b></p><br><br/><p>Must have skills:</p><p>- At least 5+ years of Web Development Experience;</p><p>- Proficiency with Typescript;</p><p>- Strong understanding of software engineering fundamentals, design patterns, and proper architectures.</p><br/><br/><p>Nice to Have:</p><p>- Working knowledge of Graphql;</p><br/><br/><p>Soft Skills:</p><p>- Ability to work effectively within a team, especially cross-functional teams.</p><p>- Ability to quickly learn and adapt to new technologies and tools.</p><p>- Strong attention to detail, particularly in code quality and system integration.</p><p><b>Work conditions</b></p><br/><br/><p>We offer:</p><p>- Opportunities to work on diverse and challenging projects;</p><p>- Flexible working conditions;</p><p>- A supportive and collaborative team environment.</p><p>- 12 vacation days per year;</p><p>- 5 sick days per year;</p><p>- English classes.</p><p>- Access to psychologist support for mental well-being.</p>",
+    "description": "<p><b>Requirements</b></p><br><br/><p>Must have skills:</p><p>- At least 5+ years of Web Development Experience;</p><p>- Proficiency with Typescript;</p><p>- Strong understanding of software engineering fundamentals, design patterns, and proper architectures.</p><br/><br/><p>Nice to Have:</p><p>- Working knowledge of Graphql;</p><br/><br/><p>Soft Skills:</p><p>- Ability to work effectively within a team, especially cross-functional teams.</p><p>- Ability to quickly learn and adapt to new technologies and tools.</p><p>- Strong attention to detail, particularly in code quality and system integration.</p><br/><br/><p><b>Work conditions</b></p><br/><br/><p>We offer:</p><p>- Opportunities to work on diverse and challenging projects;</p><p>- Flexible working conditions.</p><p>- A supportive and collaborative team environment.</p><p>- 12 vacation days per year.</p><p>- 5 sick days per year.</p><p>- English classes.</p><p>- Access to psychologist support for mental well-being.</p>",
     "datePosted": "2024-07-25",
     "applicantLocationRequirements": [
       {
@@ -21,6 +21,140 @@
     "baseSalary": {
       "@type": "MonetaryAmount",
       "currency": "USD"
-    }
+    },
+    "vacanciesId": 268
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "JobPosting",
+    "title": "Backend Developer",
+    "description": "<p><b>Requirements</b></p><br/><br/><p>Must have skills:</p><p>- Hands-on experience with event-driven architectures and designing distributed systems, ensuring scalability, reliability and performance.</p><p>- Expertise in Typescript backend development with knowledge of AWS services such as Lambda, DynamoDB, SQS, SNS and ECS.</p><br/><br/><p>Nice to Have:</p><p>- Proficiency in Kotlin or other JVM languages (e.g. Java, Scala) with strong experience in building and maintaining mission critical business applications.</p><br/><br/><p>Soft Skills:</p><p>- Ability to work effectively within a team, especially cross-functional teams.</p><p>- Ability to quickly learn and adapt to new technologies and tools.</p><p>- Strong attention to detail, particularly in code quality and system integration.</p><br/><br/><p><b>Work conditions</b></p><br/><br/><p>We offer:</p><p>- Opportunities to work on diverse and challenging projects.</p><p>- Flexible working conditions.</p><p>- A supportive and collaborative team environment.</p><p>- 12 vacation days per year;</p><p>- 5 sick days per year.</p><p>- English classes.</p><p>- Access to psychologist support for mental well-being.</p>",
+    "datePosted": "2024-10-24",
+    "applicantLocationRequirements": [
+      {
+        "@type": "Country",
+        "name": "Brazil"
+      }
+    ],
+    "jobLocationType": "TELECOMMUTE",
+    "employmentType": "FULL_TIME",
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "Scrumlaunch",
+      "sameAs": "https://www.scrumlaunch.com"
+    },
+    "baseSalary": {
+      "@type": "MonetaryAmount",
+      "currency": "USD"
+    },
+    "vacanciesId": 267
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "JobPosting",
+    "title": "Backend Developer",
+    "description": "<p><b>Requirements</b></p><br/><br/><p>Must have skills:</p><p>- TypeScript and Node.js.</p><p>- AWS services (Lambda, DynamoDB, SQS, and others).</p><p>- GraphQL API development.</p><p>- Strong Git and CI/CD experience.</p><br/><br/><p>Nice to Have:</p><p>- Java/Kotlin.</p><p>- Object-oriented design and asynchronous programming.</p><p>- Performance, scalability and security.</p><p>- FinTech experience.</p><br/><br/><p>Soft Skills:</p><p>- Ability to work effectively within a team, especially cross-functional teams.</p><p>- Ability to quickly learn and adapt to new technologies and tools.</p><p>- Strong attention to detail, particularly in code quality and system integration.</p><br/><br/><p><b>Work conditions</b></p><br/><br/><p>We offer:</p><p>- Opportunities to work on diverse and challenging projects.</p><p>- Flexible working conditions.</p><p>- A supportive and collaborative team environment.</p><p>- 12 vacation days per year.</p><p>- 5 sick days per year;</p><p>- English classes.</p><p>- Access to psychologist support for mental well-being.</p>",
+    "datePosted": "2024-10-25",
+    "applicantLocationRequirements": [
+      {
+        "@type": "Country",
+        "name": "Brazil"
+      }
+    ],
+    "jobLocationType": "TELECOMMUTE",
+    "employmentType": "FULL_TIME",
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "Scrumlaunch",
+      "sameAs": "https://www.scrumlaunch.com"
+    },
+    "baseSalary": {
+      "@type": "MonetaryAmount",
+      "currency": "USD"
+    },
+    "vacanciesId": 266
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "JobPosting",
+    "title": "Project/Product Manager",
+    "description": "<p><b>Description</b></p><p>ScrumLaunch is a software development company supporting fast-growing US startups across various industries. With locations in Los Angeles, CA, and Portland, OR, the company is looking to hire a Project Manager to play a crucial role in onboarding new clients, ensuring smooth communication between internal teams and clients, and defining processes to drive company growth.</p><p>In this role, you will collaborate closely with the company founders and software team leaders. The ideal candidate should possess excellent interpersonal skills and a passion for continuous learning and professional development. A career at ScrumLaunch promises to be fast-paced, dynamic, and never dull.</p><br/><br/><p><b>Requirements</b></p><p>- 5+ years of product ownership experience.</p><p>- A minimum of 3 years of hands-on experience in Software development (Web&Mobile projects).</p><p>- Business-oriented person with a mindset suited to product management.</p><p>- Practical knowledge in Scrum, Kanban, and eXtreme Programming (XP).</p><p>- Strong background in developing project workflows.</p><p>- Experience in project estimation and task prioritization under tight deadlines.</p><p>- Proficiency in Web and Mobile technologies.</p><p>- Familiarity with project management tools such as Trello, JIRA, etc.</p><p>- Advanced English proficiency.</p><p>- Be available to communicate with customers in PST/EST time zones.</p><br/><br/><p>Responsibilities:</p><p>- Initiate new projects and implement efficient project management processes.</p><p>- Identify project needs by interviewing project stakeholders.</p><p>- Create project and task requirements.</p><p>- Defining the product vision, strategy, and roadmap.</p><p>- Managing/ prioritizing the project backlog.</p><p>- Market research and competitive analysis.</p><p>- Project team management (Design, Development, QA).</p><p>- Contribute to improving PM processes for ongoing projects.</p><p>- Balance project scope and timeline to deliver optimal solution.</p><p>- Resolve issues and conflicts effectively.</p><p>- Build strong relationships with clients and stakeholders through effective people management.</p><p>- Meet and exceed client expectations.</p><p>- Onboard and train new team members.</p><br/><br/><p>We offer:</p><p>- Opportunities to work on diverse and challenging projects.</p><p>- A supportive and collaborative team environment.</p><p>- 12 vacation days per year.</p><p>- 5 sick days per year.</p><p>- Access to psychologist support for mental well-being.</p>",
+    "datePosted": "2024-10-25",
+    "applicantLocationRequirements": [
+      {
+        "@type": "Country",
+        "name": "Brazil"
+      },
+      {
+        "@type": "Country",
+        "name": "Ukraine"
+      },
+      {
+        "@type": "Country",
+        "name": "Europe"
+      }
+    ],
+    "jobLocationType": "TELECOMMUTE",
+    "employmentType": "FULL_TIME",
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "Scrumlaunch",
+      "sameAs": "https://www.scrumlaunch.com"
+    },
+    "baseSalary": {
+      "@type": "MonetaryAmount",
+      "currency": "USD"
+    },
+    "vacanciesId": 265
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "JobPosting",
+    "title": "Product Designer  UI/UX Designer",
+    "description": "<p><b>Description</b></p><p>We are looking for a versatile and talented Product Designer & UI/UX Designer to join our team. In this dual role, you will be responsible for the entire design process, from initial research and concept development to creating intuitive and visually appealing user interfaces. You will work closely with cross-functional teams to ensure that our products meet user needs and business objectives.</p><br/><br/><p><b>Requirements</b></p><p>- 5+ years of experience in product design and UI/UX design.</p><p>- Proficiency in design tools such as Sketch, Figma, and Adobe XD.</p><p>- Strong portfolio showcasing your design process and skills in product design and UI/UX design.</p><p>- Excellent understanding of user-centered design principles and best practices.</p><p>- Experience conducting user research and usability testing.</p><p>- Strong visual design skills with an eye for detail and consistency.</p><p>- Ability to work collaboratively in a cross-functional team environment.</p><p>- Strong communication skills to articulate design decisions and collaborate effectively.</p><p>- Ability to manage multiple projects and prioritize tasks effectively.</p><p>- Proven experience handling several projects simultaneously without compromising quality or deadlines.</p><p>- Be available to communicate with customers in PST/EST time zones.</p><p>- English proficiency at B2 level or higher.</p><br/><br/><p>Responsibilities:</p><p>- Conduct user research to gather insights and understand user needs, behaviors, and pain points.</p><p>- Analyze market trends and competitor products to inform design decisions.</p><p>- Develop product concepts and user stories to address identified user problems.</p><p>- Create wireframes, mockups, and high-fidelity prototypes to illustrate design ideas.</p><p>- Design user interfaces (UI) and user experiences (UX) that are both functional and visually appealing.</p><p>- Conduct usability testing to validate design choices and iterate based on feedback.</p><p>- Collaborate with developers to ensure the accurate implementation of designs.</p><p>- Participate in design reviews and provide constructive feedback.</p><p>- Deeply understand the client's business model, customer base, and overall industry.</p><p>- Stay updated on the latest design trends and technologies.</p><br/><br/><p>We offer:</p><p>- Opportunities to work on diverse and challenging projects.</p><p>- A supportive and collaborative team environment.</p><p>- 12 vacation days per year.</p><p>- 5 sick days per year.</p><p>- Access to psychologist support for mental well-being.</p><br/><br/><p>*Be ready to present and explain any of your case studies/design documents at a technical interview.</p>",
+    "datePosted": "2024-10-25",
+    "applicantLocationRequirements": [
+      {
+        "@type": "Country",
+        "name": "Brazil"
+      }
+    ],
+    "jobLocationType": "TELECOMMUTE",
+    "employmentType": "FULL_TIME",
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "Scrumlaunch",
+      "sameAs": "https://www.scrumlaunch.com"
+    },
+    "baseSalary": {
+      "@type": "MonetaryAmount",
+      "currency": "USD"
+    },
+    "vacanciesId": 264
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "JobPosting",
+    "title": "Front End Developer",
+    "description": "<p><b>Description</b></p><p>We’re passionate about building competitive intelligence software that solves problems. We partner with the most important institutions in the world to transform how they use data and to drive decision-making. Our platform is used for companies to make decisions based on what their competitors are doing instead of just their internal data. This competitive edge is used to: manufacture superior products, boost return on sales and marketing initiatives, win market share from competition, and increase profitability by automating processes. If these types of projects excite you, we’d love for you to join us.</p><br/><p>You will be collaborating closely with back-end engineers, BI Developers, and Data Scientists to build intuitive, responsive, and visually stunning interfaces that enable our users to unlock the full potential of their data.</p><p>If you have an entrepreneurial mindset and are passionate about data, we believe that is the best place for you to utilize and further develop your skills. You will learn how to unpack customer problems and understand the costs and consequences of their solutions. You will have the opportunity to learn new technologies, work autonomously and make decisions independently, within a community that will support and challenge you as you grow and develop.</p><br/><p>We believe information is the key advantage in business. We serve our customers with competitive insights based on inventory, sales, and pricing data allowing customers to make decisions on complete market conditions, instead of just their own data. We are ingesting 5Tb+ of raw JSON data from the web on a daily basis, and at an accelerated pace. Versus the competition, our core technologies show 200x higher revenue capture and 3000x more scalable aggregation, which has positioned the company for hyper-growth. We have the largest database with the highest accuracy in the Home Improvement market and our customers are industry leaders. With us, our customers make data-driven decisions based on what the competition is doing. We have a builder’s mentality and are focused on delivering robust competitive advantages to our customers.</p><br/><p>Our values</p><p>- We are entrepreneurial hackers: we break the status quo and bring innovation to markets through superior technology.</p><p>- We value execution: momentum is everything.</p><p>- Belief in the power of positivity: we are encouraging and take risks.</p><p>- Proactive ownership: we are passionate about driving financial value with creative data products.</p><p>- Foster collaboration: we work internally with people from diverse backgrounds, both internally and with our customers, often on-site, to understand and solve their problems.</p><br/><p>If you're passionate about front-end development, data analytics, and creating impactful software solutions, we'd love to hear from you!</p><br/><br/><p><b>Requirements</b></p><p>- Bachelor's degree in Computer Science, Engineering, or a related field, or equivalent practical experience.</p><p>- Proven experience as a Front End Engineer, with a strong portfolio showcasing your work on complex web applications or SaaS platforms.</p><p>- Experience using Retool or a similar technology.</p><p>- Proficiency in modern web development technologies, including HTML5, CSS3, JavaScript.</p><p>- Experience with responsive design principles and UI/UX design patterns.</p><p>- Proficiency in SQL and experience working with relational databases (e.g., MySQL, PostgreSQL, SQL Server).</p><p>- Familiarity with ETL tools and processes.</p><p>- Excellent analytical and problem-solving skills.</p><p>- Solid understanding of web performance optimization techniques, browser compatibility issues, and debugging tools.</p><p>- Familiarity with back-end technologies such as Clickhouse.</p><p>- Strong problem-solving skills, attention to detail, and ability to work effectively in a fast-paced, collaborative environment.</p><p>- Excellent communication and interpersonal skills, with the ability to effectively articulate technical concepts to non-technical stakeholders.</p><br/><br/><p>Responsibilities:</p><p>- Develop and maintain front-end features for our Retool SaaS analytics platform, using modern web technologies such as HTML5, CSS3, JavaScript.</p><p>- Optimize application performance and responsiveness through efficient code, browser rendering techniques, and front-end optimization strategies.</p><p>- Collaborate with back-end engineers and BI Developers to integrate front-end components.</p><p>- Write clean, modular, and well-documented code, following industry best practices and coding standards.</p><p>- Conduct code reviews, provide constructive feedback, and mentor junior members of the team to foster a culture of continuous learning and improvement.</p><p>- Stay updated on emerging front-end technologies, tools, and trends, and proactively contribute ideas to enhance our development processes and tooling.</p><p>- Attain a holistic understanding of the entire technology from data aggregation to product delivery.</p><p>- Use customer interactions to inform new product lines such as local pricing, ecommerce intelligence, and supply chain analysis to drive quantified business impact for customers.</p><p>- Leverage UI/UX knowledge to increase customer adoption and ease of use.</p><p>- Collaborate with our customer solutions, data science, engineering, and sales teams.</p><p>- Adopt a self-starter mentality, and inspire other team members to do the same.</p><br/><br/><p>We offer:</p><p>- Opportunities to work on diverse and challenging projects.</p><p>- A supportive and collaborative team environment.</p><p>- 12 vacation days per year.</p><p>- 5 sick days per year.</p><p>- Access to psychologist support for mental well-being.</p>",
+    "datePosted": "2024-10-25",
+    "applicantLocationRequirements": [
+      {
+        "@type": "Country",
+        "name": "Brazil"
+      }
+    ],
+    "jobLocationType": "TELECOMMUTE",
+    "employmentType": "FULL_TIME",
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "Scrumlaunch",
+      "sameAs": "https://www.scrumlaunch.com"
+    },
+    "baseSalary": {
+      "@type": "MonetaryAmount",
+      "currency": "USD"
+    },
+    "vacanciesId": 263
   }
 ]

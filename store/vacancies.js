@@ -1,9 +1,12 @@
 import vacancies from '../seo/vacancies.json'
 
-function make_slug(name, jobLocation) {
-  const slug = name + '-' + jobLocation
+function make_slug(name, jobLocation, vacanciesId) {
+  const slug = name + '-' + jobLocation + '-' + vacanciesId
 
-  return `/remote-developer-jobs/${slug.replace(/\s+/g, '-').replace(/\//g, '_').toLowerCase()}`
+  return `/remote-developer-jobs/${slug
+    .replace(/\s+/g, '-')
+    .replace(/\//g, '_')
+    .toLowerCase()}`
 }
 
 const skills = [
@@ -57,7 +60,13 @@ const locations = [
   'Mexico',
 ]
 
-const generateVacancy = (name, jobLocation, description = null, datePosted = '12 / 06 / 2022') => ({
+const generateVacancy = (
+  name,
+  jobLocation,
+  description = null,
+  datePosted = '12 / 06 / 2022',
+  vacanciesId
+) => ({
   name,
   jobLocation,
   remote: true,
@@ -67,16 +76,17 @@ const generateVacancy = (name, jobLocation, description = null, datePosted = '12
   employmentType: 'Full Time',
   baseSalary: '$10-20 / hour',
   description,
+  vacanciesId,
 })
 
 const createVacancies = () => {
-
   const googleVacancies = vacancies.map((el) =>
     generateVacancy(
       el.title,
-      el.applicantLocationRequirements[0].name,
+      el.applicantLocationRequirements.map((e) => e.name).join('/'),
       el.description,
-      el.datePosted
+      el.datePosted,
+      el.vacanciesId
     )
   )
 
@@ -100,14 +110,16 @@ export const getters = {
         }
 
         if (skill && location) {
-          return item.name.includes(skill) && item.jobLocation.includes(location)
+          return (
+            item.name.includes(skill) && item.jobLocation.includes(location)
+          )
         }
 
         return item.open
       })
       .map((item) => ({
         ...item,
-        slug: make_slug(item.name, item.jobLocation),
+        slug: make_slug(item.name, item.jobLocation, item.vacanciesId),
       }))
   },
 
