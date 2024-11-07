@@ -1,8 +1,6 @@
 <template>
   <section>
-    <h2 class="title-global">
-      Site map
-    </h2>
+    <h2 class="title-global">Site map</h2>
     <div class="pages">
       <div class="page">
         <div class="main">
@@ -21,6 +19,15 @@
           <nuxt-img class="icon" :alt="`faq-img-1`" src="/sitemap/icon-5.svg" />
           <NuxtLink to="/work"><h3>Case Studies</h3></NuxtLink>
         </div>
+        <div class="stack-list" no-gutters>
+          <div
+            v-for="item in projects"
+            :key="item.title"
+            class="stack-list-item"
+          >
+            <NuxtLink :to="item.path">{{ item.title }}</NuxtLink>
+          </div>
+        </div>
       </div>
       <div class="page">
         <div class="main">
@@ -31,9 +38,7 @@
       <div class="page">
         <div class="main">
           <nuxt-img class="icon" :alt="`faq-img-1`" src="/sitemap/icon-3.svg" />
-          <h3>
-            Hire Developers
-          </h3>
+          <h3>Hire Developers</h3>
         </div>
         <div class="stack-list" no-gutters>
           <div
@@ -41,9 +46,7 @@
             :key="item.title"
             class="stack-list-item"
           >
-            <NuxtLink  :to="item.path">{{
-              item.title
-            }}</NuxtLink>
+            <NuxtLink :to="item.path">{{ item.title }}</NuxtLink>
           </div>
         </div>
       </div>
@@ -64,7 +67,6 @@
 </template>
 
 <script>
-
 export default {
   data() {
     return {
@@ -138,14 +140,46 @@ export default {
           path: '/hire-developers',
         },
       ],
+      projects: [
+        {
+          title: 'CampusReel',
+          path: '/work/campus-reel',
+        },
+        {
+          title: 'Community Funded',
+          path: '/work/comunity-founded',
+        },
+        {
+          title: 'FullCourtAI',
+          path: '/work/full-court-ai',
+        },
+        {
+          title: 'Seven: brain teasers & puzzle',
+          path: '/work/fgn',
+        },
+        {
+          title: 'Helmm',
+          path: '/work/helmm',
+        },
+        {
+          title: 'Vesta Home',
+          path: '/work/vesta',
+        },
+        {
+          title: 'Harvest',
+          path: '/work/harvest',
+        },
+        {
+          title: 'Gipper',
+          path: '/work/gipper',
+        },
+      ],
     }
-  }
+  },
 }
-
 </script>
 
 <style lang="scss" scoped>
-
 section {
   h2 {
     text-align: left;
@@ -161,7 +195,7 @@ section {
   }
 
   h3 {
-    color: #1E1F21;
+    color: #1e1f21;
   }
 
   a {
@@ -196,7 +230,7 @@ section {
       }
 
       .stack-list-item > a {
-        color: var(--Black, #1E1F21);
+        color: var(--Black, #1e1f21);
         font-size: 18px;
         font-style: normal;
         font-weight: 600;
@@ -274,18 +308,19 @@ section {
   }
 }
 
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
   opacity: 0;
 }
 
-.collapse-enter-active, .collapse-leave-active {
-  transition: opacity .5s;
+.collapse-enter-active,
+.collapse-leave-active {
+  transition: opacity 0.5s;
 }
 .collapse-enter, .collapse-leave-to /* .fade-leave-active до версии 2.1.8 */ {
   opacity: 0;
 }
-
 </style>
