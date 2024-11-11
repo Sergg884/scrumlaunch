@@ -8,7 +8,7 @@
         <span class="mark">the future</span>
       </template>
       <template #text>
-        ScrumLaunch innovates, designs and builds scalable software products for high growth startups and enterprise brands. We transform ideas into market-leading digital realities and high ROI business outcomes.
+        ScrumLaunch is an AI-enabled software development services company. We design and build scalable software products for high growth startups and enterprise brands with 70% more speed and efficiency than traditional firms.
       </template>
     </Hero>
 

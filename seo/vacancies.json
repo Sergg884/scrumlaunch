@@ -156,5 +156,55 @@
       "currency": "USD"
     },
     "vacanciesId": 263
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "JobPosting",
+    "title": "Middle Android Developer",
+    "description": "<p><b>Description</b></p><br/><br/><p>Must Have:</p><p>- At least 3+ years of professional Android development experience</p><p>- Proficiency with Kotlin</p><br/><br/><p>Nice to Have:</p><p>- Familiarity with Jetpack Compose.</p><br/><br/><p>Soft Skills:</p><p>- Ability to work effectively within a team, especially cross-functional teams.</p><p>- Ability to quickly learn and adapt to new technologies and tools.</p><p>- Strong attention to detail, particularly in code quality and system integration.</p>",
+    "datePosted": "2024-11-11",
+    "applicantLocationRequirements": [
+      {
+        "@type": "Country",
+        "name": "Brazil"
+      }
+    ],
+    "jobLocationType": "TELECOMMUTE",
+    "employmentType": "FULL_TIME",
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "Scrumlaunch",
+      "sameAs": "https://www.scrumlaunch.com"
+    },
+    "baseSalary": {
+      "@type": "MonetaryAmount",
+      "currency": "USD"
+    },
+    "vacanciesId": 270
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "JobPosting",
+    "title": "Tech Lead Java",
+    "description": "<p><b>Description</b></p><p>We are building a platform for water usage optimization in the U.S. Our clients are property developers and companies that own multi-family buildings. We save our clients millions of dollars each year on water bills that used to literally go down the drain before we came along. Our goal is to provide clients with a clear tool for monitoring water usage across their properties and offer a clear action plan to achieve optimal consumption that meets regulatory standards. The technical team consists of talented engineers with hands-on experience in fintech startups and corporations. In just six months, they replaced an external contractor team, rewriting the product without any downtime for the business. We offer our team not only the opportunity to improve existing products but also to launch sub-projects from scratch, implement their ideas, and experiment with new technologies.</p><br/><br/><p><b>Requirements</b></p><p>- 4+ years of commercial experience in Java development</p><p>- Experience in writing microservices and understanding of microservices architecture</p><p>- Understanding of multithreading and parallel computing</p><p>- Experience with Docker, REST/JSON, gRPC, Git, and Linux</p><p>- Knowledge of algorithms and data structures</p><p>- Conversational-level English</p><br/><br/><p><b>Responsibilities</b></p><p>- Develop modules to automate internal business processes</p><p>- Complete the migration from legacy systems, with the old code being fully removed</p><p>- Extract functionality from the Java / Spring Boot monolith into microservices and maintain both new and existing functionality</p><p>- Write tests to ensure code quality</p><p>- Share knowledge and perform code reviews</p><br/><br/><p><b>Would be a plus</b></p><p>- Experience with Google BigQuery (we can teach you if you don’t have it)</p><p>- Familiarity with Apache Kafka and understanding of its principles</p><p>- Knowledge of design patterns</p><p>- Previous pet projects or a public GitHub repos</p>",
+    "datePosted": "2024-11-11",
+    "applicantLocationRequirements": [
+      {
+        "@type": "Country",
+        "name": "Brazil/Ukraine/Europe"
+      }
+    ],
+    "jobLocationType": "TELECOMMUTE",
+    "employmentType": "FULL_TIME",
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "Scrumlaunch",
+      "sameAs": "https://www.scrumlaunch.com"
+    },
+    "baseSalary": {
+      "@type": "MonetaryAmount",
+      "currency": "USD"
+    },
+    "vacanciesId": 271
   }
 ]
