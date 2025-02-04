@@ -4,11 +4,12 @@
       hero-img="/pages/home/hero/home-desk.jpg"
     >
       <template #title>
-        Engineering<br>
-        <span class="mark">the future</span>
+        PRODUCT DEVELOPMENT
+        <br>
+        <span class="mark">& VENTURE ACCELERATION</span>
       </template>
       <template #text>
-        ScrumLaunch is an AI-enabled software development services company. We design and build scalable software products for high growth startups and enterprise brands with 70% more speed and efficiency than traditional firms.
+        We design, build and scale software products for high growth startups and mid market brands with a focus on product development velocity and data driven feedback loops.
       </template>
     </Hero>
 

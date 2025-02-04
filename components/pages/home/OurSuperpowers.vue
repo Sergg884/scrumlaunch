@@ -21,23 +21,23 @@ export default {
       tabs: [
         {
           img: '/pages/home/superpowers/tab-1.svg',
-          text: 'A Long-term technology partner',
+          text: 'Rapid new product innovation',
         },
         {
           img: '/pages/home/superpowers/tab-2.svg',
-          text: 'Support for founders and early-stage companies ',
+          text: 'Venture acceleration & product led growth',
         },
         {
           img: '/pages/home/superpowers/tab-3.svg',
-          text: 'Personalized, dedicated account management',
+          text: 'Launching & scaling global teams',
         },
         {
           img: '/pages/home/superpowers/tab-4.svg',
-          text: 'Global talent insights and strategies',
+          text: 'Accelerated software development velocity',
         },
         {
           img: '/pages/home/superpowers/tab-5.svg',
-          text: 'Outcome-oriented focus on business success',
+          text: 'Ability to drive business outcomes',
         },
       ]
     }

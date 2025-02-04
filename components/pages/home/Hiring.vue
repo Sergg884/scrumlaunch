@@ -1,7 +1,7 @@
 <template>
   <section>
     <h2 class="title-global">
-      Hiring and retention
+      Team + Data + AI = Velocity
     </h2>
     <div class="tabs">
       <div class="tab" v-for="(tab, index) in tabs" :key="index">
@@ -33,10 +33,10 @@ export default {
     return {
       tabs: [
         {
-          title: 'interviewing per candidate',
-          titleIndicator: '5h',
-          descriptionTitle: 'Personalized recruiting',
-          description: 'Our five step hiring process includes an English proficiency assessment, culture fit interview, technical interviews and technical assessment. We believe that cultural fit is as important as technical proficiency for long term success.',
+          title: 'reduction in time',
+          titleIndicator: '4x',
+          descriptionTitle: 'Idea to Launch Velocity',
+          description: 'We’ve designed AI-enabled workflows within our cross functional teams to focus on shortened cycles from idea to a live product.',
         },
         {
           title: 'candidates pass out screening process',
@@ -45,10 +45,10 @@ export default {
           description: 'Due to our rigorous vetting procedure we ensure that you get the best talent to boost your success.',
         },
         {
-          title: 'saved during onboarding for each new hire',
-          titleIndicator: '10h',
-          descriptionTitle: 'Time saving onboarding process',
-          description: 'We handle HR and all the administration required to get someone up and running.',
+          title: 'hours',
+          titleIndicator: '300K',
+          descriptionTitle: 'Proprietary Engineering Velocity Data Set',
+          description: 'Over the past 8 years we’ve collected over 300,000 hours of annotated time tracking data to more precisely identify inefficiency and opportunities for velocity acceleration.',
         },
         {
           title: 'higher retention than industry average',

@@ -24,7 +24,7 @@ export default {
           img: '/pages/home/services/tab-1.jpg'
         },
         {
-          text: 'IT Recruiting',
+          text: 'Building mid-market software teams',
           img: '/pages/home/services/tab-2.jpg'
         },
       ]

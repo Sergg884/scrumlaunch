@@ -3,8 +3,8 @@
     <section>
       <b-row class="text-container" no-gutters>
         <div class="text-block">
-          <h3>Delivery hubs around the world</h3>
-          <p>Our global footprint enables us to recruit and build high performance teams in delivery locations around the world.</p>
+          <h3>Our team is global</h3>
+          <p>We build high performance teams to launch and scale products at venture velocity</p>
         </div>
         <div class="separator" />
         <b-row class="locations" no-gutters>

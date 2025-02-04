@@ -1,7 +1,7 @@
 <template>
   <section>
     <h2 class="title-global">
-      We deliver high roi business outcome
+      Companies we work with achieve positive business outcomes
     </h2>
     <div class="tabs">
       <div v-for="tab in tabs" :key="tab.title" class="tab">
@@ -27,19 +27,19 @@ export default {
     return {
       tabs: [
         {
-          title: 'Time savings:',
-          text: '400-600 HOURS',
-          description: 'avg savings on staffing & onboarding of delivery team'
+          title: 'Accelerated Velocity:',
+          text: '70% faster product delivery',
+          description: 'Using AI enabled workflows & development tools'
         },
         {
           title: 'Client lifetime:',
-          text: '2+',
-          description: 'years average client partnership'
+          text: '3+ years',
+          description: 'Average client partnership'
         },
         {
-          title: 'Cost Savings:',
-          text: '40-50%',
-          description: 'saving on development costs'
+          title: 'Results:',
+          text: '50+ new products launched',
+          description: 'Trusted by tech and finance industry leaders'
         },
       ]
     }
