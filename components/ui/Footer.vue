@@ -10,12 +10,13 @@
       </div>
     <b-row no-gutters>
       <b-col class="links" cols="6" md="3" xl="3">
+        <a key="Policy" href="https://www.termsfeed.com/live/4c7e6b68-b499-46a5-816d-8148a0b4e188">Privacy Policy</a>
         <NuxtLink key="Services" to="/services">Services</NuxtLink>
         <NuxtLink key="Case Studies" to="/work">Case Studies</NuxtLink>
         <NuxtLink key="Blog" to="/blog">Blog</NuxtLink>
         <NuxtLink key="IT Recruiting" to="/hire-developers">IT Recruiting</NuxtLink>
         <NuxtLink key="About" to="/process">About</NuxtLink>
-      </b-col>
+      </b-col>      
       <b-col class="links" cols="6" md="3" xl="3">
         <NuxtLink key="Careers" to="/remote-developer-jobs">Careers</NuxtLink>
         <a key="Contact" @click="openModal()">Contact</a>
