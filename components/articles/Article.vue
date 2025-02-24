@@ -73,6 +73,9 @@ export default {
   .categories {
     display: flex;
     margin-bottom: 12px;
+    gap: 16px;
+    flex-wrap: wrap;
+
     .category {
       background: $main-black;
       border: 1px solid transparent;

@@ -10,7 +10,8 @@
       <VueSlickCarousel v-bind="settings" class="content">
         <button
           class="custom-button"
-          @click="activeCategory = ''"
+          @click="setSingleCategory('')"
+          :class="{ active: !activeCategory && selectedCategories.length === 0 }"
         >
           All articles
         </button>
@@ -18,14 +19,38 @@
           v-for="category in categories"
           :key="category"
           class="custom-button"
-          @click="activeCategory = category"
+          @click="setSingleCategory(category)"
+          :class="{ active: activeCategory === category && selectedCategories.length === 0 }"
         >
           {{category}}
         </button>
       </VueSlickCarousel>
     </div>
     <div class="sort-by">
-      <div class="button" @click="dateDropdownSortVisible = !dateDropdownSortVisible">
+      <div class="filter" @click="toggleFilterDropdown">
+        <span>
+          Filter by
+        </span>
+      </div>
+      <transition name="dropdown">
+        <div v-if="filterDropdownVisible" class="dropdown-menu filter-menu" @mouseleave="filterDropdownVisible = !filterDropdownVisible">
+          <div class="filter-title">Industries</div>
+          <div 
+            v-for="category in categories" 
+            :key="category"
+            class="checkbox-item"
+            @click="toggleCategory(category)"
+          >
+            <input 
+              type="checkbox" 
+              :checked="selectedCategories.includes(category)"
+              readonly
+            >
+            <label>{{ category }}</label>
+          </div>
+        </div>
+      </transition>
+      <div class="button" @click="toggleSortDropdown">
         <img
           :src="require('@/assets/icons/arrow-sort.svg')"
           class="icon"
@@ -36,10 +61,10 @@
       </div>
       <transition name="dropdown">
         <div v-if="dateDropdownSortVisible" class="dropdown-menu" @mouseleave="dateDropdownSortVisible = !dateDropdownSortVisible">
-          <div @click="updateDateSort('asc')">
+          <div @click="updateDateSort('desc')">
             Newest to oldest
           </div>
-          <div @click="updateDateSort('desc')">
+          <div @click="updateDateSort('asc')">
             Oldest to newest
           </div>
         </div>
@@ -47,7 +72,10 @@
     </div>
     <div class="articles" v-if="mainArticle">
       <ArticleMain 
-        :article="mainArticle"
+        :article="{
+          ...mainArticle,
+          categories: selectedCategories.length ? selectedCategories : [mainArticle.category]
+        }"
       />
       <div class="article-wrap" v-for="(article, index) in articles.slice(1,this.articlesToShow)" :key="index">
         <Article :article="article" :index="index" />
@@ -86,6 +114,8 @@ export default {
       activeCategory: '',
       dateDropdownSortVisible: false,
       dateSortStatus: 'Newest',
+      filterDropdownVisible: false,
+      selectedCategories: [],
       settings: {
         "dots": false,
         "focusOnSelect": false,
@@ -107,12 +137,14 @@ export default {
 
       if (this.activeCategory) {
         articlesRaw = articlesRaw.filter(item => item.category === this.activeCategory)
+      } else if (this.selectedCategories.length > 0) {
+        articlesRaw = articlesRaw.filter(item => this.selectedCategories.includes(item.category))
       }
 
       if (this.dateSortStatus === 'desc') {
-        articlesRaw = articlesRaw.slice().sort((a, b) => this.parseDate(a.date) - this.parseDate(b.date));
-      } else if (this.dateSortStatus === 'asc') {
         articlesRaw = articlesRaw.slice().sort((a, b) => this.parseDate(b.date) - this.parseDate(a.date));
+      } else if (this.dateSortStatus === 'asc') {
+        articlesRaw = articlesRaw.slice().sort((a, b) => this.parseDate(a.date) - this.parseDate(b.date));
       }
 
       return articlesRaw
@@ -120,15 +152,14 @@ export default {
     mainArticle () {
       return this.articles[0]
     },
+    // Remove duplicates and trim whitespace
     categories () {
-      const categories = []
-      for (let i = 0; i < this.getAllArticles.length; i++) {
-        const category = this.getAllArticles[i].category
-        if (category !== '' && !categories.includes(category)) {
-          categories.push(category)
-        }
-      }
-      return categories
+      return [...new Set(
+        this.getAllArticles
+          .map(article => article.category?.trim())
+          .filter(Boolean)
+          .map(category => category.replace(/\s+/g, ' '))
+      )]
     }
   },
   methods: {
@@ -140,6 +171,40 @@ export default {
     parseDate(dateString) {
       const [day, month, year] = dateString.split('/');
       return new Date(year, month - 1, day);
+    },
+
+    setSingleCategory(category) {
+      this.activeCategory = category
+      this.selectedCategories = []
+    },
+
+    toggleCategory(category) {
+      this.activeCategory = ''
+      const index = this.selectedCategories.indexOf(category)
+      if (index === -1) {
+        this.selectedCategories.push(category)
+      } else {
+        this.selectedCategories.splice(index, 1)
+      }
+    },
+
+    clearFilters() {
+      this.activeCategory = ''
+      this.selectedCategories = []
+    },
+  
+    toggleFilterDropdown() {
+      this.filterDropdownVisible = !this.filterDropdownVisible
+      if (this.filterDropdownVisible) {
+        this.dateDropdownSortVisible = false
+      }
+    },
+
+    toggleSortDropdown() {
+      this.dateDropdownSortVisible = !this.dateDropdownSortVisible
+      if (this.dateDropdownSortVisible) {
+        this.filterDropdownVisible = false
+      }
     },
   }
 }
@@ -228,6 +293,11 @@ export default {
         &:hover {
           background-color: $main-green;
         }
+
+        &.active {
+          background-color: $main-green;
+          border-color: $main-green;
+        }
       }
     }
   }
@@ -235,7 +305,7 @@ export default {
   .sort-by {
     display: flex;
     position: relative;
-    justify-content: right;
+    justify-content: space-between;
     margin-bottom: 22px;
     cursor: pointer;
 
@@ -247,6 +317,36 @@ export default {
       margin-bottom: 35px;
     }
     
+    .filter {
+      font-weight: 700;
+      font-size: 16px;
+      cursor: pointer;
+
+      @include tablet-and-up {
+        font-size: 20px;
+      }
+
+      @include desktop-and-up {
+        font-size: 24px;
+      }
+
+      .icon {
+        width: 12px;
+        height: 16px;
+        margin-bottom: 4px;
+
+        @include tablet-and-up {
+          width: 18px;
+          height: 24px;
+        }
+
+        @include desktop-and-up {
+          width: 22px;
+          height: 30px;
+        }
+      }
+    }
+
     .button {
       font-weight: 700;
       font-size: 16px;
@@ -277,7 +377,7 @@ export default {
     }
 
     .dropdown-menu {
-      left: calc(100% - 240PX);
+      left: calc(100% - 240px);
       position: absolute;
       top: calc(100% + 20px);
       background-color: white;
@@ -308,6 +408,48 @@ export default {
     .dropdown-leave-to {
       opacity: 0;
       visibility: hidden;
+    }
+
+    .dropdown-menu.filter-menu {
+      left: 18px;
+      width: 240px;
+
+      .filter-title {
+        padding: 20px 18px;
+        font-weight: 700;
+        font-size: 24px;
+
+        &:hover {
+          cursor: default;
+          background-color: transparent;
+        }
+      }
+
+      .checkbox-item {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        
+        &:hover {
+          background-color: $main-green;
+        }
+
+        input[type="checkbox"] {
+          width: 20px;
+          height: 20px;
+          cursor: pointer;
+        }
+
+        label {
+          margin-bottom: 0;
+          height: 100%;
+          font-weight: 700;
+          font-size: 20px;
+          cursor: pointer;
+          flex: 1;
+        }
+      }
     }
   }
 
