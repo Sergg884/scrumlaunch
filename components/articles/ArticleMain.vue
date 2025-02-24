@@ -1,9 +1,9 @@
 <template>
   <div class="article-main">
     <img class="hero" :src="article.previewImage.url" :alt="'main-article-hero'" />
-    <div class="categories" v-if="article.category">
-      <div class="category">
-        {{ article.category }}
+    <div class="categories" v-if="article.categories && article.categories.length">
+      <div class="category" v-for="category in article.categories" :key="category">
+        {{ category }}
       </div>
     </div>
     <nuxt-link class="title" :to="article.slug">{{ article.title }}</nuxt-link>
@@ -33,7 +33,7 @@ export default {
     article: {
       type: [Object, Boolean],
       default: () => ({
-        category: '',
+        categories: [],
         date: '',
         metaDescription: '',
         metaTitle: '',
@@ -87,6 +87,8 @@ export default {
     display: flex;
     margin-bottom: 12px;
     width: 100%;
+    gap: 16px;
+    flex-wrap: wrap;
     
     .category {
       background: $main-black;
