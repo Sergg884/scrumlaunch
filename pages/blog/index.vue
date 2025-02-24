@@ -141,10 +141,18 @@ export default {
         articlesRaw = articlesRaw.filter(item => this.selectedCategories.includes(item.category))
       }
 
-      if (this.dateSortStatus === 'desc') {
-        articlesRaw = articlesRaw.slice().sort((a, b) => this.parseDate(b.date) - this.parseDate(a.date));
-      } else if (this.dateSortStatus === 'asc') {
-        articlesRaw = articlesRaw.slice().sort((a, b) => this.parseDate(a.date) - this.parseDate(b.date));
+      if (this.dateSortStatus === 'desc' || this.dateSortStatus === 'asc') {
+        articlesRaw = articlesRaw.slice().sort((a, b) => {
+          const [monthA, dayA, yearA] = a.date.split('/').map(Number)
+          const [monthB, dayB, yearB] = b.date.split('/').map(Number)
+
+          const dateA = yearA * 10000 + monthA * 100 + dayA
+          const dateB = yearB * 10000 + monthB * 100 + dayB
+
+          return this.dateSortStatus === 'desc' 
+            ? dateB - dateA 
+            : dateA - dateB
+        })
       }
 
       return articlesRaw
@@ -169,8 +177,35 @@ export default {
     },
 
     parseDate(dateString) {
-      const [day, month, year] = dateString.split('/');
-      return new Date(year, month - 1, day);
+      if (!dateString) return new Date(0);
+      
+      try {
+        const parts = dateString.split('/').map(part => parseInt(part.trim(), 10));
+        
+        if (parts.length !== 3) {
+          console.error('Invalid date format:', dateString);
+          return new Date(0);
+        }
+
+        const [day, month, year] = parts;
+        
+        if (isNaN(day) || isNaN(month) || isNaN(year)) {
+          console.error('Invalid date parts:', { day, month, year });
+          return new Date(0);
+        }
+
+        const date = new Date(year, month - 1, day);
+        
+        if (isNaN(date.getTime())) {
+          console.error('Invalid date result:', date);
+          return new Date(0);
+        }
+
+        return date;
+      } catch (error) {
+        console.error('Error parsing date:', dateString, error);
+        return new Date(0);
+      }
     },
 
     setSingleCategory(category) {
