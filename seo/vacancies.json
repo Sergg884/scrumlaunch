@@ -2,9 +2,9 @@
   {
     "@context": "https://schema.org/",
     "@type": "JobPosting",
-    "title": "Web Developer",
-    "description": "<p><b>Requirements</b></p><br><br/><p>Must have skills:</p><p>- At least 5+ years of Web Development Experience;</p><p>- Proficiency with Typescript;</p><p>- Strong understanding of software engineering fundamentals, design patterns, and proper architectures.</p><br/><br/><p>Nice to Have:</p><p>- Working knowledge of Graphql;</p><br/><br/><p>Soft Skills:</p><p>- Ability to work effectively within a team, especially cross-functional teams.</p><p>- Ability to quickly learn and adapt to new technologies and tools.</p><p>- Strong attention to detail, particularly in code quality and system integration.</p><br/><br/><p><b>Work conditions</b></p><br/><br/><p>We offer:</p><p>- Opportunities to work on diverse and challenging projects;</p><p>- Flexible working conditions.</p><p>- A supportive and collaborative team environment.</p><p>- 12 vacation days per year.</p><p>- 5 sick days per year.</p><p>- English classes.</p><p>- Access to psychologist support for mental well-being.</p>",
-    "datePosted": "2024-07-25",
+    "title": "React Developer",
+    "description": "<p><b>Description</b></p><p>Join a high growth, venture backed construction technology startup. The company is revolutionizing the entire lifecycle of construction project management–from sales proposals through project and inventory management. Since its launch in 2022, the company has experienced explosive growth and product demand. The platform aims to provide a single solution for small to mid-size construction companies to fully manage their business.</p><br/><br/><p><b>Requirements</b></p><br/><br/><p>1. React and TypeScript</p><p>- Experience working with React 17;</p><p>- Proficient in TypeScript: typing components, props, and complex objects;</p><p>- Knowledge and use of Context API for application state management;</p><p>- Skilled in using React Query for managing query state.</p><br/><br/><p>2. Working with External Libraries</p><p>- Experience integrating Google Maps using the React Google Maps library;</p><p>- Proficiency in working with Axios for HTTP requests;</p><p>- Experience using Formik for form management.</p><br/><br/><p>3. PDF Handling</p><p>- Experience in processing and generating PDF files on the client side.</p><br/><br/><p>4. Testing</p><p>- Proficient in writing tests using React Testing Library.</p><br/><br/><p>5. SEO Optimization</p><p>- Understanding SEO principles in single-page applications (SPA);</p><p>- Experience working with React Tag Manager and integrating Google Tag Manager (GTM).</p><br/><br/><p>6. Development of Complex Business Logic</p><p>- Experience with projects requiring an understanding and implementation of complex business logic;</p><p>- Ability to analyze and navigate existing codebases.</p><p>- English Proficiency: Upper-intermediate level or higher.</p><br/><br/><p><b>Work conditions</b></p><br/><br/><p>We offer:</p><p>- Opportunities to work on diverse and challenging projects;</p><p>- A supportive and collaborative team environment;</p><p>- 12 vacation days per year;</p><p>- 5 sick days per year;</p><p>- English classes;</p><p>- Access to psychologist support for mental well-being.</p>",
+    "datePosted": "2025-02-25",
     "applicantLocationRequirements": [
       {
         "@type": "Country",
@@ -22,14 +22,114 @@
       "@type": "MonetaryAmount",
       "currency": "USD"
     },
-    "vacanciesId": 268
+    "vacanciesId": 282
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "JobPosting",
+    "title": "Flutter Developer",
+    "description": "<p><b>Requirements</b></p><br/><br/><p>Must have skills:</p><p>- At least 3 years of proven experience in developing mobile apps using Flutter;</p><p>- Ideally some experience developing native apps for iOS/Android;</p><p>- Proven experience in releasing Flutter mobile apps to both iOS and Android;</p><p>- Have a very good understanding of backend, web and mobile app technology in a demanding consumer environment;</p><p>- Strong team player who can work in cross-functional teams with marketing, product, design, engineering, operations, and partners.</p><br/><br/><p><b>Work conditions</b></p><br/><br/><p>We offer:</p><p>- Opportunities to work on diverse and challenging projects;</p><p>- Flexible working conditions;</p><p>- A supportive and collaborative team environment;</p><p>- 12 vacation days per year;</p><p>- 5 sick days per year;</p><p>- English classes;</p><p>- Access to psychologist support for mental well-being.</p>",
+    "datePosted": "2025-02-25",
+    "applicantLocationRequirements": [
+      {
+        "@type": "Country",
+        "name": "Brazil"
+      }
+    ],
+    "jobLocationType": "TELECOMMUTE",
+    "employmentType": "FULL_TIME",
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "Scrumlaunch",
+      "sameAs": "https://www.scrumlaunch.com"
+    },
+    "baseSalary": {
+      "@type": "MonetaryAmount",
+      "currency": "USD"
+    },
+    "vacanciesId": 284
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "JobPosting",
+    "title": "Product / Project Manager",
+    "description": "<p><b>Description</b></p><p>ScrumLaunch is a software development company supporting fast-growing US startups across various industries. With locations in Los Angeles, CA, and Portland, OR, the company is looking to hire a Project Manager to play a crucial role in onboarding new clients, ensuring smooth communication between internal teams and clients, and defining processes to drive company growth.</p><p>In this role, you will collaborate closely with the company founders and software team leaders. The ideal candidate should possess excellent interpersonal skills and a passion for continuous learning and professional development. A career at ScrumLaunch promises to be fast-paced, dynamic, and never dull.</p><br/><br/><p><b>Requirements</b></p><br/><br/><p>Must have skills:</p><p>- 5+ years of product ownership experience;</p><p>- A minimum of 3 years of hands-on experience in Software development (Web&Mobile projects);</p><p>- Business-oriented person with a mindset suited to product management;</p><p>- Practical knowledge in Scrum, Kanban, and eXtreme Programming (XP);</p><p>- Strong background in developing project workflows;</p><p>- Experience in project estimation and task prioritization under tight deadlines;</p><p>- Proficiency in Web and Mobile technologies;</p><p>- Familiarity with project management tools such as Trello, JIRA, etc.;</p><p>- Advanced English proficiency;</p><p>- Be available to communicate with customers in PST/EST time zones.</p><br/><br/><p><b>Responsibilities</b></p><br/><br/><p>- Initiate new projects and implement efficient project management processes;</p><p>- Identify project needs by interviewing project stakeholders;</p><p>- Create project and task requirements;</p><p>- Defining the product vision, strategy, and roadmap;</p><p>- Managing/ prioritizing the project backlog;</p><p>- Market research and competitive analysis;</p><p>- Project team management (Design, Development, QA);</p><p>- Contribute to improving PM processes for ongoing projects;</p><p>- Balance project scope and timeline to deliver optimal solutions;</p><p>- Resolve issues and conflicts effectively;</p><p>- Build strong relationships with clients and stakeholders through effective people management;</p><p>- Meet and exceed client expectations;</p><p>- Onboard and train new team members.</p><p>* Please note that the hiring process includes a test assignment.</p><br/><br/><p><b>Work conditions</b></p><br/><br/><p>We offer:</p><p>- Opportunities to work on diverse and challenging projects;</p><p>- A supportive and collaborative team environment;</p><p>- 12 vacation days per year;</p><p>- 5 sick days per year;</p><p>- Access to therapist and psychologist support for mental well-being.</p>",
+    "datePosted": "2025-02-25",
+    "applicantLocationRequirements": [
+      {
+        "@type": "Country",
+        "name": "Brazil"
+      }
+    ],
+    "jobLocationType": "TELECOMMUTE",
+    "employmentType": "FULL_TIME",
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "Scrumlaunch",
+      "sameAs": "https://www.scrumlaunch.com"
+    },
+    "baseSalary": {
+      "@type": "MonetaryAmount",
+      "currency": "USD"
+    },
+    "vacanciesId": 286
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "JobPosting",
+    "title": "Full Stack Developer (Python/React Native)",
+    "description": "<p><b>Requirements</b></p><br/><br/><p>Backend:</p><p>- Strong experience with Python and Django;</p><p>- Proficiency in AWS and PostgreSQL (including data migrations);</p><p>- Hands-on experience with CI/CD pipelines and managing development/staging environments;</p><p>- Knowledge of API design (RESTful and GraphQL) and API integrations (e.g., odds-api, rolling insights, PFF);</p><p>- Familiarity with observability, networking, and security best practices;</p><p>- Experience with Nginx and working in Linux environments;</p><p>- Understanding of scalable, low-latency systems design;</p><p>- Strong communication skills and the ability to work independently to solve tasks;</p><p>- English level: Upper-Intermediate or higher.</p><br/><br/><p>Front-end:</p><p>- Experience with React Native;</p><p>- Strong knowledge of JavaScript/TypeScript, including ES6+ and TypeScript;</p><p>- Experience working with graphic libraries such as Victory;</p><p>- Expertise in implementing and configuring CodePush for seamless application updates;</p><p>- Ability to set up and manage the app deployment process independently;</p><p>- Experience integrating services such as Google AdMob, Firebase, Facebook Ads, and Impact;</p><p>- Knowledge of setting up and implementing Deep Linking for enhanced user experience and marketing campaigns;</p><p>- Proven experience optimizing applications for high performance and quick responsiveness;</p><p>- Experience writing unit tests and integration tests (e.g., Jest, React Native Testing Library).</p><br/><br/><p><b>Work conditions</b></p><br/><br/><p>We offer:</p><p>- Opportunities to work on diverse and challenging projects;</p><p>- Flexible working conditions;</p><p>- A supportive and collaborative team environment;</p><p>- 12 vacation days per year;</p><p>- 5 sick days per year;</p><p>- English classes;</p><p>- Access to psychologist support for mental well-being.</p>",
+    "datePosted": "2025-02-25",
+    "applicantLocationRequirements": [
+      {
+        "@type": "Country",
+        "name": "Brazil"
+      }
+    ],
+    "jobLocationType": "TELECOMMUTE",
+    "employmentType": "FULL_TIME",
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "Scrumlaunch",
+      "sameAs": "https://www.scrumlaunch.com"
+    },
+    "baseSalary": {
+      "@type": "MonetaryAmount",
+      "currency": "USD"
+    },
+    "vacanciesId": 288
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "JobPosting",
+    "title": "Data Engineer",
+    "description": "<p><b>Requirements</b></p><br/><br/><p>Must have skills:</p><p>- Strong experience with Python and SQL;</p><p>- Hands-on experience with Databricks and Apache Spark;</p><p>- Proficiency in Scala for data processing and pipeline development.</p><br/><br/><p>Soft Skills:</p><p>- Ability to take responsibility and manage difficult tasks autonomously;</p><p>- Ability to work effectively within a team, especially cross-functional teams;</p><p>- Ability to quickly learn and adapt to new technologies and tools;</p><p>- Strong attention to detail, particularly in code quality and system integration.</p><br/><br/><p><b>Work conditions</b></p><br/><br/><p>We offer:</p><p>- Opportunities to work on diverse and challenging projects;</p><p>- Flexible working conditions;</p><p>- A supportive and collaborative team environment;</p><p>- 12 vacation days per year;</p><p>- 5 sick days per year;</p><p>- English classes;</p><p>- Access to psychologist support for mental well-being.</p>",
+    "datePosted": "2025-02-25",
+    "applicantLocationRequirements": [
+      {
+        "@type": "Country",
+        "name": "Brazil"
+      }
+    ],
+    "jobLocationType": "TELECOMMUTE",
+    "employmentType": "FULL_TIME",
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "Scrumlaunch",
+      "sameAs": "https://www.scrumlaunch.com"
+    },
+    "baseSalary": {
+      "@type": "MonetaryAmount",
+      "currency": "USD"
+    },
+    "vacanciesId": 290
   },
   {
     "@context": "https://schema.org/",
     "@type": "JobPosting",
     "title": "Backend Developer",
-    "description": "<p><b>Requirements</b></p><br/><br/><p>Must have skills:</p><p>- Hands-on experience with event-driven architectures and designing distributed systems, ensuring scalability, reliability and performance.</p><p>- Expertise in Typescript backend development with knowledge of AWS services such as Lambda, DynamoDB, SQS, SNS and ECS.</p><br/><br/><p>Nice to Have:</p><p>- Proficiency in Kotlin or other JVM languages (e.g. Java, Scala) with strong experience in building and maintaining mission critical business applications.</p><br/><br/><p>Soft Skills:</p><p>- Ability to work effectively within a team, especially cross-functional teams.</p><p>- Ability to quickly learn and adapt to new technologies and tools.</p><p>- Strong attention to detail, particularly in code quality and system integration.</p><br/><br/><p><b>Work conditions</b></p><br/><br/><p>We offer:</p><p>- Opportunities to work on diverse and challenging projects.</p><p>- Flexible working conditions.</p><p>- A supportive and collaborative team environment.</p><p>- 12 vacation days per year;</p><p>- 5 sick days per year.</p><p>- English classes.</p><p>- Access to psychologist support for mental well-being.</p>",
-    "datePosted": "2024-10-24",
+    "description": "<p><b>Requirements</b></p><br/><br/><p>Must have skills:</p><p>- Strong experience with Ruby on Rails;</p><p>- Proficiency in TypeScript.</p><br/><br/><p>Nice to Have:</p><p>- Experience with PostgreSQL;</p><p>- Knowledge of Kotlin and Scala;</p><p>- Experience working with Python;</p><p>- Familiarity with SQL;</p><p>- Experience with Java is a plus but not a priority.</p><br/><br/><p>Soft Skills:</p><p>- Ability to take responsibility and manage difficult tasks autonomously;</p><p>- Ability to work effectively within a team, especially cross-functional teams;</p><p>- Ability to quickly learn and adapt to new technologies and tools;</p><p>- Strong attention to detail, particularly in code quality and system integration.</p><br/><br/><p><b>Work conditions</b></p><br/><br/><p>We offer:</p><p>- Opportunities to work on diverse and challenging projects;</p><p>- Flexible working conditions;</p><p>- A supportive and collaborative team environment;</p><p>- 12 vacation days per year;</p><p>- 5 sick days per year;</p><p>- English classes;</p><p>- Access to psychologist support for mental well-being.</p>",
+    "datePosted": "2025-02-25",
     "applicantLocationRequirements": [
       {
         "@type": "Country",
@@ -47,14 +147,14 @@
       "@type": "MonetaryAmount",
       "currency": "USD"
     },
-    "vacanciesId": 267
+    "vacanciesId": 291
   },
   {
     "@context": "https://schema.org/",
     "@type": "JobPosting",
-    "title": "Backend Developer",
-    "description": "<p><b>Requirements</b></p><br/><br/><p>Must have skills:</p><p>- TypeScript and Node.js.</p><p>- AWS services (Lambda, DynamoDB, SQS, and others).</p><p>- GraphQL API development.</p><p>- Strong Git and CI/CD experience.</p><br/><br/><p>Nice to Have:</p><p>- Java/Kotlin.</p><p>- Object-oriented design and asynchronous programming.</p><p>- Performance, scalability and security.</p><p>- FinTech experience.</p><br/><br/><p>Soft Skills:</p><p>- Ability to work effectively within a team, especially cross-functional teams.</p><p>- Ability to quickly learn and adapt to new technologies and tools.</p><p>- Strong attention to detail, particularly in code quality and system integration.</p><br/><br/><p><b>Work conditions</b></p><br/><br/><p>We offer:</p><p>- Opportunities to work on diverse and challenging projects.</p><p>- Flexible working conditions.</p><p>- A supportive and collaborative team environment.</p><p>- 12 vacation days per year.</p><p>- 5 sick days per year;</p><p>- English classes.</p><p>- Access to psychologist support for mental well-being.</p>",
-    "datePosted": "2024-10-25",
+    "title": "Middle Backend Developer",
+    "description": "<p><b>Requirements</b></p><br/><br/><p>Must have skills:</p><p>- Programming Languages: Proficiency in one or more modern programming languages: Kotlin (preferred), Java, Python or Node.js with TypeScript, Understanding of Ruby on Rails;</p><p>- Problem-solving: Demonstrated ability to solve complex technical problems and debug issues;</p><p>- Strong knowledge of RESTful APIs/GraphQL and microservices architecture. Experience in designing, building, and maintaining scalable services;</p><p>- Proficiency in working with SQL and NoSQL databases;</p><p>- Version Control: Understanding of Git and Git-based workflows;</p><p>- Experience with Data technologies like Databricks, Spark and/or EMR (AWS);</p><p>- Experience with Cloud platforms (AWS preferred) and IAAC (Infrastructure as a Code).</p><br/><br/><p>Nice-to-Have Skills:</p><p>- Familiarity with CI/CD pipelines;</p><p>- Experience working with Databricks;</p><p>- Experience working in Agile/Scrum environments;</p><p>- Experience with integrating third-party vendor systems.</p><br/><br/><p>Soft Skills:</p><p>- Ability to work effectively within a team, especially cross-functional teams;</p><p>- Ability to quickly learn and adapt to new technologies and tools;</p><p>- Strong attention to detail, particularly in code quality and system integration.</p><br/><br/><p><b>Work conditions</b></p><br/><br/><p>We offer:</p><p>- Opportunities to work on diverse and challenging projects;</p><p>- Flexible working conditions;</p><p>- A supportive and collaborative team environment;</p><p>- 12 vacation days per year;</p><p>- 5 sick days per year;</p><p>- English classes;</p><p>- Access to psychologist support for mental well-being.</p>",
+    "datePosted": "2025-02-25",
     "applicantLocationRequirements": [
       {
         "@type": "Country",
@@ -72,47 +172,14 @@
       "@type": "MonetaryAmount",
       "currency": "USD"
     },
-    "vacanciesId": 266
+    "vacanciesId": 292
   },
   {
     "@context": "https://schema.org/",
     "@type": "JobPosting",
-    "title": "Project/Product Manager",
-    "description": "<p><b>Description</b></p><p>ScrumLaunch is a software development company supporting fast-growing US startups across various industries. With locations in Los Angeles, CA, and Portland, OR, the company is looking to hire a Project Manager to play a crucial role in onboarding new clients, ensuring smooth communication between internal teams and clients, and defining processes to drive company growth.</p><p>In this role, you will collaborate closely with the company founders and software team leaders. The ideal candidate should possess excellent interpersonal skills and a passion for continuous learning and professional development. A career at ScrumLaunch promises to be fast-paced, dynamic, and never dull.</p><br/><br/><p><b>Requirements</b></p><p>- 5+ years of product ownership experience.</p><p>- A minimum of 3 years of hands-on experience in Software development (Web&Mobile projects).</p><p>- Business-oriented person with a mindset suited to product management.</p><p>- Practical knowledge in Scrum, Kanban, and eXtreme Programming (XP).</p><p>- Strong background in developing project workflows.</p><p>- Experience in project estimation and task prioritization under tight deadlines.</p><p>- Proficiency in Web and Mobile technologies.</p><p>- Familiarity with project management tools such as Trello, JIRA, etc.</p><p>- Advanced English proficiency.</p><p>- Be available to communicate with customers in PST/EST time zones.</p><br/><br/><p>Responsibilities:</p><p>- Initiate new projects and implement efficient project management processes.</p><p>- Identify project needs by interviewing project stakeholders.</p><p>- Create project and task requirements.</p><p>- Defining the product vision, strategy, and roadmap.</p><p>- Managing/ prioritizing the project backlog.</p><p>- Market research and competitive analysis.</p><p>- Project team management (Design, Development, QA).</p><p>- Contribute to improving PM processes for ongoing projects.</p><p>- Balance project scope and timeline to deliver optimal solution.</p><p>- Resolve issues and conflicts effectively.</p><p>- Build strong relationships with clients and stakeholders through effective people management.</p><p>- Meet and exceed client expectations.</p><p>- Onboard and train new team members.</p><br/><br/><p>We offer:</p><p>- Opportunities to work on diverse and challenging projects.</p><p>- A supportive and collaborative team environment.</p><p>- 12 vacation days per year.</p><p>- 5 sick days per year.</p><p>- Access to psychologist support for mental well-being.</p>",
-    "datePosted": "2024-10-25",
-    "applicantLocationRequirements": [
-      {
-        "@type": "Country",
-        "name": "Brazil"
-      },
-      {
-        "@type": "Country",
-        "name": "Ukraine"
-      },
-      {
-        "@type": "Country",
-        "name": "Europe"
-      }
-    ],
-    "jobLocationType": "TELECOMMUTE",
-    "employmentType": "FULL_TIME",
-    "hiringOrganization": {
-      "@type": "Organization",
-      "name": "Scrumlaunch",
-      "sameAs": "https://www.scrumlaunch.com"
-    },
-    "baseSalary": {
-      "@type": "MonetaryAmount",
-      "currency": "USD"
-    },
-    "vacanciesId": 265
-  },
-  {
-    "@context": "https://schema.org/",
-    "@type": "JobPosting",
-    "title": "Product Designer  UI/UX Designer",
-    "description": "<p><b>Description</b></p><p>We are looking for a versatile and talented Product Designer & UI/UX Designer to join our team. In this dual role, you will be responsible for the entire design process, from initial research and concept development to creating intuitive and visually appealing user interfaces. You will work closely with cross-functional teams to ensure that our products meet user needs and business objectives.</p><br/><br/><p><b>Requirements</b></p><p>- 5+ years of experience in product design and UI/UX design.</p><p>- Proficiency in design tools such as Sketch, Figma, and Adobe XD.</p><p>- Strong portfolio showcasing your design process and skills in product design and UI/UX design.</p><p>- Excellent understanding of user-centered design principles and best practices.</p><p>- Experience conducting user research and usability testing.</p><p>- Strong visual design skills with an eye for detail and consistency.</p><p>- Ability to work collaboratively in a cross-functional team environment.</p><p>- Strong communication skills to articulate design decisions and collaborate effectively.</p><p>- Ability to manage multiple projects and prioritize tasks effectively.</p><p>- Proven experience handling several projects simultaneously without compromising quality or deadlines.</p><p>- Be available to communicate with customers in PST/EST time zones.</p><p>- English proficiency at B2 level or higher.</p><br/><br/><p>Responsibilities:</p><p>- Conduct user research to gather insights and understand user needs, behaviors, and pain points.</p><p>- Analyze market trends and competitor products to inform design decisions.</p><p>- Develop product concepts and user stories to address identified user problems.</p><p>- Create wireframes, mockups, and high-fidelity prototypes to illustrate design ideas.</p><p>- Design user interfaces (UI) and user experiences (UX) that are both functional and visually appealing.</p><p>- Conduct usability testing to validate design choices and iterate based on feedback.</p><p>- Collaborate with developers to ensure the accurate implementation of designs.</p><p>- Participate in design reviews and provide constructive feedback.</p><p>- Deeply understand the client's business model, customer base, and overall industry.</p><p>- Stay updated on the latest design trends and technologies.</p><br/><br/><p>We offer:</p><p>- Opportunities to work on diverse and challenging projects.</p><p>- A supportive and collaborative team environment.</p><p>- 12 vacation days per year.</p><p>- 5 sick days per year.</p><p>- Access to psychologist support for mental well-being.</p><br/><br/><p>*Be ready to present and explain any of your case studies/design documents at a technical interview.</p>",
-    "datePosted": "2024-10-25",
+    "title": "QA Engineer",
+    "description": "<p><b>Requirements</b></p><br/><br/><p>Must have skills:</p><p>- Familiarity with mobile app testing;</p><p>- Ability to clone a GitHub repository and navigate a pull request;</p><p>- Experience with testing using Toggles;</p><p>- Experience setting up or using various emulators;</p><p>- Degree in Computer Science or equivalent;</p><p>- Self-motivation and ability to follow given instructions;</p><p>- Proactive communication when encountering issues.</p><br/><br/><p>Nice to Have:</p><p>- Experience with XCUI Test Development;</p><p>- Experience with Android Studio Espresso.</p><br/><br/><p><b>Work conditions</b></p><br/><br/><p>We offer:</p><p>- Opportunities to work on diverse and challenging projects;</p><p>- Flexible working conditions;</p><p>- A supportive and collaborative team environment;</p><p>- 12 vacation days per year;</p><p>- 5 sick days per year;</p><p>- English classes;</p><p>- Access to psychologist support for mental well-being.</p>",
+    "datePosted": "2025-02-25",
     "applicantLocationRequirements": [
       {
         "@type": "Country",
@@ -130,14 +197,14 @@
       "@type": "MonetaryAmount",
       "currency": "USD"
     },
-    "vacanciesId": 264
+    "vacanciesId": 293
   },
   {
     "@context": "https://schema.org/",
     "@type": "JobPosting",
-    "title": "Front End Developer",
-    "description": "<p><b>Description</b></p><p>We’re passionate about building competitive intelligence software that solves problems. We partner with the most important institutions in the world to transform how they use data and to drive decision-making. Our platform is used for companies to make decisions based on what their competitors are doing instead of just their internal data. This competitive edge is used to: manufacture superior products, boost return on sales and marketing initiatives, win market share from competition, and increase profitability by automating processes. If these types of projects excite you, we’d love for you to join us.</p><br/><p>You will be collaborating closely with back-end engineers, BI Developers, and Data Scientists to build intuitive, responsive, and visually stunning interfaces that enable our users to unlock the full potential of their data.</p><p>If you have an entrepreneurial mindset and are passionate about data, we believe that is the best place for you to utilize and further develop your skills. You will learn how to unpack customer problems and understand the costs and consequences of their solutions. You will have the opportunity to learn new technologies, work autonomously and make decisions independently, within a community that will support and challenge you as you grow and develop.</p><br/><p>We believe information is the key advantage in business. We serve our customers with competitive insights based on inventory, sales, and pricing data allowing customers to make decisions on complete market conditions, instead of just their own data. We are ingesting 5Tb+ of raw JSON data from the web on a daily basis, and at an accelerated pace. Versus the competition, our core technologies show 200x higher revenue capture and 3000x more scalable aggregation, which has positioned the company for hyper-growth. We have the largest database with the highest accuracy in the Home Improvement market and our customers are industry leaders. With us, our customers make data-driven decisions based on what the competition is doing. We have a builder’s mentality and are focused on delivering robust competitive advantages to our customers.</p><br/><p>Our values</p><p>- We are entrepreneurial hackers: we break the status quo and bring innovation to markets through superior technology.</p><p>- We value execution: momentum is everything.</p><p>- Belief in the power of positivity: we are encouraging and take risks.</p><p>- Proactive ownership: we are passionate about driving financial value with creative data products.</p><p>- Foster collaboration: we work internally with people from diverse backgrounds, both internally and with our customers, often on-site, to understand and solve their problems.</p><br/><p>If you're passionate about front-end development, data analytics, and creating impactful software solutions, we'd love to hear from you!</p><br/><br/><p><b>Requirements</b></p><p>- Bachelor's degree in Computer Science, Engineering, or a related field, or equivalent practical experience.</p><p>- Proven experience as a Front End Engineer, with a strong portfolio showcasing your work on complex web applications or SaaS platforms.</p><p>- Experience using Retool or a similar technology.</p><p>- Proficiency in modern web development technologies, including HTML5, CSS3, JavaScript.</p><p>- Experience with responsive design principles and UI/UX design patterns.</p><p>- Proficiency in SQL and experience working with relational databases (e.g., MySQL, PostgreSQL, SQL Server).</p><p>- Familiarity with ETL tools and processes.</p><p>- Excellent analytical and problem-solving skills.</p><p>- Solid understanding of web performance optimization techniques, browser compatibility issues, and debugging tools.</p><p>- Familiarity with back-end technologies such as Clickhouse.</p><p>- Strong problem-solving skills, attention to detail, and ability to work effectively in a fast-paced, collaborative environment.</p><p>- Excellent communication and interpersonal skills, with the ability to effectively articulate technical concepts to non-technical stakeholders.</p><br/><br/><p>Responsibilities:</p><p>- Develop and maintain front-end features for our Retool SaaS analytics platform, using modern web technologies such as HTML5, CSS3, JavaScript.</p><p>- Optimize application performance and responsiveness through efficient code, browser rendering techniques, and front-end optimization strategies.</p><p>- Collaborate with back-end engineers and BI Developers to integrate front-end components.</p><p>- Write clean, modular, and well-documented code, following industry best practices and coding standards.</p><p>- Conduct code reviews, provide constructive feedback, and mentor junior members of the team to foster a culture of continuous learning and improvement.</p><p>- Stay updated on emerging front-end technologies, tools, and trends, and proactively contribute ideas to enhance our development processes and tooling.</p><p>- Attain a holistic understanding of the entire technology from data aggregation to product delivery.</p><p>- Use customer interactions to inform new product lines such as local pricing, ecommerce intelligence, and supply chain analysis to drive quantified business impact for customers.</p><p>- Leverage UI/UX knowledge to increase customer adoption and ease of use.</p><p>- Collaborate with our customer solutions, data science, engineering, and sales teams.</p><p>- Adopt a self-starter mentality, and inspire other team members to do the same.</p><br/><br/><p>We offer:</p><p>- Opportunities to work on diverse and challenging projects.</p><p>- A supportive and collaborative team environment.</p><p>- 12 vacation days per year.</p><p>- 5 sick days per year.</p><p>- Access to psychologist support for mental well-being.</p>",
-    "datePosted": "2024-10-25",
+    "title": "Android Developer",
+    "description": "<p><b>Requirements</b></p><br/><br/><p>Must have skills:</p><p>- At least 3+ years of professional Android development experience;</p><p>- Proficiency with Kotlin;</p><p>- Proficiency with Coroutines/RxJava.</p><br/><br/><p>Nice to Have:</p><p>- Familiarity with Jetpack Compose;</p><p>- Comfortable working with cross-functional partners like Product, Design and Analytics.</p><br/><br/><p>Soft Skills:</p><p>- Ability to work effectively within a team, especially cross-functional teams;</p><p>- Ability to quickly learn and adapt to new technologies and tools;</p><p>- Strong attention to detail, particularly in code quality and system integration.</p><br/><br/><p><b>Work conditions</b></p><br/><br/><p>We offer:</p><p>- Opportunities to work on diverse and challenging projects;</p><p>- Flexible working conditions;</p><p>- A supportive and collaborative team environment;</p><p>- 12 vacation days per year;</p><p>- 5 sick days per year;</p><p>- English classes;</p><p>- Access to psychologist support for mental well-being.</p>",
+    "datePosted": "2025-02-25",
     "applicantLocationRequirements": [
       {
         "@type": "Country",
@@ -155,14 +222,14 @@
       "@type": "MonetaryAmount",
       "currency": "USD"
     },
-    "vacanciesId": 263
+    "vacanciesId": 294
   },
   {
     "@context": "https://schema.org/",
     "@type": "JobPosting",
-    "title": "Middle Android Developer",
-    "description": "<p><b>Description</b></p><br/><br/><p>Must Have:</p><p>- At least 3+ years of professional Android development experience</p><p>- Proficiency with Kotlin</p><br/><br/><p>Nice to Have:</p><p>- Familiarity with Jetpack Compose.</p><br/><br/><p>Soft Skills:</p><p>- Ability to work effectively within a team, especially cross-functional teams.</p><p>- Ability to quickly learn and adapt to new technologies and tools.</p><p>- Strong attention to detail, particularly in code quality and system integration.</p>",
-    "datePosted": "2024-11-11",
+    "title": "Software Engineer",
+    "description": "<p><b>Description</b></p><p>We seek a highly skilled and motivated Full-stack Engineer, with solid .Net experience, willing to dive into web scraping to join our team. If you have a passion for unlocking data from the web and enjoy the challenge of reverse engineering complex websites, ingesting terabytes of data, and building scalable decentralized systems we want to hear from you.</p><p>As a Software Engineer, you will play a critical role in reverse engineering the structure and behavior of websites to extract data efficiently and effectively. Your expertise in full-stack engineering, data streaming, web scraping, reverse engineering, and data acquisition will contribute to our mission of collecting valuable information from the web.</p><br/><br/><p><b>Requirements</b></p><br/><br/><p>Must have skills:</p><p>- Proficiency in C# and .NET Core/ASP.NET Core;</p><p>- Knowledge of RESTful API and GraphQL development;</p><p>- Understanding of microservices architecture;</p><p>- Familiarity with background services (e.g., Hangfire, Azure Functions, AWS Lambda);</p><p>- Strong skills in JavaScript, TypeScript;</p><p>- Familiarity in AWS services (EC2, Lambda, S3, SQS, DynamoDB);</p><p>- Familiarity in unit testing (xUnit, NUnit, Moq);</p><p>- Familiarity with message queues (AWS SQS, RabbitMQ, Kafka);</p><p>- Familiarity in Integration testing with Postman/Insomnia;</p><p>- Experience working in Agile/Scrum teams;</p><p>- Proficiency with Git (GitHub);</p><p>- Strong problem-solving and analytical skills;</p><p>- Effective communication for cross-functional collaboration;</p><p>- Adaptability to new technologies and frameworks.</p><br/><br/><p><b>Responsibilities</b></p><br/><br/><p>- Reverse Engineering Web Structures: Analyze and reverse engineer websites to understand their structure, data sources, and interaction patterns;</p><p>- Web Scraping Development: Develop custom web scraping services and tools to extract data from websites, APIs, and other online sources;</p><p>- Web Scraping Support: Keep our web scraping services updated on any changes in the data source collected;</p><p>- Data Parsing and Transformation: Implement data parsing and transformation processes to clean and structure scraped data for analysis;</p><p>- Crawling and Data Acquisition: Create web crawler services that navigate websites, follow links, and collect data efficiently;</p><p>- Rate Limiting and Anti-Bot Measures: Overcome anti-bot measures and implement rate-limiting strategies to scrape data while respecting websites' terms of service;</p><p>- Data Quality Assurance: Implement data quality checks to ensure accuracy and consistency in scraped data;</p><p>- Monitoring and Scalability: Set up monitoring systems to track scraping activities and ensure scalability for large-scale data acquisition;</p><p>- Documentation: Maintain comprehensive documentation of scraping methods, scripts, and data sources.</p><br/><br/><p><b>Additional Skills</b></p><br/><br/><p>- NodeJs experience;</p><p>- Retail/e-commerce experience/alternative data;</p><p>- Familiarity with headless browsers for automation and testing;</p><p>- Knowledge of API integration;</p><p>- Data storage and database skills for storing and managing massive log data;</p><p>- Strong SQL skills.</p><br/><br/><p><b>Work conditions</b></p><br/><br/><p>We offer:</p><p>- Opportunities to work on diverse and challenging projects;</p><p>- Flexible working conditions;</p><p>- A supportive and collaborative team environment;</p><p>- 12 vacation days per year;</p><p>- 5 sick days per year;</p><p>- English classes;</p><p>- Access to psychologist support for mental well-being.</p>",
+    "datePosted": "2025-02-25",
     "applicantLocationRequirements": [
       {
         "@type": "Country",
@@ -180,18 +247,18 @@
       "@type": "MonetaryAmount",
       "currency": "USD"
     },
-    "vacanciesId": 270
+    "vacanciesId": 296
   },
   {
     "@context": "https://schema.org/",
     "@type": "JobPosting",
-    "title": "Tech Lead Java",
-    "description": "<p><b>Description</b></p><p>We are building a platform for water usage optimization in the U.S. Our clients are property developers and companies that own multi-family buildings. We save our clients millions of dollars each year on water bills that used to literally go down the drain before we came along. Our goal is to provide clients with a clear tool for monitoring water usage across their properties and offer a clear action plan to achieve optimal consumption that meets regulatory standards. The technical team consists of talented engineers with hands-on experience in fintech startups and corporations. In just six months, they replaced an external contractor team, rewriting the product without any downtime for the business. We offer our team not only the opportunity to improve existing products but also to launch sub-projects from scratch, implement their ideas, and experiment with new technologies.</p><br/><br/><p><b>Requirements</b></p><p>- 4+ years of commercial experience in Java development</p><p>- Experience in writing microservices and understanding of microservices architecture</p><p>- Understanding of multithreading and parallel computing</p><p>- Experience with Docker, REST/JSON, gRPC, Git, and Linux</p><p>- Knowledge of algorithms and data structures</p><p>- Conversational-level English</p><br/><br/><p><b>Responsibilities</b></p><p>- Develop modules to automate internal business processes</p><p>- Complete the migration from legacy systems, with the old code being fully removed</p><p>- Extract functionality from the Java / Spring Boot monolith into microservices and maintain both new and existing functionality</p><p>- Write tests to ensure code quality</p><p>- Share knowledge and perform code reviews</p><br/><br/><p><b>Would be a plus</b></p><p>- Experience with Google BigQuery (we can teach you if you don’t have it)</p><p>- Familiarity with Apache Kafka and understanding of its principles</p><p>- Knowledge of design patterns</p><p>- Previous pet projects or a public GitHub repos</p>",
-    "datePosted": "2024-11-11",
+    "title": "Full-Stack Developer",
+    "description": "<p><b>Description</b></p><p>Client needs a talented full-stack lead (biased toward backend) that can simply understand and take control of the codebase and deployment, and support other FE developer on project with any backend changes if required in order to continue relatively minor functionality improvements in the front end.</p><br/><br/><p><b>Requirements</b></p><br/><br/><p>Must have skills:</p><p>- Proficiency with Node.js;</p><p>- Proficiency with React;</p><p>- Git, AWS background;</p><p>- Strong product sense and can be proactive about improving the automation process of the project;</p><p>- Fast learner;</p><p>- Communicative with a high English level.</p><br/><br/><p>We are using the following technologies:</p><p>- React Native with Expo-managed environment Typescript;</p><p>- Redux;</p><p>- Styled Components;</p><p>- Atomic Design;</p><p>- Apollo client to connect with graphql bff;</p><p>- AWS amplify;</p><p>- Cognito;</p><p>- React Native paper;</p><p>- Github Actions;</p><p>- Expo Application Services (EAS);</p><p>- Visual Studio Code;</p><p>- XCode;</p><p>- Android Studio.</p><br/><br/><p><b>Work conditions</b></p><br/><br/><p>We offer:</p><p>- Opportunities to work on diverse and challenging projects;</p><p>- Flexible working conditions;</p><p>- A supportive and collaborative team environment;</p><p>- 12 vacation days per year;</p><p>- 5 sick days per year;</p><p>- English classes;</p><p>- Access to psychologist support for mental well-being.</p>",
+    "datePosted": "2025-02-25",
     "applicantLocationRequirements": [
       {
         "@type": "Country",
-        "name": "Brazil/Ukraine/Europe"
+        "name": "Brazil"
       }
     ],
     "jobLocationType": "TELECOMMUTE",
@@ -205,6 +272,156 @@
       "@type": "MonetaryAmount",
       "currency": "USD"
     },
-    "vacanciesId": 271
+    "vacanciesId": 297
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "JobPosting",
+    "title": "Product Owner",
+    "description": "<p><b>Description</b></p><p>An international project in the renewable energy sector focused on developing, constructing, and managing wind and solar energy solutions and energy storage systems. The team is dedicated to building sustainable infrastructure using modern technologies and digital solutions to enhance efficiency and reliability.</p><br/><br/><p><b>Requirements</b></p><br/><br/><p>Must have skills:</p><p>- Strong analytical and problem-solving skills with the ability to make data-driven decisions;</p><p>- Experience working in Agile environments (Scrum, Kanban) and collaborating with cross-functional teams;</p><p>- Proficiency in backlog management, roadmap planning, and stakeholder communication;</p><p>- Familiarity with product management tools such as Jira, Confluence, or similar;</p><p>- Excellent communication and leadership skills to align business and development goals;</p><p>- Comfortable speaking with executives and providing reports on progress, completed tasks, risks, and issues;</p><p>- Ability to take ownership of the recently completed Q2 planning and ensure its successful execution;</p><p>- Proactive in offering ideas and suggestions to improve processes and outcomes;</p><p>- Solid understanding of financial principles relevant to product ownership.</p><br/><br/><p><b>Work conditions</b></p><br/><br/><p>We offer:</p><p>- Opportunities to work on diverse and challenging projects;</p><p>- Flexible working conditions;</p><p>- A supportive and collaborative team environment;</p><p>- 12 vacation days per year;</p><p>- 5 sick days per year.</p>",
+    "datePosted": "2025-02-25",
+    "applicantLocationRequirements": [
+      {
+        "@type": "Country",
+        "name": "Poland"
+      }
+    ],
+    "jobLocationType": "TELECOMMUTE",
+    "employmentType": "FULL_TIME",
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "Scrumlaunch",
+      "sameAs": "https://www.scrumlaunch.com"
+    },
+    "baseSalary": {
+      "@type": "MonetaryAmount",
+      "currency": "USD"
+    },
+    "vacanciesId": 298
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "JobPosting",
+    "title": "Senior Platform Engineer",
+    "description": "<p><b>Description</b></p><p>An international project in the renewable energy sector focused on developing, constructing, and managing wind and solar energy solutions and energy storage systems. The team is dedicated to building sustainable infrastructure using modern technologies and digital solutions to enhance efficiency and reliability.</p><br/><br/><p><b>Requirements</b></p><br/><br/><p>Must have skills:</p><p>- Strong expertise in infrastructure as code (IaC) with Terraform;</p><p>- Hands-on experience with Azure cloud services and architecture;</p><p>- Proficiency in Databricks for data engineering and analytics;</p><p>- Solid understanding of CI/CD pipelines and experience with GitHub Actions;</p><p>- Strong programming skills in Python for automation and platform development;</p><p>- Experience with Kubernetes for container orchestration and management;</p><p>- Deep understanding of platform engineering best practices, including scalability, security, and reliability.</p><br/><br/><p><b>Work conditions</b></p><br/><br/><p>We offer:</p><p>- Opportunities to work on diverse and challenging projects;</p><p>- Flexible working conditions;</p><p>- A supportive and collaborative team environment;</p><p>- 12 vacation days per year;</p><p>- 5 sick days per year.</p>",
+    "datePosted": "2025-02-25",
+    "applicantLocationRequirements": [
+      {
+        "@type": "Country",
+        "name": "Poland"
+      }
+    ],
+    "jobLocationType": "TELECOMMUTE",
+    "employmentType": "FULL_TIME",
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "Scrumlaunch",
+      "sameAs": "https://www.scrumlaunch.com"
+    },
+    "baseSalary": {
+      "@type": "MonetaryAmount",
+      "currency": "USD"
+    },
+    "vacanciesId": 299
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "JobPosting",
+    "title": "Data Engineer",
+    "description": "<p><b>Description</b></p><p>An international project in the renewable energy sector focused on developing, constructing, and managing wind and solar energy solutions and energy storage systems. The team is dedicated to building sustainable infrastructure using modern technologies and digital solutions to enhance efficiency and reliability.</p><br/><br/><p><b>Requirements</b></p><br/><br/><p>Must have skills:</p><p>- Strong experience in data processing using Python, SQL, and Spark;</p><p>- Proficiency in Databricks for building and managing data workflows;</p><p>- Hands-on experience with notebooks for data exploration and transformation;</p><p>- Expertise in BI tools and dashboard development for data visualization;</p><p>- Experience with DBT (Data Build Tool) for data transformation and modeling;</p><p>- Knowledge of Kafka for real-time data streaming and event-driven architectures;</p><p>- Familiarity with Delta Live Tables for building scalable and reliable data pipelines;</p><p>- Understanding of best practices in data engineering, including performance optimization, data quality, and security.</p><br/><br/><p><b>Work conditions</b></p><br/><br/><p>We offer:</p><p>- Opportunities to work on diverse and challenging projects;</p><p>- Flexible working conditions;</p><p>- A supportive and collaborative team environment;</p><p>- 12 vacation days per year;</p><p>- 5 sick days per year.</p>",
+    "datePosted": "2025-02-25",
+    "applicantLocationRequirements": [
+      {
+        "@type": "Country",
+        "name": "Poland"
+      }
+    ],
+    "jobLocationType": "TELECOMMUTE",
+    "employmentType": "FULL_TIME",
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "Scrumlaunch",
+      "sameAs": "https://www.scrumlaunch.com"
+    },
+    "baseSalary": {
+      "@type": "MonetaryAmount",
+      "currency": "USD"
+    },
+    "vacanciesId": 300
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "JobPosting",
+    "title": "Python Software Engineer",
+    "description": "<p><b>Description</b></p><p>An international project in the renewable energy sector focused on developing, constructing, and managing wind and solar energy solutions and energy storage systems. The team is dedicated to building sustainable infrastructure using modern technologies and digital solutions to enhance efficiency and reliability.</p><br/><br/><p><b>Requirements</b></p><br/><br/><p>Must have skills:</p><p>- Strong programming skills in Python for backend development and automation;</p><p>- Experience with Terraform for infrastructure as code (IaC) and cloud resource management;</p><p>- Proficiency in GitHub Actions for CI/CD automation and workflow management;</p><p>- Deep understanding of software engineering best practices, including code quality, testing, and scalability;</p><p>- Ability to design, develop, and maintain reliable and efficient software solutions;</p><p>- Experience working in Agile environments and collaborating with cross-functional teams;</p><p>- Knowledge with C# (important to read legacy code).</p><br/><br/><p><b>Work conditions</b></p><br/><br/><p>We offer:</p><p>- Opportunities to work on diverse and challenging projects;</p><p>- Flexible working conditions;</p><p>- A supportive and collaborative team environment;</p><p>- 12 vacation days per year;</p><p>- 5 sick days per year.</p>",
+    "datePosted": "2025-02-25",
+    "applicantLocationRequirements": [
+      {
+        "@type": "Country",
+        "name": "Poland"
+      }
+    ],
+    "jobLocationType": "TELECOMMUTE",
+    "employmentType": "FULL_TIME",
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "Scrumlaunch",
+      "sameAs": "https://www.scrumlaunch.com"
+    },
+    "baseSalary": {
+      "@type": "MonetaryAmount",
+      "currency": "USD"
+    },
+    "vacanciesId": 301
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "JobPosting",
+    "title": "Full Stack Software Engineer",
+    "description": "<p><b>Description</b></p><p>Project is an innovative company at the forefront of Environmental Consulting and Civil Engineering Industry. We are committed to revolutionizing the way these firms operate and connect with their many customers/partners. As part of our dedicated team, you'll have the opportunity to work on cutting-edge technologies and collaborate with talented professionals in a fast-paced environment.</p><p>We are seeking a skilled Software Engineer to join our team. The ideal candidate will be proficient in technologies such as Meteor, Node.js, MongoDB, Semantic UI, React, Microservice Architecture, and TypeScript. As a Software Engineer, you will be responsible for full-stack web application development, including creating new features, testing them, managing customer requests, and fixing support tickets.</p><br/><br/><p><b>Requirements</b></p><br/><br/><p>Must have skills:</p><p>- Proven experience in software development with expertise in technologies such as Meteor, Node.js, MongoDB, Semantic UI, React, Microservice Architecture, and TypeScript;</p><p>- Strong understanding of full-stack web development principles and best practices;</p><p>- Excellent problem-solving and analytical skills;</p><p>- Ability to work independently and as part of a collaborative team;</p><p>- Excellent communication and interpersonal skills;</p><p>- Prior experience in Web App Development is a plus.</p><br/><br/><p><b>Responsibilities</b></p><br/><br/><p>- Develop and maintain full-stack web applications using technologies such as Meteor, Node.js, MongoDB, Semantic UI, React, Microservice Architecture, and TypeScript;</p><p>- Collaborate with cross-functional teams to design, implement, and deploy new features;</p><p>- Write clean, efficient, and well-documented code;</p><p>- Conduct thorough testing and debugging to ensure the quality and reliability of software applications;</p><p>- Manage customer requests and provide timely resolutions to support tickets;</p><p>- Stay up-to-date with emerging technologies and best practices in software development.</p><br/><br/><p><b>Work conditions</b></p><br/><br/><p>We offer:</p><p>- Opportunities to work on diverse and challenging projects;</p><p>- Flexible working conditions;</p><p>- A supportive and collaborative team environment;</p><p>- 12 vacation days per year;</p><p>- 5 sick days per year;</p><p>- English classes;</p><p>- Access to psychologist support for mental well-being.</p>",
+    "datePosted": "2025-02-25",
+    "applicantLocationRequirements": [
+      {
+        "@type": "Country",
+        "name": "Brazil"
+      }
+    ],
+    "jobLocationType": "TELECOMMUTE",
+    "employmentType": "FULL_TIME",
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "Scrumlaunch",
+      "sameAs": "https://www.scrumlaunch.com"
+    },
+    "baseSalary": {
+      "@type": "MonetaryAmount",
+      "currency": "USD"
+    },
+    "vacanciesId": 302
+  },
+  {
+    "@context": "https://schema.org/",
+    "@type": "JobPosting",
+    "title": "Back-end Developer (Node.js/Ruby on Rails)",
+    "description": "<p><b>Requirements</b></p><br/><br/><p>Must have:</p><p>- At least 3 years of experience with Typescript (with NodeJs);</p><p>- At least 3 years of experience with Ruby (with Ruby on Rails);</p><p>- Experience with PostgreSQL;</p><p>- Strong knowledge of SQL beyond ActiveRecord;</p><p>- Experience with APIs;</p><p>- English: Upper-Intermediate.</p><br/><br/><p>Good to have:</p><p>- Experience with GraphQL using Apollo Server;</p><p>- DB connection with Sequelize and/or TypeORM;</p><p>- Experience with testing libraries such as RSpec and Jest.</p><br/><br/><p>Will be a plus:</p><p>- Experience with Cloud, AWS;</p><p>- Experience with ElasticSearch;</p><p>- Experience with DynamoDB;</p><p>- Experience with Serverless Architecture (AWS Lambdas);</p><p>- Experience in Frontend development (HTML, JS, TS, CSS).</p><br/><br/><p><b>Work conditions</b></p><br/><br/><p>We offer:</p><p>- Opportunities to work on diverse and challenging projects;</p><p>- Flexible working conditions;</p><p>- A supportive and collaborative team environment;</p><p>- 12 vacation days per year;</p><p>- 5 sick days per year;</p><p>- English classes;</p><p>- Access to psychologist support for mental well-being.</p>",
+    "datePosted": "2025-02-25",
+    "applicantLocationRequirements": [
+      {
+        "@type": "Country",
+        "name": "Brazil"
+      }
+    ],
+    "jobLocationType": "TELECOMMUTE",
+    "employmentType": "FULL_TIME",
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "Scrumlaunch",
+      "sameAs": "https://www.scrumlaunch.com"
+    },
+    "baseSalary": {
+      "@type": "MonetaryAmount",
+      "currency": "USD"
+    },
+    "vacanciesId": 303
   }
-]
+] 
