@@ -1,8 +1,8 @@
 <template>
   <div class="article-main">
     <img class="hero" :src="article.previewImage.url" :alt="'main-article-hero'" />
-    <div class="categories" v-if="article.categories && article.categories.length">
-      <div class="category" v-for="category in article.categories" :key="category">
+    <div class="categories">
+      <div class="category" v-for="category in articleCategories" :key="category">
         {{ category }}
       </div>
     </div>
@@ -33,6 +33,7 @@ export default {
     article: {
       type: [Object, Boolean],
       default: () => ({
+        category: '',
         categories: [],
         date: '',
         metaDescription: '',
@@ -47,6 +48,14 @@ export default {
       }),
     },
   },
+  computed: {
+    articleCategories() {
+      if (this.article.categories?.length) {
+        return this.article.categories
+      }
+      return this.article.category ? [this.article.category] : []
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>

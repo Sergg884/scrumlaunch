@@ -61,10 +61,10 @@
       </div>
       <transition name="dropdown">
         <div v-if="dateDropdownSortVisible" class="dropdown-menu" @mouseleave="dateDropdownSortVisible = !dateDropdownSortVisible">
-          <div @click="updateDateSort('desc')">
+          <div @click="updateDateSort('desc')" :class="{ active: dateSortStatus === 'desc' }">
             Newest to oldest
           </div>
-          <div @click="updateDateSort('asc')">
+          <div @click="updateDateSort('asc')" :class="{ active: dateSortStatus === 'asc' }">
             Oldest to newest
           </div>
         </div>
@@ -72,10 +72,7 @@
     </div>
     <div class="articles" v-if="mainArticle">
       <ArticleMain 
-        :article="{
-          ...mainArticle,
-          categories: selectedCategories.length ? selectedCategories : [mainArticle.category]
-        }"
+        :article="mainArticle"
       />
       <div class="article-wrap" v-for="(article, index) in articles.slice(1,this.articlesToShow)" :key="index">
         <Article :article="article" :index="index" />
@@ -113,7 +110,7 @@ export default {
       articlesToShow: 5,
       activeCategory: '',
       dateDropdownSortVisible: false,
-      dateSortStatus: 'Newest',
+      dateSortStatus: 'desc',
       filterDropdownVisible: false,
       selectedCategories: [],
       settings: {
@@ -129,91 +126,54 @@ export default {
   },
 
   computed: {
-    
-    ...mapGetters('articles/', ['getAllArticles']),
+    ...mapGetters('articles/', ['getAllArticles', 'getCategories']),
 
     articles () {
-      let articlesRaw = this.getAllArticles.slice()
-
-      if (this.activeCategory) {
-        articlesRaw = articlesRaw.filter(item => item.category === this.activeCategory)
-      } else if (this.selectedCategories.length > 0) {
-        articlesRaw = articlesRaw.filter(item => this.selectedCategories.includes(item.category))
-      }
-
-      if (this.dateSortStatus === 'desc' || this.dateSortStatus === 'asc') {
-        articlesRaw = articlesRaw.slice().sort((a, b) => {
-          const [monthA, dayA, yearA] = a.date.split('/').map(Number)
-          const [monthB, dayB, yearB] = b.date.split('/').map(Number)
-
-          const dateA = yearA * 10000 + monthA * 100 + dayA
-          const dateB = yearB * 10000 + monthB * 100 + dayB
-
-          return this.dateSortStatus === 'desc' 
-            ? dateB - dateA 
-            : dateA - dateB
-        })
-      }
-
-      return articlesRaw
+      return this.getAllArticles
     },
+    
     mainArticle () {
       return this.articles[0]
     },
-    // Remove duplicates and trim whitespace
+    
     categories () {
-      return [...new Set(
-        this.getAllArticles
-          .map(article => article.category?.trim())
-          .filter(Boolean)
-          .map(category => category.replace(/\s+/g, ' '))
-      )]
+      return this.getCategories
     }
   },
+
+  async created() {
+    await this.$store.dispatch('articles/fetchCategories')
+    await this.fetchFilteredArticles()
+  },
+
   methods: {
-    updateDateSort(status) {
+    async fetchFilteredArticles() {
+      const params = {
+        sortOrder: this.dateSortStatus === 'desc' ? '-fields.date' : 'fields.date'
+      }
+      
+      if (this.activeCategory) {
+        params.categories = [this.activeCategory]
+      } else if (this.selectedCategories.length > 0) {
+        params.categories = this.selectedCategories
+      }
+
+      await this.$store.dispatch('articles/fetchArticles', params)
+    },
+
+    async updateDateSort(status) {
       this.dateSortStatus = status
       this.dateDropdownSortVisible = !this.dateDropdownSortVisible
+      await this.fetchFilteredArticles()
     },
 
-    parseDate(dateString) {
-      if (!dateString) return new Date(0);
-      
-      try {
-        const parts = dateString.split('/').map(part => parseInt(part.trim(), 10));
-        
-        if (parts.length !== 3) {
-          console.error('Invalid date format:', dateString);
-          return new Date(0);
-        }
-
-        const [day, month, year] = parts;
-        
-        if (isNaN(day) || isNaN(month) || isNaN(year)) {
-          console.error('Invalid date parts:', { day, month, year });
-          return new Date(0);
-        }
-
-        const date = new Date(year, month - 1, day);
-        
-        if (isNaN(date.getTime())) {
-          console.error('Invalid date result:', date);
-          return new Date(0);
-        }
-
-        return date;
-      } catch (error) {
-        console.error('Error parsing date:', dateString, error);
-        return new Date(0);
-      }
-    },
-
-    setSingleCategory(category) {
+    async setSingleCategory(category) {
       this.activeCategory = category
       this.selectedCategories = []
+      await this.fetchFilteredArticles()
     },
 
-    toggleCategory(category) {
+    async toggleCategory(category) {
       this.activeCategory = ''
       const index = this.selectedCategories.indexOf(category)
       if (index === -1) {
@@ -221,11 +181,13 @@ export default {
       } else {
         this.selectedCategories.splice(index, 1)
       }
+      await this.fetchFilteredArticles()
     },
 
-    clearFilters() {
+    async clearFilters() {
       this.activeCategory = ''
       this.selectedCategories = []
+      await this.fetchFilteredArticles()
     },
   
     toggleFilterDropdown() {
@@ -331,7 +293,6 @@ export default {
 
         &.active {
           background-color: $main-green;
-          border-color: $main-green;
         }
       }
     }
@@ -429,6 +390,9 @@ export default {
         font-weight: 700;
         font-size: 24px;
         &:hover {
+          background-color: $main-green;
+        }
+        &.active {
           background-color: $main-green;
         }
       }
