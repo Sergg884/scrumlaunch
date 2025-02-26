@@ -83,7 +83,7 @@ const createVacancies = () => {
   const googleVacancies = vacancies.map((el) =>
     generateVacancy(
       el.title,
-      el.applicantLocationRequirements.map((e) => e.name).join('/'),
+      el.applicantLocationRequirements?.map((e) => e.name).join('/') || '',
       el.description,
       el.datePosted,
       el.vacanciesId

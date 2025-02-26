@@ -5,12 +5,6 @@
     "title": "React Developer",
     "description": "<p><b>Description</b></p><p>Join a high growth, venture backed construction technology startup. The company is revolutionizing the entire lifecycle of construction project management–from sales proposals through project and inventory management. Since its launch in 2022, the company has experienced explosive growth and product demand. The platform aims to provide a single solution for small to mid-size construction companies to fully manage their business.</p><br/><br/><p><b>Requirements</b></p><br/><br/><p>1. React and TypeScript</p><p>- Experience working with React 17;</p><p>- Proficient in TypeScript: typing components, props, and complex objects;</p><p>- Knowledge and use of Context API for application state management;</p><p>- Skilled in using React Query for managing query state.</p><br/><br/><p>2. Working with External Libraries</p><p>- Experience integrating Google Maps using the React Google Maps library;</p><p>- Proficiency in working with Axios for HTTP requests;</p><p>- Experience using Formik for form management.</p><br/><br/><p>3. PDF Handling</p><p>- Experience in processing and generating PDF files on the client side.</p><br/><br/><p>4. Testing</p><p>- Proficient in writing tests using React Testing Library.</p><br/><br/><p>5. SEO Optimization</p><p>- Understanding SEO principles in single-page applications (SPA);</p><p>- Experience working with React Tag Manager and integrating Google Tag Manager (GTM).</p><br/><br/><p>6. Development of Complex Business Logic</p><p>- Experience with projects requiring an understanding and implementation of complex business logic;</p><p>- Ability to analyze and navigate existing codebases.</p><p>- English Proficiency: Upper-intermediate level or higher.</p><br/><br/><p><b>Work conditions</b></p><br/><br/><p>We offer:</p><p>- Opportunities to work on diverse and challenging projects;</p><p>- A supportive and collaborative team environment;</p><p>- 12 vacation days per year;</p><p>- 5 sick days per year;</p><p>- English classes;</p><p>- Access to psychologist support for mental well-being.</p>",
     "datePosted": "2025-02-25",
-    "applicantLocationRequirements": [
-      {
-        "@type": "Country",
-        "name": "Brazil"
-      }
-    ],
     "jobLocationType": "TELECOMMUTE",
     "employmentType": "FULL_TIME",
     "hiringOrganization": {
@@ -55,12 +49,6 @@
     "title": "Product / Project Manager",
     "description": "<p><b>Description</b></p><p>ScrumLaunch is a software development company supporting fast-growing US startups across various industries. With locations in Los Angeles, CA, and Portland, OR, the company is looking to hire a Project Manager to play a crucial role in onboarding new clients, ensuring smooth communication between internal teams and clients, and defining processes to drive company growth.</p><p>In this role, you will collaborate closely with the company founders and software team leaders. The ideal candidate should possess excellent interpersonal skills and a passion for continuous learning and professional development. A career at ScrumLaunch promises to be fast-paced, dynamic, and never dull.</p><br/><br/><p><b>Requirements</b></p><br/><br/><p>Must have skills:</p><p>- 5+ years of product ownership experience;</p><p>- A minimum of 3 years of hands-on experience in Software development (Web&Mobile projects);</p><p>- Business-oriented person with a mindset suited to product management;</p><p>- Practical knowledge in Scrum, Kanban, and eXtreme Programming (XP);</p><p>- Strong background in developing project workflows;</p><p>- Experience in project estimation and task prioritization under tight deadlines;</p><p>- Proficiency in Web and Mobile technologies;</p><p>- Familiarity with project management tools such as Trello, JIRA, etc.;</p><p>- Advanced English proficiency;</p><p>- Be available to communicate with customers in PST/EST time zones.</p><br/><br/><p><b>Responsibilities</b></p><br/><br/><p>- Initiate new projects and implement efficient project management processes;</p><p>- Identify project needs by interviewing project stakeholders;</p><p>- Create project and task requirements;</p><p>- Defining the product vision, strategy, and roadmap;</p><p>- Managing/ prioritizing the project backlog;</p><p>- Market research and competitive analysis;</p><p>- Project team management (Design, Development, QA);</p><p>- Contribute to improving PM processes for ongoing projects;</p><p>- Balance project scope and timeline to deliver optimal solutions;</p><p>- Resolve issues and conflicts effectively;</p><p>- Build strong relationships with clients and stakeholders through effective people management;</p><p>- Meet and exceed client expectations;</p><p>- Onboard and train new team members.</p><p>* Please note that the hiring process includes a test assignment.</p><br/><br/><p><b>Work conditions</b></p><br/><br/><p>We offer:</p><p>- Opportunities to work on diverse and challenging projects;</p><p>- A supportive and collaborative team environment;</p><p>- 12 vacation days per year;</p><p>- 5 sick days per year;</p><p>- Access to therapist and psychologist support for mental well-being.</p>",
     "datePosted": "2025-02-25",
-    "applicantLocationRequirements": [
-      {
-        "@type": "Country",
-        "name": "Brazil"
-      }
-    ],
     "jobLocationType": "TELECOMMUTE",
     "employmentType": "FULL_TIME",
     "hiringOrganization": {
@@ -80,12 +68,6 @@
     "title": "Full Stack Developer (Python/React Native)",
     "description": "<p><b>Requirements</b></p><br/><br/><p>Backend:</p><p>- Strong experience with Python and Django;</p><p>- Proficiency in AWS and PostgreSQL (including data migrations);</p><p>- Hands-on experience with CI/CD pipelines and managing development/staging environments;</p><p>- Knowledge of API design (RESTful and GraphQL) and API integrations (e.g., odds-api, rolling insights, PFF);</p><p>- Familiarity with observability, networking, and security best practices;</p><p>- Experience with Nginx and working in Linux environments;</p><p>- Understanding of scalable, low-latency systems design;</p><p>- Strong communication skills and the ability to work independently to solve tasks;</p><p>- English level: Upper-Intermediate or higher.</p><br/><br/><p>Front-end:</p><p>- Experience with React Native;</p><p>- Strong knowledge of JavaScript/TypeScript, including ES6+ and TypeScript;</p><p>- Experience working with graphic libraries such as Victory;</p><p>- Expertise in implementing and configuring CodePush for seamless application updates;</p><p>- Ability to set up and manage the app deployment process independently;</p><p>- Experience integrating services such as Google AdMob, Firebase, Facebook Ads, and Impact;</p><p>- Knowledge of setting up and implementing Deep Linking for enhanced user experience and marketing campaigns;</p><p>- Proven experience optimizing applications for high performance and quick responsiveness;</p><p>- Experience writing unit tests and integration tests (e.g., Jest, React Native Testing Library).</p><br/><br/><p><b>Work conditions</b></p><br/><br/><p>We offer:</p><p>- Opportunities to work on diverse and challenging projects;</p><p>- Flexible working conditions;</p><p>- A supportive and collaborative team environment;</p><p>- 12 vacation days per year;</p><p>- 5 sick days per year;</p><p>- English classes;</p><p>- Access to psychologist support for mental well-being.</p>",
     "datePosted": "2025-02-25",
-    "applicantLocationRequirements": [
-      {
-        "@type": "Country",
-        "name": "Brazil"
-      }
-    ],
     "jobLocationType": "TELECOMMUTE",
     "employmentType": "FULL_TIME",
     "hiringOrganization": {
@@ -233,7 +215,7 @@
     "applicantLocationRequirements": [
       {
         "@type": "Country",
-        "name": "Brazil"
+        "name": "LatAm"
       }
     ],
     "jobLocationType": "TELECOMMUTE",
@@ -383,7 +365,7 @@
     "applicantLocationRequirements": [
       {
         "@type": "Country",
-        "name": "Brazil"
+        "name": "LatAm"
       }
     ],
     "jobLocationType": "TELECOMMUTE",
@@ -424,4 +406,4 @@
     },
     "vacanciesId": 303
   }
-] 
+]
