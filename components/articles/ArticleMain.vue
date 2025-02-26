@@ -1,9 +1,9 @@
 <template>
   <div class="article-main">
     <img class="hero" :src="article.previewImage.url" :alt="'main-article-hero'" />
-    <div class="categories" v-if="article.category">
-      <div class="category">
-        {{ article.category }}
+    <div class="categories">
+      <div class="category" v-for="category in articleCategories" :key="category">
+        {{ category }}
       </div>
     </div>
     <nuxt-link class="title" :to="article.slug">{{ article.title }}</nuxt-link>
@@ -34,6 +34,7 @@ export default {
       type: [Object, Boolean],
       default: () => ({
         category: '',
+        categories: [],
         date: '',
         metaDescription: '',
         metaTitle: '',
@@ -47,6 +48,14 @@ export default {
       }),
     },
   },
+  computed: {
+    articleCategories() {
+      if (this.article.categories?.length) {
+        return this.article.categories
+      }
+      return this.article.category ? [this.article.category] : []
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -87,6 +96,8 @@ export default {
     display: flex;
     margin-bottom: 12px;
     width: 100%;
+    gap: 16px;
+    flex-wrap: wrap;
     
     .category {
       background: $main-black;
