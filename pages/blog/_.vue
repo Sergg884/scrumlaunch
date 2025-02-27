@@ -6,7 +6,13 @@
         / <span :key="index">{{ crumb }}</span>
       </template>
     </div>
-    <h1 class="title-global">{{ article.title }}</h1>
+    <div class="article-header">
+      <h1 class="title-global">{{ article.title }}</h1>
+      <button class="print-button" @click="printArticle">
+        <img src="@/assets/icons/print.svg" alt="print" />
+        <span>Print / Save PDF</span>
+      </button>
+    </div>
     <div v-show="article" class="body" v-html="article.text"></div>
     <div class="description">
       <div class="left">
@@ -82,9 +88,7 @@ export default {
     if (currentQuery.category) {
       query.category = currentQuery.category
     }
-    if (currentQuery.categories) {
-      query.categories = currentQuery.categories
-    }
+
     if (currentQuery.sort) {
       query.sort = currentQuery.sort
     }
@@ -101,6 +105,74 @@ export default {
 
     return path.map(segment => decodeURIComponent(segment));
   }
+  },
+
+  methods: {
+    printArticle() {
+      const printStyles = `
+        <style>
+          @media print {
+            .breadcrumbs, 
+            .print-button, 
+            .recommended-articles,
+            .article {
+              display: none !important;
+            }
+            .body {
+              padding: 0 !important;
+            }
+            .title-global {
+              font-size: 24px !important;
+              text-align: left !important;
+              margin-bottom: 20px !important;
+            }
+            .description {
+              margin: 20px 0 !important;
+              border-top: 1px solid #000 !important;
+            }
+            @media {
+              * {
+                max-width: none !important;
+              }
+            }
+          }
+        </style>
+      `;
+
+      const printWindow = window.open('', '_blank');
+      printWindow.document.write(`
+        <html>
+          <head>
+            <title>${this.article.title}</title>
+            ${printStyles}
+          </head>
+          <body>
+            <h1>${this.article.title}</h1>
+            ${this.article.text}
+            <div class="description">
+              <p>Author: ${this.article.authorName || 'Thomas Jefferson'}</p>
+              <p>Date: ${this.article.date}</p>
+              <p>Category: ${this.article.category}</p>
+            </div>
+          </body>
+        </html>
+      `);
+
+      printWindow.document.close();
+      printWindow.focus();
+      
+      setTimeout(() => {
+        printWindow.print();
+
+        const checkClosed = setInterval(() => {
+          if (printWindow.closed) {
+            clearInterval(checkClosed);
+          } else {
+            printWindow.close();
+          }
+        }, 1000);
+      }, 500);
+    }
   }
 }
 </script>
@@ -155,295 +227,52 @@ export default {
 
   }
 
-  .title-global {
-    font-size: 24px;
-    text-align: left;
-    margin-bottom: 40px;
-    font-weight: 900;
-    line-height: 140%;
-    text-transform: uppercase;
-
-    @include tablet-and-up {
-      text-align: center;
-      font-size: 48px;
-    }
-
-    @include desktop-and-up {
-      font-size: 56px;
-    }
-  }
-
-
-  
-  .body {
-    text-align: left;
-    
-    @include tablet-and-up {
-      padding: 0 24px;
-    }
-
-    @include desktop-and-up {
-      padding: 0 200px;
-    }
-
-    h2 {
-      font-size: 28px;
-      font-style: normal;
-      font-weight: 900;
-      letter-spacing: .02em;
-      line-height: 140%;
-      margin-bottom: 40px;
-      text-transform: uppercase;
-
-      @include tablet-and-up {
-        font-size: 32px;
-      }
-
-      @include desktop-and-up {
-        font-size: 48px;
-      }
-    }
-
-
-    .title {
-      color: #1e1f21;
-      font-size: 30px;
-      font-style: normal;
-      font-weight: 700;
-      line-height: 140%;
-      margin-bottom: 21px;
-      
-    }
-
-    img {
-      width: 100%;
-      height: auto;
-      margin: 4px 0;
-
-      @include tablet-and-up {
-        margin-bottom: 40px;
-      }
-    }
-
-    a {
-      color: $main-green;
-    }
-
-    p {
-      text-align: left;
-      color: $main-black;
-      font-weight: 400;
-      font-size: 18px;
-      line-height: 150%;
-      margin-bottom: 16px;
-
-      @include desktop-and-up {
-        font-size: 20px;
-      }
-    }
-  }
-
-  ul {
-    li {
-      p {
-        b {
-          display: block;
-        }
-      }
-    }
-  }
-
-  .description {
-    margin-top: 40px;
-    border-top: 1px solid $main-black;
+  .article-header {
     display: flex;
-    padding-top: 16px;
     align-items: center;
-
-    @include tablet-and-up {
-      margin: 0 24px;
-    }
-
-    @include desktop-and-up {
-      margin: 0 200px;
-      margin-top: 60px;
-    }
-
-    .left {
-      display: flex;
-      img {
-        height: 44px;
-        width: 44px;
-        margin-right: 12px;
-        border-radius: 100%;
-      }
-      .meta {
-        text-align: left;
-        .author {
-          font-weight: 700;
-          font-size: 16px;
-          color: $main-black;
-          margin-bottom: 0;
-
-          @include tablet-and-up {
-            font-size: 20px;
-          }
-        }
-
-        .date {
-          font-weight: 400;
-          font-size: 14px;
-          color: $dark-grey;
-          margin-bottom: 0;
-        }
-      }
-    }
-
-    .categories {
-      display: flex;
-      margin-bottom: 12px;
-      margin-left: auto;
-      .category {
-        background: $main-black;
-        border: 1px solid transparent;
-        color: #fff;
-        padding: 4px 16px;
-        font-size: 14px;
-        font-weight: 500;
-        text-transform: capitalize;
-        transition: all 0.3s;
-
-        @include tablet-and-up {
-          font-size: 16px;
-        }
-
-        &:hover {
-          background-color: #fff;
-          border: 1px solid $main-black;
-          color: $main-black;
-          
-        }
-      }
-    }
-  }
-
-  .recommended-articles {
-    font-weight: 900;
-    font-size: 24px;
-    margin-top: 80px;
+    justify-content: space-between;
     margin-bottom: 40px;
-    text-transform: uppercase;
-    @include tablet-and-up {
-      margin-top: 140px;
-      margin-bottom: 60px;
-      font-size: 48px;
-    }
-    @include desktop-and-up {
-      margin-top: 240px;
-      margin-bottom: 80px;
-      font-size: 56px;
-    }
-  }
 
-  .article {
-    display: flex;
-    flex-direction: column;
-    padding: 30px 0;
-    border-top: 1px solid $main-black;
-
-    @include tablet-and-up {
-      flex-direction: row;
+    .title-global {
+      margin-bottom: 0;
+      flex: 1;
     }
 
-    &:last-child {
-      border-bottom: 1px solid $main-black;
-    }
+    .print-button {
+      display: flex;
+      height: 40px;
+      align-items: center;
+      gap: 8px;
+      padding: 8px;
+      background: white;
+      border: 1px solid $main-black;
+      cursor: pointer;
+      transition: all 0.3s;
 
-    .hero {
-      width: 100%;
-      object-fit: contain;
-      height: 196px;
-      margin-bottom: 16px;
+      img {
+        width: 20px;
+        height: 20px;
+      }
+
+      span {
+        display: none;
+      }
+
+      &:hover {
+        background: $main-green;
+      }
 
       @include tablet-and-up {
-        width: 177px;
-        height: auto;
-        margin-right: 20px;
-      }
-
-    }
-
-    .details {
-      display: flex;
-      flex-direction: column;
-
-      .title {
-        text-align: left;
-        font-weight: 800;
-        font-size: 18px;
-        color: $main-black;
-        margin-bottom: 10px;
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        transition: all 0.3s;
-        text-decoration: none;
-        cursor: pointer;
-
-        &:hover {
-          color: $main-green;
-        }
-
-        @include tablet-and-up {
-          font-size: 24px;
-        }
-
-        @include desktop-and-up {
-          font-size: 30px;
-        }
-      }
-
-      .text {
-        text-align: left;
-        font-weight: 400;
-        font-size: 14px;
-        color: $main-black;
-        margin-bottom: 12px;
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        margin-bottom: auto;
-
-        @include tablet-and-up {
-          font-size: 16px;
-        }
-
-        @include desktop-and-up {
-          font-size: 18px;
-        }
-      }
-      .link {
-        color: $main-black;
-        text-decoration: underline;
-        font-weight: 700;
-        font-size: 16px;
-        margin-left: auto;
-        background-color: $main-green;
-        padding: 3px 2px;
-        margin-bottom: 12px;
-        margin-top: 12px;
-
-        @include desktop-and-up {
-          margin-left: unset;
-          margin-right: auto;
+        padding: 8px 16px;
+        
+        span {
+          display: inline;
+          font-size: 14px;
+          font-weight: 500;
+          white-space: nowrap;
         }
       }
     }
-
   }
 }
 </style>
