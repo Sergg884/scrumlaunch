@@ -81,7 +81,7 @@ export const actions = {
         content_type: 'blog',
         select: 'fields.category',
       })
-      // Get all categories from the articles to avoid duplicates
+
       const categories = [...new Set(
         res.items
           .map(item => item.fields.category?.trim())
@@ -123,5 +123,66 @@ export const getters = {
       title: 'View all',
       path: '/blog',
     }]
+  },
+  searchArticles: (state) => (query) => {
+    if (!query || query.trim() === '') return [];
+    
+    query = query.toLowerCase().trim();
+    const results = [];
+    
+    state.articles.forEach(article => {
+      const titleMatch = article.title.toLowerCase().includes(query);
+      if (titleMatch) {
+        const titleIndex = article.title.toLowerCase().indexOf(query);
+        results.push({
+          type: 'title',
+          article,
+          matchText: article.title,
+          matchIndex: titleIndex,
+          relevance: titleIndex === 0 ? 2 : 1
+        });
+      }
+    });
+
+    if (results.length === 0) {
+      state.articles.forEach(article => {
+        const shortTextMatch = article.shortText.toLowerCase().includes(query);
+        if (shortTextMatch) {
+          const textIndex = article.shortText.toLowerCase().indexOf(query);
+          const snippetStart = Math.max(0, textIndex - 30);
+          const snippetEnd = Math.min(article.shortText.length, textIndex + query.length + 30);
+          const matchText = article.shortText.slice(snippetStart, snippetEnd);
+          
+          results.push({
+            type: 'content',
+            article,
+            matchText,
+            matchIndex: textIndex,
+            relevance: 0
+          });
+        }
+
+        const strippedText = article.text.replace(/<[^>]*>/g, '');
+        const textMatch = strippedText.toLowerCase().includes(query);
+        if (textMatch && !shortTextMatch) {
+          const textIndex = strippedText.toLowerCase().indexOf(query);
+          const snippetStart = Math.max(0, textIndex - 30);
+          const snippetEnd = Math.min(strippedText.length, textIndex + query.length + 30);
+          const matchText = strippedText.slice(snippetStart, snippetEnd);
+          
+          results.push({
+            type: 'content',
+            article,
+            matchText,
+            matchIndex: textIndex,
+            relevance: 0
+          });
+        }
+      });
+    }
+
+    return results
+      .sort((a, b) => b.relevance - a.relevance)
+      .slice(0, 5);
   }
 }

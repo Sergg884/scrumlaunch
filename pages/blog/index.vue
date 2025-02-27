@@ -6,6 +6,7 @@
       </h1>
       <nuxt-img src="/pages/blog/hero.webp" alt="blog-hero"/>
     </div>
+    <SearchArticles ref="searchComponent" class="search-section" @filter-update="updateArticleFilter" />
     <div class="swiper">
       <VueSlickCarousel v-bind="settings" class="content">
         <button
@@ -75,7 +76,10 @@
         :article="mainArticle"
       />
       <div class="article-wrap" v-for="(article, index) in articles.slice(1,this.articlesToShow)" :key="index">
-        <Article :article="article" :index="index" />
+        <Article 
+          :article="article" 
+          :index="index"
+        />
       </div>
     </div>
     <BaseButton v-if="articlesToShow < articles.length" class="show-more" @click="articlesToShow += 4">
@@ -89,13 +93,15 @@ import { mapGetters } from 'vuex'
 import VueSlickCarousel from 'vue-slick-carousel'
 import ArticleMain from '@/components/articles/ArticleMain.vue';
 import Article from '@/components/articles/Article.vue'
+import SearchArticles from '@/components/articles/SearchArticles.vue'
 
 export default {
 
   components: {
     ArticleMain,
     Article,
-    VueSlickCarousel 
+    VueSlickCarousel,
+    SearchArticles
   },
 
   head: {
@@ -113,6 +119,7 @@ export default {
       dateSortStatus: 'desc',
       filterDropdownVisible: false,
       selectedCategories: [],
+      selectedArticleSlugs: null,
       settings: {
         "dots": false,
         "focusOnSelect": false,
@@ -128,15 +135,21 @@ export default {
   computed: {
     ...mapGetters('articles/', ['getAllArticles', 'getCategories']),
 
-    articles () {
-      return this.getAllArticles
+    articles() {
+      let articlesRaw = this.getAllArticles.slice()
+
+      if (this.selectedArticleSlugs) {
+        articlesRaw = articlesRaw.filter(item => this.selectedArticleSlugs.includes(item.slug))
+      }
+
+      return articlesRaw
     },
     
-    mainArticle () {
+    mainArticle() {
       return this.articles[0]
     },
     
-    categories () {
+    categories() {
       return this.getCategories
     }
   },
@@ -162,18 +175,24 @@ export default {
     },
 
     async updateDateSort(status) {
+      this.selectedArticleSlugs = null
       this.dateSortStatus = status
       this.dateDropdownSortVisible = !this.dateDropdownSortVisible
       await this.fetchFilteredArticles()
     },
 
     async setSingleCategory(category) {
+      this.selectedArticleSlugs = null
       this.activeCategory = category
       this.selectedCategories = []
+      if (!category) {
+        this.$refs.searchComponent.clearSearch()
+      }
       await this.fetchFilteredArticles()
     },
 
     async toggleCategory(category) {
+      this.selectedArticleSlugs = null
       this.activeCategory = ''
       const index = this.selectedCategories.indexOf(category)
       if (index === -1) {
@@ -203,6 +222,13 @@ export default {
         this.filterDropdownVisible = false
       }
     },
+
+    async updateArticleFilter(slugs) {
+      this.selectedArticleSlugs = slugs
+      if (!slugs) {
+        await this.fetchFilteredArticles()
+      }
+    }
   }
 }
 </script>
@@ -468,6 +494,18 @@ export default {
   .show-more {
     margin: auto;
     margin-top: 40px;
+  }
+
+  .search-section {
+    margin-bottom: 30px;
+    
+    @include tablet-and-up {
+      margin-bottom: 40px;
+    }
+
+    @include desktop-and-up {
+      margin-bottom: 50px;
+    }
   }
 }
 
