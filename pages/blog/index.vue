@@ -97,6 +97,7 @@
     <BaseButton v-if="articlesToShow < articles.length" class="show-more" @click="articlesToShow += 4">
       Show More
     </BaseButton>
+    <NewsletterSubscribe />
   </section>
 </template>
 
@@ -106,6 +107,7 @@ import VueSlickCarousel from 'vue-slick-carousel'
 import ArticleMain from '@/components/articles/ArticleMain.vue';
 import Article from '@/components/articles/Article.vue'
 import SearchArticles from '@/components/articles/SearchArticles.vue'
+import NewsletterSubscribe from '@/components/shared/NewsletterSubscribe.vue'
 
 export default {
 
@@ -113,7 +115,8 @@ export default {
     ArticleMain,
     Article,
     VueSlickCarousel,
-    SearchArticles
+    SearchArticles,
+    NewsletterSubscribe
   },
 
   data() {
