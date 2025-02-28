@@ -8,10 +8,17 @@
     </div>
     <div class="article-header">
       <h1 class="title-global">{{ article.title }}</h1>
-      <button class="print-button" @click="printArticle">
-        <img src="@/assets/icons/print.svg" alt="print" />
-        <span>Print / Save PDF</span>
-      </button>
+      <div class="article-actions">
+        <ShareButton 
+          :url="shareUrl" 
+          :title="article.title" 
+          :description="article.shortText" 
+        />
+        <button class="print-button" @click="printArticle">
+          <img src="@/assets/icons/print.svg" alt="print" />
+          <span>Print / Save PDF</span>
+        </button>
+      </div>
     </div>
     <div v-show="article" class="body" v-html="article.text"></div>
     <div class="description">
@@ -50,8 +57,12 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import ShareButton from '~/components/common/ShareButton.vue'
 
 export default {
+  components: {
+    ShareButton
+  },
 
   data() {
     return {
@@ -72,39 +83,43 @@ export default {
   },
 
   computed: {
-  ...mapGetters('articles/', ['getAllArticles']),
-  article() {
-    const articlesRaw = this.getAllArticles.slice()
-    return articlesRaw.find(article => article.slug === this.$route.path)
+    ...mapGetters('articles/', ['getAllArticles']),
+    article() {
+      const articlesRaw = this.getAllArticles.slice()
+      return articlesRaw.find(article => article.slug === this.$route.path)
     },
-  recomended() {
-    const array = [... this.getAllArticles]
-    return array.sort(() => 0.5 - Math.random()).slice(0, 3)
+    recomended() {
+      const array = [... this.getAllArticles]
+      return array.sort(() => 0.5 - Math.random()).slice(0, 3)
     },
-  getBlogPath() {
-    const currentQuery = this.$route.query
-    const query = {}
+    getBlogPath() {
+      const currentQuery = this.$route.query
+      const query = {}
 
-    if (currentQuery.category) {
-      query.category = currentQuery.category
+      if (currentQuery.category) {
+        query.category = currentQuery.category
+      }
+
+      if (currentQuery.sort) {
+        query.sort = currentQuery.sort
+      }
+
+      return {
+        path: '/blog',
+        query: Object.keys(query).length ? query : undefined
+      }
+    },
+    breadcrumbs() {
+      const path = this.$route.path
+        .split('/')
+        .filter(segment => segment && segment !== 'blog');
+
+      return path.map(segment => decodeURIComponent(segment));
+    },
+    shareUrl() {
+      const baseUrl = process.env.API_URL ? process.env.API_URL.replace(/\/$/, '') : window.location.origin;
+      return `${baseUrl}${this.$route.path}`;
     }
-
-    if (currentQuery.sort) {
-      query.sort = currentQuery.sort
-    }
-
-    return {
-      path: '/blog',
-      query: Object.keys(query).length ? query : undefined
-    }
-  },
-  breadcrumbs() {
-    const path = this.$route.path
-      .split('/')
-      .filter(segment => segment && segment !== 'blog');
-
-    return path.map(segment => decodeURIComponent(segment));
-  }
   },
 
   methods: {
@@ -178,7 +193,6 @@ export default {
 </script>
 
 <style lang="scss">
-
 .seo {
   max-width: 375px;
   padding: 0 20px;
@@ -224,7 +238,6 @@ export default {
     @include desktop-and-up {
       margin-bottom: 16px;
     }
-
   }
 
   .article-header {
@@ -236,6 +249,12 @@ export default {
     .title-global {
       margin-bottom: 0;
       flex: 1;
+    }
+
+    .article-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
     .print-button {
