@@ -34,7 +34,7 @@ export const state = () => ({
     {
       name: 'Mikhaylo Khizov',
       position: 'COO',
-      inLink: 'https://www.linkedin.com/in/mikhail-khizov-5a9b74140/',
+      inLink: 'https://www.linkedin.com/in/mykhailo-khizov-5a9b74140',
       photo: 'mikhaylo_khizov.jpg',
     },
     {

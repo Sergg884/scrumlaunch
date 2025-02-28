@@ -33,20 +33,32 @@
         </span>
       </div>
       <transition name="dropdown">
-        <div v-if="filterDropdownVisible" class="dropdown-menu filter-menu" @mouseleave="filterDropdownVisible = !filterDropdownVisible">
+        <div 
+          v-if="filterDropdownVisible" 
+          class="dropdown-menu filter-menu"
+          @mouseleave="filterDropdownVisible = false"
+        >
           <div class="filter-title">Industries</div>
           <div 
             v-for="category in categories" 
             :key="category"
             class="checkbox-item"
-            @click="toggleCategory(category)"
+            @click.stop="toggleTempCategory(category)"
           >
             <input 
               type="checkbox" 
-              :checked="selectedCategories.includes(category)"
+              :checked="tempSelectedCategories.includes(category)"
               readonly
             >
             <label>{{ category }}</label>
+          </div>
+          <div class="filter-actions">
+            <button 
+              class="apply-button" 
+              @click="applyFilters"
+            >
+              Apply filters
+            </button>
           </div>
         </div>
       </transition>
@@ -98,13 +110,6 @@ export default {
     VueSlickCarousel 
   },
 
-  head: {
-    title: 'ScrumLaunch Blog: Articles about Technology, Business & more',
-    meta: [
-      { hid: 'og:description', name: 'description', content: 'Articles and News from the world of IT: software development insights, best remote practices in Product Management, stories of creating efficient business solutions, and much more.' },
-    ],
-  },
-
   data() {
     return {
       articlesToShow: 5,
@@ -113,6 +118,7 @@ export default {
       dateSortStatus: 'desc',
       filterDropdownVisible: false,
       selectedCategories: [],
+      tempSelectedCategories: [],
       settings: {
         "dots": false,
         "focusOnSelect": false,
@@ -123,6 +129,31 @@ export default {
         "variableWidth": true
       },
     };
+  },
+
+  fetch() {
+    const { category, categories, sort } = this.$route.query
+    
+    if (category) {
+      this.activeCategory = category
+      this.selectedCategories = []
+    } else if (categories) {
+      this.selectedCategories = categories.split(',')
+      this.activeCategory = ''
+    }
+    
+    this.dateSortStatus = sort || 'desc'
+  },
+
+  head: {
+    title: 'ScrumLaunch Blog: Articles about Technology, Business & more',
+    meta: [
+      { 
+        hid: 'og:description', 
+        name: 'description',
+        content: 'Articles and News from the world of IT: software development insights, best remote practices in Product Management, stories of creating efficient business solutions, and much more.' 
+      },
+    ],
   },
 
   computed: {
@@ -138,6 +169,35 @@ export default {
     
     categories () {
       return this.getCategories
+    }
+  },
+
+  watch: {
+    '$route.query': {
+      handler(newQuery) {
+        const { category, categories, sort } = newQuery
+
+        if (!category && !categories) {
+          this.activeCategory = ''
+          this.selectedCategories = []
+        }
+
+        this.dateSortStatus = sort || 'desc'
+
+        if (!categories && !this.selectedCategories.length) {
+          this.filterDropdownVisible = false
+        }
+        if (!sort) {
+          this.dateDropdownSortVisible = false
+        }
+      },
+      immediate: true
+    },
+
+    dateSortStatus: {
+      handler() {
+        this.updateQueryParams()
+      }
     }
   },
 
@@ -161,38 +221,39 @@ export default {
       await this.$store.dispatch('articles/fetchArticles', params)
     },
 
-    async updateDateSort(status) {
+    updateDateSort(status) {
       this.dateSortStatus = status
-      this.dateDropdownSortVisible = !this.dateDropdownSortVisible
-      await this.fetchFilteredArticles()
+      this.dateDropdownSortVisible = false
+      this.updateQueryParams()
     },
 
-    async setSingleCategory(category) {
+    setSingleCategory(category) {
       this.activeCategory = category
       this.selectedCategories = []
-      await this.fetchFilteredArticles()
+      this.filterDropdownVisible = false
+      this.updateQueryParams()
     },
 
-    async toggleCategory(category) {
-      this.activeCategory = ''
-      const index = this.selectedCategories.indexOf(category)
+    toggleTempCategory(category) {
+      const index = this.tempSelectedCategories.indexOf(category)
       if (index === -1) {
-        this.selectedCategories.push(category)
+        this.tempSelectedCategories.push(category)
       } else {
-        this.selectedCategories.splice(index, 1)
+        this.tempSelectedCategories.splice(index, 1)
       }
-      await this.fetchFilteredArticles()
     },
 
-    async clearFilters() {
+    applyFilters() {
+      this.selectedCategories = [...this.tempSelectedCategories]
       this.activeCategory = ''
-      this.selectedCategories = []
-      await this.fetchFilteredArticles()
+      this.filterDropdownVisible = false
+      this.updateQueryParams()
     },
-  
+
     toggleFilterDropdown() {
       this.filterDropdownVisible = !this.filterDropdownVisible
       if (this.filterDropdownVisible) {
+        this.tempSelectedCategories = [...this.selectedCategories]
         this.dateDropdownSortVisible = false
       }
     },
@@ -203,7 +264,26 @@ export default {
         this.filterDropdownVisible = false
       }
     },
-  }
+
+    updateQueryParams() {
+      const query = {}
+      
+      if (this.activeCategory) {
+        query.category = this.activeCategory
+      }
+      
+      if (this.selectedCategories.length > 0) {
+        query.categories = this.selectedCategories.join(',')
+      }
+      
+      query.sort = this.dateSortStatus
+
+      this.$router.replace({
+        query: Object.keys(query).length ? query : undefined
+      }, () => {},
+      { preserveState: true })
+    },
+  },
 }
 </script>
 
@@ -447,6 +527,28 @@ export default {
           font-size: 20px;
           cursor: pointer;
           flex: 1;
+        }
+      }
+
+      .filter-actions {
+        padding: 16px;
+        border-top: 1px solid $main-black;
+        margin-top: auto;
+
+        .apply-button {
+          width: 100%;
+          padding: 12px;
+          background: $main-black;
+          color: white;
+          border: 1px solid $main-black;
+          cursor: pointer;
+          font-weight: 500;
+          transition: all 0.3s;
+
+          &:hover {
+            background: $main-green;
+            border-color: $main-green;
+          }
         }
       }
     }

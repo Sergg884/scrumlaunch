@@ -36,6 +36,7 @@
         <div class="social">
           <a
             v-for="i in socials"
+            :key="i.icon"
             :href="i.path"
             target="_blank"
             class="icon"
@@ -226,8 +227,6 @@ footer {
           }
         }
       }
-
-      
     }
   }
 

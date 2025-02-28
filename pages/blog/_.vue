@@ -1,7 +1,10 @@
 <template>
   <section class="seo">
     <div class="breadcrumbs">
-      <nuxt-link to="/blog">Properties</nuxt-link> / {{ article.category }}
+      <nuxt-link :to="getBlogPath">blog</nuxt-link>
+      <template v-for="(crumb, index) in breadcrumbs">
+        / <span :key="index">{{ crumb }}</span>
+      </template>
     </div>
     <h1 class="title-global">{{ article.title }}</h1>
     <div v-show="article" class="body" v-html="article.text"></div>
@@ -71,7 +74,33 @@ export default {
   recomended() {
     const array = [... this.getAllArticles]
     return array.sort(() => 0.5 - Math.random()).slice(0, 3)
+    },
+  getBlogPath() {
+    const currentQuery = this.$route.query
+    const query = {}
+
+    if (currentQuery.category) {
+      query.category = currentQuery.category
     }
+    if (currentQuery.categories) {
+      query.categories = currentQuery.categories
+    }
+    if (currentQuery.sort) {
+      query.sort = currentQuery.sort
+    }
+
+    return {
+      path: '/blog',
+      query: Object.keys(query).length ? query : undefined
+    }
+  },
+  breadcrumbs() {
+    const path = this.$route.path
+      .split('/')
+      .filter(segment => segment && segment !== 'blog');
+
+    return path.map(segment => decodeURIComponent(segment));
+  }
   }
 }
 </script>
@@ -109,6 +138,10 @@ export default {
       &:hover {
         text-decoration: underline;
       }
+    }
+
+    span {
+      color: $dark-grey;
     }
 
     @include tablet-and-up {
