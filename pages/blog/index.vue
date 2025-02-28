@@ -6,6 +6,7 @@
       </h1>
       <nuxt-img src="/pages/blog/hero.webp" alt="blog-hero"/>
     </div>
+    <SearchArticles ref="searchComponent" class="search-section" @filter-update="updateArticleFilter" />
     <div class="swiper">
       <VueSlickCarousel v-bind="settings" class="content">
         <button
@@ -87,7 +88,10 @@
         :article="mainArticle"
       />
       <div class="article-wrap" v-for="(article, index) in articles.slice(1,this.articlesToShow)" :key="index">
-        <Article :article="article" :index="index" />
+        <Article 
+          :article="article" 
+          :index="index"
+        />
       </div>
     </div>
     <BaseButton v-if="articlesToShow < articles.length" class="show-more" @click="articlesToShow += 4">
@@ -101,13 +105,15 @@ import { mapGetters } from 'vuex'
 import VueSlickCarousel from 'vue-slick-carousel'
 import ArticleMain from '@/components/articles/ArticleMain.vue';
 import Article from '@/components/articles/Article.vue'
+import SearchArticles from '@/components/articles/SearchArticles.vue'
 
 export default {
 
   components: {
     ArticleMain,
     Article,
-    VueSlickCarousel 
+    VueSlickCarousel,
+    SearchArticles
   },
 
   data() {
@@ -119,6 +125,7 @@ export default {
       filterDropdownVisible: false,
       selectedCategories: [],
       tempSelectedCategories: [],
+      selectedArticleSlugs: null,
       settings: {
         "dots": false,
         "focusOnSelect": false,
@@ -159,15 +166,21 @@ export default {
   computed: {
     ...mapGetters('articles/', ['getAllArticles', 'getCategories']),
 
-    articles () {
-      return this.getAllArticles
+    articles() {
+      let articlesRaw = this.getAllArticles.slice()
+
+      if (this.selectedArticleSlugs) {
+        articlesRaw = articlesRaw.filter(item => this.selectedArticleSlugs.includes(item.slug))
+      }
+
+      return articlesRaw
     },
     
-    mainArticle () {
+    mainArticle() {
       return this.articles[0]
     },
     
-    categories () {
+    categories() {
       return this.getCategories
     }
   },
@@ -221,17 +234,24 @@ export default {
       await this.$store.dispatch('articles/fetchArticles', params)
     },
 
-    updateDateSort(status) {
+    async updateDateSort(status) {
+      this.selectedArticleSlugs = null
       this.dateSortStatus = status
       this.dateDropdownSortVisible = false
       this.updateQueryParams()
+      await this.fetchFilteredArticles()
     },
 
-    setSingleCategory(category) {
+    async setSingleCategory(category) {
+      this.selectedArticleSlugs = null
       this.activeCategory = category
       this.selectedCategories = []
       this.filterDropdownVisible = false
+      if (!category) {
+        this.$refs.searchComponent.clearSearch()
+      }
       this.updateQueryParams()
+      await this.fetchFilteredArticles()
     },
 
     toggleTempCategory(category) {
@@ -243,11 +263,13 @@ export default {
       }
     },
 
-    applyFilters() {
+    async applyFilters() {
+      this.selectedArticleSlugs = null
       this.selectedCategories = [...this.tempSelectedCategories]
       this.activeCategory = ''
       this.filterDropdownVisible = false
       this.updateQueryParams()
+      await this.fetchFilteredArticles()
     },
 
     toggleFilterDropdown() {
@@ -283,7 +305,14 @@ export default {
       }, () => {},
       { preserveState: true })
     },
-  },
+
+    async updateArticleFilter(slugs) {
+      this.selectedArticleSlugs = slugs
+      if (!slugs) {
+        await this.fetchFilteredArticles()
+      }
+    }
+  }
 }
 </script>
 
@@ -570,6 +599,18 @@ export default {
   .show-more {
     margin: auto;
     margin-top: 40px;
+  }
+
+  .search-section {
+    margin-bottom: 30px;
+    
+    @include tablet-and-up {
+      margin-bottom: 40px;
+    }
+
+    @include desktop-and-up {
+      margin-bottom: 50px;
+    }
   }
 }
 

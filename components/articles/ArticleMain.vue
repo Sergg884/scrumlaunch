@@ -8,9 +8,7 @@
     </div>
     <nuxt-link class="title" :to="article.slug">{{ article.title }}</nuxt-link>
     <div class="info">
-      <p class="text">
-      {{ article.shortText }}
-      </p>
+      <p class="text">{{ article.shortText }}</p>
       <nuxt-link class="link" :to="article.slug">Read more</nuxt-link>
       <div class="description">
         <nuxt-img :src="article.authorImg.url ? article.authorImg.url : '/pages/blog/default-author.jpg'" :alt="'main-article-author-img'" />

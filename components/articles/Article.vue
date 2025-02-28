@@ -1,25 +1,25 @@
 <template>
   <div class="article">
-    <img class="hero" :src="article.previewImage.url" :alt="'article-' + index" />
+    <img class="hero" :src="article.previewImage.url" :alt="'article-hero'" />
     <div class="categories">
       <div class="category" v-for="category in articleCategories" :key="category">
         {{ category }}
       </div>
     </div>
     <nuxt-link class="title" :to="article.slug">{{ article.title }}</nuxt-link>
-    <p class="text">
-      {{ article.shortText }}
-    </p>
-    <nuxt-link class="link" :to="article.slug">Read more</nuxt-link>
-    <div class="description">
-      <img :src="article.authorImg.url ? article.authorImg.url : '/pages/blog/default-author.jpg'" :alt="'article-' + index + 'author-img'" />
-      <div class="meta">
-        <p class="author">
-          {{  article.authorName ? article.authorName : 'Thomas Jefferson' }}
-        </p>
-        <p class="date">
-          {{ article.date }}
-        </p>
+    <div class="info">
+      <p class="text">{{ article.shortText }}</p>
+      <nuxt-link class="link" :to="article.slug">Read more</nuxt-link>
+      <div class="description">
+        <nuxt-img :src="article.authorImg.url ? article.authorImg.url : '/pages/blog/default-author.jpg'" :alt="'article-author-img'" />
+        <div class="meta">
+          <p class="author">
+            {{  article.authorName ? article.authorName : 'Thomas Jefferson' }}
+          </p>
+          <p class="date" v-if="article.date">
+            {{ article.date }}
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -29,21 +29,8 @@
 export default {
   props: {
     article: {
-      type: [Object, Boolean],
-      default: () => ({
-        category: '',
-        categories: [],
-        date: '',
-        metaDescription: '',
-        metaTitle: '',
-        shortText: '',
-        title: '',
-        previewImage: {
-          url: ``,
-        },
-        slug: '',
-        text: '',
-      }),
+      type: Object,
+      required: true
     },
     index: {
       type: Number,
