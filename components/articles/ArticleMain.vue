@@ -6,7 +6,7 @@
         {{ category }}
       </div>
     </div>
-    <nuxt-link class="title" :to="article.slug">{{ article.title }}</nuxt-link>
+    <nuxt-link class="title" :to="articleLink">{{ article.title }}</nuxt-link>
     <div class="info">
       <p class="text">{{ article.shortText }}</p>
       <nuxt-link class="link" :to="article.slug">Read more</nuxt-link>
@@ -29,29 +29,30 @@
 export default {
   props: {
     article: {
-      type: [Object, Boolean],
-      default: () => ({
-        category: '',
-        categories: [],
-        date: '',
-        metaDescription: '',
-        metaTitle: '',
-        shortText: '',
-        title: '',
-        previewImage: {
-          url: ``,
-        },
-        slug: '',
-        text: '',
-      }),
+      type: Object,
+      required: true
     },
+    queryParams: {
+      type: Object,
+      default: () => ({})
+    }
   },
   computed: {
     articleCategories() {
       if (this.article.categories?.length) {
         return this.article.categories
       }
-      return this.article.category ? [this.article.category] : []
+      return this.article.category ? 
+        this.article.category.split(',').map(cat => cat.trim()).filter(Boolean) : 
+        []
+    },
+    articleLink() {
+      const cleanSlug = this.article.slug.replace(/^\/|\/$/g, '');
+      
+      return {
+        path: cleanSlug,
+        query: this.queryParams
+      };
     }
   }
 }

@@ -99,6 +99,10 @@ export default {
       if (currentQuery.category) {
         query.category = currentQuery.category
       }
+      
+      if (currentQuery.categories) {
+        query.categories = currentQuery.categories
+      }
 
       if (currentQuery.sort) {
         query.sort = currentQuery.sort

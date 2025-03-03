@@ -86,11 +86,13 @@
     <div class="articles" v-if="mainArticle">
       <ArticleMain 
         :article="mainArticle"
+        :query-params="currentQueryParams"
       />
       <div class="article-wrap" v-for="(article, index) in articles.slice(1,this.articlesToShow)" :key="index">
         <Article 
           :article="article" 
           :index="index"
+          :query-params="currentQueryParams"
         />
       </div>
     </div>
@@ -185,6 +187,24 @@ export default {
     
     categories() {
       return this.getCategories
+    },
+
+    currentQueryParams() {
+      const query = {};
+      
+      if (this.activeCategory) {
+        query.category = this.activeCategory;
+      }
+      
+      if (this.selectedCategories.length > 0) {
+        query.categories = this.selectedCategories.join(',');
+      }
+      
+      if (this.dateSortStatus) {
+        query.sort = this.dateSortStatus;
+      }
+      
+      return query;
     }
   },
 
@@ -249,6 +269,7 @@ export default {
       this.selectedArticleSlugs = null
       this.activeCategory = category
       this.selectedCategories = []
+      this.tempSelectedCategories = []
       this.filterDropdownVisible = false
       if (!category) {
         this.$refs.searchComponent.clearSearch()
@@ -315,7 +336,7 @@ export default {
         await this.fetchFilteredArticles()
       }
     }
-  }
+  },
 }
 </script>
 

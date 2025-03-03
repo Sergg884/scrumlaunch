@@ -28,19 +28,65 @@ export const actions = {
       const queryParams = {
         content_type: 'blog',
         order: sortOrder,
+        limit: 100
       }
 
-      if (categories.length > 0) {
-        queryParams['fields.category[in]'] = categories.join(',')
-      }
+      let allItems = []
 
-      const res = await client.getEntries(queryParams)
+      if (categories.length === 0) {
+        const res = await client.getEntries(queryParams)
+        allItems = res.items
+      } else {
+        const allPromises = []
+        
+        categories.forEach(category => {
+          allPromises.push(client.getEntries({
+            ...queryParams,
+            'fields.category': category
+          }))
+          
+          allPromises.push(client.getEntries({
+            ...queryParams,
+            'fields.category[match]': `^${category},`
+          }))
+          
+          allPromises.push(client.getEntries({
+            ...queryParams,
+            'fields.category[contains]': `, ${category},`
+          }))
+          
+          allPromises.push(client.getEntries({
+            ...queryParams,
+            'fields.category[match]': `, ${category}$`
+          }))
+          
+          allPromises.push(client.getEntries({
+            ...queryParams,
+            'fields.category[contains]': category
+          }))
+        })
+        
+        const results = await Promise.all(allPromises)
+        
+        const uniqueItems = new Map()
+        results.forEach(res => {
+          res.items.forEach(item => {
+            uniqueItems.set(item.sys.id, item)
+          })
+        })
+        
+        allItems = Array.from(uniqueItems.values())
+      }
       
-      const articles = res.items.map((el) => {
+      let articles = allItems.map(el => {
         const parsedDate = parse(el.fields.date, 'dd/MM/yyyy', new Date())
+        const categoriesArray = el.fields.category ? 
+          el.fields.category.split(',').map(cat => cat.trim()).filter(Boolean) : 
+          []
         
         return {
           category: el.fields.category,
+          categories: categoriesArray,
           date: format(parsedDate, 'MM/dd/yyyy'),
           isoDate: format(parsedDate, 'yyyy-MM-dd'),
           metaDescription: el.fields.metaDescription,
@@ -58,7 +104,15 @@ export const actions = {
           authorName: el.fields.author,
         }
       })
-
+      
+      if (categories.length > 0) {
+        articles = articles.filter(article => {
+          return categories.some(category => 
+            article.categories.includes(category)
+          )
+        })
+      }
+      
       if (sortOrder.includes('date')) {
         articles.sort((a, b) => {
           return sortOrder.startsWith('-') 
@@ -66,7 +120,7 @@ export const actions = {
             : a.isoDate.localeCompare(b.isoDate)
         })
       }
-
+      
       commit('SET_ARTICLES', articles)
       return articles
     } catch (error) {
@@ -82,12 +136,19 @@ export const actions = {
         select: 'fields.category',
       })
 
-      const categories = [...new Set(
-        res.items
-          .map(item => item.fields.category?.trim())
-          .filter(Boolean)
-          .map(category => category.replace(/\s+/g, ' '))
-      )]
+      const allCategories = []
+      res.items.forEach(item => {
+        if (item.fields.category) {
+          const categoriesArray = item.fields.category
+            .split(',')
+            .map(cat => cat.trim())
+            .filter(Boolean)
+          
+          allCategories.push(...categoriesArray)
+        }
+      })
+
+      const categories = [...new Set(allCategories)].sort()
 
       commit('SET_CATEGORIES', categories)
       return categories
@@ -96,6 +157,45 @@ export const actions = {
       throw error
     }
   }
+}
+
+function processArticles(items, sortOrder) {
+  const articles = items.map((el) => {
+    const parsedDate = parse(el.fields.date, 'dd/MM/yyyy', new Date())
+    const categoriesArray = el.fields.category ? 
+      el.fields.category.split(',').map(cat => cat.trim()).filter(Boolean) : 
+      []
+    
+    return {
+      category: el.fields.category,
+      categories: categoriesArray,
+      date: format(parsedDate, 'MM/dd/yyyy'),
+      isoDate: format(parsedDate, 'yyyy-MM-dd'),
+      metaDescription: el.fields.metaDescription,
+      metaTitle: el.fields.metaTitle,
+      shortText: el.fields.shortText,
+      title: el.fields.title,
+      previewImage: {
+        url: `https:${el.fields.previewImage.fields.file.url}`,
+      },
+      slug: el.fields.slug,
+      text: documentToHtmlString(el.fields.ttt, renderOptions()),
+      authorImg: {
+        url: `https:${el.fields.authorImage.fields.file.url}`,
+      },
+      authorName: el.fields.author,
+    }
+  })
+
+  if (sortOrder.includes('date')) {
+    articles.sort((a, b) => {
+      return sortOrder.startsWith('-') 
+        ? b.isoDate.localeCompare(a.isoDate)
+        : a.isoDate.localeCompare(b.isoDate)
+    })
+  }
+
+  return articles
 }
 
 export const getters = {
