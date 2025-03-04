@@ -7,12 +7,12 @@
       </template>
     </div>
     <div class="article-header">
-      <h1 class="title-global">{{ article.title }}</h1>
+      <h1 class="title-global">{{ article?.title }}</h1>
       <div class="article-actions">
         <ShareButton 
           :url="shareUrl" 
-          :title="article.title" 
-          :description="article.shortText" 
+          :title="article?.title" 
+          :description="article?.shortText" 
         />
         <button class="print-button" @click="printArticle">
           <img src="@/assets/icons/print.svg" alt="print" />
@@ -20,22 +20,22 @@
         </button>
       </div>
     </div>
-    <div v-show="article" class="body" v-html="article.text"></div>
+    <div v-show="article" class="body" v-html="article?.text"></div>
     <div class="description">
       <div class="left">
-        <img :src="article.authorImg.url ? article.authorImg.url : '/pages/blog/default-author.jpg'" :alt="'article-author-img'" />
+        <img :src="article?.authorImg.url ? article?.authorImg.url : '/pages/blog/default-author.jpg'" :alt="'article-author-img'" />
         <div class="meta">
           <p class="author">
-            {{  article.authorName ? article.authorName : 'Thomas Jefferson' }}
+            {{  article?.authorName ? article?.authorName : 'Thomas Jefferson' }}
           </p>
           <p class="date">
-            {{ article.date }}
+            {{ article?.date }}
           </p>
         </div>
       </div>
-      <div class="categories" v-if="article.category">
+      <div class="categories" v-if="article?.category">
         <div class="category">
-          {{ article.category }}
+          {{ article?.category }}
         </div>
       </div>
     </div>
@@ -71,12 +71,12 @@ export default {
 
   head() {
     return {
-      title: this.article.metaTitle,
+      title: this.article?.metaTitle,
       meta: [
         {
           hid: 'og:description',
           name: 'description',
-          content: this.article.metaDescription,
+          content: this.article?.metaDescription,
         },
       ],
     }
@@ -86,7 +86,9 @@ export default {
     ...mapGetters('articles/', ['getAllArticles']),
     article() {
       const articlesRaw = this.getAllArticles.slice()
-      return articlesRaw.find(article => article.slug === this.$route.path)
+      const currentArticle = articlesRaw.find(article => article.slug === this.$route.path)
+
+      return currentArticle
     },
     recomended() {
       const array = [... this.getAllArticles]
@@ -98,10 +100,6 @@ export default {
 
       if (currentQuery.category) {
         query.category = currentQuery.category
-      }
-      
-      if (currentQuery.categories) {
-        query.categories = currentQuery.categories
       }
 
       if (currentQuery.sort) {

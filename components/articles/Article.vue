@@ -2,8 +2,8 @@
   <div class="article">
     <img class="hero" :src="article.previewImage.url" :alt="'article-hero'" />
     <div class="categories">
-      <div class="category" v-for="category in articleCategories" :key="category">
-        {{ category }}
+      <div v-for="tag in articleTags" :key="tag" class="category">
+        {{ tag }}
       </div>
     </div>
     <nuxt-link class="title" :to="articleLink">{{ article.title }}</nuxt-link>
@@ -42,12 +42,12 @@ export default {
     }
   },
   computed: {
-    articleCategories() {
-      if (this.article.categories?.length) {
-        return this.article.categories
+    articleTags() {
+      if (this.article.tags?.length) {
+        return this.article.tags
       }
-      return this.article.category ? 
-        this.article.category.split(',').map(cat => cat.trim()).filter(Boolean) : 
+      return this.article.tag ? 
+        this.article.tag.split(',').map(tag => tag.trim()).filter(Boolean) : 
         []
     },
     articleLink() {

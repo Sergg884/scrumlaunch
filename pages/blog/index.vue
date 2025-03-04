@@ -11,19 +11,19 @@
       <VueSlickCarousel v-bind="settings" class="content">
         <button
           class="custom-button"
-          @click="setSingleCategory('')"
-          :class="{ active: !activeCategory && selectedCategories.length === 0 }"
+          @click="setSingleTag('')"
+          :class="{ active: !activeTag && selectedTags.length === 0 }"
         >
           All articles
         </button>
         <button
-          v-for="category in categories"
-          :key="category"
+          v-for="tag in tags"
+          :key="tag"
           class="custom-button"
-          @click="setSingleCategory(category)"
-          :class="{ active: activeCategory === category && selectedCategories.length === 0 }"
+          @click="setSingleTag(tag)"
+          :class="{ active: activeTag === tag && selectedTags.length === 0 }"
         >
-          {{category}}
+          {{tag}}
         </button>
       </VueSlickCarousel>
     </div>
@@ -39,19 +39,19 @@
           class="dropdown-menu filter-menu"
           @mouseleave="filterDropdownVisible = false"
         >
-          <div class="filter-title">Industries</div>
+          <div class="filter-title">Tags</div>
           <div 
-            v-for="category in categories" 
-            :key="category"
+            v-for="tag in tags" 
+            :key="tag"
             class="checkbox-item"
-            @click.stop="toggleTempCategory(category)"
+            @click.stop="toggleTempTag(tag)"
           >
             <input 
               type="checkbox" 
-              :checked="tempSelectedCategories.includes(category)"
+              :checked="tempSelectedTags.includes(tag)"
               readonly
             >
-            <label>{{ category }}</label>
+            <label>{{ tag }}</label>
           </div>
           <div class="filter-actions">
             <button 
@@ -124,13 +124,14 @@ export default {
   data() {
     return {
       articlesToShow: 5,
-      activeCategory: '',
+      activeTag: '',
       dateDropdownSortVisible: false,
       dateSortStatus: 'desc',
       filterDropdownVisible: false,
-      selectedCategories: [],
-      tempSelectedCategories: [],
+      selectedTags: [],
+      tempSelectedTags: [],
       selectedArticleSlugs: null,
+      isLoading: false,
       settings: {
         "dots": false,
         "focusOnSelect": false,
@@ -143,18 +144,20 @@ export default {
     };
   },
 
-  fetch() {
-    const { category, categories, sort } = this.$route.query
+  async fetch() {
+    const { tag, tags, sort } = this.$route.query
     
-    if (category) {
-      this.activeCategory = category
-      this.selectedCategories = []
-    } else if (categories) {
-      this.selectedCategories = categories.split(',')
-      this.activeCategory = ''
+    if (tag) {
+      this.activeTag = tag
+      this.selectedTags = []
+    } else if (tags) {
+      this.selectedTags = tags.split(',')
+      this.activeTag = ''
     }
     
     this.dateSortStatus = sort || 'desc'
+    
+    await this.fetchArticlesOnce()
   },
 
   head: {
@@ -169,7 +172,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters('articles/', ['getAllArticles', 'getCategories']),
+    ...mapGetters('articles/', ['getAllArticles', 'getTags']),
 
     articles() {
       let articlesRaw = this.getAllArticles.slice()
@@ -185,19 +188,19 @@ export default {
       return this.articles[0]
     },
     
-    categories() {
-      return this.getCategories
+    tags() {
+      return this.getTags
     },
 
     currentQueryParams() {
       const query = {};
       
-      if (this.activeCategory) {
-        query.category = this.activeCategory;
+      if (this.activeTag) {
+        query.tag = this.activeTag;
       }
       
-      if (this.selectedCategories.length > 0) {
-        query.categories = this.selectedCategories.join(',');
+      if (this.selectedTags.length > 0) {
+        query.tags = this.selectedTags.join(',');
       }
       
       if (this.dateSortStatus) {
@@ -211,16 +214,16 @@ export default {
   watch: {
     '$route.query': {
       handler(newQuery) {
-        const { category, categories, sort } = newQuery
+        const { tag, tags, sort } = newQuery
 
-        if (!category && !categories) {
-          this.activeCategory = ''
-          this.selectedCategories = []
+        if (!tag && !tags) {
+          this.activeTag = ''
+          this.selectedTags = []
         }
 
         this.dateSortStatus = sort || 'desc'
 
-        if (!categories && !this.selectedCategories.length) {
+        if (!tags && !this.selectedTags.length) {
           this.filterDropdownVisible = false
         }
         if (!sort) {
@@ -229,31 +232,26 @@ export default {
       },
       immediate: true
     },
-
-    dateSortStatus: {
-      handler() {
-        this.updateQueryParams()
-      }
-    }
   },
 
   async created() {
-    await this.$store.dispatch('articles/fetchCategories')
-    await this.fetchFilteredArticles()
+    if (!this.tags || this.tags.length === 0) {
+      await this.$store.dispatch('articles/fetchTags')
+    }
   },
 
   methods: {
-    async fetchFilteredArticles() {
+    async fetchArticlesOnce() {
       const params = {
         sortOrder: this.dateSortStatus === 'desc' ? '-fields.date' : 'fields.date'
       }
       
-      if (this.activeCategory) {
-        params.categories = [this.activeCategory]
-      } else if (this.selectedCategories.length > 0) {
-        params.categories = this.selectedCategories
+      if (this.activeTag) {
+        params.tags = [this.activeTag]
+      } else if (this.selectedTags.length > 0) {
+        params.tags = this.selectedTags
       }
-
+      
       await this.$store.dispatch('articles/fetchArticles', params)
     },
 
@@ -261,45 +259,51 @@ export default {
       this.selectedArticleSlugs = null
       this.dateSortStatus = status
       this.dateDropdownSortVisible = false
+      
       this.updateQueryParams()
-      await this.fetchFilteredArticles()
+      
+      await this.fetchArticlesOnce()
     },
 
-    async setSingleCategory(category) {
+    async setSingleTag(tag) {
       this.selectedArticleSlugs = null
-      this.activeCategory = category
-      this.selectedCategories = []
-      this.tempSelectedCategories = []
+      this.activeTag = tag
+      this.selectedTags = []
+      this.tempSelectedTags = []
       this.filterDropdownVisible = false
-      if (!category) {
+      if (!tag) {
         this.$refs.searchComponent.clearSearch()
       }
+      
       this.updateQueryParams()
-      await this.fetchFilteredArticles()
+      
+      await this.fetchArticlesOnce()
     },
 
-    toggleTempCategory(category) {
-      const index = this.tempSelectedCategories.indexOf(category)
+    toggleTempTag(tag) {
+      const index = this.tempSelectedTags.indexOf(tag)
       if (index === -1) {
-        this.tempSelectedCategories.push(category)
+        this.tempSelectedTags.push(tag)
       } else {
-        this.tempSelectedCategories.splice(index, 1)
+        this.tempSelectedTags.splice(index, 1)
       }
     },
 
     async applyFilters() {
       this.selectedArticleSlugs = null
-      this.selectedCategories = [...this.tempSelectedCategories]
-      this.activeCategory = ''
+      this.selectedTags = [...this.tempSelectedTags]
+      this.activeTag = ''
       this.filterDropdownVisible = false
+      
       this.updateQueryParams()
-      await this.fetchFilteredArticles()
+      
+      await this.fetchArticlesOnce()
     },
 
     toggleFilterDropdown() {
       this.filterDropdownVisible = !this.filterDropdownVisible
       if (this.filterDropdownVisible) {
-        this.tempSelectedCategories = [...this.selectedCategories]
+        this.tempSelectedTags = [...this.selectedTags]
         this.dateDropdownSortVisible = false
       }
     },
@@ -314,26 +318,29 @@ export default {
     updateQueryParams() {
       const query = {}
       
-      if (this.activeCategory) {
-        query.category = this.activeCategory
+      if (this.activeTag) {
+        query.tag = this.activeTag
       }
       
-      if (this.selectedCategories.length > 0) {
-        query.categories = this.selectedCategories.join(',')
+      if (this.selectedTags.length > 0) {
+        query.tags = this.selectedTags.join(',')
       }
       
       query.sort = this.dateSortStatus
 
       this.$router.replace({
         query: Object.keys(query).length ? query : undefined
-      }, () => {},
-      { preserveState: true })
+      }).catch(err => {
+        if (err && err.name !== 'NavigationDuplicated') {
+          console.error(err)
+        }
+      })
     },
 
     async updateArticleFilter(slugs) {
       this.selectedArticleSlugs = slugs
       if (!slugs) {
-        await this.fetchFilteredArticles()
+        await this.fetchArticlesOnce()
       }
     }
   },
