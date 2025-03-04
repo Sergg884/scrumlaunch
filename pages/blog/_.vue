@@ -8,60 +8,65 @@
     </div>
     <div class="article-header">
       <h1 class="title-global">{{ article?.title }}</h1>
-      <div class="article-actions">
-        <ShareButton 
-          :url="shareUrl" 
-          :title="article?.title" 
-          :description="article?.shortText" 
-        />
-        <button class="print-button" @click="printArticle">
-          <img src="@/assets/icons/print.svg" alt="print" />
-          <span>Print / Save PDF</span>
-        </button>
-      </div>
     </div>
     <div v-show="article" class="body" v-html="article?.text"></div>
+
+    <div class="print-button-container">
+      <button class="print-button" @click="printArticle">
+        <img src="@/assets/icons/print.svg" alt="print" />
+        <span>Print / Save PDF</span>
+      </button>
+    </div>
+
     <div class="description">
-      <div class="left">
-        <img :src="article?.authorImg.url ? article?.authorImg.url : '/pages/blog/default-author.jpg'" :alt="'article-author-img'" />
-        <div class="meta">
-          <p class="author">
-            {{  article?.authorName ? article?.authorName : 'Thomas Jefferson' }}
-          </p>
-          <p class="date">
-            {{ article?.date }}
-          </p>
+      <div class="description-header">
+        <div class="left">
+          <nuxt-img :src="article?.authorImg.url ? article?.authorImg.url : '/pages/blog/default-author.jpg'" :alt="'article-author-img'" />
+          <div class="meta">
+            <p class="author">
+              {{  article?.authorName ? article?.authorName : 'Thomas Jefferson' }}
+            </p>
+            <p class="date" v-if="article?.date">
+                {{ article?.date }}
+            </p>
+          </div>
+        </div>
+
+        <div class="article-actions">
+          <ShareButton 
+            :url="shareUrl" 
+            :title="article?.title || ''" 
+            :description="article?.shortText || ''" 
+          />
         </div>
       </div>
-      <div class="categories" v-if="article?.category">
-        <div class="category">
-          {{ article?.category }}
+
+      <div class="tags">
+        <div 
+          v-for="tag in article?.tags" 
+          :key="tag" 
+          class="tag"
+        >
+          {{ tag }}
         </div>
       </div>
     </div>
-    <h2 class="recommended-articles">
-      Recommended articles
-    </h2>
-    <div class="article" v-for="i in recomended" :key="i.title">
-      <img class="hero" :src="i.previewImage.url" :alt="'article-recomended-hero-' + i" />
-      <div class="details">
-        <nuxt-link class="title" :to="i.slug">{{ i.title }}</nuxt-link>
-        <p class="text">
-          {{ i.shortText }}
-        </p>
-        <nuxt-link class="link" :to="i.slug">Read more</nuxt-link>
-      </div>
-    </div>
+    <OtherArticles 
+      :current-slug="$route.path"
+      :query-params="$route.query"
+    />
   </section>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 import ShareButton from '~/components/common/ShareButton.vue'
+import OtherArticles from '@/components/articles/OtherArticles.vue'
 
 export default {
   components: {
-    ShareButton
+    ShareButton,
+    OtherArticles
   },
 
   data() {
@@ -240,6 +245,93 @@ export default {
     @include desktop-and-up {
       margin-bottom: 16px;
     }
+  }
+
+  .tags {
+    display: flex;
+    width: 100%;
+    gap: 16px;
+    flex-wrap: wrap;
+    
+    .tag {
+      background: $main-black;
+      border: 1px solid transparent;
+      color: #fff;
+      padding: 4px 16px;
+      font-size: 14px;
+      font-weight: 500;
+      text-transform: capitalize;
+      transition: all 0.3s;
+
+      @include tablet-and-up {
+        font-size: 16px;
+        order: 1;
+      }
+
+      &:hover {
+        background-color: #fff;
+        border: 1px solid $main-black;
+        color: $main-black;
+        
+      }
+    }
+  }
+
+  .left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .article-actions {
+    align-self: flex-end;
+  }
+
+  .description-header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .description {
+    border-top: 1px solid $main-black;
+    display: flex;
+    flex-direction: column;
+    padding-top: 16px;
+    gap: 26px;
+
+    img {
+      height: 44px;
+      width: 44px;
+      border-radius: 100%;
+    }
+
+    .meta {
+
+      .author {
+        font-weight: 700;
+        font-size: 16px;
+        color: $main-black;
+        margin-bottom: 0;
+
+        @include tablet-and-up {
+          font-size: 20px;
+        }
+      }
+
+      .date {
+        text-align: left;
+        font-weight: 400;
+        font-size: 14px;
+        color: $dark-grey;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .print-button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 26px;
   }
 
   .article-header {
