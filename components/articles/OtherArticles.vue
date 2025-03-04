@@ -48,12 +48,13 @@
       ref="sentinel"
       class="sentinel"
     ></div>
-    <div 
-      v-if="loading" 
-      class="loading"
+    <button 
+      v-if="!allArticlesLoaded" 
+      class="load-more-button"
+      @click="loadMoreArticles" 
     >
-      Loading...
-    </div>
+      Load More
+    </button>
   </div>
 </template>
 
@@ -325,10 +326,20 @@ export default {
     margin: 20px 0;
   }
 
-  .loading {
-    text-align: center;
-    padding: 20px;
-    color: $dark-grey;
+  .load-more-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: $main-green;
+    color: #fff;
+    border: none;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: darken($main-green, 10%);
+    }
   }
 }
 </style> 
