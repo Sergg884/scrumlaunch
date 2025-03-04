@@ -6,55 +6,81 @@
         / <span :key="index">{{ crumb }}</span>
       </template>
     </div>
-    <div class="article-header">
-      <h1 class="title-global">{{ article?.title }}</h1>
-    </div>
-    <div v-show="article" class="body" v-html="article?.text"></div>
+    
+    <div class="article-layout">
+      <div class="main-content">
+        <div class="article-header">
+          <h1 class="title-global">{{ article?.title }}</h1>
+        </div>
 
-    <div class="print-button-container">
-      <button class="print-button" @click="printArticle">
-        <img src="@/assets/icons/print.svg" alt="print" />
-        <span>Print / Save PDF</span>
-      </button>
-    </div>
+        <div class="container">
+          <div v-show="article" class="body" v-html="article?.text"></div>
 
-    <div class="description">
-      <div class="description-header">
-        <div class="left">
-          <nuxt-img :src="article?.authorImg.url ? article?.authorImg.url : '/pages/blog/default-author.jpg'" :alt="'article-author-img'" />
-          <div class="meta">
-            <p class="author">
-              {{  article?.authorName ? article?.authorName : 'Thomas Jefferson' }}
-            </p>
-            <p class="date" v-if="article?.date">
-                {{ article?.date }}
-            </p>
+          <div class="print-button-container">
+            <button class="print-button" @click="printArticle">
+              <img src="@/assets/icons/print.svg" alt="print" />
+              <span>Print / Save PDF</span>
+            </button>
+          </div>
+
+          <div class="description">
+            <div class="description-header">
+              <div class="left">
+                <nuxt-img 
+                  :src="article?.authorImg.url || '/pages/blog/default-author.jpg'" 
+                  :alt="'article-author-img'" 
+                />
+                <div class="meta">
+                  <p class="author">
+                    {{ article?.authorName || 'Thomas Jefferson' }}
+                  </p>
+                  <p class="date" v-if="article?.date">
+                    {{ article?.date }}
+                  </p>
+                </div>
+              </div>
+
+              <div class="article-actions">
+                <ShareButton 
+                  :url="shareUrl" 
+                  :title="article?.title || ''" 
+                  :description="article?.shortText || ''" 
+                />
+              </div>
+            </div>
+
+            <div class="tags">
+              <div 
+                v-for="tag in article?.tags" 
+                :key="tag" 
+                class="tag"
+              >
+                {{ tag }}
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="article-actions">
-          <ShareButton 
-            :url="shareUrl" 
-            :title="article?.title || ''" 
-            :description="article?.shortText || ''" 
+        <div class="mobile-recommended">
+          <RecommendedArticles
+            :articles="recommendedArticles"
+            :query-params="$route.query"
           />
         </div>
+
+        <OtherArticles 
+          :current-slug="$route.path"
+          :query-params="$route.query"
+        />
       </div>
 
-      <div class="tags">
-        <div 
-          v-for="tag in article?.tags" 
-          :key="tag" 
-          class="tag"
-        >
-          {{ tag }}
-        </div>
+      <div class="sidebar">
+        <RecommendedArticles
+          :articles="recommendedArticles"
+          :query-params="$route.query"
+        />
       </div>
     </div>
-    <OtherArticles 
-      :current-slug="$route.path"
-      :query-params="$route.query"
-    />
   </section>
 </template>
 
@@ -62,11 +88,13 @@
 import { mapGetters } from 'vuex'
 import ShareButton from '~/components/common/ShareButton.vue'
 import OtherArticles from '@/components/articles/OtherArticles.vue'
+import RecommendedArticles from '@/components/articles/RecommendedArticles.vue'
 
 export default {
   components: {
     ShareButton,
-    OtherArticles
+    OtherArticles,
+    RecommendedArticles
   },
 
   data() {
@@ -126,6 +154,29 @@ export default {
     shareUrl() {
       const baseUrl = process.env.API_URL ? process.env.API_URL.replace(/\/$/, '') : window.location.origin;
       return `${baseUrl}${this.$route.path}`;
+    },
+    recommendedArticles() {
+      const allArticles = [...this.getAllArticles]
+        .filter(article => article.slug !== this.$route.path)
+        .sort((a, b) => new Date(b.isoDate) - new Date(a.isoDate))
+      
+      if (!this.article?.tags?.[0]) {
+        return allArticles.slice(0, 5)
+      }
+      
+      const currentTag = this.article.tags[0]
+      
+      const tagArticles = allArticles
+        .filter(article => article.tags && article.tags.includes(currentTag))
+      
+      if (tagArticles.length >= 5) {
+        return tagArticles.slice(0, 5)
+      }
+      
+      const otherArticles = allArticles
+        .filter(article => !article.tags || !article.tags.includes(currentTag))
+      
+      return [...tagArticles, ...otherArticles].slice(0, 5)
     }
   },
 
@@ -201,20 +252,62 @@ export default {
 
 <style lang="scss">
 .seo {
-  max-width: 375px;
-  padding: 0 20px;
+  max-width: 1440px;
   margin: 80px auto;
+  padding: 0 20px;
 
   @include tablet-and-up {
-    max-width: 768px;
     padding: 0 30px;
     margin: 120px auto;
   }
 
   @include desktop-and-up {
-    max-width: 1440px;
     padding: 0 120px;
-    margin: 120px auto;
+  }
+
+  .article-layout {
+    display: flex;
+    gap: 60px;
+    position: relative;
+  }
+
+  .main-content {
+    width: 100%;
+    max-width: 100%;
+
+    @include desktop-and-up {
+      max-width: 800px;
+    }
+  }
+
+  .sidebar {
+    display: none;
+
+    @include desktop-and-up {
+      display: block;
+      position: sticky;
+      top: 40px;
+      height: fit-content;
+    }
+  }
+
+  .mobile-recommended {
+    display: block;
+    margin: 40px 0;
+
+    @include desktop-and-up {
+      display: none;
+    }
+  }
+
+  .body {
+    margin-bottom: 60px;
+    text-align: left;
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
   }
 
   .breadcrumbs {
@@ -325,6 +418,16 @@ export default {
         color: $dark-grey;
         margin-bottom: 0;
       }
+    }
+  }
+
+  .container {
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+
+    @include desktop-and-up {
+      max-width: 800px;
     }
   }
 

@@ -77,10 +77,8 @@ export default {
   data() {
     return {
       articles: [],
-      page: 1,
-      loading: false,
-      observer: null,
-      articlesPerPage: 8,
+      page: 0,
+      articlesPerPage: 3,
       allArticlesLoaded: false
     }
   },
@@ -179,26 +177,18 @@ export default {
     },
 
     loadMoreArticles() {
-      if (this.loading || this.allArticlesLoaded) return
-
-      this.loading = true
+      if (this.allArticlesLoaded) return
       
-      try {
-        const startIndex = this.page * this.articlesPerPage
-        const endIndex = startIndex + this.articlesPerPage
-        const newArticles = this.filteredArticles.slice(startIndex, endIndex)
+      const startIndex = this.page * this.articlesPerPage
+      const endIndex = startIndex + this.articlesPerPage
+      const newArticles = this.filteredArticles.slice(startIndex, endIndex)
 
-        if (newArticles.length > 0) {
-          this.articles.push(...newArticles)
-          this.page++
-          this.checkIfAllLoaded()
-        } else {
-          this.allArticlesLoaded = true
-        }
-      } catch (error) {
-        console.error('Error loading more articles:', error)
-      } finally {
-        this.loading = false
+      if (newArticles.length > 0) {
+        this.articles.push(...newArticles)
+        this.page++
+        this.checkIfAllLoaded()
+      } else {
+        this.allArticlesLoaded = true
       }
     },
 
@@ -273,6 +263,7 @@ export default {
   .article-meta {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     font-size: 14px;
     color: $dark-grey;
   }

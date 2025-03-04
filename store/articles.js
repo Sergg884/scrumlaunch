@@ -42,6 +42,7 @@ export const actions = {
       const queryParams = {
         content_type: 'blog',
         order: sortOrder,
+        limit: 200,
       }
       
       if (tags.length > 0) {
@@ -101,6 +102,7 @@ export const actions = {
       const res = await client.getEntries({
         content_type: 'blog',
         select: 'fields.tags',
+        limit: 200,
       });
   
       const allTags = [];
