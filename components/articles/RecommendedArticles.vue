@@ -268,6 +268,11 @@ export default {
     text-decoration: none;
     margin-bottom: 8px;
     transition: color 0.3s;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis; 
 
     &:hover {
       color: $main-green;
