@@ -63,7 +63,8 @@
 
         <div class="mobile-recommended">
           <RecommendedArticles
-            :articles="recommendedArticles"
+            :current-slug="$route.path"
+            :current-tag="article?.tags?.[0] || ''"
             :query-params="$route.query"
           />
         </div>
@@ -76,7 +77,8 @@
 
       <div class="sidebar">
         <RecommendedArticles
-          :articles="recommendedArticles"
+          :current-slug="$route.path"
+          :current-tag="article?.tags?.[0] || ''"
           :query-params="$route.query"
         />
       </div>
@@ -99,6 +101,7 @@ export default {
 
   data() {
     return {
+      localRecommendedArticles: []
     }
   },
 
@@ -118,14 +121,8 @@ export default {
   computed: {
     ...mapGetters('articles/', ['getAllArticles']),
     article() {
-      const articlesRaw = this.getAllArticles.slice()
-      const currentArticle = articlesRaw.find(article => article.slug === this.$route.path)
-
-      return currentArticle
-    },
-    recomended() {
-      const array = [... this.getAllArticles]
-      return array.sort(() => 0.5 - Math.random()).slice(0, 3)
+      const currentPath = this.$route.path
+      return this.getAllArticles.find(article => article.slug === currentPath)
     },
     getBlogPath() {
       const currentQuery = this.$route.query
@@ -155,29 +152,6 @@ export default {
       const baseUrl = process.env.API_URL ? process.env.API_URL.replace(/\/$/, '') : window.location.origin;
       return `${baseUrl}${this.$route.path}`;
     },
-    recommendedArticles() {
-      const allArticles = [...this.getAllArticles]
-        .filter(article => article.slug !== this.$route.path)
-        .sort((a, b) => new Date(b.isoDate) - new Date(a.isoDate))
-      
-      if (!this.article?.tags?.[0]) {
-        return allArticles.slice(0, 5)
-      }
-      
-      const currentTag = this.article.tags[0]
-      
-      const tagArticles = allArticles
-        .filter(article => article.tags && article.tags.includes(currentTag))
-      
-      if (tagArticles.length >= 5) {
-        return tagArticles.slice(0, 5)
-      }
-      
-      const otherArticles = allArticles
-        .filter(article => !article.tags || !article.tags.includes(currentTag))
-      
-      return [...tagArticles, ...otherArticles].slice(0, 5)
-    }
   },
 
   methods: {
@@ -245,6 +219,64 @@ export default {
           }
         }, 1000);
       }, 500);
+    },
+    updateRecommendedArticles() {
+      if (!this.article) {
+        return
+      }
+      
+      const allArticles = [...this.getAllArticles]
+        .filter(article => article.slug !== this.$route.path)
+        .sort((a, b) => new Date(b.isoDate) - new Date(a.isoDate))
+      
+      if (allArticles.length === 0 || !this.article.tags || this.article.tags.length === 0) {
+        this.localRecommendedArticles = allArticles.slice(0, 5)
+        return
+      }
+      
+      const currentTag = this.article.tags[0]
+      
+      const tagArticles = allArticles
+        .filter(article => article.tags && article.tags.includes(currentTag))
+      
+      
+      if (tagArticles.length >= 5) {
+        this.localRecommendedArticles = tagArticles.slice(0, 5)
+      } else {
+        const remainingArticles = allArticles
+          .filter(article => !tagArticles.includes(article))
+        
+        this.localRecommendedArticles = [...tagArticles, ...remainingArticles].slice(0, 5)
+      }     
+    }
+  },
+
+  async fetch() {
+    if (this.getAllArticles.length === 0) {
+      await this.$store.dispatch('articles/fetchArticles')
+    }
+    
+    this.updateRecommendedArticles()
+  },
+
+  watch: {
+    '$route.path': {
+      immediate: true,
+      async handler() {
+        if (this.getAllArticles.length === 0) {
+          await this.$store.dispatch('articles/fetchArticles')
+        }
+        this.$nextTick(() => {
+          this.updateRecommendedArticles()
+        })
+      }
+    },
+    
+    getAllArticles: {
+      deep: true,
+      handler() {
+        this.updateRecommendedArticles()
+      }
     }
   }
 }

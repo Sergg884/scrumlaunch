@@ -88,17 +88,8 @@ export default {
     ...mapGetters('articles/', ['getAllArticles']),
     
     filteredArticles() {
-      const { tag, tags, sort } = this.queryParams
-      let articles = this.getAllArticles.filter(article => article.slug !== this.currentSlug)
-
-      if (tag) {
-        articles = articles.filter(article => article.tags && article.tags.includes(tag))
-      } else if (tags) {
-        const tagArray = tags.split(',')
-        articles = articles.filter(article => 
-          article.tags && tagArray.some(tag => article.tags.includes(tag))
-        )
-      }
+      const { sort } = this.queryParams
+      const articles = this.getAllArticles.filter(article => article.slug !== this.currentSlug)
 
       if (sort === 'asc') {
         articles.sort((a, b) => new Date(a.isoDate) - new Date(b.isoDate))

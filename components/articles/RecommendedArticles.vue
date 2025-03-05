@@ -4,8 +4,8 @@
       <h2 class="title">Recommended Articles</h2>
       <div class="articles-list">
         <div 
-          v-for="article in articles" 
-          :key="article.slug" 
+          v-for="article in localRecommendedArticles" 
+          :key="article.slug + '_' + refreshCounter" 
           class="article-item"
         >
           <nuxt-link 
@@ -44,13 +44,19 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'RecommendedArticles',
 
   props: {
-    articles: {
-      type: Array,
+    currentSlug: {
+      type: String,
       required: true
+    },
+    currentTag: {
+      type: String,
+      default: ''
     },
     queryParams: {
       type: Object,
@@ -58,10 +64,130 @@ export default {
     }
   },
 
+  data() {
+    return {
+      isLoading: false,
+      isInitialLoading: true,
+      localRecommendedArticles: [],
+      refreshCounter: 0,
+      retryCount: 0,
+      maxRetries: 5
+    }
+  },
+
+  computed: {
+    ...mapGetters('articles/', ['getAllArticles']),
+  },
+
+  watch: {
+    currentSlug: {
+      immediate: true,
+      handler() {
+        this.refreshCounter++;
+        this.updateRecommendations();
+      }
+    },
+    currentTag: {
+      immediate: true,
+      handler() {
+        this.updateRecommendations();
+      }
+    },
+    getAllArticles: {
+      immediate: true,
+      deep: true,
+      handler() {
+        this.updateRecommendations();
+      }
+    }
+  },
+
+  mounted() {
+    this.$nextTick(() => {
+      this.loadArticles();
+    });
+  },
+
   methods: {
+    async loadArticles() {
+      if (this.isLoading) return;
+      
+      this.isLoading = true;
+      try {
+        await this.$store.dispatch('articles/fetchArticles');
+        this.updateRecommendations();
+      } catch (error) {
+        console.error('Error loading articles:', error);
+      } finally {
+        this.isLoading = false;
+      }
+    },
+    
+    updateRecommendations() {
+      if (this.getAllArticles.length === 0) {
+        if (this.retryCount < this.maxRetries) {
+          this.retryCount++;
+          setTimeout(() => {
+            this.loadArticles();
+          }, 500);
+          return;
+        } else {
+          this.isInitialLoading = false;
+          return;
+        }
+      }
+      
+      const allArticles = [...this.getAllArticles]
+        .filter(article => article.slug !== this.currentSlug)
+        .sort((a, b) => new Date(b.isoDate) - new Date(a.isoDate));
+
+      const { tag, tags, sort } = this.queryParams;
+
+      if (sort === 'asc') {
+        allArticles.sort((a, b) => new Date(a.isoDate) - new Date(b.isoDate));
+      }
+
+      if (tag) {
+        const tagArticles = allArticles.filter(article => 
+          article.tags && article.tags.includes(tag)
+        );
+        
+        if (tagArticles.length >= 5) {
+          this.localRecommendedArticles = tagArticles.slice(0, 5);
+          return;
+        }
+
+        const remainingArticles = allArticles.filter(article => 
+          !tagArticles.includes(article)
+        );
+        
+        this.localRecommendedArticles = [...tagArticles, ...remainingArticles].slice(0, 5);
+      } else if (tags) {
+        const tagArray = tags.split(',');
+        const tagArticles = allArticles.filter(article => 
+          article.tags && tagArray.some(tag => article.tags.includes(tag))
+        );
+        
+        if (tagArticles.length >= 5) {
+          this.localRecommendedArticles = tagArticles.slice(0, 5);
+          return;
+        }
+
+        const remainingArticles = allArticles.filter(article => 
+          !tagArticles.includes(article)
+        );
+        
+        this.localRecommendedArticles = [...tagArticles, ...remainingArticles].slice(0, 5);
+      } else {
+        this.localRecommendedArticles = allArticles.slice(0, 5);
+      }
+
+      this.isInitialLoading = false;
+    },
+    
     updateTag(tag) {
-      const query = { ...this.queryParams, tag }
-      this.$router.push({ query })
+      const query = { ...this.queryParams, tag };
+      this.$router.push({ query });
     }
   }
 }
