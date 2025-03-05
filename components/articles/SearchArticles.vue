@@ -134,8 +134,11 @@ export default {
 .search-container {
   position: relative;
   width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
+  max-width: 500px;
+
+  @include tablet-and-up {
+    max-width: 400px;
+  }
 }
 
 .search-input-wrapper {

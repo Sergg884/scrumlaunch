@@ -6,7 +6,90 @@
       </h1>
       <nuxt-img src="/pages/blog/hero.webp" alt="blog-hero"/>
     </div>
-    <SearchArticles ref="searchComponent" class="search-section" @filter-update="updateArticleFilter" />
+    <div class="search-section">
+      <SearchArticles ref="searchComponent" @filter-update="updateArticleFilter" />
+
+      <div class="sort-by">
+        <div class="sort-by-item">
+          <div class="button" @click="toggleSortDropdown">
+            <img
+              :src="require('@/assets/icons/arrow-sort.svg')"
+              class="icon"
+            />
+            <span>
+              Sort by
+            </span>
+          </div>
+
+          <transition name="dropdown">
+            <div v-if="dateDropdownSortVisible" class="dropdown-menu" @mouseleave="dateDropdownSortVisible = !dateDropdownSortVisible">
+              <div class="sort-value" @click="updateDateSort('desc')" :class="{ active: dateSortStatus === 'desc' }">
+                Newest to oldest
+              </div>
+              <div class="sort-value" @click="updateDateSort('asc')" :class="{ active: dateSortStatus === 'asc' }">
+                Oldest to newest
+              </div>
+            </div>
+          </transition>
+        </div>
+
+        <div class="filter" @click="toggleFilterDropdown">
+          <img
+            :src="require('@/assets/icons/filter.svg')"
+            class="icon"
+          />
+          <span>
+            Filter by
+          </span>
+        </div>
+        
+        <transition name="fade">
+          <div 
+            v-if="filterDropdownVisible" 
+            class="filter-overlay"
+            @click="toggleFilterDropdown"
+          ></div>
+        </transition>
+
+        <transition name="dropdown">
+          <div 
+            v-if="filterDropdownVisible" 
+            class="dropdown-menu filter-menu"
+          >
+            <div class="filter-header">
+              <div class="filter-title">Filter</div>
+              <button 
+                class="close-button"
+                @click="toggleFilterDropdown"
+              >
+                ✕
+              </button>
+            </div>
+            <div 
+              v-for="tag in tags" 
+              :key="tag"
+              class="checkbox-item"
+              @click.stop="toggleTempTag(tag)"
+            >
+              <input 
+                type="checkbox" 
+                :checked="tempSelectedTags.includes(tag)"
+                readonly
+              >
+              <label>{{ tag }}</label>
+            </div>
+            <div class="filter-actions">
+              <button 
+                class="apply-button" 
+                @click="applyFilters"
+              >
+                Apply filters
+              </button>
+            </div>
+          </div>
+        </transition>
+      </div>
+    </div>
     <div class="swiper">
       <VueSlickCarousel v-bind="settings" class="content">
         <button
@@ -27,62 +110,7 @@
         </button>
       </VueSlickCarousel>
     </div>
-    <div class="sort-by">
-      <div class="filter" @click="toggleFilterDropdown">
-        <span>
-          Filter by
-        </span>
-      </div>
-      <transition name="dropdown">
-        <div 
-          v-if="filterDropdownVisible" 
-          class="dropdown-menu filter-menu"
-          @mouseleave="filterDropdownVisible = false"
-        >
-          <div class="filter-title">Tags</div>
-          <div 
-            v-for="tag in tags" 
-            :key="tag"
-            class="checkbox-item"
-            @click.stop="toggleTempTag(tag)"
-          >
-            <input 
-              type="checkbox" 
-              :checked="tempSelectedTags.includes(tag)"
-              readonly
-            >
-            <label>{{ tag }}</label>
-          </div>
-          <div class="filter-actions">
-            <button 
-              class="apply-button" 
-              @click="applyFilters"
-            >
-              Apply filters
-            </button>
-          </div>
-        </div>
-      </transition>
-      <div class="button" @click="toggleSortDropdown">
-        <img
-          :src="require('@/assets/icons/arrow-sort.svg')"
-          class="icon"
-        />
-        <span>
-          Sort by
-        </span>
-      </div>
-      <transition name="dropdown">
-        <div v-if="dateDropdownSortVisible" class="dropdown-menu" @mouseleave="dateDropdownSortVisible = !dateDropdownSortVisible">
-          <div @click="updateDateSort('desc')" :class="{ active: dateSortStatus === 'desc' }">
-            Newest to oldest
-          </div>
-          <div @click="updateDateSort('asc')" :class="{ active: dateSortStatus === 'asc' }">
-            Oldest to newest
-          </div>
-        </div>
-      </transition>
-    </div>
+
     <div class="articles" v-if="mainArticle">
       <ArticleMain 
         :article="mainArticle"
@@ -305,6 +333,9 @@ export default {
       if (this.filterDropdownVisible) {
         this.tempSelectedTags = [...this.selectedTags]
         this.dateDropdownSortVisible = false
+        document.body.classList.add('filter-open')
+      } else {
+        document.body.classList.remove('filter-open')
       }
     },
 
@@ -350,7 +381,7 @@ export default {
 <style lang="scss" scoped>
 
 .blog {
-
+  position: relative;
   @include desktop-and-up {
     margin: 120px auto;
   }
@@ -440,17 +471,14 @@ export default {
 
   .sort-by {
     display: flex;
+    align-items: center;
     position: relative;
     justify-content: space-between;
-    margin-bottom: 22px;
     cursor: pointer;
 
     @include tablet-and-up {
-      margin-bottom: 25px;
-    }
-
-    @include desktop-and-up {
-      margin-bottom: 35px;
+      justify-content: flex-start;
+      gap: 16px;
     }
     
     .filter {
@@ -513,7 +541,7 @@ export default {
     }
 
     .dropdown-menu {
-      left: calc(100% - 240px);
+      left: 0;
       position: absolute;
       top: calc(100% + 20px);
       background-color: white;
@@ -523,18 +551,16 @@ export default {
       z-index: 1;
       display: flex;
       flex-direction: column;
-      max-width: 240px;
+      max-width: fit-content;
+      
+      @include tablet-and-up {
+        left: calc(100% - 240px);
+      }
 
       div {
         padding: 20px 18px;
         font-weight: 700;
         font-size: 24px;
-        &:hover {
-          background-color: $main-green;
-        }
-        &.active {
-          background-color: $main-green;
-        }
       }
     }
 
@@ -549,12 +575,46 @@ export default {
       visibility: hidden;
     }
 
+    .filter-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 998;
+    }
+
     .dropdown-menu.filter-menu {
-      left: 18px;
-      width: 240px;
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: auto;
+      width: 400px;
+      background-color: white;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      border: 1px solid black;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      max-height: 80vh;
+      overflow-y: auto;
+
+      .filter-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 18px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+        &:hover {
+          cursor: default;
+          background-color: transparent;
+        }
+      }
 
       .filter-title {
-        padding: 20px 18px;
+        padding: 0;
         font-weight: 700;
         font-size: 24px;
 
@@ -564,20 +624,36 @@ export default {
         }
       }
 
+      .close-button {
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        padding: 4px;
+
+        &:hover {
+          cursor: pointer;
+          background-color: transparent;
+        }
+      }
+
       .checkbox-item {
+        padding: 12px 18px;
         height: 100%;
         display: flex;
         align-items: center;
         gap: 12px;
         
         &:hover {
-          background-color: $main-green;
+          cursor: pointer;
         }
 
         input[type="checkbox"] {
           width: 20px;
           height: 20px;
           cursor: pointer;
+          accent-color: $main-green;
+          border-radius: 4px;
         }
 
         label {
@@ -591,26 +667,36 @@ export default {
       }
 
       .filter-actions {
-        padding: 16px;
-        border-top: 1px solid $main-black;
+        padding: 16px 18px;
         margin-top: auto;
 
         .apply-button {
           width: 100%;
           padding: 12px;
-          background: $main-black;
+          background: $main-green;
           color: white;
-          border: 1px solid $main-black;
+          border: none;
+          border-radius: 54px;
           cursor: pointer;
           font-weight: 500;
-          transition: all 0.3s;
-
-          &:hover {
-            background: $main-green;
-            border-color: $main-green;
-          }
         }
       }
+    }
+
+    .fade-enter-active,
+    .fade-leave-active {
+      transition: opacity 0.3s;
+    }
+
+    .fade-enter,
+    .fade-leave-to {
+      opacity: 0;
+    }
+  }
+
+  .sort-by-item {
+    &:hover {
+      cursor: pointer;
     }
   }
 
@@ -632,17 +718,41 @@ export default {
     margin-top: 40px;
   }
 
+  .sort-by-item {
+    position: relative;
+  }
+
   .search-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: space-between;
     margin-bottom: 30px;
     
     @include tablet-and-up {
       margin-bottom: 40px;
+      flex-direction: row;
     }
 
     @include desktop-and-up {
       margin-bottom: 50px;
     }
   }
+
+  .sort-by-item .dropdown-menu {
+    min-width: 240px;
+  }
+}
+
+.sort-value {
+  &:hover {
+    cursor: pointer;
+    background-color: $main-green;
+  }
+}
+
+:global(body.filter-open) {
+  overflow: hidden;
 }
 
 </style>
