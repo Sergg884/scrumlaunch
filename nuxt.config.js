@@ -86,6 +86,7 @@ export default {
   serverMiddleware: [
     { path: '/api', handler: '~/api' },
     { path: '/_ipx', handler: '~/server/middleware/ipx.js' },
+    '~/server/middleware/redirect.js',
   ],
 
   // serverMiddleware: [{ path: '/api', handler: '~/api' }],
