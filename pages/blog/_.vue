@@ -105,6 +105,14 @@ export default {
     }
   },
 
+  async fetch() {
+    if (this.getAllArticles.length === 0) {
+      await this.$store.dispatch('articles/fetchArticles')
+    }
+    
+    this.updateRecommendedArticles()
+  },
+
   head() {
     return {
       title: this.article?.metaTitle,
@@ -122,7 +130,7 @@ export default {
     ...mapGetters('articles/', ['getAllArticles']),
     article() {
       const currentPath = this.$route.path
-      return this.getAllArticles.find(article => article.slug === currentPath)
+      return this.getAllArticles.find(article => article.slug.replace(/\/$/, '') === currentPath)
     },
     getBlogPath() {
       const currentQuery = this.$route.query
@@ -152,6 +160,27 @@ export default {
       const baseUrl = process.env.API_URL ? process.env.API_URL.replace(/\/$/, '') : window.location.origin;
       return `${baseUrl}${this.$route.path}`;
     },
+  },
+
+  watch: {
+    '$route.path': {
+      immediate: true,
+      async handler() {
+        if (this.getAllArticles.length === 0) {
+          await this.$store.dispatch('articles/fetchArticles')
+        }
+        this.$nextTick(() => {
+          this.updateRecommendedArticles()
+        })
+      }
+    },
+    
+    getAllArticles: {
+      deep: true,
+      handler() {
+        this.updateRecommendedArticles()
+      }
+    }
   },
 
   methods: {
@@ -250,35 +279,6 @@ export default {
       }     
     }
   },
-
-  async fetch() {
-    if (this.getAllArticles.length === 0) {
-      await this.$store.dispatch('articles/fetchArticles')
-    }
-    
-    this.updateRecommendedArticles()
-  },
-
-  watch: {
-    '$route.path': {
-      immediate: true,
-      async handler() {
-        if (this.getAllArticles.length === 0) {
-          await this.$store.dispatch('articles/fetchArticles')
-        }
-        this.$nextTick(() => {
-          this.updateRecommendedArticles()
-        })
-      }
-    },
-    
-    getAllArticles: {
-      deep: true,
-      handler() {
-        this.updateRecommendedArticles()
-      }
-    }
-  }
 }
 </script>
 

@@ -2,8 +2,8 @@
   <div class="other-articles">
     <h2 class="title">Other Articles</h2>
     <div 
-      v-for="article in articles" 
-      :key="article.slug" 
+      v-for="(article, index) in articles" 
+      :key="`${article.slug}_${index}`"
       class="article-item"
     >
       <nuxt-img 
