@@ -155,7 +155,7 @@ export default {
 
     resetAndReload() {
       this.articles = []
-      this.page = 1
+      this.page = 0
       this.allArticlesLoaded = false
       this.loadInitialArticles()
       this.$nextTick(() => {
@@ -164,20 +164,25 @@ export default {
     },
 
     loadInitialArticles() {
-      this.articles = this.filteredArticles.slice(0, this.articlesPerPage)
+      this.articles = []
+      const initialArticles = this.filteredArticles.slice(0, this.articlesPerPage)
+      this.articles = initialArticles
       this.checkIfAllLoaded()
     },
 
     loadMoreArticles() {
       if (this.allArticlesLoaded) return
       
+      this.page++
       const startIndex = this.page * this.articlesPerPage
       const endIndex = startIndex + this.articlesPerPage
       const newArticles = this.filteredArticles.slice(startIndex, endIndex)
 
-      if (newArticles.length > 0) {
-        this.articles.push(...newArticles)
-        this.page++
+      const existingSlugs = this.articles.map(a => a.slug)
+      const uniqueNewArticles = newArticles.filter(a => !existingSlugs.includes(a.slug))
+
+      if (uniqueNewArticles.length > 0) {
+        this.articles.push(...uniqueNewArticles)
         this.checkIfAllLoaded()
       } else {
         this.allArticlesLoaded = true

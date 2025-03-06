@@ -141,11 +141,7 @@ export default {
         .filter(article => article.slug !== this.currentSlug)
         .sort((a, b) => new Date(b.isoDate) - new Date(a.isoDate));
 
-      const { tag, tags, sort } = this.queryParams;
-
-      if (sort === 'asc') {
-        allArticles.sort((a, b) => new Date(a.isoDate) - new Date(b.isoDate));
-      }
+      const { tag, tags } = this.queryParams;
 
       if (tag) {
         const tagArticles = allArticles.filter(article => 
