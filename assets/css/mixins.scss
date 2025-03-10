@@ -1,0 +1,53 @@
+@use '@/assets/css/variables' as *;
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin ellipsis($_lines) {
+  display: -webkit-box;
+  -webkit-line-clamp: $_lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}
+
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} $transition-time;
+
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin for-phone-only {
+  @media (max-width: $phone-width) {
+    @content;
+  }
+}
+
+@mixin tablet-and-up {
+  @media (min-width: $tablet-width) {
+    @content;
+  }
+}
+
+@mixin tablet-landscape-and-up {
+  @media (min-width: $tablet-landscape-width) {
+    @content;
+  }
+}
+
+@mixin desktop-and-up {
+  @media (min-width: $desktop-width) {
+    @content;
+  }
+}

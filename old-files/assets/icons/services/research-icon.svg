@@ -1,0 +1,16 @@
+<svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0-research)">
+<mask id="mask0-research" mask-type="alpha" maskUnits="userSpaceOnUse" x="-21" y="35" width="114" height="24">
+<rect x="93" y="59" width="114" height="24" transform="rotate(180 93 59)" fill="#FF4E00"/>
+</mask>
+<g mask="url(#mask0-research)">
+<ellipse cx="34.5" cy="34" rx="25.5" ry="25" transform="rotate(180 34.5 34)" fill="#1E1F21"/>
+</g>
+<ellipse rx="8" ry="9" transform="matrix(-0.515038 -0.857167 0.873243 -0.487285 35.7389 19.7571)" fill="#12E2B0"/>
+</g>
+<defs>
+<clipPath id="clip0-research">
+<rect width="70" height="70" fill="white"/>
+</clipPath>
+</defs>
+</svg>

@@ -1,20 +1,31 @@
-$main-green: #12E2B0;
-$main-black: #1e1f21;
-$dark-grey: #50535A;
+// fonts
+$fs-36: 2.25rem;
+$fs-34: 2.125rem;
+$fs-32: 2rem;
+$fs-30: 1.875rem;
+$fs-28: 1.75rem;
+$fs-26: 1.65rem;
+$fs-24: 1.5rem;
+$fs-22: 1.38rem;
+$fs-20: 1.25rem;
+$fs-18: 1.125rem;
+$fs-16: 1rem;
+$fs-14: 0.88rem;
+$fs-12: 0.75rem;
 
-@mixin for-phone-only {
-  @media (max-width: 767px) { @content; }
-}
+$fw-900: 900;
+$fw-700: 700;
+$fw-600: 600;
+$fw-400: 400;
 
-@mixin tablet-and-up {
-  @media (min-width: 768px) { @content; }
-}
+$border-radius: 4px;
 
-@mixin tablet-landscape-and-up {
-  @media (min-width: 1024px) { @content; }
-}
+// transition
+$transition-time: 0.3s;
 
-@mixin desktop-and-up {
-  @media (min-width: 1440px) { @content; }
-}
+// layout
+$phone-width: 767px;
+$tablet-width: 768px;
+$tablet-landscape-width: 1024px;
+$desktop-width: 1440px;
 

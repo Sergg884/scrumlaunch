@@ -1,0 +1,20 @@
+$main-green: #12E2B0;
+$main-black: #1e1f21;
+$dark-grey: #50535A;
+
+@mixin for-phone-only {
+  @media (max-width: 767px) { @content; }
+}
+
+@mixin tablet-and-up {
+  @media (min-width: 768px) { @content; }
+}
+
+@mixin tablet-landscape-and-up {
+  @media (min-width: 1024px) { @content; }
+}
+
+@mixin desktop-and-up {
+  @media (min-width: 1440px) { @content; }
+}
+
