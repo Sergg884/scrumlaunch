@@ -1,4 +1,4 @@
-@use '@/assets/css/variables' as *;
+@use 'variables' as *;
 
 @mixin flex-center {
   display: flex;
@@ -36,12 +36,6 @@
 
 @mixin tablet-and-up {
   @media (min-width: $tablet-width) {
-    @content;
-  }
-}
-
-@mixin tablet-landscape-and-up {
-  @media (min-width: $tablet-landscape-width) {
     @content;
   }
 }

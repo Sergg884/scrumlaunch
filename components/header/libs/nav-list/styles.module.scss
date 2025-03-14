@@ -1,0 +1,32 @@
+.nav-list {
+  gap: 28px;
+  @include flex-center;
+
+  &__item {
+    font-size: $fs-18;
+    font-weight: $fw-600;
+    color: $color-black-1;
+    text-decoration: none;
+    @include hover(color, $color-turquoise);
+  }
+
+  &__item--button {
+    color: $color-turquoise;
+    line-height: 1;
+
+    @include desktop-and-up {
+      padding: 18px 32px;
+      background-color: $color-black-1;
+      color: $color-white;
+      border-radius: $button-border-radius;
+      transition:
+        background-color $transition-time,
+        color $transition-time;
+
+      &:hover {
+        background-color: $color-turquoise;
+        color: $color-black-1;
+      }
+    }
+  }
+}

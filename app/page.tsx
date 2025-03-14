@@ -1,13 +1,5 @@
-'use client';
-import BookSvg from '@/assets/icons/book.svg';
-
 const Home = () => {
-  return (
-    <div>
-      home
-      <BookSvg className="icon" />
-    </div>
-  );
+  return <div>home</div>;
 };
 
 export default Home;

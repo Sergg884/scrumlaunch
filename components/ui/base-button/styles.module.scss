@@ -1,0 +1,18 @@
+.base-button {
+  padding: 27px 76px;
+  background-color: $color-turquoise;
+  color: $color-black-1;
+  font-size: $fs-18;
+  font-weight: $fw-400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: $button-border-radius;
+  border: none;
+  cursor: pointer;
+  transition: background-color $transition-time, color $transition-time;
+  
+  &:hover {
+    background-color: $color-black-1;
+    color: $color-white;
+  }
+}

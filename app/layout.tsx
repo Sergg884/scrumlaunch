@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import localFont from 'next/font/local';
+import Header from '@/components/header';
+import cn from 'classnames';
 import '@/assets/css/main.scss';
-import ScriptsLoader from '@/components/scripts-loader';
+// import ScriptsLoader from '@/components/scripts-loader';
 
 const proximaNova = localFont({
   src: [
@@ -60,7 +62,8 @@ function RootLayout({
       <head>
         <link rel="icon" type="image/x-icon" href="/favicon.png" />
       </head>
-      <body className={`${proximaNova.variable}`}>
+      <body className={cn(`${proximaNova.variable}`)}>
+        <Header />
         {children}
 
         {/* HubSpot Script */}
@@ -92,7 +95,7 @@ function RootLayout({
         />
 
         {/* Scripts Loader */}
-        <ScriptsLoader />
+        {/* <ScriptsLoader /> */}
       </body>
     </html>
   );

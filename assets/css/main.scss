@@ -1,12 +1,14 @@
-@use '@/assets/css/theme' as *;
-@use '@/assets/css/variables' as *;
-@use '@/assets/css/mixins' as *;
-@use '@/assets/css/colors' as *;
+
+* {
+  box-sizing: border-box;
+}
 
 body {
   position: relative;
+  margin: 0;
+  padding: 0;
   font-family: var(--font-proxima-nova);
-  font-size: $fs-16;
+  font-size: 16px;
   font-weight: $fw-400;
   color: $color-black-1;
   -webkit-font-smoothing: antialiased;

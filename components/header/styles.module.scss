@@ -1,0 +1,49 @@
+.header {
+  padding: 26px 0;
+  position: relative;
+  z-index: 1000;
+  background-color: transparent;
+  transition: background-color 0.3s ease-in-out;
+
+  &--menu-open {
+    background-color: $color-black-1;
+  }
+
+  &__inner {
+    @include flex-between;
+  }
+
+  &__logo--inverted {
+    filter: brightness(0) invert(1);
+  }
+
+  &__nav {
+    display: none;
+
+    @include desktop-and-up {
+      display: flex;
+    }
+  }
+
+  &__burger {
+    display: block;
+    background: none;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    
+    svg {
+      transition: fill 0.3s ease-in-out;
+    }
+
+    .header--menu-open & {
+      svg {
+        fill: $color-white;
+      }
+    }
+
+    @include desktop-and-up {
+      display: none;
+    }
+  }
+}
