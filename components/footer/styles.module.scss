@@ -1,0 +1,167 @@
+@mixin text-base {
+  color: $color-black-1;
+  font-weight: $fw-700;
+  font-size: $fs-18;
+}
+
+.footer {
+  margin: 180px 0 60px;
+
+  @include tablet-and-up {
+    margin: 140px auto 40px;
+  }
+
+  @include desktop-and-up {
+    max-width: 1440px;
+    margin: 80px auto;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+
+    @include tablet-and-up {
+      align-items: flex-start;
+    }
+  }
+
+  &__column {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    @include tablet-and-up {
+      width: 25%;
+    }
+  }
+
+  &__info {
+    width: 100%;
+    padding: 0 10px;
+    order: 1;
+
+    @include tablet-and-up {
+      width: 50%;
+      order: 0;
+    }
+
+    @include desktop-and-up {
+      width: 33.33%;
+    }
+  }
+
+  &__email-mobile {
+    margin-bottom: 30px;
+
+    @include tablet-and-up {
+      display: none;
+    }
+  }
+
+  &__email-desktop {
+    display: none;
+
+    @include tablet-and-up {
+      display: block;
+      margin-bottom: 20px;
+    }
+  }
+
+  &__title {
+    @include text-base;
+    margin-bottom: 6px;
+  }
+
+  &__email-link {
+    font-weight: $fw-700;
+    font-size: $fs-24;
+    color: $color-black-1;
+    text-decoration: none;
+  }
+
+  &__link {
+    @include text-base;
+    text-decoration: none;
+    margin-bottom: 6px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    @include hover(color, $color-turquoise);
+  }
+
+  &__social {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+
+    @include tablet-and-up {
+      justify-content: flex-start;
+      margin-top: 0;
+    }
+  }
+
+  &__locations {
+    width: 100%;
+    padding: 0 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 30px;
+    gap: 20px;
+    order: 0;
+
+    @include tablet-and-up {
+      width: auto;
+      justify-content: flex-start;
+      order: 1;
+      margin-top: 32px;
+      margin-right: auto;
+    }
+
+    @include desktop-and-up {
+      width: 16.66%;
+      flex-direction: column;
+      margin-right: 0;
+      margin-top: 0;
+    }
+  }
+
+  &__location {
+    @include text-base;
+    list-style-type: disc;
+    margin-right: 20px;
+
+    @include desktop-and-up {
+      margin-right: 0;
+      margin-bottom: 6px;
+      display: block;
+    }
+  }
+
+  &__copyright {
+    width: 100%;
+    padding: 0 10px;
+    text-align: center;
+    margin-top: 25px;
+    order: 2;
+    color: $color-black-1;
+    font-weight: $fw-600;
+    font-size: $fs-14;
+
+    @include tablet-and-up {
+      width: auto;
+      margin-top: 20px;
+      text-align: right;
+    }
+
+    @include desktop-and-up {
+      width: 100%;
+      margin-top: 20px;
+      text-align: center;
+    }
+  }
+}

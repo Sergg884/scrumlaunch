@@ -1,4 +1,4 @@
-import LogoIcon from '@/assets/icons/logo.svg';
+import LogoIcon from '@/public/icons/logo.svg';
 import Link from 'next/link';
 import { FC } from 'react';
 

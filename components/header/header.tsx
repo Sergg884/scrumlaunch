@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import Logo from '@/components/header/libs/logo';
-import BurgerMenu from '@/assets/icons/burger-menu.svg';
-import CloseIcon from '@/assets/icons/close.svg';
+import BurgerMenu from '@/public/icons/burger-menu.svg';
+import CloseIcon from '@/public/icons/close.svg';
 import Container from '@/components/ui/container';
 import NavList from '@/components/header/libs/nav-list';
 import MobileMenu from './libs/mobile-menu/mobile-menu';

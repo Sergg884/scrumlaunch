@@ -4,6 +4,7 @@ import localFont from 'next/font/local';
 import Header from '@/components/header';
 import cn from 'classnames';
 import '@/assets/css/main.scss';
+import Footer from '@/components/footer';
 // import ScriptsLoader from '@/components/scripts-loader';
 
 const proximaNova = localFont({
@@ -65,6 +66,7 @@ function RootLayout({
       <body className={cn(`${proximaNova.variable}`)}>
         <Header />
         {children}
+        <Footer />
 
         {/* HubSpot Script */}
         <Script
