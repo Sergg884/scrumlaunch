@@ -5,10 +5,11 @@
 }
 
 .footer {
+  width: 100%;
   margin: 180px 0 60px;
 
   @include tablet-and-up {
-    margin: 140px auto 40px;
+    margin: 140px 0 40px;
   }
 
   @include desktop-and-up {

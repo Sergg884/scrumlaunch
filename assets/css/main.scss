@@ -1,6 +1,9 @@
-
 * {
   box-sizing: border-box;
+}
+
+html.scroll-lock {
+  overflow: hidden;
 }
 
 body {
@@ -13,6 +16,18 @@ body {
   color: $color-black-1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+header,
+footer {
+  flex-shrink: 0;
 }
 
 // global style elements for future use
@@ -228,10 +243,6 @@ body {
 //             font-size: 20px;
 //           }
 //         }
-//       }
-
-//       .team-technologies span {
-//         font-size: 14px;
 //       }
 //     }
 

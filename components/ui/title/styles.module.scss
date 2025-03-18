@@ -1,0 +1,32 @@
+.title {
+  margin: 0;
+  font-weight: $fw-900;
+
+  &--h1 {
+    font-size: $fs-32;
+
+    @include tablet-and-up {
+      font-size: $fs-56;
+    }
+  }
+
+  &--h2 {
+    font-size: $fs-24;
+
+    @include tablet-and-up {
+      font-size: $fs-48;
+    }
+
+    @include desktop-and-up {
+      font-size: $fs-56;
+    }
+  }
+
+  &--h3 {
+    font-size: $fs-20;
+    font-weight: $fw-700;
+    @include tablet-and-up {
+      font-size: $fs-30;
+    }
+  }
+}

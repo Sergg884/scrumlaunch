@@ -1,5 +1,9 @@
-const Home = () => {
-  return <div>home</div>;
-};
+import HeroHome from '@/components/hero-home/hero-home';
 
-export default Home;
+export default function Home() {
+  return (
+    <>
+      <HeroHome />
+    </>
+  );
+}

@@ -1,5 +1,6 @@
 // fonts
 $fs-56: 3.5rem;
+$fs-48: 3rem;
 $fs-36: 2.25rem;
 $fs-34: 2.125rem;
 $fs-32: 2rem;
@@ -28,7 +29,8 @@ $transition-time: 0.3s;
 // layout
 $phone-width: 767px;
 $tablet-width: 768px;
-$desktop-width: 1440px;
+$desktop-width: 1260px;
 
 // header
-$header-height: 97px;
+$header-height-phone: 99px;
+$header-height-desktop: 106px;

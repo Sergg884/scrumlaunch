@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Logo from '@/components/header/libs/logo';
 import BurgerMenu from '@/public/icons/burger-menu.svg';
 import CloseIcon from '@/public/icons/close.svg';
@@ -15,19 +15,44 @@ const Header = () => {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
+  useEffect(() => {
+    const scrollbarWidth =
+      window.innerWidth - document.documentElement.clientWidth;
+    document.documentElement.style.setProperty(
+      '--scrollbar-width',
+      `${scrollbarWidth}px`
+    );
+
+    if (isMenuOpen) {
+      document.documentElement.classList.add('scroll-lock');
+    } else {
+      document.documentElement.classList.remove('scroll-lock');
+    }
+
+    return () => {
+      document.documentElement.classList.remove('scroll-lock');
+    };
+  }, [isMenuOpen]);
+
   return (
     <>
-      <header className={cn(styles.header, { [styles['header--menu-open']]: isMenuOpen })}>
+      <header
+        className={cn(styles.header, {
+          [styles['header--menu-open']]: isMenuOpen,
+        })}
+      >
         <Container>
           <div className={styles.header__inner}>
-            <Logo className={cn({ [styles['header__logo--inverted']]: isMenuOpen })} />
+            <Logo
+              className={cn({ [styles['header__logo--inverted']]: isMenuOpen })}
+            />
 
             <NavList className={styles.header__nav} />
 
             <button
               className={styles.header__burger}
               onClick={toggleMenu}
-              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+              aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             >
               {isMenuOpen ? <CloseIcon /> : <BurgerMenu />}
             </button>

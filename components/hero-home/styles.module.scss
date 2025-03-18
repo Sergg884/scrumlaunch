@@ -1,0 +1,84 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100dvh - $header-height-phone);
+  padding: 80px 0;
+  gap: 40px;
+
+  @include tablet-and-up {
+    padding: 74px 0;
+  }
+
+  @include desktop-and-up {
+    min-height: calc(100dvh - $header-height-desktop);
+    padding: 90px 0;
+    gap: 60px;
+  }
+
+  &__container {
+    flex-direction: column;
+
+    @include desktop-and-up {
+      flex-direction: row;
+      @include flex-between;
+    }
+  }
+
+  &__title--marked {
+    background-color: $color-turquoise;
+  }
+
+  &__text {
+    font-size: $fs-26;
+    text-align: center;
+
+    @include desktop-and-up {
+      text-align: left;
+    }
+  }
+
+  &__background {
+    position: relative;
+    width: 100%;
+    height: 300px;
+
+    @include tablet-and-up {
+      height: 400px;
+    }
+
+    @include desktop-and-up {
+      width: 560px;
+      height: 465px;
+    }
+  }
+
+  &__image {
+    object-fit: cover;
+    position: absolute;
+  }
+
+  &__button {
+    max-width: 310px;
+    margin: 0 auto;
+    letter-spacing: 0;
+    text-wrap: nowrap;
+    font-size: $fs-12;
+
+    @include tablet-and-up {
+      font-size: $fs-14;
+    }
+
+    @include desktop-and-up {
+      font-size: $fs-18;
+      margin: 0;
+    }
+  }
+}
+
+.hero__content .hero__title {
+  text-align: center;
+
+  @include desktop-and-up {
+    text-align: left;
+  }
+}

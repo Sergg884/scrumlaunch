@@ -65,7 +65,7 @@ function RootLayout({
       </head>
       <body className={cn(`${proximaNova.variable}`)}>
         <Header />
-        {children}
+        <main>{children}</main>
         <Footer />
 
         {/* HubSpot Script */}
