@@ -1,7 +1,8 @@
 import { create } from 'zustand';
+import { ModalSlice, createModalSlice } from './slices/modalSlice';
 
-type Store = {}
+type Store = ModalSlice;
 
-export const useStore = create<Store>((set, get, api) => ({
-    
+export const useStore = create<Store>((...args) => ({
+  ...createModalSlice(...args),
 }));

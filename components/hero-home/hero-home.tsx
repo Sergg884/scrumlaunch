@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Container from '@/components/ui/container';
 import Title from '@/components/ui/title';
-import BaseButton from '@/components/ui/base-button';
+import ScheduleCallButton from '@/components/schedule-call-button';
 import styles from './styles.module.scss';
 
 const HeroHome = () => {
@@ -38,7 +38,9 @@ const HeroHome = () => {
           </div>
         </div>
 
-        <BaseButton className={styles.hero__button}>Schedule a call</BaseButton>
+        <ScheduleCallButton className={styles.hero__button}>
+          Schedule a call
+        </ScheduleCallButton>
       </section>
     </Container>
   );

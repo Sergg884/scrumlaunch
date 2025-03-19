@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Script from 'next/script';
 import localFont from 'next/font/local';
 import Header from '@/components/header';
+import { ModalProvider } from '@/components/modals/modal-provider';
 import cn from 'classnames';
 import '@/assets/css/main.scss';
 import Footer from '@/components/footer';
@@ -98,6 +99,8 @@ function RootLayout({
 
         {/* Scripts Loader */}
         {/* <ScriptsLoader /> */}
+
+        <ModalProvider />
       </body>
     </html>
   );
