@@ -1,0 +1,80 @@
+.superpowers {
+  margin-bottom: 80px;
+
+  @include desktop-and-up {
+    margin-bottom: 120px;
+  }
+
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 -1px;
+  }
+
+  &__tab {
+    width: 100%;
+    border: 1px solid $color-black-1;
+    text-align: left;
+    margin-top: -1px;
+    margin-left: -1px;
+    padding: 20px 28px;
+    transition: all $transition-time ease;
+
+    @include tablet-and-up {
+      width: 50%;
+      padding: 24px;
+    }
+
+    @include desktop-and-up {
+      width: 33.333%;
+      padding: 40px;
+    }
+
+    &:hover {
+      background-color: $color-turquoise;
+      border: 1px solid $color-turquoise;
+      height: revert;
+
+      .superpowers__image {
+        opacity: 0;
+      }
+
+      .superpowers__text {
+        top: -73px;
+
+        @include desktop-and-up {
+          top: -83px;
+        }
+      }
+    }
+  }
+
+  &__image {
+    opacity: 1;
+    margin-bottom: 20px;
+    transition: opacity $transition-time ease;
+
+    @include desktop-and-up {
+      margin-bottom: 30px;
+    }
+  }
+
+  &__text {
+    font-size: $fs-18;
+    color: $color-black-1;
+    margin-bottom: 0;
+    transition: all $transition-time ease;
+    position: relative;
+    top: 0;
+
+    @include desktop-and-up {
+      font-size: 26px;
+    }
+  }
+}
+
+.superpowers div:first-child .superpowers__title {
+  margin-bottom: 40px;
+  text-align: center;
+}

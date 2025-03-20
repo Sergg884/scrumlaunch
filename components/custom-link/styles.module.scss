@@ -1,0 +1,26 @@
+.custom-link {
+  @include flex-center;
+  gap: 16px;
+  line-height: 0;
+  font-size: $fs-12;
+  text-decoration: none;
+  min-width: 300px;
+  max-width: max-content;
+  color: $color-turquoise;
+  padding: 28px 32px;
+  background-color: $color-turquoise;
+  color: $color-black-1;
+  border-radius: $button-border-radius;
+  transition:
+    background-color $transition-time,
+    color $transition-time;
+
+  &:hover {
+    background-color: $color-black-1;
+    color: $color-white;
+  }
+
+  @include desktop-and-up {
+    font-size: $fs-16;
+  }
+}

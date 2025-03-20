@@ -1,0 +1,88 @@
+.tech-partner {
+  margin: 80px 0;
+
+  @include desktop-and-up {
+    margin: 120px 0;
+  }
+
+  &__tabs {
+    display: flex;
+    flex-direction: column;
+
+    @include tablet-and-up {
+      flex-direction: row;
+    }
+  }
+
+  &__tab {
+    text-align: left;
+    padding: 28px 20px;
+    border: 1px solid $color-black-1;
+    margin-bottom: -1px;
+    flex: 1 1 0;
+    transition: all $transition-time ease;
+
+    @include tablet-and-up {
+      padding: 32px 24px;
+
+      &:not(:last-child) {
+        margin-right: -1px;
+      }
+    }
+
+    @include desktop-and-up {
+      padding: 40px;
+    }
+
+    &:hover {
+      background-color: $color-turquoise;
+      border-color: $color-turquoise;
+    }
+  }
+
+  &__tab-title {
+    margin-bottom: 24px;
+
+    @include tablet-and-up {
+      font-size: $fs-18;
+      margin-bottom: 48px;
+    }
+
+    @include desktop-and-up {
+      margin-bottom: 85px;
+    }
+  }
+
+  &__tab-text {
+    margin-bottom: 6px;
+
+    @include tablet-and-up {
+      margin-bottom: 8px;
+    }
+
+    @include desktop-and-up {
+      font-size: $fs-30;
+    }
+  }
+
+  &__tab-description {
+    margin-bottom: 0;
+
+    @include desktop-and-up {
+      font-size: $fs-20;
+    }
+  }
+}
+
+.tech-partner div:first-child .tech-partner__title {
+  margin-bottom: 40px;
+  text-align: center;
+
+  @include tablet-and-up {
+    margin-bottom: 60px;
+  }
+
+  @include desktop-and-up {
+    margin-bottom: 80px;
+  }
+}

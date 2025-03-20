@@ -1,0 +1,207 @@
+.case-studies {
+  position: relative;
+  max-width: 100%;
+  background-color: $color-black-1;
+  padding: 80px 0;
+
+  @include tablet-and-up {
+    padding: 120px 0;
+  }
+
+  @include desktop-and-up {
+    padding: 120px 0;
+  }
+
+  &__slider {
+    padding: 0;
+    padding-bottom: 50px;
+  }
+
+  &__inner {
+    color: $color-white;
+    background-color: $color-black-1;
+
+    @include desktop-and-up {
+      margin: auto;
+    }
+  }
+
+  &__title {
+    text-align: center;
+
+    @include tablet-and-up {
+      margin-bottom: 60px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+
+    @include tablet-and-up {
+      flex-direction: row;
+    }
+  }
+
+  &__text-container {
+    text-align: center;
+    padding-right: 0;
+
+    @include tablet-and-up {
+      padding-right: 5%;
+    }
+  }
+
+  &__name {
+    text-align: left;
+    font-weight: $fw-700;
+    font-size: $fs-20;
+    text-transform: uppercase;
+
+    @include tablet-and-up {
+      font-size: $fs-30;
+    }
+  }
+
+  &__description {
+    text-align: left;
+    margin-bottom: 28px;
+
+    @include tablet-and-up {
+      font-size: $fs-18;
+    }
+
+    @include desktop-and-up {
+      font-size: $fs-20;
+    }
+  }
+
+  &__indicators {
+    @include flex-between;
+    margin-bottom: 0;
+
+    @include tablet-and-up {
+      margin-bottom: 60px;
+    }
+
+    @include desktop-and-up {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__indicator {
+    padding: 10px;
+    border: 1px solid $color-white;
+    text-align: center;
+    width: 30%;
+    height: 145px;
+
+    @include tablet-and-up {
+      padding: 18px;
+      height: 170px;
+    }
+
+    @include desktop-and-up {
+      border: 1px solid $color-white;
+    }
+  }
+
+  &__indicator-title {
+    font-weight: $fw-900;
+    font-size: $fs-22;
+
+    @include desktop-and-up {
+      font-size: $fs-30;
+    }
+  }
+
+  &__indicator-description {
+    font-size: $fs-14;
+
+    @include desktop-and-up {
+      font-size: $fs-18;
+    }
+  }
+
+  &__img-container {
+    position: relative;
+    padding: 40px;
+
+    @include tablet-and-up {
+      width: 45%;
+      overflow: hidden;
+      padding: 0;   
+    }
+  }
+
+  &__desktop-img {
+    display: none !important;
+
+    @include tablet-and-up {
+      display: block !important;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: auto;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__mobile-img {
+    display: block !important;
+    width: 100%;
+    height: 100%;
+
+    @include tablet-and-up {
+      display: none !important;
+    }
+  }
+
+  &__dot {
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+    border-radius: 100%;
+    border: 1px solid $color-black-1;
+    background-color: $color-light-grey;
+    transition: all $transition-time;
+
+    &:hover {
+      background-color: $color-turquoise;
+      border: unset;
+    }
+
+    span {
+      display: none;
+    }
+
+    @include tablet-and-up {
+      width: 18px;
+      height: 18px;
+    }
+
+    @include desktop-and-up {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+.case-studies__text-container .case-studies__button {
+  display: none;
+
+  @include tablet-and-up {
+    display: flex;
+    width: 300px;
+  }
+}
+
+.case-studies__content .case-studies__button-mobile {
+  display: flex;
+  align-self: center;
+
+  @include tablet-and-up {
+    display: none;
+  }
+}
