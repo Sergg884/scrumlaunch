@@ -2,7 +2,7 @@ import { createClient } from 'contentful';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import { parse, format } from "date-fns";
 
-export interface ArticleParams {
+export type ArticleParams = {
   page: number;
   limit: number;
   tags?: string[];
@@ -10,7 +10,7 @@ export interface ArticleParams {
   search?: string;
 }
 
-export interface ArticlesResponse {
+export type ArticlesResponse = {
   items: Article[];
   total: number;
   hasMore: boolean;

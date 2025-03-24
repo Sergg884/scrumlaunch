@@ -4,12 +4,12 @@ import { FC } from "react";
 import styles from "./styles.module.scss";
 import { Article as ArticleType } from "@/actions/article";
 
-interface ArticleProps {
+type Props = {
   article: ArticleType;
   index: number;
 }
 
-const Article: FC<ArticleProps> = ({ article, index }) => {
+const Article: FC<Props> = ({ article, index }) => {
   return (
     <div className={styles.article}>
       <div className={styles['article__image-wrapper']}>

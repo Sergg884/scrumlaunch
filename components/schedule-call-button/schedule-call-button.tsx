@@ -1,17 +1,18 @@
 'use client';
 
+import { FC } from 'react';
 import { useStore } from '@/store/useStore';
 import BaseButton from '@/components/ui/base-button';
 
-interface ScheduleCallButtonProps {
+type Props = {
   className?: string;
   children?: React.ReactNode;
 }
 
-const ScheduleCallButton = ({
+const ScheduleCallButton: FC<Props> = ({
   className,
   children = 'Schedule a call',
-}: ScheduleCallButtonProps) => {
+}) => {
   const { openModal } = useStore();
 
   return (

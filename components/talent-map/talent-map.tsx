@@ -1,16 +1,17 @@
+import { FC } from 'react';
 import Image from 'next/image';
 import Container from '@/components/ui/container';
-import styles from './styles.module.scss';
-import cn from 'classnames';
 import Title from '@/components/ui/title';
+import cn from 'classnames';
+import styles from './styles.module.scss';
 
-interface TalentMapProps {
+type Props = {
   isWhite?: boolean;
 }
 
 const locations = ['North America', 'Europe', 'Latin America', 'Asia'];
 
-const TalentMap: React.FC<TalentMapProps> = ({ isWhite = false }) => {
+const TalentMap: FC<Props> = ({ isWhite = false }) => {
   return (
     <div
       className={cn(styles['talent-map'], {

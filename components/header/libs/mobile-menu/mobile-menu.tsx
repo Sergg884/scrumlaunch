@@ -4,12 +4,12 @@ import { FC } from 'react';
 import NavList from '@/components/header/libs/nav-list';
 import styles from './styles.module.scss';
 
-interface MobileMenuProps {
+type Props = {
   isOpen: boolean;
   onClose: () => void;
 }
 
-const MobileMenu: FC<MobileMenuProps> = ({ isOpen, onClose }) => {
+const MobileMenu: FC<Props> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (

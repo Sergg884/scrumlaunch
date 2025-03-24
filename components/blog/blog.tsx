@@ -12,7 +12,7 @@ import cn from "classnames";
 import { Article as ArticleType } from "@/actions/article";
 import { useWindowSize } from "@/hooks/use-window-size";
 
-interface BlogProps {
+type Props = {
   showTitle?: boolean;
   className?: string;
   gridType: 'home' | 'blog';
@@ -20,7 +20,7 @@ interface BlogProps {
 
 const ITEMS_PER_LOAD = 6;
 
-const Blog: FC<BlogProps> = ({ showTitle = true, className = '', gridType }) => {
+const Blog: FC<Props> = ({ showTitle = true, className = '', gridType }) => {
   const [allArticles, setAllArticles] = useState<ArticleType[]>([]);
   const [displayedCount, setDisplayedCount] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
