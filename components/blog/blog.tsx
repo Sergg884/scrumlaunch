@@ -21,41 +21,30 @@ interface BlogProps {
 const ITEMS_PER_LOAD = 6;
 
 const Blog: FC<BlogProps> = ({ showTitle = true, className = '', gridType }) => {
-  const [articles, setArticles] = useState<ArticleType[]>([]);
+  const [allArticles, setAllArticles] = useState<ArticleType[]>([]);
+  const [displayedCount, setDisplayedCount] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
   const { width } = useWindowSize();
 
   const getInitialArticlesCount = () => {
     if (width >= 1260) {
-      return gridType === 'home' ? 4 : 3;
+      return 4;
     } else if (width >= 768) {
       return 3;
     }
     return 2;
   };
 
-  const loadArticles = async (isInitial = false) => {
+  const loadAllArticles = async () => {
     try {
       setIsLoading(true);
-      const page = isInitial ? 1 : currentPage + 1;
-      const limit = isInitial ? getInitialArticlesCount() : ITEMS_PER_LOAD;
-
       const response = await fetchArticles({
-        page,
-        limit,
-        sortOrder: '-fields.date'
+        page: 1,
+        limit: 1000
       });
 
-      if (isInitial) {
-        setArticles(response.items);
-      } else {
-        setArticles(prev => [...prev, ...response.items]);
-      }
-
-      setCurrentPage(page);
-      setHasMore(response.hasMore);
+      setAllArticles(response.items);
+      setDisplayedCount(getInitialArticlesCount());
     } catch (error) {
       console.error('Error loading articles:', error);
     } finally {
@@ -63,9 +52,20 @@ const Blog: FC<BlogProps> = ({ showTitle = true, className = '', gridType }) => 
     }
   };
 
+  const loadMore = () => {
+    setDisplayedCount(prev => Math.min(prev + ITEMS_PER_LOAD, allArticles.length));
+  };
+
   useEffect(() => {
-    loadArticles(true);
-  }, [width]); // Перезагружаем при изменении ширины экрана
+    if (allArticles.length > 0) {
+      setDisplayedCount(getInitialArticlesCount());
+    } else {
+      loadAllArticles();
+    }
+  }, [width]);
+
+  const displayedArticles = allArticles.slice(0, displayedCount);
+  const hasMore = displayedCount < allArticles.length;
 
   return (
     <section className={cn(styles.blog, className)}>
@@ -73,14 +73,14 @@ const Blog: FC<BlogProps> = ({ showTitle = true, className = '', gridType }) => 
         {showTitle && <Title variant="h2">Blog</Title>}
 
         <div className={styles[`blog__articles--${gridType}`]}>
-          {articles.length > 0 && (
+          {displayedArticles.length > 0 && (
             <>
               <div className={styles['blog__main-article']}>
-                <ArticleMain article={articles[0]} />
+                <ArticleMain article={displayedArticles[0]} priority />
               </div>
 
               <div className={styles['blog__grid']}>
-                {articles.slice(1).map((article, index) => (
+                {displayedArticles.slice(1).map((article, index) => (
                   <div
                     key={article.id}
                     className={styles['blog__article-wrap']}
@@ -95,7 +95,7 @@ const Blog: FC<BlogProps> = ({ showTitle = true, className = '', gridType }) => 
 
         {hasMore && !isLoading && (
           <BaseButton
-            onClick={() => loadArticles(false)}
+            onClick={loadMore}
             className={styles['blog__show-more']}
           >
             View more articles

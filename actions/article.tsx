@@ -6,7 +6,7 @@ export interface ArticleParams {
   page: number;
   limit: number;
   tags?: string[];
-  sortOrder?: '-fields.date' | 'fields.date' | '-fields.title' | 'fields.title';
+  sortOrder?: '-fields.date' | 'fields.date';
   search?: string;
 }
 
@@ -68,19 +68,16 @@ const mapContentfulToArticle = (item: any): Article => {
 
 export const fetchArticles = async (params: ArticleParams): Promise<ArticlesResponse> => {
   const {
-    page,
-    limit,
     tags = [],
-    sortOrder = '-fields.date',
     search = ''
   } = params;
 
   try {
     const queryParams: any = {
       content_type: 'blog',
-      order: sortOrder,
-      limit: limit + 1, // Запрашиваем на 1 больше для проверки hasMore
-      skip: (page - 1) * limit,
+      limit: 1000,
+      order: '-sys.updatedAt',
+      'fields.date[exists]': true
     };
 
     if (tags.length > 0) {
@@ -92,13 +89,18 @@ export const fetchArticles = async (params: ArticleParams): Promise<ArticlesResp
     }
 
     const response = await contentfulClient.getEntries(queryParams);
-    const items = response.items.slice(0, limit).map(mapContentfulToArticle);
+
+    const items = response.items
+      .map(mapContentfulToArticle)
+      .sort((a, b) => {
+        return b.isoDate.localeCompare(a.isoDate);
+      });
 
     return {
       items,
       total: response.total,
-      hasMore: response.items.length > limit,
-      page
+      hasMore: false,
+      page: 1
     };
   } catch (error) {
     console.error('Error fetching articles:', error);
