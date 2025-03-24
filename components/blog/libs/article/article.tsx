@@ -62,11 +62,14 @@ const Article: FC<Props> = ({ article, index }) => {
             width={44}
             height={44}
             className={styles['article__author-image']}
-          />
+          /
+          >
+
           <div className={styles['article__meta']}>
             <p className={styles['article__author']}>
               {article.authorName || 'Thomas Jefferson'}
             </p>
+
             {article.date && (
               <p className={styles['article__date']}>
                 {article.date}
