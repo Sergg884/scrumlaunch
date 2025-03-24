@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
     prependData: `@use "variables" as *; @use "mixins" as *; @use "colors" as *;`,
   },
   images: {
-    domains: [],
+    domains: ['images.ctfassets.net'],
   },
   env: {
     GOOGLE_TAG_MANAGER_ID: process.env.GOOGLE_TAG_MANAGER_ID,
