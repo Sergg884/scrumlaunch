@@ -70,7 +70,7 @@ const Blog: FC<BlogProps> = ({ showTitle = true, className = '', gridType }) => 
   return (
     <section className={cn(styles.blog, className)}>
       <Container>
-        {showTitle && <Title variant="h2">Blog</Title>}
+        {showTitle && <Title variant="h2" className={styles['blog__title']}>Blog</Title>}
 
         <div className={styles[`blog__articles--${gridType}`]}>
           {displayedArticles.length > 0 && (

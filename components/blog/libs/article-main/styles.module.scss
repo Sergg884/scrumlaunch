@@ -77,10 +77,8 @@
     text-align: left;
     font-weight: $fw-900;
     font-size: $fs-18;
-    color: $color-black;
+    color: $color-black-1;
     margin-bottom: 10px;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
     @include ellipsis(3);
     transition: all $transition-time;
     text-decoration: none;
@@ -122,11 +120,7 @@
     font-size: $fs-14;
     color: $color-black;
     margin-bottom: 12px;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    @include ellipsis(3);
     margin-bottom: auto;
 
     @include tablet-and-up {
@@ -140,11 +134,10 @@
   }
 
   &__link {
-    color: $color-black;
+    color: $color-black-1;
     text-decoration: underline;
     font-weight: $fw-700;
     font-size: $fs-16;
-    padding: 3px 2px;
     margin-bottom: 12px;
     margin-top: 12px;
     align-self: flex-start;
@@ -179,7 +172,6 @@
   &__author {
     font-weight: $fw-700;
     font-size: $fs-16;
-    color: $color-black;
     margin-bottom: 0;
 
     @include tablet-and-up {

@@ -4,12 +4,12 @@ import { FC } from "react";
 import styles from "./styles.module.scss";
 import { Article } from "@/actions/article";
 
-interface ArticleMainProps {
+type Props = {
   article: Article;
   priority?: boolean;
 }
 
-const ArticleMain: FC<ArticleMainProps> = ({ article, priority = false }) => {
+const ArticleMain: FC<Props> = ({ article, priority = false }) => {
   return (
     <div className={styles['article-main']}>
       <div className={styles['article-main__image-wrapper']}>
