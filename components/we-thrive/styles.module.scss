@@ -1,0 +1,54 @@
+.we-thrive {
+  background-color: $color-black-1;
+  padding: 80px 0;
+
+  @include desktop-and-up {
+    padding: 120px 0;
+  }
+
+  &__title {
+    color: $color-white;
+    text-align: center;
+    margin-bottom: 40px;
+
+    @include tablet-and-up {
+      margin-bottom: 60px;
+    }
+
+    @include desktop-and-up {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__data-row {
+    justify-content: space-between;
+    border-top: 1px solid $color-white;
+    border-bottom: 1px solid $color-white;
+    padding: 16px 0;
+    color: $color-white;
+    margin-bottom: -1px;
+    display: flex;
+  }
+
+  &__item-title {
+    text-align: left;
+    font-weight: 700;
+    align-self: end;
+    font-size: 14px;
+
+    @include desktop-and-up {
+      font-size: 28px;
+    }
+  }
+
+  &__data {
+    text-align: right;
+    font-weight: $fw-700;
+    font-size: $fs-65;
+    color: $color-turquoise;
+
+    @include desktop-and-up {
+      font-size: $fs-142;
+    }
+  }
+}

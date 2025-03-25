@@ -7,6 +7,8 @@ import CaseStudies from '@/components/case-studies';
 import Blog from '@/components/blog';
 import GetStarted from '@/components/get-started';
 import OurClients from '@/components/our-clients';
+import WeThrive from '@/components/we-thrive';
+
 export default function Home() {
   return (
     <>
@@ -23,6 +25,8 @@ export default function Home() {
       <CaseStudies />
 
       <OurClients />
+
+      <WeThrive />
 
       <Blog gridType="home" />
 
