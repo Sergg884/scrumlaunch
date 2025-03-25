@@ -15,14 +15,6 @@
   &__slider {
     padding: 0;
     padding-bottom: 50px;
-
-    &>div {
-      max-height: 650px;
-
-      @include tablet-and-up {
-        max-height: 770px;
-      }
-    }
   }
 
   &__inner {
@@ -133,6 +125,7 @@
 
   &__img-container {
     position: relative;
+    margin: 0 auto;
     padding: 40px;
 
     @include tablet-and-up {
