@@ -9,6 +9,9 @@ import GetStarted from '@/components/get-started';
 import OurClients from '@/components/our-clients';
 import WeThrive from '@/components/we-thrive';
 import Services from '@/components/serivices';
+import Hiring from '@/components/hiring';
+import Awards from '@/components/awards';
+
 export default function Home() {
   return (
     <>
@@ -29,6 +32,10 @@ export default function Home() {
       <WeThrive />
 
       <Services />
+
+      <Hiring />
+
+      <Awards />
 
       <Blog gridType="home" />
 

@@ -1,0 +1,151 @@
+.hiring {
+  margin: 80px 0;
+
+  @include tablet-and-up {
+    margin: 120px 0;
+  }
+
+  &__title {
+    text-align: center;
+    margin-bottom: 40px;
+
+    @include tablet-and-up {
+      margin-bottom: 60px;
+    }
+
+    @include desktop-and-up {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__tabs {
+    display: flex;
+    flex-direction: column;
+    gap: 21px;
+
+    @include tablet-and-up {
+      gap: 32px;
+    }
+  }
+
+  &__tab {
+    border: 1px solid $color-black;
+
+    @include tablet-and-up {
+      display: flex;
+    }
+  }
+
+  &__left {
+    background-color: $color-turquoise;
+    padding: 13px 20px;
+    border: 1px solid $color-black;
+    margin: -1px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include tablet-and-up {
+      flex: 0 0 240px;
+      padding: 32px 24px;
+      flex-direction: column;
+      align-items: start;
+      justify-content: start;
+    }
+
+    @include desktop-and-up {
+      flex: 0 0 274px;
+      padding: 18px 20px;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__tab-text {
+    margin-top: 0;
+    font-weight: 500;
+    font-size: $fs-16;
+    margin-bottom: 0;
+    text-align: start;
+    flex: 3;
+
+    @include tablet-and-up {
+      flex: 0;
+      font-size: $fs-20;
+    }
+
+    @include desktop-and-up {
+      flex: 1;
+      font-size: $fs-16;
+    }
+  }
+
+  &__indicator {
+    font-weight: $fw-900;
+    font-size: 50px;
+    text-transform: uppercase;
+    margin-bottom: 0;
+    text-align: left;
+    flex: 1;
+    margin-right: 12px;
+    margin-top: 0;
+
+    @include tablet-and-up {
+      margin-right: 0px;
+      margin-bottom: 12px;
+      flex: 0;
+      font-size: 30px;
+    }
+
+    @include desktop-and-up {
+      flex: 1;
+      font-size: $fs-56;
+      margin-bottom: 0px;
+    }
+  }
+
+  &__right {
+    padding: 20px;
+    text-align: left;
+
+    @include tablet-and-up {
+      padding: 32px;
+    }
+
+    @include desktop-and-up {
+      align-self: center;
+      padding: 20px 32px;
+    }
+  }
+
+  &__description-title {
+    font-weight: $fw-700;
+    font-size: $fs-18;
+    margin-bottom: 8px;
+
+    @include tablet-and-up {
+      font-size: $fs-24;
+      margin-bottom: 12px;
+    }
+
+    @include desktop-and-up {
+      font-size: $fs-30;
+    }
+  }
+
+  &__description {
+    font-weight: $fw-400;
+    font-size: $fs-14;
+    margin-bottom: 4px;
+
+    @include tablet-and-up {
+      font-size: $fs-18;
+    }
+
+    @include desktop-and-up {
+      font-weight: $fw-600;
+      font-size: $fs-16;
+    }
+  }
+}
