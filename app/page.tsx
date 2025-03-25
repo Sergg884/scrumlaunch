@@ -1,10 +1,11 @@
-import HeroHome from '@/components/hero-home/hero-home';
-import OurSuperpowers from '@/components/our-superpowers/our-superpowers';
-import TalentMap from '@/components/talent-map/talent-map';
-import TechPartner from '@/components/tech-partner/tech-partner';
-import ClientTestimonials from '@/components/client-testimonials/client-testimonials';
-import CaseStudies from '@/components/case-studies/case-studies';
-import Blog from '@/components/blog/blog';
+import HeroHome from '@/components/hero-home';
+import OurSuperpowers from '@/components/our-superpowers';
+import TalentMap from '@/components/talent-map';
+import TechPartner from '@/components/tech-partner';
+import ClientTestimonials from '@/components/client-testimonials';
+import CaseStudies from '@/components/case-studies';
+import Blog from '@/components/blog';
+import GetStarted from '@/components/get-started';
 
 export default function Home() {
   return (
@@ -22,6 +23,8 @@ export default function Home() {
       <CaseStudies />
 
       <Blog gridType="home" />
+
+      <GetStarted />
     </>
   );
 }

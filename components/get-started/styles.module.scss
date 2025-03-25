@@ -1,0 +1,277 @@
+.get-started-title {
+  width: 100%;
+  background-color: $color-white;
+  padding: 40px 0;
+
+  &__title {
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 0;
+  }
+
+  &__mark {
+    background-color: $color-turquoise;
+    padding: 0 3px;
+  }
+}
+
+.get-started {
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  background-color: $color-black-1;
+
+  &__contact {
+    padding: 40px 20px;
+    position: relative;
+
+    @include tablet-and-up {
+      padding: 60px 32px;
+    }
+  }
+
+  &__subtitle {
+    font-weight: $fw-700;
+    font-size: $fs-18;
+    color: $color-white;
+    margin-bottom: 32px;
+
+    @include tablet-and-up {
+      font-size: $fs-24;
+    }
+
+    @include desktop-and-up {
+      font-size: $fs-30;
+    }
+
+    a {
+      text-decoration: none;
+      color: $color-turquoise;
+    }
+  }
+
+  &__content {
+    @include flex-center;
+    margin-bottom: 32px;
+    position: relative;
+
+    @include tablet-and-up {
+      margin-bottom: 60px;
+    }
+  }
+
+  &__hero {
+    display: none;
+
+    @include desktop-and-up {
+      display: block;
+    }
+  }
+
+  &__hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__form {
+    width: 100%;
+    background-color: $color-turquoise;
+    padding: 24px 12px;
+    text-align: left;
+    max-width: 768px;
+
+    @include tablet-and-up {
+      padding: 32px;
+    }
+  }
+
+  &__main-inputs {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid $color-black;
+    margin-bottom: 20px;
+
+    @include tablet-and-up {
+      flex-direction: row;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+  }
+
+  &__single-inputs {
+    @include tablet-and-up {
+      flex: 1;
+    }
+  }
+
+  &__text-areas {
+    @include tablet-and-up {
+      flex: 1;
+    }
+
+    textarea {
+      height: 100%;
+      min-height: 120px;
+      resize: vertical;
+    }
+  }
+
+  &__input-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+
+    @include desktop-and-up {
+      margin-bottom: 32px;
+    }
+
+    label {
+      font-weight: $fw-700;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+  }
+
+  &__input {
+    position: relative;
+
+    input,
+    textarea {
+      width: 100%;
+      border: 1px solid $color-black;
+      padding: 8px 14px;
+
+      &::placeholder {
+        color: $color-black-1;
+      }
+    }
+
+    &--error {
+
+      input,
+      textarea {
+        border-color: $color-red;
+      }
+    }
+  }
+
+  &__error {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    background: url('/icons/alert.svg') center no-repeat;
+    cursor: pointer;
+
+    &:hover &-popup {
+      display: block;
+    }
+  }
+
+  &__error-popup {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: -85px;
+    width: 190px;
+    padding: 10px;
+    background-color: $color-white;
+    border: 1px solid $color-black;
+    font-size: $fs-14;
+    z-index: 10;
+
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      border: solid transparent;
+      height: 0;
+      width: 0;
+      pointer-events: none;
+    }
+
+    &:before {
+      border-color: $color-black;
+      border-bottom-color: $color-black;
+      border-width: 7px;
+      margin-left: -7px;
+    }
+
+    &:after {
+      border-color: $color-white;
+      border-width: 6px;
+      margin-left: -6px;
+    }
+  }
+
+  &__additional {
+    padding-top: 20px;
+
+    @include desktop-and-up {
+      padding-top: 32px;
+    }
+  }
+
+  &__form-title {
+    font-size: $fs-24;
+    font-weight: $fw-700;
+    margin-bottom: 24px;
+
+    @include tablet-and-up {
+      font-size: $fs-30;
+    }
+  }
+
+  &__selects {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include tablet-and-up {
+      flex-direction: row;
+      gap: 24px;
+    }
+  }
+
+  &__message {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba($color-white, 1);
+    z-index: 10;
+    transition: background-color $transition-time;
+
+    &--blocked {
+      background-color: rgba($color-white, 0.8);
+    }
+  }
+
+  &__message-animation {
+    width: 290px;
+    height: 290px;
+    margin-bottom: 20px;
+  }
+
+  &__message-title {
+    font-size: $fs-30;
+    font-weight: $fw-700;
+    text-align: center;
+    color: $color-black-1;
+  }
+
+  &__submit {
+    margin: 0 auto;
+    display: block;
+  }
+}

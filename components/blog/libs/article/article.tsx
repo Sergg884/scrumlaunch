@@ -9,7 +9,7 @@ type Props = {
   index: number;
 }
 
-const Article: FC<Props> = ({ article, index }) => {
+const Article: FC<Props> = ({ article }) => {
   return (
     <div className={styles.article}>
       <div className={styles['article__image-wrapper']}>

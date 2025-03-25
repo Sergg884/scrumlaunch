@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Title from '@/components/ui/title';
-import Link from 'next/link';
 import Container from '@/components/ui/container';
 import Arrow from '@/assets/icons/arrow.svg';
 import cn from 'classnames';
