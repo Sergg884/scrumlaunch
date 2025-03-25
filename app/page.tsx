@@ -6,7 +6,7 @@ import ClientTestimonials from '@/components/client-testimonials';
 import CaseStudies from '@/components/case-studies';
 import Blog from '@/components/blog';
 import GetStarted from '@/components/get-started';
-
+import OurClients from '@/components/our-clients';
 export default function Home() {
   return (
     <>
@@ -21,6 +21,8 @@ export default function Home() {
       <ClientTestimonials />
 
       <CaseStudies />
+
+      <OurClients />
 
       <Blog gridType="home" />
 

@@ -1,0 +1,36 @@
+.arrow-button {
+  position: absolute;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  @include flex-center;
+
+  svg {
+    color: transparent;
+    transition: color $transition-time ease;
+
+    path {
+      stroke: $color-black-1;
+      transition: stroke $transition-time ease;
+    }
+  }
+
+  &:hover {
+    svg {
+      color: $color-turquoise;
+
+      path {
+        stroke: $color-turquoise;
+      }
+    }
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &--next {
+    transform: rotate(180deg);
+  }
+}

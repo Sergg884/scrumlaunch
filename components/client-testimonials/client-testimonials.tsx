@@ -4,10 +4,11 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Title from '@/components/ui/title';
 import Container from '@/components/ui/container';
-import Arrow from '@/assets/icons/arrow.svg';
 import cn from 'classnames';
 import styles from './styles.module.scss';
 import CustomLink from '../custom-link';
+import ArrowButton from '@/components/ui/arrow-button';
+import { ClutchBlackIcon, ClutchIcon } from '@/components/ui/icons';
 
 const slides = [
   {
@@ -95,29 +96,23 @@ const ClientTestimonials = () => {
         </Title>
 
         <div className={styles['client-testimonials__carousel']}>
-          <button
+          <ArrowButton
+            direction="prev"
+            onClick={() => slide(-1)}
+            disabled={isAnimating}
             className={cn(
-              styles['client-testimonials__navigation-btn'],
               styles['client-testimonials__navigation-btn--prev']
             )}
-            onClick={() => slide(-1)}
-            aria-label="Previous testimonial"
-            disabled={isAnimating}
-          >
-            <Arrow />
-          </button>
+          />
 
-          <button
+          <ArrowButton
+            direction="next"
+            onClick={() => slide(1)}
+            disabled={isAnimating}
             className={cn(
-              styles['client-testimonials__navigation-btn'],
               styles['client-testimonials__navigation-btn--next']
             )}
-            onClick={() => slide(1)}
-            aria-label="Next testimonial"
-            disabled={isAnimating}
-          >
-            <Arrow />
-          </button>
+          />
 
           <div
             className={cn(
@@ -151,13 +146,7 @@ const ClientTestimonials = () => {
                   </div>
                 </div>
 
-                <Image
-                  className={styles['client-testimonials__rating']}
-                  src="images/shared/results_clutch.svg"
-                  alt="Clutch rating"
-                  width={150}
-                  height={40}
-                />
+                <ClutchIcon />
 
                 <p className={styles['client-testimonials__feedback']}>
                   {slides[current].feedback}
@@ -171,12 +160,8 @@ const ClientTestimonials = () => {
           href={slides[current].clutch}
           className={styles['client-testimonials__button']}
         >
-          <Image
-            src="images/shared/clutch-logo-black.svg"
-            alt="clutch"
-            width={70}
-            height={20}
-          />
+          <ClutchBlackIcon />
+
           See {slides[current].short} full review
         </CustomLink>
       </Container>

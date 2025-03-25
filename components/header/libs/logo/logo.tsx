@@ -1,6 +1,6 @@
-import LogoIcon from '@/public/icons/logo.svg';
 import Link from 'next/link';
 import { FC } from 'react';
+import { LogoIcon } from '@/components/ui/icons';
 
 type Props = {
   className?: string;

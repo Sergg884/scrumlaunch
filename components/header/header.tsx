@@ -2,13 +2,13 @@
 
 import { useEffect, useState } from 'react';
 import Logo from '@/components/header/libs/logo';
-import BurgerMenu from '@/public/icons/burger-menu.svg';
-import CloseIcon from '@/public/icons/close.svg';
+import CloseIcon from '@/components/ui/icons/close-icon';
 import Container from '@/components/ui/container';
 import NavList from '@/components/header/libs/nav-list';
 import MobileMenu from './libs/mobile-menu/mobile-menu';
 import cn from 'classnames';
 import styles from './styles.module.scss';
+import BurgerMenu from '@/components/ui/icons/burger-menu';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
