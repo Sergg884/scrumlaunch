@@ -16,8 +16,12 @@
     padding: 0;
     padding-bottom: 50px;
 
-    .slick-list {
+    &>div {
       max-height: 650px;
+
+      @include tablet-and-up {
+        max-height: 100%;
+      }
     }
   }
 
