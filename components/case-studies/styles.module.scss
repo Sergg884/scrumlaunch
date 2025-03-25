@@ -15,6 +15,10 @@
   &__slider {
     padding: 0;
     padding-bottom: 50px;
+
+    .slick-list {
+      max-height: 650px;
+    }
   }
 
   &__inner {
@@ -130,7 +134,7 @@
     @include tablet-and-up {
       width: 45%;
       overflow: hidden;
-      padding: 0;   
+      padding: 0;
     }
   }
 

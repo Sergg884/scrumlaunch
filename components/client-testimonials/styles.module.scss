@@ -24,13 +24,15 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    z-index: 1;
   }
 
   &__navigation-btn--prev {
     left: 0;
   }
 
-  &__navigation-btn--next {
+  &__carousel &__navigation-btn--next {
+    transform: translateY(-50%) rotate(180deg);
     right: 0;
   }
 
