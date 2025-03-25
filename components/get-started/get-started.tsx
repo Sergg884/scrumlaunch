@@ -47,6 +47,8 @@ export default function GetStarted() {
   };
 
   const onSubmit = async (data: FormData) => {
+    console.log(data);
+
     // try {
     //   setIsSent(true);
     //   setIsBlocked(true);
@@ -171,7 +173,7 @@ export default function GetStarted() {
 
                   <div className={styles['get-started__text-areas']}>
                     <div className={styles['get-started__input-wrapper']}>
-                      <label htmlFor="details">Any details you'd like to share?</label>
+                      <label htmlFor="details">Any details you&apos;d like to share?</label>
 
                       <textarea
                         id="details"
